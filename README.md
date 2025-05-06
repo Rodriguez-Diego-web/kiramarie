@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+# Kira Marie Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Eine moderne und elegante Landing Page für Kira Marie, Autorin und Dozentin im Bereich der Zukunft der Arbeit.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Modernes Design** mit minimalistischer Ästhetik
+- **Responsives Layout** für verschiedene Geräte und Bildschirmgrößen
+- **Animationen** mit Framer Motion für ein interaktives Erlebnis
+- **Abschnitte**: Hero, Über Mich, Studie, Expertennetzwerk, Medien und Kontakt
+- **Parallax-Effekte** für eine ansprechende visuelle Erfahrung
+- **Optimierte Performance** für schnelle Ladezeiten
 
-### `npm start`
+## Technologien
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React mit TypeScript
+- Styled Components für das Styling
+- Framer Motion für Animationen
+- React Icons für Iconographie
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+```bash
+# Repository klonen
+git clone https://github.com/Rodriguez-Diego-web/kiramarie.git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# In das Projektverzeichnis wechseln
+cd kiramarie
 
-### `npm run build`
+# Abhängigkeiten installieren
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Entwicklungsserver starten
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Die Website ist für das Deployment mit Netlify optimiert.
 
-### `npm run eject`
+## Design
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Das Design folgt einem minimalistischen, eleganten Ansatz mit einer klaren Typographie und einem raffiniertem Farbschema:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Schriftarten**: Cormorant Garamond für Text und Montserrat für Überschriften
+- **Farben**: Elegantes Schwarz-Weiß mit lila/violetten Akzenten
