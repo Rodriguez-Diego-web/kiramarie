@@ -1,16 +1,35 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import styled from 'styled-components';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'framer-motion';
 import { FaDownload, FaExternalLinkAlt } from 'react-icons/fa';
 import { Icon } from '../common/IconWrapper';
+import studieImage from '../../assets/images/Studie.webp';
+
+const studyKeyFindings = [
+  { id: "01", text: "Aktuelles Stimmungsbild der GenZ zu Berufseinstieg" },
+  { id: "02", text: "Erwartungen an Politik, Wirtschaft und Bildung" },
+  { id: "03", text: "Konkrete Handlungsempfehlungen zur Schließung von Lücken" }
+];
+
+const studyMetadata = [
+  { label: "Veröffentlicht", value: "April 2025" },
+  { label: "Forschungsmethode", value: "Qualitative & Quantitative Analyse" },
+  { label: "Umfang", value: "120 Seiten" }
+];
 
 const StudySection: React.FC = () => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const { scrollYProgress } = useScroll();
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
   
-  const studyImgParallax = useTransform(scrollYProgress, [0.3, 0.8], ['0%', '20%']);
-  const studyContentParallax = useTransform(scrollYProgress, [0.3, 0.8], ['0%', '-10%']);
-  const gradientParallax = useTransform(scrollYProgress, [0.3, 0.8], ['0%', '5%']);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const studyImgParallax = useTransform(scrollYProgress, [0.3, 0.8], ['0%', '10%']);
+  const studyContentParallax = useTransform(scrollYProgress, [0.3, 0.8], ['0%', '-5%']);
+  const gradientParallax = useTransform(scrollYProgress, [0.3, 0.8], ['0%', '3%']);
   
   const parallaxConfig = useMemo(() => {
     return {
@@ -20,107 +39,127 @@ const StudySection: React.FC = () => {
     };
   }, [studyImgParallax, studyContentParallax, gradientParallax]);
   
-  const backgroundVariants = {
-    animate: {
-      background: [
-        'radial-gradient(circle at 80% 20%, rgba(205, 175, 253, 0.15) 0%, rgba(255, 255, 255, 0) 50%)',
-        'radial-gradient(circle at 70% 30%, rgba(205, 175, 253, 0.2) 0%, rgba(255, 255, 255, 0) 60%)',
-        'radial-gradient(circle at 80% 20%, rgba(205, 175, 253, 0.15) 0%, rgba(255, 255, 255, 0) 50%)'
-      ]
+  const staggerAnimation = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
     }
   };
   
-  const backgroundTransition = {
-    repeat: Infinity,
-    duration: 20,
-    ease: "easeInOut"
+  const itemAnimation = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
   };
   
-  const inViewConfig = { once: true, amount: 0.3 };
-  
   return (
-    <SectionContainer id="study">
+    <SectionContainer id="study" ref={sectionRef}>
       <ParallaxBackground 
         style={{ y: parallaxConfig.gradient }}
-        variants={backgroundVariants}
-        animate="animate"
-        transition={backgroundTransition}
+        animate={{ 
+          background: [
+            'radial-gradient(circle at 80% 20%, rgba(205, 175, 253, 0.08) 0%, rgba(255, 255, 255, 0) 50%)',
+            'radial-gradient(circle at 70% 30%, rgba(205, 175, 253, 0.1) 0%, rgba(255, 255, 255, 0) 60%)'
+          ]
+        }}
+        transition={{
+          repeat: Infinity,
+          repeatType: "reverse",
+          duration: 25,
+          ease: "easeInOut"
+        }}
       />
       
       <ContentWrapper>
         <StudyInfo style={{ y: parallaxConfig.studyContent }}>
-          <Title
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={inViewConfig}
-          >
-            STUDIE ZUR ZUKUNFT DER ARBEIT
-          </Title>
+          <HeaderArea>
+            <Preheading
+              initial={{ opacity: 0, y: 15 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+              transition={{ duration: 0.7 }}
+            >
+              Forschungsprojekt
+            </Preheading>
+            
+            <Title
+              initial={{ opacity: 0, y: 15 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              Vom Klassenzimmer ins Home-Office
+            </Title>
+          </HeaderArea>
+          
           <Description
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={inViewConfig}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
           >
-            In meiner neuesten Studie untersuche ich, wie sich die Arbeitswelt durch Digitalisierung, 
-            KI und veränderte Wertvorstellungen wandelt. Die Ergebnisse liefern konkrete Handlungsempfehlungen 
-            für Unternehmen und Führungskräfte.
+            Was die „Generation Berufseinstieg" von Schule, Familie, Politik und Wirtschaft erwartet. 
+            In dieser Studie liefern wir ein aktuelles Stimmungsbild der GenZ in Bezug auf relevante Themen 
+            und konkrete Handlungsempfehlungen, um die Lücke zwischen Erwartungen junger Menschen und 
+            den Bedürfnissen des Arbeitsmarktes zu schließen.
           </Description>
           
           <StudyMetadata
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={inViewConfig}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={staggerAnimation}
           >
-            <MetaItem>
-              <MetaLabel>Veröffentlicht</MetaLabel>
-              <MetaValue>April 2025</MetaValue>
-            </MetaItem>
-            <MetaItem>
-              <MetaLabel>Forschungsmethode</MetaLabel>
-              <MetaValue>Qualitative & Quantitative Analyse</MetaValue>
-            </MetaItem>
-            <MetaItem>
-              <MetaLabel>Umfang</MetaLabel>
-              <MetaValue>120 Seiten</MetaValue>
-            </MetaItem>
+            {studyMetadata.map((meta, index) => (
+              <MetaItem 
+                key={`meta-${index}`}
+                variants={itemAnimation}
+              >
+                <MetaLabel>{meta.label}</MetaLabel>
+                <MetaValue>{meta.value}</MetaValue>
+              </MetaItem>
+            ))}
           </StudyMetadata>
           
           <ActionButtons
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={inViewConfig}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
           >
             <PrimaryButton
-              href="/download-studie.pdf"
-              whileHover={{ y: -3, boxShadow: '0 10px 25px rgba(205, 175, 253, 0.4)' }}
+              href="https://www.appinio.com/de/reports/ready-set-work-studie?lai_vid=rAGnEBvG1h94&lai_sr=60-64&lai_sl=h&vs_split=A"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -3, boxShadow: '0 8px 15px rgba(205, 175, 253, 0.3)' }}
               whileTap={{ y: 0 }}
             >
-              <Icon icon={FaDownload} /> STUDIE HERUNTERLADEN
+              <Icon icon={FaDownload} /> Studie herunterladen
             </PrimaryButton>
             <SecondaryButton
-              href="/studie-details"
-              whileHover={{ x: 5, backgroundColor: 'rgba(205, 175, 253, 0.08)' }}
+              href="https://www.appinio.com/de/reports/ready-set-work-studie?lai_vid=rAGnEBvG1h94&lai_sr=60-64&lai_sl=h&vs_split=A"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ x: 3 }}
+              whileTap={{ x: 0 }}
             >
-              MEHR ERFAHREN <Icon icon={FaExternalLinkAlt} size={12} />
+              Mehr erfahren <Icon icon={FaExternalLinkAlt} size={12} />
             </SecondaryButton>
           </ActionButtons>
         </StudyInfo>
         
         <StudyVisual style={{ y: parallaxConfig.studyImg }}>
           <StudyImageContainer
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2 }}
-            viewport={inViewConfig}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.8 }}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
           >
-            <NeuomorphicCard>
-              <StudyImage src="/images/study-cover.jpg" alt="Studie zur Zukunft der Arbeit" />
+            <StudyCard>
+              <StudyImage src={studieImage} alt="Studie zur Zukunft der Arbeit" />
               
               <AnimatePresence>
                 {isHovered && (
@@ -131,51 +170,21 @@ const StudySection: React.FC = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <KeyFindings>
-                      <FindingItem>
-                        <FindingIcon>01</FindingIcon>
-                        <FindingText>Hybride Arbeitsmodelle werden zum Standard</FindingText>
-                      </FindingItem>
-                      <FindingItem>
-                        <FindingIcon>02</FindingIcon>
-                        <FindingText>KI als Teampartner statt Ersatz</FindingText>
-                      </FindingItem>
-                      <FindingItem>
-                        <FindingIcon>03</FindingIcon>
-                        <FindingText>Purpose wird zum entscheidenden Faktor</FindingText>
-                      </FindingItem>
+                      {studyKeyFindings.map((finding, index) => (
+                        <FindingItem key={`finding-${index}`}>
+                          <FindingIcon>{finding.id}</FindingIcon>
+                          <FindingText>{finding.text}</FindingText>
+                        </FindingItem>
+                      ))}
                     </KeyFindings>
                   </HoverOverlay>
                 )}
               </AnimatePresence>
-            </NeuomorphicCard>
+            </StudyCard>
             
-            <PatternDecoration 
-              animate={{ 
-                y: [0, -10, 0], 
-                rotate: [0, 5, 0] 
-              }}
-              transition={{ 
-                repeat: Infinity, 
-                duration: 15, 
-                ease: "easeInOut" 
-              }}
-            />
-            
-            <FloatingBadge
-              animate={{ 
-                y: [0, 10, 0], 
-                rotate: [0, -3, 0] 
-              }}
-              transition={{ 
-                repeat: Infinity, 
-                duration: 8, 
-                ease: "easeInOut" 
-              }}
-            >
-              <BadgeInner>
-                <BadgeText>2025</BadgeText>
-              </BadgeInner>
-            </FloatingBadge>
+            <YearBadge>
+              <BadgeText>2025</BadgeText>
+            </YearBadge>
           </StudyImageContainer>
         </StudyVisual>
       </ContentWrapper>
@@ -185,7 +194,7 @@ const StudySection: React.FC = () => {
 
 const SectionContainer = styled.section`
   position: relative;
-  padding: 140px 0;
+  padding: 120px 0;
   background-color: #ffffff;
   overflow: hidden;
 `;
@@ -204,8 +213,8 @@ const ContentWrapper = styled.div`
   width: 90%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 6rem;
   position: relative;
   z-index: 1;
   
@@ -221,11 +230,26 @@ const StudyInfo = styled(motion.div)`
   }
 `;
 
+const HeaderArea = styled.div`
+  margin-bottom: 1.5rem;
+`;
+
+const Preheading = styled(motion.span)`
+  display: inline-block;
+  font-family: var(--body-font);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #9c7ad1;
+  margin-bottom: 0.5rem;
+`;
+
 const Title = styled(motion.h2)`
   font-family: var(--heading-font);
-  font-size: 2.5rem;
+  font-size: 2.8rem;
+  font-weight: 700;
   color: var(--text);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   position: relative;
   
   &:after {
@@ -234,8 +258,12 @@ const Title = styled(motion.h2)`
     bottom: -10px;
     left: 0;
     width: 60px;
-    height: 3px;
-    background: linear-gradient(to right, #cdaffd, rgba(205, 175, 253, 0.3));
+    height: 2px;
+    background-color: #cdaffd;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
   }
 `;
 
@@ -259,9 +287,19 @@ const StudyMetadata = styled(motion.div)`
   }
 `;
 
-const MetaItem = styled.div`
+const MetaItem = styled(motion.div)`
   display: flex;
   flex-direction: column;
+  padding: 1.2rem 1.5rem;
+  background-color: #f9f7fc;
+  border-radius: 8px;
+  border-left: 3px solid #cdaffd;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
 `;
 
 const MetaLabel = styled.span`
@@ -276,7 +314,7 @@ const MetaLabel = styled.span`
 const MetaValue = styled.span`
   font-family: var(--body-font);
   font-size: 1rem;
-  color: var(--text);
+  color: #9c7ad1;
   font-weight: 600;
 `;
 
@@ -309,7 +347,6 @@ const PrimaryButton = styled(motion.a)`
   
   &:hover {
     background-color: #bb9cf2;
-    box-shadow: 0 4px 8px rgba(205, 175, 253, 0.4);
   }
 `;
 
@@ -332,7 +369,7 @@ const SecondaryButton = styled(motion.a)`
   transition: all 0.3s ease;
   
   &:hover {
-    background-color: rgba(205, 175, 253, 0.1);
+    background-color: rgba(205, 175, 253, 0.05);
   }
 `;
 
@@ -352,24 +389,18 @@ const StudyImageContainer = styled(motion.div)`
   max-width: 400px;
 `;
 
-const NeuomorphicCard = styled.div`
+const StudyCard = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #f5f5f7;
-  border-radius: 16px;
-  box-shadow: 
-    10px 10px 20px #e1e1e3,
-    -10px -10px 20px #ffffff,
-    inset 0 0 0 rgba(255, 255, 255, 0);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   
   &:hover {
-    box-shadow: 
-      15px 15px 30px #d1d1d3,
-      -15px -15px 30px #ffffff,
-      inset 0 0 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
 `;
 
@@ -378,7 +409,7 @@ const StudyImage = styled.img`
   height: auto;
   display: block;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 8px;
 `;
 
 const HoverOverlay = styled(motion.div)`
@@ -387,13 +418,12 @@ const HoverOverlay = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(205, 175, 253, 0.92);
-  backdrop-filter: blur(5px);
+  background: rgba(156, 122, 209, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  border-radius: 14px;
+  border-radius: 8px;
 `;
 
 const KeyFindings = styled.div`
@@ -421,7 +451,7 @@ const FindingIcon = styled.div`
   font-family: var(--heading-font);
   font-size: 0.8rem;
   font-weight: 600;
-  color: #cdaffd;
+  color: #9c7ad1;
   margin-right: 1rem;
   flex-shrink: 0;
 `;
@@ -434,48 +464,28 @@ const FindingText = styled.p`
   margin: 0;
 `;
 
-const PatternDecoration = styled(motion.div)`
+const YearBadge = styled.div`
   position: absolute;
-  top: -30px;
-  right: -30px;
-  width: 160px;
-  height: 160px;
-  background-image: radial-gradient(rgba(205, 175, 253, 0.15) 2px, transparent 2px);
-  background-size: 15px 15px;
-  z-index: -1;
-`;
-
-const FloatingBadge = styled(motion.div)`
-  position: absolute;
-  bottom: -20px;
-  left: -20px;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #cdaffd, #b992fa);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 20px rgba(205, 175, 253, 0.4);
-  z-index: 10;
-`;
-
-const BadgeInner = styled.div`
+  bottom: -10px;
+  right: -10px;
   width: 70px;
   height: 70px;
-  border-radius: 50%;
-  background: white;
+  background-color: white;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-left: 3px solid #cdaffd;
+  z-index: 10;
 `;
 
 const BadgeText = styled.span`
   font-family: var(--heading-font);
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  color: #cdaffd;
+  color: #9c7ad1;
 `;
 
-export default StudySection;
+export default React.memo(StudySection);
 // DRWEB-KM2025

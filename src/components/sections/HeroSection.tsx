@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect, memo, useMemo } from 'react';
 import styled from 'styled-components';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import signalIduna from '../../assets/images/partner/2560px-Signal-iduna-250x43.png';
+import digitalXLogo from '../../assets/images/partner/digitalx_logo_disruptingminds-250x41.png';
+import sparkasseLogo from '../../assets/images/partner/sparkasse_koelnbonn_logo_disruptingminds-250x110.png';
 
 type FloatingCircleProps = {
   size: number;
@@ -9,16 +12,6 @@ type FloatingCircleProps = {
   color: string;
   delay: number;
 };
-
-const mediaLogos = [
-  { src: '/images/media/faz.svg', alt: 'Frankfurter Allgemeine Zeitung' },
-  { src: '/images/media/spiegel.svg', alt: 'Der Spiegel' },
-  { src: '/images/media/zeit.svg', alt: 'Die Zeit' },
-  { src: '/images/media/handelsblatt.svg', alt: 'Handelsblatt' },
-  { src: '/images/media/deutschlandfunk.svg', alt: 'Deutschlandfunk' },
-  { src: '/images/media/forbes.svg', alt: 'Forbes' },
-  { src: '/images/media/harvard.svg', alt: 'Harvard Business Review' }
-];
 
 const HeroSection: React.FC = () => {
   const { scrollY } = useScroll();
@@ -158,17 +151,27 @@ const HeroSection: React.FC = () => {
       <TrustBanner>
         <TrustLabel>BEKANNT AUS</TrustLabel>
         <MarqueeWrapper>
-          <MarqueeContent>
-            {[...Array(2)].map((_, groupIndex) => (
+          <MarqueeTrack>
+            {Array(10).fill(null).map((_, groupIndex) => (
               <MarqueeGroup key={`group-${groupIndex}`}>
-                {mediaLogos.map((logo, logoIndex) => (
-                  <LogoItem key={`logo-${groupIndex}-${logoIndex}`}>
-                    <MediaLogo src={logo.src} alt={logo.alt} />
-                  </LogoItem>
-                ))}
+                <LogoItem>
+                  <MediaLogo src={signalIduna} alt="Signal Iduna" />
+                </LogoItem>
+                <LogoItem>
+                  <MediaLogo src={digitalXLogo} alt="Digital X" />
+                </LogoItem>
+                <LogoItem>
+                  <MediaLogo src={sparkasseLogo} alt="Sparkasse Köln Bonn" />
+                </LogoItem>
+                <LogoItem>
+                  <MediaLogo src={signalIduna} alt="Signal Iduna" />
+                </LogoItem>
+                <LogoItem>
+                  <MediaLogo src={digitalXLogo} alt="Digital X" />
+                </LogoItem>
               </MarqueeGroup>
             ))}
-          </MarqueeContent>
+          </MarqueeTrack>
         </MarqueeWrapper>
       </TrustBanner>
     </HeroContainer>
@@ -372,7 +375,7 @@ const TrustBanner = styled.div`
   left: 0;
   width: 100%;
   padding: 20px 0;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(205, 175, 253, 0.2);
   backdrop-filter: blur(10px);
   z-index: 5;
   display: flex;
@@ -394,7 +397,6 @@ const MarqueeWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
-  
   &::before, &::after {
     content: "";
     position: absolute;
@@ -406,26 +408,26 @@ const MarqueeWrapper = styled.div`
   
   &::before {
     left: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.9), transparent);
+    background: linear-gradient(to right, rgba(205, 175, 253, 0.2), transparent);
   }
   
   &::after {
     right: 0;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0.9), transparent);
+    background: linear-gradient(to left, rgba(205, 175, 253, 0.2), transparent);
   }
 `;
 
-const MarqueeContent = styled.div`
+const MarqueeTrack = styled.div`
   display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 35s linear infinite;
+  width: fit-content;
   
   @keyframes marquee {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(-16.7%);
     }
   }
 `;
@@ -433,22 +435,29 @@ const MarqueeContent = styled.div`
 const MarqueeGroup = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding: 0 25px;
+  min-width: calc(100vw / 6);
 `;
 
 const LogoItem = styled.div`
-  padding: 0 30px;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   
   &:hover {
     opacity: 1;
+    transform: scale(1.05);
   }
 `;
 
 const MediaLogo = styled.img`
-  height: 30px;
+  height: auto;
+  max-height: 35px;
   width: auto;
+  max-width: 180px;
   object-fit: contain;
+  filter: brightness(0) invert(1);
 `;
 
 export default memo(HeroSection);

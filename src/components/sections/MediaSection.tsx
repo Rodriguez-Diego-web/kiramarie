@@ -1,17 +1,20 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaInstagram, FaLinkedinIn, FaYoutube, FaSpotify, FaApple, FaPodcast, FaBook, FaMicrophone } from 'react-icons/fa';
+import { FaInstagram, FaLinkedinIn, FaTiktok, FaSpotify, FaApple, FaPodcast, FaBook, FaMicrophone, FaArrowRight, FaYoutube } from 'react-icons/fa';
 import { Icon } from '../common/IconWrapper';
+import buchCover from '../../assets/images/buch.png';    
+import podcastArtwork from '../../assets/images/podcast-artwork.png';
+import speakerImage from '../../assets/images/speaker.webp';
 
 interface SocialIconProps {
   bgColor: string;
 }
 
 const podcastPlatforms = [
-  { icon: FaSpotify, name: 'Spotify' },
-  { icon: FaApple, name: 'Apple Podcasts' },
-  { icon: FaYoutube, name: 'YouTube' }
+  { icon: FaSpotify, name: 'Spotify', url: 'https://open.spotify.com/show/67HR7TSSRScAXYuCEGAtgc?si=5d025b1f8f594745&nd=1&dlsi=5ef1d88785f148a0' },
+  { icon: FaApple, name: 'Apple Podcasts', url: 'https://podcasts.apple.com/podcast/id1234567890' },
+  { icon: FaYoutube, name: 'YouTube', url: 'https://www.youtube.com/channel/' }
 ];
 
 const speakerTopics = [
@@ -23,7 +26,7 @@ const speakerTopics = [
 const bookMetadata = [
   { label: 'Erschienen', value: 'April 2024' },
   { label: 'Verlag', value: 'Campus Verlag' },
-  { label: 'Seiten', value: '264' }
+  { label: 'Seiten', value: '112' }
 ];
 
 const podcastMetadata = [
@@ -37,29 +40,33 @@ const socialAccounts = [
     icon: FaInstagram, 
     bgColor: '#E1306C', 
     platform: 'Instagram', 
-    followers: '87.5K Follower',
-    action: 'Folgen'
+    followers: '10.9K Follower',
+    action: 'Folgen',
+    url: 'https://instagram.com/kiramariecremer'
+  },
+  { 
+    icon: FaTiktok, 
+    bgColor: '#000000', 
+    platform: 'TikTok', 
+    followers: 'Neu',
+    action: 'Folgen',
+    url: 'https://tiktok.com/@kiramariecremer'
   },
   { 
     icon: FaLinkedinIn, 
     bgColor: '#0077B5', 
     platform: 'LinkedIn', 
-    followers: '63.2K Follower',
-    action: 'Folgen'
-  },
-  { 
-    icon: FaYoutube, 
-    bgColor: '#FF0000', 
-    platform: 'YouTube', 
-    followers: '42.8K Abonnenten',
-    action: 'Abonnieren'
+    followers: 'Professionelles Netzwerk',
+    action: 'Verbinden',
+    url: 'https://www.linkedin.com/in/kiramariecremer'
   }
 ];
 
-const MediaSection: React.FC = () => {
-  const { scrollY } = useScroll();
+const MediaSection: React.FC = memo(() => {
+  const { scrollYProgress } = useScroll();
+  const [isNewsletterSuccess, setIsNewsletterSuccess] = useState(false);
   
-  const backgroundY = useTransform(scrollY, [0, 500], [0, 150]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   
   const parallaxValues = useMemo(() => ({
     backgroundY
@@ -76,8 +83,11 @@ const MediaSection: React.FC = () => {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Newsletter-Anmeldung simulieren
+    setIsNewsletterSuccess(true);
+    setTimeout(() => setIsNewsletterSuccess(false), 3000);
   };
-  
+
   return (
     <SectionContainer id="media">
       <SectionBackground style={{ y: parallaxValues.backgroundY }}>
@@ -100,24 +110,26 @@ const MediaSection: React.FC = () => {
           
           <BookShowcase>
             <BookCover>
-              <CoverImage src="/images/book-cover.jpg" alt="Die Zukunft der Arbeit - Buchcover" />
+              <CoverImage src={buchCover} alt="New Work - Buchcover von Kira Marie Cremer" />
               <CoverOverlay>
                 <OverlayButton>Leseprobe</OverlayButton>
               </CoverOverlay>
             </BookCover>
             <BookInfo>
-              <BookTitle>Die Zukunft der Arbeit</BookTitle>
-              <BookSubtitle>Wie wir morgen arbeiten werden</BookSubtitle>
+              <BookTitle>Arbeit ist das halbe Leben?</BookTitle>
+              <BookSubtitle>New Work in der modernen Arbeitswelt</BookSubtitle>
               <BookDescription>
-                In meinem Bestseller beschreibe ich, wie sich unsere Arbeitswelt durch Digitalisierung und KI transformiert,
-                und biete praktische Ansätze für Unternehmen und Führungskräfte, diese Veränderungen gewinnbringend zu gestalten.
+                Als New-Work-Expertin beschreibe ich in meinem Kurzsachbuch die Bedeutung von New Work für die moderne Arbeitswelt. 
+                In meinem ersten eigenen Buch teile ich praxisnahe Beispiele und spannende Insights aus meinem beliebten Podcast, 
+                in dem ich mit Gäst*innen aus unterschiedlichen Branchen über neue Arbeitsmodelle, Unternehmenskultur, 
+                Diversity, New Leadership und vieles mehr spreche.
               </BookDescription>
               <BookMetadata>
                 {renderMetadataItems(bookMetadata)}
               </BookMetadata>
-              <PurchaseButton>
+              <BookLink href="https://www.amazon.de/dp/3960963998/ref=cm_sw_r_as_gl_api_gl_i_Y230PD988ZWBDQEH5Y1C?linkCode=ml1&tag=kira017-21" target="_blank" rel="noopener noreferrer">
                 Buch kaufen
-              </PurchaseButton>
+              </BookLink>
             </BookInfo>
           </BookShowcase>
         </BookSection>
@@ -132,22 +144,28 @@ const MediaSection: React.FC = () => {
           
           <PodcastShowcase>
             <PodcastArtwork>
-              <ArtworkImage src="/images/podcast-artwork.jpg" alt="Future of Work Podcast" />
+              <ArtworkImage src={podcastArtwork} alt="New Work Podcast mit Kira Marie Cremer" />
             </PodcastArtwork>
             <PodcastInfo>
-              <PodcastTitle>Die Zukunft der Arbeit</PodcastTitle>
+              <PodcastTitle>New Work Podcast</PodcastTitle>
               <PodcastDescription>
-                In meinem wöchentlichen Podcast spreche ich mit Experten und Visionären über Trends, 
-                Herausforderungen und Chancen in der sich wandelnden Arbeitswelt.
+                In meinem wöchentlichen Podcast spreche ich mit Gäst*innen aus unterschiedlichen Branchen über 
+                neue Arbeitsmodelle, Unternehmenskultur, Diversity, New Leadership und weitere spannende Themen 
+                rund um die moderne Arbeitswelt.
               </PodcastDescription>
               <PodcastMetadata>
                 {renderMetadataItems(podcastMetadata)}
               </PodcastMetadata>
               <PodcastPlatforms>
                 {podcastPlatforms.map((platform, index) => (
-                  <PlatformButton key={`platform-${index}`}>
+                  <PlatformLink 
+                    key={`platform-${index}`}
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Icon icon={platform.icon} /> {platform.name}
-                  </PlatformButton>
+                  </PlatformLink>
                 ))}
               </PodcastPlatforms>
             </PodcastInfo>
@@ -163,7 +181,7 @@ const MediaSection: React.FC = () => {
           </MediaFeatureTitle>
           
           <SpeakerContent>
-            <SpeakerImage src="/images/speaker.jpg" alt="Kira Marie als Sprecherin" />
+            <SpeakerImg src={speakerImage} alt="Kira Marie als Sprecherin" />
             <SpeakerInfo>
               <SpeakerDescription>
                 Mit über 10 Jahren Erfahrung als Keynote-Speakerin bei Konferenzen, Unternehmen und Events 
@@ -189,39 +207,74 @@ const MediaSection: React.FC = () => {
       <FullWidthContainer>
         <NewsletterAndSocial>
           <NewsletterSection>
-            <NewsletterTitle>Newsletter abonnieren</NewsletterTitle>
-            <NewsletterDescription>
-              Erhalten Sie monatlich aktuelle Insights, exklusive Inhalte und Einladungen zu meinen Events direkt in Ihren Posteingang.
-            </NewsletterDescription>
-            <NewsletterForm onSubmit={handleSubmit}>
-              <NewsletterInput type="email" placeholder="Ihre E-Mail-Adresse" required />
-              <NewsletterButton>Anmelden</NewsletterButton>
-            </NewsletterForm>
-            <BeehiivDisclaimer>Powered by Beehiiv</BeehiivDisclaimer>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <NewsletterTitle>Lese- & Wissensvorsprung sichern</NewsletterTitle>
+              <NewsletterDescription>
+                Erhalten Sie monatlich exklusive Insights, Zukunftstrends und Einladungen zu Veranstaltungen direkt in Ihren Posteingang.
+              </NewsletterDescription>
+              
+              {isNewsletterSuccess ? (
+                <SuccessMessage>
+                  <SuccessIcon>✓</SuccessIcon>
+                  Vielen Dank! Ihre Anmeldung war erfolgreich.
+                </SuccessMessage>
+              ) : (
+                <NewsletterForm onSubmit={handleSubmit}>
+                  <NewsletterInput type="email" placeholder="Ihre E-Mail-Adresse" required />
+                  <NewsletterButton>
+                    <span>Anmelden</span>
+                    <Icon icon={FaArrowRight} size={14} />
+                  </NewsletterButton>
+                </NewsletterForm>
+              )}
+              
+              <BeehiivDisclaimer>Powered by Beehiiv</BeehiivDisclaimer>
+            </motion.div>
           </NewsletterSection>
           
           <SocialSection>
-            <SocialTitle>Folgen Sie mir</SocialTitle>
-            <SocialAccounts>
-              {socialAccounts.map((account, index) => (
-                <SocialAccount key={`social-${index}`}>
-                  <SocialIcon bgColor={account.bgColor}>
-                    <Icon icon={account.icon} />
-                  </SocialIcon>
-                  <SocialDetails>
-                    <SocialPlatform>{account.platform}</SocialPlatform>
-                    <SocialFollowers>{account.followers}</SocialFollowers>
-                  </SocialDetails>
-                  <SocialFollow>{account.action}</SocialFollow>
-                </SocialAccount>
-              ))}
-            </SocialAccounts>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <SocialTitle>Social Media</SocialTitle>
+              <SocialAccounts>
+                {socialAccounts.map((account, index) => (
+                  <SocialAccount 
+                    key={`social-${index}`}
+                    href={account.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ y: -5, boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <SocialIcon bgColor={account.bgColor}>
+                      <Icon icon={account.icon} size={20} color="#fff" />
+                    </SocialIcon>
+                    <SocialDetails>
+                      <SocialPlatform>{account.platform}</SocialPlatform>
+                      <SocialFollowers>{account.followers}</SocialFollowers>
+                    </SocialDetails>
+                    <SocialFollow>
+                      {account.action} <Icon icon={FaArrowRight} size={12} />
+                    </SocialFollow>
+                  </SocialAccount>
+                ))}
+              </SocialAccounts>
+            </motion.div>
           </SocialSection>
         </NewsletterAndSocial>
       </FullWidthContainer>
     </SectionContainer>
   );
-};
+});
 
 const SectionContainer = styled.section`
   position: relative;
@@ -440,8 +493,8 @@ const BookMetadata = styled.div`
   }
 `;
 
-const PurchaseButton = styled.button`
-  align-self: flex-start;
+const BookLink = styled.a`
+  display: inline-block;
   background-color: #cdaffd;
   color: white;
   border: none;
@@ -452,6 +505,8 @@ const PurchaseButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
   
   &:hover {
     background-color: #ba9cf2;
@@ -537,7 +592,7 @@ const PodcastPlatforms = styled.div`
   }
 `;
 
-const PlatformButton = styled.button`
+const PlatformLink = styled.a`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -546,11 +601,12 @@ const PlatformButton = styled.button`
   border: 1px solid #cdaffd;
   padding: 10px 20px;
   border-radius: 50px;
-  font-family: var(--heading-font);
+  font-family: var(--body-font);
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
   
   &:hover {
     background-color: #cdaffd;
@@ -573,7 +629,7 @@ const SpeakerContent = styled.div`
   }
 `;
 
-const SpeakerImage = styled.img`
+const SpeakerImg = styled.img`
   width: 100%;
   height: auto;
   border-radius: 16px;
@@ -666,43 +722,51 @@ const FullWidthContainer = styled.div`
 const NewsletterAndSocial = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  max-width: 1200px;
-  width: 90%;
-  margin: 0 auto;
+  gap: 3rem;
+  background: #f8f5ff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(205, 175, 253, 0.1);
+  margin-top: 6rem;
   
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 `;
 
 const NewsletterSection = styled.div`
-  padding: 40px;
-  background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 4rem;
+  background: linear-gradient(135deg, #eee9fb 0%, #f3edff 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  @media (max-width: 768px) {
+    padding: 3rem 2rem;
+  }
 `;
 
 const NewsletterTitle = styled.h4`
-  font-family: var(--heading-font);
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  color: var(--secondary);
 `;
 
 const NewsletterDescription = styled.p`
-  font-family: var(--body-font);
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1.7;
   margin-bottom: 2rem;
+  color: var(--text);
+  max-width: 90%;
 `;
 
 const NewsletterForm = styled.form`
   display: flex;
-  gap: 10px;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
   
   @media (max-width: 768px) {
     flex-direction: column;
@@ -711,114 +775,156 @@ const NewsletterForm = styled.form`
 
 const NewsletterInput = styled.input`
   flex: 1;
-  padding: 12px 15px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  font-family: var(--body-font);
-  font-size: 0.9rem;
+  padding: 1.2rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e0d8f3;
+  background-color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
   
   &:focus {
-    outline: none;
-    border-color: #cdaffd;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(205, 175, 253, 0.2);
   }
 `;
 
 const NewsletterButton = styled.button`
-  background-color: #cdaffd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  background-color: var(--accent);
   color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 4px;
-  font-family: var(--heading-font);
+  padding: 1.2rem 1.8rem;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
+  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
+  transition: all 0.2s ease;
   
   &:hover {
-    background-color: #ba9cf2;
+    background-color: var(--secondary);
+    transform: translateY(-2px);
   }
 `;
 
-const BeehiivDisclaimer = styled.div`
-  font-family: var(--body-font);
+const SuccessMessage = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 1.5rem;
+  background-color: rgba(104, 219, 153, 0.1);
+  border-left: 3px solid #68db99;
+  border-radius: 8px;
+  color: #2a7e53;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+`;
+
+const SuccessIcon = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: #68db99;
+  color: white;
+  border-radius: 50%;
   font-size: 0.8rem;
-  color: var(--text-light);
+  font-weight: bold;
+`;
+
+const BeehiivDisclaimer = styled.small`
+  font-size: 0.8rem;
+  color: #a99fc5;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 const SocialSection = styled.div`
-  padding: 40px;
-  background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 4rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  @media (max-width: 768px) {
+    padding: 3rem 2rem;
+  }
 `;
 
 const SocialTitle = styled.h4`
-  font-family: var(--heading-font);
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
   margin-bottom: 2rem;
+  color: var(--secondary);
 `;
 
 const SocialAccounts = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.2rem;
 `;
 
-const SocialAccount = styled.div`
+const SocialAccount = styled(motion.a)`
   display: flex;
   align-items: center;
-  gap: 15px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  border: 1px solid #f0ebfb;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
 `;
 
 const SocialIcon = styled.div<SocialIconProps>`
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: ${props => props.bgColor};
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
-  background-color: ${props => props.bgColor};
+  margin-right: 1.2rem;
   color: white;
-  border-radius: 50%;
-  font-size: 1.5rem;
 `;
 
 const SocialDetails = styled.div`
   flex: 1;
 `;
 
-const SocialPlatform = styled.div`
-  font-family: var(--heading-font);
-  font-size: 1.1rem;
+const SocialPlatform = styled.h5`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--text);
+  margin: 0 0 0.3rem 0;
+  color: var(--secondary);
 `;
 
-const SocialFollowers = styled.div`
-  font-family: var(--body-font);
+const SocialFollowers = styled.p`
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
-  color: var(--text-light);
+  color: #7b7691;
+  margin: 0;
 `;
 
-const SocialFollow = styled.button`
-  background-color: transparent;
-  color: #cdaffd;
-  border: 1px solid #cdaffd;
-  padding: 8px 15px;
-  border-radius: 50px;
-  font-family: var(--heading-font);
-  font-size: 0.8rem;
+const SocialFollow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background-color: #cdaffd;
-    color: white;
-  }
+  color: var(--accent);
 `;
 
 export default memo(MediaSection);
