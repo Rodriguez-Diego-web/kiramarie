@@ -28,12 +28,13 @@ const SectionTitle = styled(motion.h2)`
 
 const SocialLinksGrid = styled(motion.div)`
   display: grid;
-  gap: 20px; 
+  gap: 30px; 
   justify-items: center;
-  grid-template-columns: repeat(2, 1fr);
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px; 
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 767px) { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; 
   }
 `;
 
@@ -48,6 +49,7 @@ const SocialLinkItem = styled(motion.a)`
   text-decoration: none;
   color: #ffffff;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%; 
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.1);
@@ -63,6 +65,11 @@ const SocialLinkItem = styled(motion.a)`
   span {
     font-size: 1rem;
     font-weight: 600;
+    text-align: center; 
+  }
+
+  @media (max-width: 767px) {
+    height: 160px; 
   }
 `;
 
