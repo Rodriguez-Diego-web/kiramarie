@@ -98,9 +98,9 @@ const Footer: React.FC = () => {
 };
 
 const FooterWrapper = styled.footer`
-  background-color: var(--background);
+  background-color: #000000; /* Schwarz als Hintergrund */
   padding: 5rem 0 2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid #333333; /* Dunkelgrauer Border für leichten Kontrast */
 `;
 
 const Container = styled.div`
@@ -137,7 +137,7 @@ const FirstName = styled.span`
   font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--secondary);
+  color: #ffffff; /* Weiß */
   line-height: 1;
 `;
 
@@ -146,7 +146,7 @@ const LastName = styled.span`
   font-size: 1.4rem;
   font-weight: 300;
   letter-spacing: 0.1em;
-  color: var(--secondary);
+  color: #ffffff; /* Weiß */
   line-height: 1;
   margin-top: 2px;
 `;
@@ -154,7 +154,7 @@ const LastName = styled.span`
 const TagLine = styled.p`
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.2rem;
-  color: var(--text-light);
+  color: #dddddd; /* Helles Grau für Tagline */
   margin: 0;
 `;
 
@@ -179,19 +179,19 @@ const LinkHeading = styled.h4`
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: #bbbbbb; /* Helles Grau für Überschriften */
   margin-bottom: 1.5rem;
 `;
 
 const Link = styled.a`
   font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
-  color: var(--text);
+  color: #ffffff; /* Weiß für Links */
   margin-bottom: 0.8rem;
   transition: all 0.3s ease;
   
   &:hover {
-    color: var(--accent);
+    color: #9370DB; /* Lila als Hover-Farbe für Links */
     transform: translateX(5px);
   }
 `;
@@ -201,32 +201,26 @@ const FooterBottom = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  
-  @media (max-width: 576px) {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+  border-top: 1px solid #333333; /* Dunkelgrauer Border */
 `;
 
 const Copyright = styled.p`
-  font-size: 0.8rem;
-  color: var(--text-light);
-  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  color: #aaaaaa; /* Grau für Copyright */
 `;
 
 const SocialLinks = styled.div`
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 `;
 
 const SocialLink = styled(motion.a)`
-  color: var(--text-light);
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
+  color: #ffffff; /* Weiß für Social Icons */
+  font-size: 1.3rem;
   
   &:hover {
-    color: var(--accent);
+    color: #9370DB; /* Lila als Hover-Farbe für Social Icons */
   }
 `;
 

@@ -4,6 +4,218 @@ import { motion } from 'framer-motion';
 import { FaInstagram, FaTwitter, FaLinkedinIn, FaPaperPlane } from 'react-icons/fa';
 import { Icon } from '../common/IconWrapper';
 
+const SectionContainer = styled.section`
+  background-color: #1c1c1c; /* Dunkler Hintergrund für Kohäsion */
+  color: #e0e0e0; /* Helle Standard-Textfarbe */
+  padding: 100px 20px;
+  font-family: 'Montserrat', sans-serif; /* Globale Schriftart für die Sektion */
+`;
+
+const ContentWrapper = styled.div`
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+`;
+
+const SectionHeader = styled(motion.div)`
+  margin-bottom: 50px;
+`;
+
+const SectionHeading = styled.h2`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff; /* Weiß für Hauptüberschrift */
+`;
+
+const ContactContent = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  text-align: left;
+`;
+
+const ContactInfo = styled(motion.div)`
+  flex: 1;
+  min-width: 300px;
+`;
+
+const ContactHeading = styled.h3`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ffffff;
+`;
+
+const ContactText = styled.p`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  color: #c0c0c0; /* Etwas dunkleres Grau für Fließtext */
+`;
+
+const SocialLinks = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+`;
+
+const SocialLink = styled(motion.a)`
+  color: #e0e0e0;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--primary-color, #8A2BE2); /* Akzentfarbe beim Hover */
+  }
+`;
+
+const ContactDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+const ContactLink = styled.a`
+  font-family: 'Montserrat', sans-serif;
+  color: #b0b0b0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+
+  &:hover {
+    color: var(--primary-color, #8A2BE2);
+  }
+`;
+
+const ContactForm = styled(motion.form)`
+  flex: 1;
+  min-width: 300px;
+  background-color: #2a2a2a; /* Leicht hellerer dunkler Hintergrund für Formular */
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+`;
+
+const FormRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 25px;
+`;
+
+const FormGroup = styled.div`
+  flex: 1;
+  min-width: calc(50% - 10px);
+  margin-bottom: 25px;
+  &:last-child {
+    margin-bottom: 0; /* Entfernt doppelten Abstand wenn nur eine Gruppe in der Reihe ist */
+  }
+  /* Für Betreff und Nachricht, die volle Breite einnehmen könnten */
+  &.full-width {
+    min-width: 100%;
+  }
+`;
+
+const FormLabel = styled.label`
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e0e0e0; /* Helle Labelfarbe */
+  margin-bottom: 8px;
+`;
+
+const commonInputStyles = `
+  width: 100%;
+  padding: 14px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: #e0e0e0; /* Helle Textfarbe im Input */
+  background-color: #383838; /* Dunkler Hintergrund für Inputs */
+  border: 1px solid #555555; /* Hellerer dunkler Rahmen */
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &::placeholder {
+    color: #888888; /* Hellerer Platzhalter */
+    opacity: 1;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color, #8A2BE2);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color, #8A2BE2) 25%, transparent);
+  }
+`;
+
+const FormInput = styled.input`
+  ${commonInputStyles}
+`;
+
+const FormSelect = styled.select`
+  ${commonInputStyles}
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23CCCCCC%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E'); /* Pfeilfarbe auf Hellgrau geändert */
+  background-repeat: no-repeat;
+  background-position: right 18px top 50%;
+  background-size: .65em auto;
+  padding-right: 40px;
+`;
+
+const FormTextarea = styled.textarea`
+  ${commonInputStyles}
+  resize: vertical;
+  min-height: 120px;
+`;
+
+const SubmitButton = styled(motion.button)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff; /* Heller Text für Button */
+  background-color: #9370DB; /* Lila Akzentfarbe */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: color-mix(in srgb, #9370DB 85%, black); /* Dunkleres Lila im Hover */
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background-color: #555555; /* Dunkleres Grau für disabled Button */
+    color: #999999;
+    cursor: not-allowed;
+  }
+
+  svg {
+    font-size: 1.2em;
+  }
+`;
+
+const SuccessMessage = styled(motion.div)`
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: color-mix(in srgb, var(--primary-color, #8A2BE2) 20%, #2a2a2a) ; /* Heller Akzent auf Form-Hintergrund */
+  color: #ffffff; /* Heller Text */
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.95rem;
+`;
+
 const ContactSection: React.FC = () => {
   const [formState, setFormState] = useState({
     name: '',
@@ -28,7 +240,6 @@ const ContactSection: React.FC = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
-      // Reset form
       setFormState({
         name: '',
         email: '',
@@ -36,7 +247,6 @@ const ContactSection: React.FC = () => {
         message: '',
       });
       
-      // Reset success message after 5 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
       }, 5000);
@@ -68,39 +278,14 @@ const ContactSection: React.FC = () => {
             </ContactText>
             
             <SocialLinks>
-              <SocialLink 
-                href="https://instagram.com/kiramariecremer" 
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5 }}
-              >
-                <Icon icon={FaInstagram} />
-              </SocialLink>
-              <SocialLink 
-                href="https://twitter.com/kiramariecremer" 
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5 }}
-              >
-                <Icon icon={FaTwitter} />
-              </SocialLink>
-              <SocialLink 
-                href="https://linkedin.com/in/kiramariecremer" 
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -5 }}
-              >
-                <Icon icon={FaLinkedinIn} />
-              </SocialLink>
+              <SocialLink href="https://instagram.com/kiramariecremer" target="_blank" rel="noopener noreferrer" whileHover={{ y: -5 }}> <Icon icon={FaInstagram} /> </SocialLink>
+              <SocialLink href="https://twitter.com/kiramariecremer" target="_blank" rel="noopener noreferrer" whileHover={{ y: -5 }}> <Icon icon={FaTwitter} /> </SocialLink>
+              <SocialLink href="https://linkedin.com/in/kiramariecremer" target="_blank" rel="noopener noreferrer" whileHover={{ y: -5 }}> <Icon icon={FaLinkedinIn} /> </SocialLink>
             </SocialLinks>
             
             <ContactDetails>
-              <ContactLink href="https://newworknow.podcast" target="_blank" rel="noopener noreferrer">
-                @newworknow.podcast
-              </ContactLink>
-              <ContactLink href="https://linktr.ee/kiramariecremer" target="_blank" rel="noopener noreferrer">
-                linktr.ee/kiramariecremer
-              </ContactLink>
+              <ContactLink href="https://newworknow.podcast" target="_blank" rel="noopener noreferrer"> @newworknow.podcast </ContactLink>
+              <ContactLink href="https://linktr.ee/kiramariecremer" target="_blank" rel="noopener noreferrer"> linktr.ee/kiramariecremer </ContactLink>
             </ContactDetails>
           </ContactInfo>
           
@@ -113,78 +298,38 @@ const ContactSection: React.FC = () => {
           >
             <FormRow>
               <FormGroup>
-                <FormLabel>Name</FormLabel>
-                <FormInput 
-                  type="text" 
-                  name="name" 
-                  value={formState.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Dein Name"
-                />
+                <FormLabel htmlFor="name">Name</FormLabel>
+                <FormInput type="text" name="name" id="name" value={formState.name} onChange={handleChange} required placeholder="Dein Name" />
               </FormGroup>
               <FormGroup>
-                <FormLabel>Email</FormLabel>
-                <FormInput 
-                  type="email" 
-                  name="email" 
-                  value={formState.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="Deine Email-Adresse"
-                />
+                <FormLabel htmlFor="email">Email</FormLabel>
+                <FormInput type="email" name="email" id="email" value={formState.email} onChange={handleChange} required placeholder="Deine Email-Adresse" />
               </FormGroup>
             </FormRow>
             
-            <FormGroup>
-              <FormLabel>Betreff</FormLabel>
-              <FormSelect 
-                name="subject" 
-                value={formState.subject}
-                onChange={handleChange}
-                required
-              >
+            <FormGroup className="full-width">
+              <FormLabel htmlFor="subject">Betreff</FormLabel>
+              <FormSelect name="subject" id="subject" value={formState.subject} onChange={handleChange} required>
                 <option value="">Bitte wählen</option>
                 <option value="allgemein">Allgemeine Anfrage</option>
                 <option value="zusammenarbeit">Zusammenarbeit</option>
                 <option value="vortrag">Vortrags-/Workshopanfrage</option>
-                <option value="studie">Frage zur Studie</option>
+                {/* <option value="studie">Frage zur Studie</option> Entfernt, da Studie-Sektion gelöscht wurde */}
                 <option value="anderes">Sonstiges</option>
               </FormSelect>
             </FormGroup>
             
-            <FormGroup>
-              <FormLabel>Nachricht</FormLabel>
-              <FormTextarea 
-                name="message" 
-                value={formState.message}
-                onChange={handleChange}
-                required
-                placeholder="Deine Nachricht..."
-                rows={5}
-              />
+            <FormGroup className="full-width">
+              <FormLabel htmlFor="message">Nachricht</FormLabel>
+              <FormTextarea name="message" id="message" value={formState.message} onChange={handleChange} required placeholder="Deine Nachricht..." rows={5} />
             </FormGroup>
             
-            <SubmitButton
-              type="submit"
-              disabled={isSubmitting}
-              whileHover={!isSubmitting ? { y: -3 } : {}}
-            >
-              {isSubmitting ? (
-                'WIRD GESENDET...'
-              ) : (
-                <>
-                  <Icon icon={FaPaperPlane} /> NACHRICHT SENDEN
-                </>
-              )}
+            <SubmitButton type="submit" disabled={isSubmitting} whileHover={!isSubmitting ? { y: -3 } : {}}>
+              {isSubmitting ? ('WIRD GESENDET...') : (<><Icon icon={FaPaperPlane} /> NACHRICHT SENDEN</>)}
             </SubmitButton>
             
             {submitSuccess && (
-              <SuccessMessage
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-              >
+              <SuccessMessage initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
                 Vielen Dank für deine Nachricht! Ich werde mich so schnell wie möglich bei dir melden.
               </SuccessMessage>
             )}
@@ -194,227 +339,5 @@ const ContactSection: React.FC = () => {
     </SectionContainer>
   );
 };
-
-const SectionContainer = styled.section`
-  background-color: var(--background-alt);
-  padding: 120px 0;
-`;
-
-const ContentWrapper = styled.div`
-  width: 90%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-`;
-
-const SectionHeader = styled(motion.div)`
-  text-align: center;
-  margin-bottom: 5rem;
-`;
-
-const SectionHeading = styled.h2`
-  position: relative;
-  display: inline-block;
-  font-size: 1.2rem;
-  letter-spacing: 0.2em;
-  color: var(--accent);
-  
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 1px;
-    background-color: var(--accent);
-  }
-`;
-
-const ContactContent = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 5rem;
-  
-  @media (max-width: 992px) {
-    grid-template-columns: 1fr;
-    gap: 4rem;
-  }
-`;
-
-const ContactInfo = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-`;
-
-const ContactHeading = styled.h3`
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  font-weight: 400;
-  margin-bottom: 1.5rem;
-  line-height: 1.3;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--secondary);
-`;
-
-const ContactText = styled.p`
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
-  color: var(--text);
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-`;
-
-const SocialLink = styled(motion.a)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: var(--secondary);
-  transition: var(--transition);
-  
-  &:hover {
-    color: var(--accent);
-  }
-`;
-
-const ContactDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const ContactLink = styled.a`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: var(--text-light);
-  transition: var(--transition);
-  
-  &:hover {
-    color: var(--accent);
-    transform: translateX(5px);
-  }
-`;
-
-const ContactForm = styled(motion.form)`
-  width: 100%;
-`;
-
-const FormRow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
-  
-  @media (max-width: 576px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-`;
-
-const FormGroup = styled.div`
-  margin-bottom: 1.5rem;
-`;
-
-const FormLabel = styled.label`
-  display: block;
-  margin-bottom: 0.5rem;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: var(--text);
-`;
-
-const FormInput = styled.input`
-  width: 100%;
-  padding: 1rem;
-  border: none;
-  background-color: white;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  color: var(--text);
-  outline: none;
-  
-  &:focus {
-    box-shadow: 0 0 0 1px var(--accent);
-  }
-`;
-
-const FormSelect = styled.select`
-  width: 100%;
-  padding: 1rem;
-  border: none;
-  background-color: white;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  color: var(--text);
-  outline: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1em;
-  
-  &:focus {
-    box-shadow: 0 0 0 1px var(--accent);
-  }
-`;
-
-const FormTextarea = styled.textarea`
-  width: 100%;
-  padding: 1rem;
-  border: none;
-  background-color: white;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  color: var(--text);
-  outline: none;
-  resize: vertical;
-  
-  &:focus {
-    box-shadow: 0 0 0 1px var(--accent);
-  }
-`;
-
-const SubmitButton = styled(motion.button)`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  background-color: var(--accent);
-  color: white;
-  padding: 1rem 2rem;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &:hover:not(:disabled) {
-    background-color: var(--secondary);
-  }
-  
-  &:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
-`;
-
-const SuccessMessage = styled(motion.div)`
-  margin-top: 1.5rem;
-  padding: 1rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  color: #28a745;
-`;
 
 export default ContactSection;
