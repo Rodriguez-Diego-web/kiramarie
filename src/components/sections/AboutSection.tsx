@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { motion, useInView } from 'framer-motion';
+
+// Importiere die generierten About-Daten
+// Hinweis: Diese Datei wird durch das generate-about-data.js Skript erstellt
+import aboutData from '../../generated/aboutData.json';
 
 // DRWEB-KM2025 - Diego Rodriguez Webentwicklung
+
+interface FloatingShapeProps {
+  size: number;
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+  delay?: number;
+  duration?: number;
+  color?: string;
+}
 
 const AboutSectionContainer = styled.section`
   display: flex;
@@ -33,7 +49,7 @@ const ContentLayoutWrapper = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled(motion.div)`
   flex: 0 0 55%; /* Deutlich vergrößert für ein wirklich größeres Bild */
   display: flex;
   justify-content: center;
@@ -60,7 +76,7 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const TextWrapper = styled.div`
+const TextWrapper = styled(motion.div)`
   flex: 1; /* Nimmt den verbleibenden Platz ein */
   background-color: #FFFEF7; /* Sehr helles Creme/Off-White */
   padding: 50px;
@@ -125,7 +141,7 @@ const TagsList = styled.ul`
   gap: 15px;
 `;
 
-const TagItem = styled.li`
+const TagItem = styled(motion.li)`
   background-color: #f0f0f0;
   padding: 10px 15px;
   border-radius: 4px;
@@ -141,7 +157,7 @@ const StatsList = styled.ul`
   gap: 15px;
 `;
 
-const StatItem = styled.li`
+const StatItem = styled(motion.li)`
   background-color: #f0f0f0;
   padding: 10px 15px;
   border-radius: 4px;
@@ -149,7 +165,7 @@ const StatItem = styled.li`
   .value { font-weight: bold; }
 `;
 
-const CallToActionButton = styled.a`
+const CallToActionButton = styled(motion.a)`
   display: inline-block;
   margin-top: 30px;
   padding: 12px 25px;
@@ -178,52 +194,53 @@ interface AboutPageData {
   cta_button_link?: string;
 }
 
-// --- WICHTIGER HINWEIS --- 
-// Dies sind aktuell PLATZHALTERDATEN.
-// Diese Daten müssen dynamisch aus src/content/about.md geladen werden.
-// Für Create React App: Pre-Build-Skript erstellen, das Markdown analysiert
-// und in ein JSON-Array/Objekt umwandelt, das hier importiert werden kann.
-const aboutPageData: AboutPageData = {
-  headline: 'Kira Marie Born ist eine der führenden deutschen Stimmen im Bereich New Work und Expertin für die Zukunft der Arbeitswelt.',
-  subheadline: 'Autorin, Dozentin, Podcasterin, Speakerin & Beraterin.',
-  profile_image: '/uploads/default-profile.webp', // Beispielpfad, wird vom CMS überschrieben
-  bio: `Als Autorin des Buchs „New Work – Wie arbeiten wir in Zukunft?“ und Dozentin für Future of Work and Organizational Psychology liefert sie praxisnahe Einblicke in die Arbeitswelt von morgen. 
-
-Sie hostet den erfolgreichen FUNKE-Podcast „New Work Now“ und erreicht mit fast 50.000 Follower:innen auf LinkedIn und über 10.000 auf Instagram eine große Community. Als Speakerin und Beraterin setzt sie sich für innovative Arbeitsmodelle und eine bessere Arbeitswelt ein.
-
-**Weitere spannende Details hier als Markdown!**`,
-  expertise_tags: ['New Work', 'Future of Work', 'Organizational Psychology', 'Leadership', 'Keynote Speaker'],
-  stats: [
-    { value: '5+', label: 'Jahre Erfahrung im Bereich New Work' },
-    { value: '100+', label: 'Keynotes & Workshops gehalten' },
-    { value: '50k', label: 'LinkedIn Follower' },
-  ],
-  cta_button_text: 'Kontakt aufnehmen',
-  cta_button_link: '/contact',
-};
+// Die Daten werden jetzt dynamisch aus der generierten JSON-Datei geladen
+// Die Datei wird durch das generate-about-data.js Skript erstellt, das die about.md Datei verarbeitet
+// Wir behandeln die importierten Daten als AboutPageData-Typ
+const aboutPageData: AboutPageData = aboutData as AboutPageData;
 
 const AboutSection: React.FC = () => {
-  // HINWEIS: Für die Darstellung von Markdown-Inhalten (aboutPageData.bio)
-  // sollte eine Bibliothek wie 'react-markdown' verwendet werden.
-  // Beispiel: import ReactMarkdown from 'react-markdown';
-  // Dann im JSX: <ReactMarkdown>{aboutPageData.bio}</ReactMarkdown>
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
+
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5 } }
+  };
+
+  const slideInRight = {
+    hidden: { x: 100, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  const slideInLeft = {
+    hidden: { x: -100, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
+  };
 
   return (
-    <AboutSectionContainer id="about">
+    <AboutSectionContainer id="about" ref={sectionRef}>
       <ContentLayoutWrapper>
-        <ImageWrapper>
-          {/* Verwende das Bild aus den Daten, wenn vorhanden, sonst Fallback oder nichts */} 
+        <ImageWrapper
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={slideInLeft}
+        >
+          {/* Verwende das Bild aus den Daten, wenn vorhanden, sonst Fallback */} 
           {aboutPageData.profile_image ? (
             <img src={aboutPageData.profile_image} alt="Kira Marie Born" />
           ) : (
-            <img src="https://via.placeholder.com/450x500.png?text=Profilbild" alt="Platzhalter Kira Marie Born" /> // Fallback-Bild
+            <img src="https://via.placeholder.com/450x500.png?text=Profilbild" alt="Platzhalter Kira Marie Born" />
           )}
         </ImageWrapper>
-        <TextWrapper>
+        <TextWrapper
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={slideInRight}
+        >
           <TextContent>
             <Heading>
-              {/* Die CMS headline könnte <strong> Tags enthalten, aber ein String-Widget gibt diese nicht als HTML aus. */} 
-              {/* Für die "strong" Formatierung: Entweder zwei Felder im CMS oder Markdown im Bio-Text nutzen. */} 
               {aboutPageData.headline}
             </Heading>
             {aboutPageData.subheadline && (
@@ -233,31 +250,60 @@ const AboutSection: React.FC = () => {
             )}
             {/* Hier sollte der bio-Text mit einem Markdown-Renderer dargestellt werden */} 
             {aboutPageData.bio.split('\n\n').map((paragraph, index) => (
-              <Paragraph key={index}>{paragraph.replace(/\n/g, '<br />')}</Paragraph> // Einfache Behandlung von Zeilenumbrüchen, Markdown-Renderer ist besser
+              <Paragraph key={index}>{paragraph.replace(/\n/g, ' ')}</Paragraph>
             ))}
 
             {aboutPageData.expertise_tags && aboutPageData.expertise_tags.length > 0 && (
-              <>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+              >
                 <h3 style={{ marginTop: '30px', marginBottom: '15px', fontSize: '1.2rem' }}>Expertise</h3>
                 <TagsList>
-                  {aboutPageData.expertise_tags.map(tag => <TagItem key={tag}>{tag}</TagItem>)}
+                  {aboutPageData.expertise_tags.map((tag, index) => (
+                    <TagItem 
+                      key={tag}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                      transition={{ delay: 0.4 + index * 0.1, duration: 0.3 }}
+                    >
+                      {tag}
+                    </TagItem>
+                  ))}
                 </TagsList>
-              </>
+              </motion.div>
             )}
 
             {aboutPageData.stats && aboutPageData.stats.length > 0 && (
-              <>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+              >
                 <h3 style={{ marginTop: '30px', marginBottom: '15px', fontSize: '1.2rem' }}>Track Record</h3>
                 <StatsList>
-                  {aboutPageData.stats.map(stat => (
-                    <StatItem key={stat.label}><span className="value">{stat.value}</span> {stat.label}</StatItem>
+                  {aboutPageData.stats.map((stat, index) => (
+                    <StatItem 
+                      key={stat.label}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                      transition={{ delay: 0.6 + index * 0.1, duration: 0.3 }}
+                    >
+                      <span className="value">{stat.value}</span> {stat.label}
+                    </StatItem>
                   ))}
                 </StatsList>
-              </>
+              </motion.div>
             )}
 
             {aboutPageData.cta_button_text && aboutPageData.cta_button_link && (
-              <CallToActionButton href={aboutPageData.cta_button_link}>
+              <CallToActionButton 
+                href={aboutPageData.cta_button_link}
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                transition={{ delay: 0.7, duration: 0.3 }}
+              >
                 {aboutPageData.cta_button_text}
               </CallToActionButton>
             )}
