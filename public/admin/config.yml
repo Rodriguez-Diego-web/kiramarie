@@ -52,4 +52,4 @@ collections:
           - { label: "Name (für Tag & Überschrift)", name: "name_for_tag_and_headline", widget: "string", default: "Kira Marie Cremer" }
           - { label: "Haupttext der Überschrift (nach Name)", name: "headline_main_text", widget: "text", default: "ist eine der führenden deutschen Stimmen im Bereich New Work und Expertin für die Zukunft der Arbeitswelt." }
           - { label: "Profilbild", name: "profile_image", widget: "image", required: false }
-          - { label: "Biografie / Haupttext", name: "bio", widget: "markdown" }
+          - { label: "Biografie / Haupttext", name: "body", widget: "markdown" }

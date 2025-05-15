@@ -126,7 +126,7 @@ interface AboutPageData {
   name: string;
   headlineMain: string;
   profile_image: string;
-  bio: string;
+  body: string; // Geändert von bio zu body
   page_title: string;
 }
 
@@ -170,7 +170,7 @@ const AboutSection: React.FC = () => {
     return <AboutSectionContainer><p>No data available.</p></AboutSectionContainer>;
   }
 
-  const { name, headlineMain, profile_image, bio } = aboutData;
+  const { name, headlineMain, profile_image, body } = aboutData;
 
   return (
     <AboutSectionContainer id="about-section"> 
@@ -186,7 +186,7 @@ const AboutSection: React.FC = () => {
               {name && <strong>{name}</strong>} {headlineMain}
             </Heading>
             
-            {bio && <Paragraph>{bio}</Paragraph>} 
+            {body && <Paragraph dangerouslySetInnerHTML={{ __html: body.replace(/\n/g, '<br />') }} />} 
 
           </TextContent>
         </TextWrapper>

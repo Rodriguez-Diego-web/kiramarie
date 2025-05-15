@@ -27,7 +27,7 @@ async function generateAboutData() {
       name: data.name_for_tag_and_headline || '',
       headlineMain: data.headline_main_text || '',
       profile_image: data.profile_image ? resolveImagePath(data.profile_image, 'profile_image') : '',
-      bio: content || '',
+      body: content || '',
       page_title: data.page_title || 'Über Mich'
     };
 
