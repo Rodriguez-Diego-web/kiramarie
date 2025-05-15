@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { FaLinkedin, FaInstagram, FaUserTie, FaSpotify } from 'react-icons/fa'; // Beispiel-Icons
 
 const SectionContainer = styled.section`
@@ -9,11 +9,26 @@ const SectionContainer = styled.section`
   color: #ffffff; /* Weiße Schriftfarbe für Kontrast */
   font-family: 'Montserrat', sans-serif;
   text-align: center;
+  position: relative; /* Für Parallax-Kindelement */
+  overflow: hidden; /* Verhindert, dass Pattern übersteht */
+`;
+
+const ParallaxBackgroundPattern = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%; /* Testweise Höhe erhöht */
+  background-image: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px); /* Deutlicheres Muster: 20% Deckkraft, 1px Größe */
+  background-size: 30px 30px; /* Etwas größere Punkte zum Testen */
+  z-index: 0; /* Hinter dem Inhalt */
 `;
 
 const ContentWrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
+  position: relative; /* Um über dem Parallax-Pattern zu liegen */
+  z-index: 1;       /* Stellt sicher, dass der Inhalt oben ist */
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -53,19 +68,29 @@ const SocialLinkItem = styled(motion.a)`
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02); /* Leichte Skalierung beim Hover */
+    svg {
+      transform: scale(1.15) rotate(-8deg); /* Icon-Animation beim Hover */
+    }
   }
 
   svg {
     font-size: 3rem; 
     margin-bottom: 15px;
     color: #9370DB; 
+    transition: transform 0.3s ease; /* Wichtig für sanfte Icon-Animation */
   }
 
   span {
     font-size: 1rem;
     font-weight: 600;
     text-align: center; 
+  }
+
+  .follower-count {
+    font-size: 0.8rem;
+    color: #b0b0b0; /* Helleres Grau für die Follower-Zahl */
+    margin-top: 5px;
   }
 
   @media (max-width: 767px) {
@@ -75,20 +100,34 @@ const SocialLinkItem = styled(motion.a)`
 
 // Platzhalter Social Media Daten
 const socialPlatforms = [
-  { name: 'LinkedIn', icon: <FaLinkedin />, url: '#' }, 
-  { name: 'Instagram', icon: <FaInstagram />, url: '#' }, 
+  { name: 'LinkedIn', icon: <FaLinkedin />, url: 'https://de.linkedin.com/in/kiramariecremer', followers: '15.3K Follower' }, 
+  { name: 'Instagram', icon: <FaInstagram />, url: '#', followers: '12.7K Follower' }, // TODO: Instagram URL eintragen
   { name: 'Speaker Profil', icon: <FaUserTie />, url: 'https://disruptingminds.com/speaker/kira-marie-cremer/' },
-  { name: 'Spotify', icon: <FaSpotify />, url: '#' }, 
+  { name: 'Spotify', icon: <FaSpotify />, url: '#', followers: '2.5K Hörer' }, // TODO: Spotify URL eintragen
 ];
 
 const FollowMeSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"] // Beginnt, wenn Oberkante Sektion unteren Viewport erreicht, endet, wenn Unterkante Sektion oberen Viewport verlässt
+  });
+
+  // Parallax-Effekt für das Hintergrundmuster
+  // Bewegt das Muster von -X% seiner Höhe nach +X% seiner Höhe, während die Sektion durchgescrollt wird.
+  // Dies lässt das Muster langsamer scrollen als den Inhalt.
+  // Kleinere Werte (z.B. '-10%', '10%') lassen es "fester" erscheinen.
+  const patternY = useTransform(scrollYProgress, [0, 1], ['-50%', '50%']); // Testweise stärkere Bewegung
+  const titleInView = useInView(sectionRef, { once: true, amount: 0.1 }); // Korrekter Hook für Titelanimation
+
   return (
-    <SectionContainer id="folge-mir">
+    <SectionContainer ref={sectionRef} id="folge-mir">
+      <ParallaxBackgroundPattern style={{ y: patternY }} />
       <ContentWrapper>
         <SectionTitle
           initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
         >
           Folge Mir
@@ -111,6 +150,17 @@ const FollowMeSection: React.FC = () => {
             >
               {platform.icon}
               <span>{platform.name}</span>
+              {platform.followers && (
+                <motion.span
+                  className="follower-count"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }} // Stellt sicher, dass die Animation nur einmal pro Element ausgelöst wird
+                  transition={{ duration: 0.4, delay: index * 0.1 + 0.5 }} // Verzögert nach Kachel-Animation
+                >
+                  {platform.followers}
+                </motion.span>
+              )}
             </SocialLinkItem>
           ))}
         </SocialLinksGrid>

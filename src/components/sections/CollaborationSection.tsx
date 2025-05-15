@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
 interface ActionButtonProps {
   text: string;
@@ -19,15 +19,34 @@ interface CollaborationBoxProps {
 const SectionContainer = styled.section`
   width: 100%;
   padding: 100px 20px;
-  background-color: #1c1c1c; 
+  background-color: #000000; 
   color: #ffffff;
   overflow: hidden;
+  position: relative; /* Für Parallax-Hintergrund */
+`;
+
+const ParallaxCollaborationGradient = styled(motion.div)`
+  position: absolute;
+  top: -18%; /* Etwas weiter nach außen verschoben */
+  left: -78%; /* Etwas weiter nach außen verschoben */
+  width: 150%; 
+  height: 150%;
+  background-image: radial-gradient(
+    circle at center, 
+    rgba(147, 112, 219, 0.06) 0%,  /* Sehr subtile Akzentfarbe für diese Sektion */
+    rgba(147, 112, 219, 0.03) 30%,
+    rgba(0, 0, 0, 0) 60%  /* Ausblenden zu Schwarz */
+  );
+  background-size: 100% 100%; 
+  z-index: 0;
 `;
 
 const ContentWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+  position: relative; /* Um über dem Parallax-Hintergrund zu liegen */
+  z-index: 1;
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -174,8 +193,16 @@ const fadeInUp = {
 };
 
 const CollaborationSection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleInView = useInView(sectionRef, { once: true, amount: 0.2 });
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const gradientX = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']); /* Bewegung leicht reduziert */
+  const gradientY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']); /* Bewegung leicht reduziert */
 
   const boxesData: CollaborationBoxProps[] = [
     {
@@ -186,18 +213,22 @@ const CollaborationSection: React.FC = () => {
       actions: [{ text: 'Zum Buch', link: '#', primary: true }]
     },
     {
-      imageSrc: 'https://via.placeholder.com/400x225/444/fff?text=Podcast',
-      title: 'Podcast: Unterseite',
-      subtitle: 'Stimmen der Zukunft',
-      description: 'Höre inspirierende Gespräche und Expertenmeinungen direkt hier.',
-      actions: [{ text: 'Zum Podcast', link: '#', primary: true }]
+      imageSrc: '/images/collaboration/speaker.jpg',
+      title: 'SPEAKER',
+      subtitle: 'Keynotes & Impulse',
+      description: 'Internationale Speakerin für New Work, Digitale Transformation und Führung der Zukunft. Bekannt für energiegeladene und inspirierende Vorträge.',
+      actions: [
+        { text: 'Speaker Profil', link: 'https://disruptingminds.com/speaker/kira-marie-cremer/', primary: true },
+      ]
     },
     {
-      imageSrc: 'https://via.placeholder.com/400x225/555/fff?text=Speaker',
-      title: 'Speaker',
-      subtitle: 'Live & Digital',
-      description: 'Buche inspirierende Vorträge für deine nächste Veranstaltung.',
-      actions: [{ text: 'Anfragen', link: '#', primary: true }]
+      imageSrc: '/images/placeholder-funke.jpg', // Platzhalter-Bild
+      title: 'FUNKE MEDIA FEED',
+      subtitle: 'Aktuelle Beiträge & News',
+      description: 'Die neuesten Artikel und Einblicke aus der Zusammenarbeit mit der Funke Mediengruppe. Immer aktuell informiert.',
+      actions: [
+        { text: 'Zum Feed', link: '/kooperationen/funke-feed', primary: false }, // Link zur neuen Seite
+      ]
     },
     {
       imageSrc: 'https://via.placeholder.com/400x225/666/fff?text=Koops',
@@ -209,12 +240,24 @@ const CollaborationSection: React.FC = () => {
   ];
 
   return (
-    <SectionContainer id="collaboration" ref={sectionRef}>
+    <SectionContainer ref={sectionRef}>
+      <ParallaxCollaborationGradient 
+        style={{
+          x: gradientX,
+          y: gradientY,
+        }}
+      />
       <ContentWrapper>
-        <SectionTitle initial="hidden" animate={isInView ? "visible" : "hidden"} variants={fadeInUp}>
+        <SectionTitle 
+          style={{ 
+            opacity: titleInView ? 1 : 0,
+            transform: titleInView ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'opacity 0.6s ease-out, transform 0.6s ease-out'
+          }}
+        >
           Zusammenarbeit
         </SectionTitle>
-        <SectionSubtitle initial="hidden" animate={isInView ? "visible" : "hidden"} variants={{...fadeInUp, visible: {...fadeInUp.visible, transition: {...fadeInUp.visible.transition, delay: 0.2}}}}>
+        <SectionSubtitle initial="hidden" animate={titleInView ? "visible" : "hidden"} variants={{...fadeInUp, visible: {...fadeInUp.visible, transition: {...fadeInUp.visible.transition, delay: 0.2}}}}>
           Entdecke die vielfältigen Möglichkeiten der Zusammenarbeit und wie wir gemeinsam Werte schaffen können.
         </SectionSubtitle>
         <BoxesGrid>
@@ -222,7 +265,7 @@ const CollaborationSection: React.FC = () => {
             <BoxItem
               key={index}
               initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
+              animate={titleInView ? "visible" : "hidden"}
               variants={{...fadeInUp, visible: {...fadeInUp.visible, transition: {...fadeInUp.visible.transition, delay: 0.3 + index * 0.1}}}}
             >
               <CardImageWrapper>

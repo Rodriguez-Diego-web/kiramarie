@@ -6,6 +6,7 @@ import { theme } from './styles/theme';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
+import FunkeFeedPage from './components/pages/FunkeFeedPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/kooperationen/funke-feed" element={<FunkeFeedPage />} /> 
           {/* Add more routes as needed */}
         </Routes>
         <Footer />

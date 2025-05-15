@@ -1,20 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaInstagram, FaTwitter, FaLinkedinIn, FaPaperPlane } from 'react-icons/fa';
 import { Icon } from '../common/IconWrapper';
 
 const SectionContainer = styled.section`
-  background-color: #1c1c1c; /* Dunkler Hintergrund für Kohäsion */
+  background-color: #000000; /* Hintergrund auf Schwarz geändert */
   color: #e0e0e0; /* Helle Standard-Textfarbe */
   padding: 100px 20px;
   font-family: 'Montserrat', sans-serif; /* Globale Schriftart für die Sektion */
+  position: relative; /* Notwendig für absolut positionierte Kindelemente (Parallax) */
+  overflow: hidden;   /* Verhindert, dass der Parallax-Hintergrund übersteht */
+`;
+
+const ParallaxGradientBackground = styled(motion.div)`
+  position: absolute;
+  top: -15%; /* Erlaube Überlappung für Bewegung */
+  left: -5%;
+  width: 60%; /* Größer als der Container, um Bewegung ohne Kanten zu ermöglichen */
+  height: 150%;
+  background-image: radial-gradient(
+    circle at center, 
+    rgba(147, 112, 219, 0.08) 0%,  /* Etwas intensiver für besseren Kontrast auf Schwarz */
+    rgba(147, 112, 219, 0.04) 30%,
+    rgba(28, 28, 28, 0) 65%  /* Ausblenden zur Hintergrundfarbe der Sektion */
+  );
+  background-size: 100% 100%; /* Relative Größe, die Position wird animiert */
+  z-index: 0;
+`;
+
+const ParallaxWhiteDiagonalGradient = styled(motion.div)`
+  position: absolute;
+  top: -30%; /* Kann leicht variieren für unterschiedliche Effekte */
+  left: -30%;
+  width: 160%; /* Etwas größer für breitere Bewegung */
+  height: 160%;
+  background-image: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.04) 0%, /* Sehr subtiles Weiß */
+    rgba(255, 255, 255, 0.02) 25%,
+    rgba(0, 0, 0, 0) 50%       /* Ausblenden zu Schwarz */
+  );
+  background-size: 100% 100%;
+  z-index: 0; /* Gleicher z-index, überlagern sich */
 `;
 
 const ContentWrapper = styled.div`
   max-width: 1100px;
   margin: 0 auto;
   text-align: center;
+  position: relative; /* Stellt sicher, dass der Inhalt über dem Parallax-Hintergrund liegt */
+  z-index: 1;
 `;
 
 const SectionHeader = styled(motion.div)`
@@ -227,13 +263,14 @@ const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormState(prev => ({ ...prev, [name]: value }));
-  };
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsSubmitting(true);
     
     // Simulating form submission
@@ -254,7 +291,19 @@ const ContactSection: React.FC = () => {
   };
   
   return (
-    <SectionContainer id="contact">
+    <SectionContainer ref={sectionRef}>
+      <ParallaxGradientBackground 
+        style={{
+          x: useTransform(scrollYProgress, [0, 1], ['-20%', '20%']),
+          y: useTransform(scrollYProgress, [0, 1], ['-20%', '15%']), // Leichte Variation zur y-Bewegung
+        }}
+      />
+      <ParallaxWhiteDiagonalGradient
+        style={{
+          x: useTransform(scrollYProgress, [0, 1], ['-25%', '10%']), // z.B. von links nach rechts
+          y: useTransform(scrollYProgress, [0, 1], ['10%', '-25%']), // z.B. von unten nach oben
+        }}
+      />
       <ContentWrapper>
         <SectionHeader
           initial={{ opacity: 0, y: 20 }}
@@ -299,17 +348,17 @@ const ContactSection: React.FC = () => {
             <FormRow>
               <FormGroup>
                 <FormLabel htmlFor="name">Name</FormLabel>
-                <FormInput type="text" name="name" id="name" value={formState.name} onChange={handleChange} required placeholder="Dein Name" />
+                <FormInput type="text" name="name" id="name" value={formState.name} onChange={(e) => setFormState(prev => ({ ...prev, name: e.target.value }))} required placeholder="Dein Name" />
               </FormGroup>
               <FormGroup>
                 <FormLabel htmlFor="email">Email</FormLabel>
-                <FormInput type="email" name="email" id="email" value={formState.email} onChange={handleChange} required placeholder="Deine Email-Adresse" />
+                <FormInput type="email" name="email" id="email" value={formState.email} onChange={(e) => setFormState(prev => ({ ...prev, email: e.target.value }))} required placeholder="Deine Email-Adresse" />
               </FormGroup>
             </FormRow>
             
             <FormGroup className="full-width">
               <FormLabel htmlFor="subject">Betreff</FormLabel>
-              <FormSelect name="subject" id="subject" value={formState.subject} onChange={handleChange} required>
+              <FormSelect name="subject" id="subject" value={formState.subject} onChange={(e) => setFormState(prev => ({ ...prev, subject: e.target.value }))} required>
                 <option value="">Bitte wählen</option>
                 <option value="allgemein">Allgemeine Anfrage</option>
                 <option value="zusammenarbeit">Zusammenarbeit</option>
@@ -321,7 +370,7 @@ const ContactSection: React.FC = () => {
             
             <FormGroup className="full-width">
               <FormLabel htmlFor="message">Nachricht</FormLabel>
-              <FormTextarea name="message" id="message" value={formState.message} onChange={handleChange} required placeholder="Deine Nachricht..." rows={5} />
+              <FormTextarea name="message" id="message" value={formState.message} onChange={(e) => setFormState(prev => ({ ...prev, message: e.target.value }))} required placeholder="Deine Nachricht..." rows={5} />
             </FormGroup>
             
             <SubmitButton type="submit" disabled={isSubmitting} whileHover={!isSubmitting ? { y: -3 } : {}}>
