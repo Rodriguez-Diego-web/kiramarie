@@ -13,17 +13,6 @@ media_folder: "public/uploads" # Wo hochgeladene Bilder gespeichert werden (rela
 public_folder: "/uploads"     # Der öffentliche Pfad zu den Bildern (wie im Browser aufgerufen)
 
 collections:
-  - name: "pages"
-    label: "Seiten-Texte"
-    files:
-      - label: "About Seite"
-        name: "about"
-        file: "src/content/about.md" # Pfad zur Datei, die die Inhalte speichert (relativ zum Projektstamm)
-        fields:
-          - { label: "Titel", name: "title", widget: "string" }
-          - { label: "Einleitungstext", name: "introduction", widget: "markdown" }
-          - { label: "Hauptinhalt", name: "body", widget: "markdown" }
-
   - name: "social_stats"
     label: "Social Media Zahlen"
     files:
