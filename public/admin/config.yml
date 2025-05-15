@@ -1,13 +1,13 @@
-backend: # Korrigierte Struktur
-  name: test-repo # Platzhalter-Name für das lokalen Backend
-  local_backend: true # Aktiviert die lokale Funktionalität. Für lokale Entwicklung und Test ohne Git-Anbindung
+backend:
+  name: git-gateway
+  branch: main # Oder dein primärer Branch (z.B. master)
+  identity_url: "https://kiramarie.netlify.app/.netlify/identity"
+  gateway_url: "https://kiramarie.netlify.app/.netlify/git"
 
-# Wenn du später Netlify Identity und Git-Gateway verwendest, sieht der Backend-Teil so aus:
+# Vorherige lokale Konfiguration (zur Referenz):
 # backend:
-#   name: git-gateway
-#   branch: main # Oder dein primärer Branch
-#   identity_url: "https://DEINE_SEITE.netlify.app/.netlify/identity" # Ersetze DEINE_SEITE
-#   gateway_url: "https://DEINE_SEITE.netlify.app/.netlify/git" # Ersetze DEINE_SEITE
+#   name: test-repo
+#   local_backend: true
 
 media_folder: "public/uploads" # Wo hochgeladene Bilder gespeichert werden (relativ zum Projektstamm)
 public_folder: "/uploads"     # Der öffentliche Pfad zu den Bildern (wie im Browser aufgerufen)
