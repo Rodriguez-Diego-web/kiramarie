@@ -1,6 +1,11 @@
 ---
-title: "Über Mich (Platzhalter)"
-introduction: "Dies ist ein erster Einleitungstext für die Über-Mich-Seite, verwaltet durch das CMS."
+title: "TST TEST "
+introduction: Dies ist ein erster Einleitungstext für die Über-Mich-Seite,
+  verwaltet durch das CMS.
+headline: "TEST TEST "
+subheadline: "TEST TEST "
+profile_image: www.google.de
+bio: TEST TEST
 ---
 
 ## Hauptinhalt (Platzhalter)
