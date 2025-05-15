@@ -59,22 +59,9 @@ collections:
         name: "about_page"
         file: "src/content/about.md" # Einzelne Markdown-Datei für die "Über Mich"-Inhalte
         fields:
-          - { label: "Seitentitel", name: "title", widget: "string", default: "Über Mich", required: false }
-          - { label: "Hauptüberschrift", name: "headline", widget: "string", default: "Kira Marie Born" }
-          - { label: "Unterüberschrift / Motto", name: "subheadline", widget: "string", required: false }
+          - { label: "Seitentitel (für Browser/SEO)", name: "page_title", widget: "string", default: "Über Mich", required: false }
+          - { label: "Name (für Tag & Überschrift)", name: "name_for_tag_and_headline", widget: "string", default: "Kira Marie Cremer" }
+          - { label: "Haupttext der Überschrift (nach Name)", name: "headline_main_text", widget: "text", default: "ist eine der führenden deutschen Stimmen im Bereich New Work und Expertin für die Zukunft der Arbeitswelt." }
+          - { label: "Unterüberschrift / Motto (optional)", name: "subheadline", widget: "string", required: false }
           - { label: "Profilbild", name: "profile_image", widget: "image", required: false }
           - { label: "Biografie / Haupttext", name: "bio", widget: "markdown" }
-          - label: "Expertise Tags"
-            name: "expertise_tags"
-            widget: "list"
-            summary: "{{fields.tag}}"
-            field: { label: "Tag", name: "tag", widget: "string" }
-          - label: "Statistiken"
-            name: "stats"
-            widget: "list"
-            summary: "{{fields.value}} {{fields.label}}"
-            fields:
-              - { label: "Wert (z.B. '5+' oder '100')", name: "value", widget: "string" }
-              - { label: "Bezeichnung (z.B. 'Jahre Erfahrung')", name: "label", widget: "string" }
-          - { label: "CTA Button Text", name: "cta_button_text", widget: "string", required: false }
-          - { label: "CTA Button Link", name: "cta_button_link", widget: "string", required: false }
