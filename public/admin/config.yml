@@ -1,0 +1,53 @@
+backend: # Korrigierte Struktur
+  name: test-repo # Platzhalter-Name für das lokalen Backend
+  local_backend: true # Aktiviert die lokale Funktionalität. Für lokale Entwicklung und Test ohne Git-Anbindung
+
+# Wenn du später Netlify Identity und Git-Gateway verwendest, sieht der Backend-Teil so aus:
+# backend:
+#   name: git-gateway
+#   branch: main # Oder dein primärer Branch
+#   identity_url: "https://DEINE_SEITE.netlify.app/.netlify/identity" # Ersetze DEINE_SEITE
+#   gateway_url: "https://DEINE_SEITE.netlify.app/.netlify/git" # Ersetze DEINE_SEITE
+
+media_folder: "public/uploads" # Wo hochgeladene Bilder gespeichert werden (relativ zum Projektstamm)
+public_folder: "/uploads"     # Der öffentliche Pfad zu den Bildern (wie im Browser aufgerufen)
+
+collections:
+  - name: "pages"
+    label: "Seiten-Texte"
+    files:
+      - label: "About Seite"
+        name: "about"
+        file: "src/content/about.md" # Pfad zur Datei, die die Inhalte speichert (relativ zum Projektstamm)
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Einleitungstext", name: "introduction", widget: "markdown" }
+          - { label: "Hauptinhalt", name: "body", widget: "markdown" }
+
+  - name: "social_stats"
+    label: "Social Media Zahlen"
+    files:
+      - label: "Follower Zahlen"
+        name: "follower_counts"
+        file: "src/content/social_stats.json"
+        fields:
+          - label: "Plattformen"
+            name: "platforms"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Follower Anzahl", name: "count", widget: "number" }
+              - { label: "Profil URL", name: "url", widget: "string" }
+
+  - name: "press"
+    label: "Presse-Einträge"
+    folder: "src/content/press"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Publikation", name: "publication", widget: "string" }
+      - { label: "Veröffentlichungsdatum", name: "date", widget: "date" }
+      - { label: "Link zum Artikel", name: "url", widget: "string" }
+      - { label: "Auszug/Zitat", name: "excerpt", widget: "markdown" }
+      - { label: "Bild (optional)", name: "image", widget: "image", optional: true }
