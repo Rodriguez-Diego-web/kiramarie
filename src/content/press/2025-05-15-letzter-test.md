@@ -1,5 +1,5 @@
 ---
-title: Letzter Test
+title: LIVETEST
 publication: Letzter Test
 url: Letzter Test
 excerpt: Letzter Test
