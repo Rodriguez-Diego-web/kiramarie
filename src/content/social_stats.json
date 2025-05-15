@@ -1,3 +1,24 @@
 {
-  "platforms": []
+  "platforms": [
+    {
+      "name": "LinkedIn",
+      "count": 15300,
+      "url": "https://de.linkedin.com/in/kiramariecremer"
+    },
+    {
+      "name": "Instagram",
+      "count": 12700,
+      "url": "#"
+    },
+    {
+      "name": "Speaker Profil",
+      "count": 0,
+      "url": "https://disruptingminds.com/speaker/kira-marie-cremer/"
+    },
+    {
+      "name": "Spotify",
+      "count": 2500,
+      "url": "#"
+    }
+  ]
 }

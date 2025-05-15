@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { FaLinkedin, FaInstagram, FaUserTie, FaSpotify } from 'react-icons/fa'; // Beispiel-Icons
@@ -98,16 +98,61 @@ const SocialLinkItem = styled(motion.a)`
   }
 `;
 
-// Platzhalter Social Media Daten
-const socialPlatforms = [
-  { name: 'LinkedIn', icon: <FaLinkedin />, url: 'https://de.linkedin.com/in/kiramariecremer', followers: '15.3K Follower' }, 
-  { name: 'Instagram', icon: <FaInstagram />, url: '#', followers: '12.7K Follower' }, // TODO: Instagram URL eintragen
-  { name: 'Speaker Profil', icon: <FaUserTie />, url: 'https://disruptingminds.com/speaker/kira-marie-cremer/' },
-  { name: 'Spotify', icon: <FaSpotify />, url: '#', followers: '2.5K Hörer' }, // TODO: Spotify URL eintragen
+// Interface für die Daten aus socialDisplayData.json
+interface SocialDisplayDataItem {
+  name: string;
+  url: string;
+  followersDisplayString: string | null;
+}
+
+// Interface für die intern verwendete Struktur inkl. Icon
+interface SocialPlatform {
+  name: string;
+  icon: JSX.Element;
+  url: string; // Wird durch dynamische Daten überschrieben
+  followers?: string | null; // Wird durch dynamische Daten überschrieben
+}
+
+// Statische Basisdaten (Icons und Default-Namen/URLs)
+const baseSocialPlatforms: SocialPlatform[] = [
+  { name: 'LinkedIn', icon: <FaLinkedin />, url: 'https://de.linkedin.com/in/kiramariecremer', followers: 'Lade...' }, 
+  { name: 'Instagram', icon: <FaInstagram />, url: '#', followers: 'Lade...' },
+  { name: 'Speaker Profil', icon: <FaUserTie />, url: 'https://disruptingminds.com/speaker/kira-marie-cremer/' }, // Kein Follower-Feld initial
+  { name: 'Spotify', icon: <FaSpotify />, url: '#', followers: 'Lade...' },
 ];
 
 const FollowMeSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [socialPlatformData, setSocialPlatformData] = useState<SocialPlatform[]>(baseSocialPlatforms);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/data/socialDisplayData.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((dynamicData: SocialDisplayDataItem[]) => {
+        const updatedPlatforms = baseSocialPlatforms.map(basePlatform => {
+          const dynamicPlatform = dynamicData.find(dp => dp.name === basePlatform.name);
+          return {
+            ...basePlatform,
+            url: dynamicPlatform?.url || basePlatform.url, // Fallback auf Basis-URL
+            followers: dynamicPlatform ? dynamicPlatform.followersDisplayString : (basePlatform.followers === 'Lade...' ? null : basePlatform.followers)
+          };
+        });
+        setSocialPlatformData(updatedPlatforms);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error("Could not fetch social display data:", error);
+        // Bei Fehler bleiben die Basis-Plattformen (evtl. ohne 'Lade...' Text)
+        setSocialPlatformData(baseSocialPlatforms.map(p => ({...p, followers: p.followers === 'Lade...' ? null : p.followers })));
+        setIsLoading(false);
+      });
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -137,9 +182,9 @@ const FollowMeSection: React.FC = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2, staggerChildren: 0.1 }}
         >
-          {socialPlatforms.map((platform, index) => (
+          {socialPlatformData.map((platform, index) => (
             <SocialLinkItem
-              key={index}
+              key={platform.name} // Namen sind hier eindeutiger als der Index, falls sich Reihenfolge ändert
               href={platform.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -158,7 +203,7 @@ const FollowMeSection: React.FC = () => {
                   viewport={{ once: true }} // Stellt sicher, dass die Animation nur einmal pro Element ausgelöst wird
                   transition={{ duration: 0.4, delay: index * 0.1 + 0.5 }} // Verzögert nach Kachel-Animation
                 >
-                  {platform.followers}
+                  {isLoading ? 'Lade...' : platform.followers}
                 </motion.span>
               )}
             </SocialLinkItem>
