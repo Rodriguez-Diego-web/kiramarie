@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 export interface MediaItem {
-  id: string;
+  id: string; 
   tag: string;
   date: string;
   source: string;
-  imageSrc: string;
+  image: string; 
   title: string;
   description: string;
   link: string;
@@ -114,12 +114,12 @@ const MediaCard: React.FC<MediaCardProps> = ({ item }) => {
   return (
     <CardWrapper
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      whileHover={{ y: -5, boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)' }}
     >
       <ImageContainer>
-        <img src={item.imageSrc} alt={item.title} />
+        <img src={item.image} alt={`Vorschaubild für ${item.title}`} />
       </ImageContainer>
       <ContentArea>
         <Tag>{item.tag}</Tag>

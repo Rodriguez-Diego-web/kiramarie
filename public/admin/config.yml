@@ -51,3 +51,30 @@ collections:
       - { label: "Link zum Artikel", name: "url", widget: "string" }
       - { label: "Auszug/Zitat", name: "excerpt", widget: "markdown" }
       - { label: "Bild (optional)", name: "image", widget: "image", optional: true }
+
+  - name: "about_page"
+    label: "Über Mich Seite"
+    files:
+      - label: "Über Mich Seite"
+        name: "about_page"
+        file: "src/content/about.md" # Einzelne Markdown-Datei für die "Über Mich"-Inhalte
+        fields:
+          - { label: "Seitentitel", name: "title", widget: "string", default: "Über Mich", required: false }
+          - { label: "Hauptüberschrift", name: "headline", widget: "string", default: "Kira Marie Born" }
+          - { label: "Unterüberschrift / Motto", name: "subheadline", widget: "string", required: false }
+          - { label: "Profilbild", name: "profile_image", widget: "image", required: false }
+          - { label: "Biografie / Haupttext", name: "bio", widget: "markdown" }
+          - label: "Expertise Tags"
+            name: "expertise_tags"
+            widget: "list"
+            summary: "{{fields.tag}}"
+            field: { label: "Tag", name: "tag", widget: "string" }
+          - label: "Statistiken"
+            name: "stats"
+            widget: "list"
+            summary: "{{fields.value}} {{fields.label}}"
+            fields:
+              - { label: "Wert (z.B. '5+' oder '100')", name: "value", widget: "string" }
+              - { label: "Bezeichnung (z.B. 'Jahre Erfahrung')", name: "label", widget: "string" }
+          - { label: "CTA Button Text", name: "cta_button_text", widget: "string", required: false }
+          - { label: "CTA Button Link", name: "cta_button_link", widget: "string", required: false }
