@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import MediaCard from '../cards/MediaCard'; 
+import { motion } from 'framer-motion'; 
+import MediaCard, { MediaItem } from '../cards/MediaCard'; 
+import pressArticlesData from '../../generated/pressArticles.json';
 
 const SectionContainer = styled.section`
   padding: 60px 20px;
@@ -34,76 +35,85 @@ const MediaGrid = styled(motion.div)`
   }
 `;
 
-interface MediaItemData {
-  slug: string; 
+const LoadMoreButton = styled.button`
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+`;
+
+const mediaItemsContainerId = 'media-items-container';
+
+interface PressArticle {
+  id: string;
   title: string;
-  publication: string; 
+  publication: string;
   date: string; 
-  url: string; 
-  excerpt: string; 
+  url: string;
+  excerpt: string;
   image?: string; 
   tag?: string;   
 }
 
-const mediaData: MediaItemData[] = [
-  {
-    slug: '2025-05-15-supertestartikel',
-    title: 'Super Testartikel von Decap CMS!',
-    publication: 'CMS Test Instanz',
-    date: '2025-05-15',
-    url: '#',
-    excerpt: 'Dies ist ein **Testartikel**, der über das CMS erstellt und nun (hoffentlich) angezeigt wird. Der Inhalt hier ist Markdown.',
-    image: 'https://via.placeholder.com/300x200.png?text=Pressebild', 
-    tag: 'Test',
-  },
-  {
-    slug: '2025-05-15-test',
-    title: 'Zweiter Testartikel',
-    publication: 'Interne Tests',
-    date: '2025-05-15',
-    url: '#',
-    excerpt: 'Noch ein Eintrag, um das Grid-Layout zu testen.',
-    image: 'https://via.placeholder.com/300x200.png?text=Artikelbild+2',
-    tag: 'Neuigkeit',
-  }
-];
-
 const MediaSection: React.FC = () => {
+  const [visibleItems, setVisibleItems] = useState(6); 
+  const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
+
+  useEffect(() => {
+    const placeholderImage = '/uploads/default-press-image.webp'; 
+
+    const transformedArticles: MediaItem[] = (pressArticlesData as PressArticle[]).map(article => ({
+      id: article.id,
+      tag: article.tag || 'Presse', 
+      date: new Date(article.date).toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' }), 
+      source: article.publication, 
+      image: article.image || placeholderImage, 
+      title: article.title,
+      description: article.excerpt, 
+      link: article.url,
+    }));
+
+    setMediaItems(transformedArticles);
+  }, []); 
+
+  const showMoreItems = () => {
+    setVisibleItems(prev => prev + 6);
+  };
+
   return (
     <SectionContainer id="presse">
       <ContentWrapper>
         <SectionHeader
+          as={motion.h2} 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
           PRESSE
         </SectionHeader>
-        {mediaData.length > 0 ? (
+        {mediaItems.length > 0 ? (
           <MediaGrid
+            id={mediaItemsContainerId}
+            as={motion.div} 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delayChildren: 0.1, staggerChildren: 0.05 }}
           >
-            {mediaData.map((item) => (
+            {mediaItems.slice(0, visibleItems).map(item => (
               <MediaCard
-                key={item.slug}
-                item={{
-                  id: item.slug,
-                  title: item.title,
-                  source: item.publication, 
-                  date: item.date,
-                  link: item.url,
-                  description: item.excerpt, 
-                  image: item.image || 'https://via.placeholder.com/300x200.png?text=Bild+fehlt', 
-                  tag: item.tag || '', 
-                }}
+                key={item.id}
+                item={item} 
               />
             ))}
           </MediaGrid>
         ) : (
-          <p style={{ textAlign: 'center', marginTop: '20px', color: '#555' }}>
-            Zurzeit sind keine Presseartikel verfügbar.
-          </p>
+          <p>Aktuell sind keine Presseartikel verfügbar.</p> 
+        )}
+        {visibleItems < mediaItems.length && (
+          <LoadMoreButton onClick={showMoreItems}>Mehr laden</LoadMoreButton>
         )}
       </ContentWrapper>
     </SectionContainer>
