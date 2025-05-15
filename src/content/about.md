@@ -2,7 +2,6 @@
 page_title: "Über Mich"
 name_for_tag_and_headline: "Kira Marie Cremer"
 headline_main_text: "ist eine der führenden deutschen Stimmen im Bereich New Work und Expertin für die Zukunft der Arbeitswelt."
-subheadline: "Autorin, Dozentin, Podcasterin, Speakerin & Beraterin."
 profile_image: "/uploads/kira-marie-cremer-profile.webp"
 ---
 

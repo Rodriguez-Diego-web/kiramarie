@@ -6,6 +6,11 @@ const contentFilePath = path.join(__dirname, '../src/content/about.md');
 const outputDir = path.join(__dirname, '../public/data');
 const outputFilePath = path.join(outputDir, 'aboutData.json');
 
+// Funktion zum Konvertieren von relativen Pfaden im Frontmatter zu absoluten Pfaden für das JSON
+const resolveImagePath = (imagePath, fieldName) => {
+  return imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+};
+
 async function generateAboutData() {
   try {
     // Sicherstellen, dass das Ausgabeverzeichnis existiert
@@ -21,9 +26,7 @@ async function generateAboutData() {
     const aboutData = {
       name: data.name_for_tag_and_headline || '',
       headlineMain: data.headline_main_text || '',
-      subheadline: data.subheadline || '',
-      // Sicherstellen, dass der Bildpfad korrekt ist (beginnt mit /uploads/)
-      profile_image: data.profile_image ? (data.profile_image.startsWith('/') ? data.profile_image : `/${data.profile_image}`) : '',
+      profile_image: data.profile_image ? resolveImagePath(data.profile_image, 'profile_image') : '',
       bio: content || '',
       page_title: data.page_title || 'Über Mich'
     };

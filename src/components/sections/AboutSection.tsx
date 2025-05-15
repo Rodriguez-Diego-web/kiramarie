@@ -123,12 +123,11 @@ const Paragraph = styled.p`
 
 // Interface für die Datenstruktur der "Über Mich"-Seite
 interface AboutPageData {
-  page_title?: string; 
-  name?: string; 
-  headlineMain?: string; 
-  subheadline?: string; 
-  profile_image?: string; 
-  bio?: string; 
+  name: string;
+  headlineMain: string;
+  profile_image: string;
+  bio: string;
+  page_title: string;
 }
 
 const AboutSection: React.FC = () => {
