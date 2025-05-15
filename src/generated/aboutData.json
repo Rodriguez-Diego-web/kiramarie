@@ -1,0 +1,28 @@
+{
+  "title": "TST TEST ",
+  "headline": "TEST TEST ",
+  "subheadline": "TEST TEST ",
+  "profile_image": "www.google.de",
+  "bio": "\n## Hauptinhalt (Platzhalter)\n\nHier steht der Hauptinhalt der Über-Mich-Seite. Dieser Text kann längere Abschnitte, Listen oder andere Markdown-formatierte Elemente enthalten.\n\n*   Punkt 1\n*   Punkt 2\n\nWeitere Details folgen hier.\n",
+  "expertise_tags": [
+    "New Work",
+    "Future of Work",
+    "Leadership"
+  ],
+  "stats": [
+    {
+      "value": "5+",
+      "label": "Jahre Erfahrung"
+    },
+    {
+      "value": "100+",
+      "label": "Keynotes"
+    },
+    {
+      "value": "50k",
+      "label": "Follower"
+    }
+  ],
+  "cta_button_text": "Kontakt aufnehmen",
+  "cta_button_link": "/contact"
+}

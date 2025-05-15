@@ -1,0 +1,38 @@
+[
+  {
+    "id": "2025-05-15-letzter-test",
+    "title": "Letzter Test",
+    "publication": "Letzter Test",
+    "date": "2025-05-15",
+    "url": "Letzter Test",
+    "excerpt": "Letzter Test",
+    "image": "Letzter Test"
+  },
+  {
+    "id": "2025-05-15-supertestartikel",
+    "title": "SuperTestArtikel",
+    "publication": "SuperTestArtikel",
+    "date": "2025-05-15",
+    "url": "SuperTestArtikel.de",
+    "excerpt": "SuperTestArtikel",
+    "image": "www.google.de"
+  },
+  {
+    "id": "2025-05-15-test-test",
+    "title": "TEST TEST ",
+    "publication": "TEST TEST ",
+    "date": "2025-05-15",
+    "url": "TEST TEST ",
+    "excerpt": "TEST TEST",
+    "image": "www,google.com"
+  },
+  {
+    "id": "2025-05-15-test",
+    "title": "Test ",
+    "publication": "TESt TEST ",
+    "date": "2025-05-15",
+    "url": "hier ist der lin ",
+    "excerpt": "sdffsdfssdds",
+    "image": "www.google.de"
+  }
+]
