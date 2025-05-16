@@ -95,9 +95,9 @@ interface SocialPlatform {
 
 const baseSocialPlatforms: SocialPlatform[] = [
   { name: 'LinkedIn', icon: <FaLinkedin />, url: 'https://de.linkedin.com/in/kiramariecremer', followers: 'Lade...', color: '#0077B5' }, 
-  { name: 'Instagram', icon: <FaInstagram />, url: '#', followers: 'Lade...', color: '#FF69B4' },
+  { name: 'Instagram', icon: <FaInstagram />, url: 'https://www.instagram.com/kiramariecremer/', followers: 'Lade...', color: '#FF69B4' },
   { name: 'Speaker Profil', icon: <FaUserTie />, url: 'https://disruptingminds.com/speaker/kira-marie-cremer/' }, 
-  { name: 'Spotify', icon: <FaSpotify />, url: '#', followers: 'Lade...', color: '#1DB954' },
+  { name: 'Spotify', icon: <FaSpotify />, url: 'https://open.spotify.com/show/67HR7TSSRScAXYuCEGAtgc?go=1&sp_cid=e578cde98c41cde20cf9c1e52209e8b9&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=9daa3857efdd48ca', followers: 'Lade...', color: '#1DB954' },
 ];
 
 const FollowMeSection: React.FC = () => {
