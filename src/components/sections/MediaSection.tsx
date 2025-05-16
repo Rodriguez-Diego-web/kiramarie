@@ -54,7 +54,7 @@ interface PressArticle {
   date: string; 
   url: string;
   excerpt: string;
-  image?: string; 
+  image?: string | null; 
   tag?: string;   
 }
 
