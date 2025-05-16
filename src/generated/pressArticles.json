@@ -51,7 +51,7 @@
     "date": "2025-05-12",
     "url": "https://iba.online/newsroom/perspektiven/generationenmanagement-im-buero-5-fragen-an-kira-marie-cremer/",
     "excerpt": "Generationenmanagement im Büro: Kira Marie Cremer im IBA Online Interview über die Bedürfnisse verschiedener Arbeitnehmergenerationen und erfolgreiches Management.",
-    "image": "public/uploads/generation.webp"
+    "image": "uploads/generation.webp"
   },
   {
     "id": "2025-05-11-personalwirtschaft-ins-tun-kommen",
@@ -78,7 +78,7 @@
     "date": "2025-05-09",
     "url": "https://nwx.new-work.se/events/nwx23/speaker/kira-marie-cremer",
     "excerpt": "Kira Marie Cremer, Gründerin von QUINGS und LinkedIn Coach, ist Host des Podcasts 'New Work Now' und eine bekannte New Work Stimme.",
-    "image": "uploads/NWN.webp"
+    "image": "public/uploads/nwn.png"
   },
   {
     "id": "2025-05-08-youtube-auf-und-up-depression-besiegt",
