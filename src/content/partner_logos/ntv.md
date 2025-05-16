@@ -1,6 +1,6 @@
 ---
-name: "n-tv"
-image: "/uploads/4.png"
-alt_text: "n-tv Logo"
+name: Horizont
+image: /uploads/4.png
+alt_text: Horizonzt Logo
 order: 70
 ---

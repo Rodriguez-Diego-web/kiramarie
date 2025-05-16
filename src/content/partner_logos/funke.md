@@ -1,6 +1,6 @@
 ---
-name: "Funke Mediengruppe"
-image: "/uploads/2.png"
-alt_text: "Funke Mediengruppe Logo"
+name: N-tv
+image: /uploads/2.png
+alt_text: Ntv Logo
 order: 50
 ---
