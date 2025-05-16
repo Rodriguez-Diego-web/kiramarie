@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet-async';
 import HeroSection from '../components/sections/HeroSection';
 import AboutSection from '../components/sections/AboutSection';
 import NewsletterSection from '../components/sections/NewsletterSection';
@@ -38,9 +39,70 @@ const SharedDiagonalLine = styled.div`
   }
 `;
 
+interface HomeSeoData {
+  title: string;
+  description: string;
+  og_image: string;
+}
+
 const Home: React.FC = () => {
+  const [seoData, setSeoData] = useState<HomeSeoData>({
+    title: "Kira Marie - Leadership & Vertrauensexpertin | Executive Coach, Speakerin, Autorin",
+    description: "Kira Marie ist Ihre Expertin für Leadership und Vertrauen. Als Executive Coach, Speakerin und Autorin unterstützt sie Führungskräfte und Unternehmen auf dem Weg zu nachhaltigem Erfolg und starker Führungskultur.",
+    og_image: "/uploads/og-default.jpg"
+  });
+  
+  useEffect(() => {
+    fetch('/data/homeSeoData.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Could not load SEO data');
+        return response.json();
+      })
+      .then(data => setSeoData(data))
+      .catch(error => console.error('Error loading SEO data:', error));
+  }, []);
+  
   return (
     <HomeContainer>
+      <Helmet>
+        {/* Dynamisch aus dem CMS-generierten SEO-Daten */}
+        <title>{seoData.title}</title>
+        <meta name="description" content={seoData.description} />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content={seoData.title.split(' | ')[0]} /> {/* Nur den ersten Teil des Titels für OG */}
+        <meta property="og:description" content={seoData.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.kiramarie.app/" />
+        <link rel="canonical" href="https://www.kiramarie.app/" />
+        <meta property="og:image" content={`https://www.kiramarie.app${seoData.og_image}`} />
+        <meta property="og:site_name" content="Kira Marie" />
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seoData.title.split(' | ')[0]} />
+        <meta name="twitter:description" content={seoData.description} />
+        <meta name="twitter:image" content={`https://www.kiramarie.app${seoData.og_image}`} />
+        {/* <meta name="twitter:site" content="@DeinTwitterHandle" /> Falls vorhanden */}
+        {/* <meta name="twitter:creator" content="@DeinTwitterHandle" /> Falls vorhanden */}
+        
+        {/* Strukturierte Daten (JSON-LD) */}
+        {/* Strukturierte Daten für Person Schema - später ergänzen mit image und description */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Kira Marie",
+            "jobTitle": "Leadership & Vertrauensexpertin, Executive Coach, Speakerin, Autorin",
+            "url": "https://www.kiramarie.app",
+            "sameAs": [
+              "https://instagram.com/kiramariecremer", 
+              "https://twitter.com/kiramariecremer", 
+              "https://linkedin.com/in/kiramariecremer"
+            ]
+          })}
+        </script>
+      </Helmet>
       <HeroSection />
       <SectionsWithDiagonalWrapper>
         <SharedDiagonalLine />

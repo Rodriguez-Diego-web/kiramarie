@@ -295,7 +295,7 @@ const ContentWrapper = styled(motion.div)`
   align-items: flex-end;
 `;
 
-const SubTitle = styled(motion.h3)`
+const SubTitle = styled(motion.p)`
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   font-weight: 600;

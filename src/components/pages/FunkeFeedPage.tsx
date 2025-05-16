@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 
 // Styled Components
@@ -88,11 +89,35 @@ interface FeedItemData {
   source?: string; // Quelle optional
 }
 
+interface FunkeFeedSeoData {
+  title: string;
+  description: string;
+  og_image: string;
+}
+
 const FunkeFeedPage: React.FC = () => {
   const [feedItems, setFeedItems] = useState<FeedItemData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  const [seoData, setSeoData] = useState<FunkeFeedSeoData>({
+    title: "Aktuelle Beiträge von Kira Marie bei Funke - Kira Marie",
+    description: "Entdecken Sie die neuesten Artikel, Kolumnen und Beiträge von Kira Marie, veröffentlicht bei der Funke Mediengruppe.",
+    og_image: "/uploads/og-funke-feed.jpg"
+  });
 
+  // SEO-Daten laden
+  useEffect(() => {
+    fetch('/data/funkeFeedSeoData.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Could not load SEO data');
+        return response.json();
+      })
+      .then(data => setSeoData(data))
+      .catch(error => console.error('Error loading SEO data:', error));
+  }, []);
+  
+  // Feed-Items laden
   useEffect(() => {
     const fetchFeed = async () => {
       try {
@@ -127,6 +152,27 @@ const FunkeFeedPage: React.FC = () => {
 
   return (
     <PageContainer>
+      <Helmet>
+        {/* Dynamisch aus dem CMS-generierten SEO-Daten */}
+        <title>{seoData.title}</title>
+        <meta name="description" content={seoData.description} />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content={seoData.title.split(' - ')[0]} /> {/* Nur den ersten Teil des Titels für OG */}
+        <meta property="og:description" content={seoData.description} />
+        <meta property="og:type" content="article" /> {/* Typ 'article' für Feed-Seiten ist passend */}
+        <meta property="og:url" content="https://www.kiramarie.app/kooperationen/funke-feed" />
+        <link rel="canonical" href="https://www.kiramarie.app/kooperationen/funke-feed" />
+        <meta property="og:image" content={`https://www.kiramarie.app${seoData.og_image}`} />
+        <meta property="og:site_name" content="Kira Marie" />
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seoData.title.split(' - ')[0]} />
+        <meta name="twitter:description" content={seoData.description} />
+        <meta name="twitter:image" content={`https://www.kiramarie.app${seoData.og_image}`} />
+      </Helmet>
+
       <ContentWrapper>
         <PageTitle>Aktuelles von Funke</PageTitle>
         {feedItems.length > 0 ? (

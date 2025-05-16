@@ -15,6 +15,7 @@
     "framer-motion": "^10.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5",
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
@@ -24,12 +25,12 @@
     "xml2js": "^0.6.2"
   },
   "scripts": {
-    "prestart": "node scripts/generate-press-data.js && node scripts/generate-about-data.js && node scripts/generate-social-display-data.js && node scripts/generate-testimonials-data.js && node scripts/generate-partner-logos-data.js",
+    "prestart": "node scripts/generate-press-data.js && node scripts/generate-about-data.js && node scripts/generate-social-display-data.js && node scripts/generate-testimonials-data.js && node scripts/generate-partner-logos-data.js && node scripts/generate-seo-data.js",
     "start": "npm run prestart && react-scripts start",
     "build": "npm run prestart && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate:data": "node scripts/generate-about-data.js && node scripts/generate-social-display-data.js && node scripts/generate-testimonials-data.js && node scripts/generate-partner-logos-data.js"
+    "generate:data": "node scripts/generate-about-data.js && node scripts/generate-social-display-data.js && node scripts/generate-testimonials-data.js && node scripts/generate-partner-logos-data.js && node scripts/generate-seo-data.js"
   },
   "eslintConfig": {
     "extends": [

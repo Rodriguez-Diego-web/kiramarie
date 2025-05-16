@@ -1,0 +1,5 @@
+---
+title: "Aktuelle Beiträge von Kira Marie bei Funke - Kira Marie"
+description: "Entdecken Sie die neuesten Artikel, Kolumnen und Beiträge von Kira Marie, veröffentlicht bei der Funke Mediengruppe."
+og_image: "/uploads/og-funke-feed.jpg"
+---

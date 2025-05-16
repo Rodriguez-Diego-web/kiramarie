@@ -8,6 +8,24 @@ media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
+  - name: "seo_settings"
+    label: "SEO Einstellungen"
+    files:
+      - label: "Startseite SEO"
+        name: "home_seo"
+        file: "src/content/seo/home.md"
+        fields:
+          - { label: "Meta Titel", name: "title", widget: "string", default: "Kira Marie - Leadership & Vertrauensexpertin | Executive Coach, Speakerin, Autorin" }
+          - { label: "Meta Beschreibung", name: "description", widget: "text", default: "Kira Marie ist Ihre Expertin für Leadership und Vertrauen. Als Executive Coach, Speakerin und Autorin unterstützt sie Führungskräfte und Unternehmen auf dem Weg zu nachhaltigem Erfolg und starker Führungskultur." }
+          - { label: "Social Media Bild (OG Image)", name: "og_image", widget: "image", required: false, hint: "Empfohlene Größe: 1200x630 Pixel" }
+      - label: "Funke Feed SEO"
+        name: "funke_feed_seo"
+        file: "src/content/seo/funke-feed.md"
+        fields:
+          - { label: "Meta Titel", name: "title", widget: "string", default: "Aktuelle Beiträge von Kira Marie bei Funke - Kira Marie" }
+          - { label: "Meta Beschreibung", name: "description", widget: "text", default: "Entdecken Sie die neuesten Artikel, Kolumnen und Beiträge von Kira Marie, veröffentlicht bei der Funke Mediengruppe." }
+          - { label: "Social Media Bild (OG Image)", name: "og_image", widget: "image", required: false, hint: "Empfohlene Größe: 1200x630 Pixel" }
+
   - name: "social_stats"
     label: "Social Media Zahlen"
     files:
