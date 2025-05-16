@@ -53,3 +53,15 @@ collections:
           - { label: "Haupttext der Überschrift (nach Name)", name: "headline_main_text", widget: "text", default: "ist eine der führenden deutschen Stimmen im Bereich New Work und Expertin für die Zukunft der Arbeitswelt." }
           - { label: "Profilbild", name: "profile_image", widget: "image", required: false }
           - { label: "Biografie / Haupttext", name: "body", widget: "markdown" }
+
+  - name: "testimonials"
+    label: "Kundenstimmen / Testimonials"
+    folder: "src/content/testimonials"
+    create: true # Erlaubt das Erstellen neuer Testimonials im CMS
+    slug: "{{slug}}" # Dateiname basiert auf dem Titel (oder einem Slug-Feld)
+    fields:
+      - { label: "Zitat Geber (Name)", name: "author", widget: "string" }
+      - { label: "Position / Firma (optional)", name: "position", widget: "string", required: false }
+      - { label: "Zitat", name: "quote", widget: "markdown" }
+      - { label: "Bild (optional, z.B. Avatar oder Logo)", name: "image", widget: "image", required: false }
+      - { label: "Reihenfolge (optional, niedrigere Zahlen zuerst)", name: "order", widget: "number", required: false, default: 100 }

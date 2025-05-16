@@ -7,6 +7,7 @@ import MediaSection from '../components/sections/MediaSection';
 import ContactSection from '../components/sections/ContactSection';
 import CollaborationSection from '../components/sections/CollaborationSection';
 import FollowMeSection from '../components/sections/FollowMeSection'; // Neuer Import
+import TestimonialsSection from '../components/sections/TestimonialsSection'; // NEU
 
 // Wrapper für Sektionen, die die diagonale Linie teilen sollen
 const SectionsWithDiagonalWrapper = styled.div`
@@ -53,6 +54,7 @@ const Home: React.FC = () => {
       <ContactSection />
       {/* <ExpertNetworkSection /> */}
       <MediaSection />
+      <TestimonialsSection /> {/* NEU HINZUGEFÜGT */}
       <FollowMeSection />
     </HomeContainer>
   );

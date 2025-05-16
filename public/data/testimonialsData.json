@@ -1,0 +1,16 @@
+[
+  {
+    "author": "Max Mustermann",
+    "position": "CEO, Beispiel GmbH",
+    "quote": "Kira hat uns mit ihrer Expertise im Bereich New Work die Augen geöffnet. Ihre Keynote war nicht nur inspirierend, sondern hat auch konkrete Veränderungsprozesse in unserem Unternehmen angestoßen. Absolut empfehlenswert!",
+    "image": "/uploads/placeholder-avatar.png",
+    "order": 10
+  },
+  {
+    "author": "Erika Musterfrau",
+    "position": "HR Managerin, Kreativ AG",
+    "quote": "Der Workshop mit Kira zum Thema 'Zukunft der Arbeit' war ein voller Erfolg. Unsere Mitarbeiter waren begeistert von den interaktiven Elementen und den praxisnahen Einblicken. Wir freuen uns auf weitere Zusammenarbeit!",
+    "image": null,
+    "order": 20
+  }
+]
