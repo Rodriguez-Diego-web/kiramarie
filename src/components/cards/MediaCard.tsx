@@ -59,7 +59,7 @@ const ContentArea = styled.div`
 
 const Tag = styled.span`
   display: inline-block;
-  background-color: #F5EAAA; /* Beige */
+  background-color: #e6dfd7; /* Beige */
   color: #9370DB; /* Lila */
   padding: 4px 10px;
   border-radius: 0;
@@ -95,8 +95,8 @@ const CardDescription = styled.p`
 const ReadMoreButton = styled(motion.a)`
   display: inline-block;
   text-align: center;
-  background-color: #F5EAAA; /* Beige */
-  color: #9370DB; /* Lila */
+  background-color: #9370DB; 
+  color: #e6dfd7; 
   padding: 10px 20px;
   border-radius: 0;
   text-decoration: none;
@@ -106,7 +106,7 @@ const ReadMoreButton = styled(motion.a)`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: color-mix(in srgb, #F5EAAA 85%, black); /* Dunkleres Beige im Hover */
+    background-color: color-mix(in srgb, #9370DB 85%, black); /* Dunkleres Beige im Hover */
   }
 `;
 
