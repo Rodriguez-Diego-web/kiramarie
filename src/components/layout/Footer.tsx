@@ -203,7 +203,7 @@ const Footer: React.FC = () => {
 
 const FooterWrapper = styled.footer`
   background-color: #0a0a0a;
-  padding: 0 0 2rem;
+  padding: 4rem 0 2rem;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -236,7 +236,7 @@ const NewsletterSection = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   padding: 2.5rem;
   border-radius: 16px;
-  margin-top: -3rem;
+  margin-top: 0;
   margin-bottom: 4rem;
   
   @media (max-width: 768px) {
