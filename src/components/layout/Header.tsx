@@ -47,22 +47,22 @@ const Header: React.FC = () => {
             }}>ÜBER MICH</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/#study" onClick={() => {
+            <MenuLink to="/#folge-mir" onClick={() => {
               closeMenu();
-              document.getElementById('study')?.scrollIntoView({ behavior: 'smooth' });
-            }}>STUDIE</MenuLink>
+              document.getElementById('folge-mir')?.scrollIntoView({ behavior: 'smooth' });
+            }}>FOLGE MIR</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/#network" onClick={() => {
+            <MenuLink to="/#funke" onClick={() => {
               closeMenu();
-              document.getElementById('network')?.scrollIntoView({ behavior: 'smooth' });
-            }}>NETZWERK</MenuLink>
+              document.getElementById('funke')?.scrollIntoView({ behavior: 'smooth' });
+            }}>FUNKE FEED</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/#contact" onClick={() => {
+            <MenuLink to="/#newsletter" onClick={() => {
               closeMenu();
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}>KONTAKT</MenuLink>
+              document.getElementById('newsletter')?.scrollIntoView({ behavior: 'smooth' });
+            }}>NEWSLETTER</MenuLink>
           </MenuItem>
         </DesktopMenu>
 
@@ -123,16 +123,16 @@ const Header: React.FC = () => {
                     <MobileMenuLinkPrimary to="/#about" onClick={() => { closeMenu(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }}>ÜBER MICH</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#presse" onClick={() => { closeMenu(); document.getElementById('presse')?.scrollIntoView({ behavior: 'smooth' }); }}>PRESSE</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/#folge-mir" onClick={() => { closeMenu(); document.getElementById('folge-mir')?.scrollIntoView({ behavior: 'smooth' }); }}>FOLGE MIR</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#collaboration" onClick={() => { closeMenu(); document.getElementById('collaboration')?.scrollIntoView({ behavior: 'smooth' }); }}>KOOPERATIONEN</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/#funke" onClick={() => { closeMenu(); document.getElementById('funke')?.scrollIntoView({ behavior: 'smooth' }); }}>FUNKE FEED</MobileMenuLinkPrimary>
+                  </MobileMenuItem>
+                  <MobileMenuItem>
+                    <MobileMenuLinkPrimary to="/#leistungen" onClick={() => { closeMenu(); document.getElementById('leistungen')?.scrollIntoView({ behavior: 'smooth' }); }}>LEISTUNGEN</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
                     <MobileMenuLinkPrimary to="/#newsletter" onClick={() => { closeMenu(); document.getElementById('newsletter')?.scrollIntoView({ behavior: 'smooth' }); }}>NEWSLETTER</MobileMenuLinkPrimary>
-                  </MobileMenuItem>
-                  <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#contact" onClick={() => { closeMenu(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>KONTAKT</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                 </NavLinksList>
 
@@ -143,6 +143,12 @@ const Header: React.FC = () => {
                   </MobileMenuItemSecondary>
                   <MobileMenuItemSecondary>
                     <MobileMenuLinkSecondary to="/datenschutz" onClick={closeMenu}>Datenschutz</MobileMenuLinkSecondary>
+                  </MobileMenuItemSecondary>
+                  <MobileMenuItemSecondary>
+                    <MobileMenuLinkSecondary to="/agb" onClick={closeMenu}>AGB</MobileMenuLinkSecondary>
+                  </MobileMenuItemSecondary>
+                  <MobileMenuItemSecondary>
+                    <MobileMenuLinkSecondary to="/kooperationen/funke-feed" onClick={closeMenu}>Funke Feed</MobileMenuLinkSecondary>
                   </MobileMenuItemSecondary>
                 </SecondaryLinksList>
 
