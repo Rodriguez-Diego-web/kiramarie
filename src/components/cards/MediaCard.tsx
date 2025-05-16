@@ -59,8 +59,8 @@ const ContentArea = styled.div`
 
 const Tag = styled.span`
   display: inline-block;
-  background-color: var(--secondary-color, #003366); /* Deine Sekundärfarbe (Standard: Dunkelblau) */
-  color: #ffffff;
+  background-color: #F5EAAA; /* Beige */
+  color: #9370DB; /* Lila */
   padding: 4px 10px;
   border-radius: 0;
   font-size: 0.75rem;
@@ -94,19 +94,19 @@ const CardDescription = styled.p`
 
 const ReadMoreButton = styled(motion.a)`
   display: inline-block;
-  background-color: #9370DB; /* Lila für den Button */
-  color: #ffffff;
+  text-align: center;
+  background-color: #F5EAAA; /* Beige */
+  color: #9370DB; /* Lila */
   padding: 10px 20px;
   border-radius: 0;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.85rem;
-  text-align: center;
   margin-top: auto; /* Schiebt den Button ans untere Ende der CardContent */
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: color-mix(in srgb, #9370DB 85%, black); /* Dunkleres Lila im Hover */
+    background-color: color-mix(in srgb, #F5EAAA 85%, black); /* Dunkleres Beige im Hover */
   }
 `;
 
