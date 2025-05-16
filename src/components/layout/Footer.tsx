@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
   return (
     <FooterWrapper>
       <FooterGradient />
-      {/* Lila Hintergrundstreifen für den Newsletter */}
+      {/* Dunkler Hintergrundstreifen mit Lila-Akzenten für den Newsletter */}
       <NewsletterBackground>
         <Container>
           {/* Newsletter Section */}
@@ -212,7 +212,7 @@ const FooterWrapper = styled.footer`
   position: relative;
   overflow: visible;
   z-index: 1;
-  margin-top: 6rem; /* Verschiebt den schwarzen Hintergrund nach unten */
+  margin-top: 0; /* Kein Abstand mehr nötig */
 `;
 
 const FooterGradient = styled.div`
@@ -227,11 +227,16 @@ const FooterGradient = styled.div`
 `;
 
 const NewsletterBackground = styled.div`
-  background: linear-gradient(90deg, rgba(147, 112, 219, 0.2) 0%, rgba(147, 112, 219, 0.3) 50%, rgba(147, 112, 219, 0.2) 100%);
-  padding: 0;
-  width: 100%;
+  background: transparent;
   position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 40px 0;
   overflow: visible;
+  z-index: 0;
 `;
 
 const Container = styled.div`
@@ -244,16 +249,28 @@ const NewsletterSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(30, 30, 30, 0.7);
+  background: rgba(15, 15, 15, 0.85);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(205, 175, 253, 0.3);
+  box-shadow: 0 0 30px rgba(147, 112, 219, 0.4), inset 0 0 20px rgba(147, 112, 219, 0.1);
   padding: 2.5rem;
   border-radius: 16px;
   margin-top: -12rem; /* Stärkere negative margin, um auf derselben Position zu bleiben */
   margin-bottom: 4rem;
   position: relative;
   z-index: 2;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(147, 112, 219, 0.1), transparent 80%);
+    pointer-events: none;
+  }
   
   @media (max-width: 768px) {
     flex-direction: column;
