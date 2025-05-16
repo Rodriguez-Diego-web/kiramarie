@@ -33,7 +33,7 @@
     "date": "2025-05-13",
     "url": "https://www.businessinsider.de/karriere/chef-zieht-50-euro-vom-gehalt-ab-weil-mitarbeiter-fehler-machte/",
     "excerpt": "Was macht gute Führung aus? New Work Expertin Kira Marie Cremer gibt Einblicke in einem Buchkapitel-Auszug bei Business Insider.",
-    "image": null
+    "image": "uploads/businessinsider.webp"
   },
   {
     "id": "2025-05-13-linkedin-jobstart-guide",
@@ -42,7 +42,7 @@
     "date": "2025-05-13",
     "url": "https://www.linkedin.com/pulse/jobstart-guide-2025-deutschland-hier-haben-berufsanf%C3%A4ngerinnen-cauje/?trackingId=V9T414A6R%2BGDsWgn7URrGg%3D%3D",
     "excerpt": "LinkedIn's Jobstart-Guide 2025: Chancen für Berufsanfänger in wachsenden Branchen, Tätigkeitsbereichen und bei gefragten Jobtiteln.",
-    "image": null
+    "image": "uploads/jobstart.png"
   },
   {
     "id": "2025-05-12-iba-online-generationenmanagement",
@@ -51,7 +51,7 @@
     "date": "2025-05-12",
     "url": "https://iba.online/newsroom/perspektiven/generationenmanagement-im-buero-5-fragen-an-kira-marie-cremer/",
     "excerpt": "Generationenmanagement im Büro: Kira Marie Cremer im IBA Online Interview über die Bedürfnisse verschiedener Arbeitnehmergenerationen und erfolgreiches Management.",
-    "image": null
+    "image": "public/uploads/generation.webp"
   },
   {
     "id": "2025-05-11-personalwirtschaft-ins-tun-kommen",
@@ -69,7 +69,7 @@
     "date": "2025-05-10",
     "url": "https://www.youtube.com/watch?v=a3CyF7JCvLc",
     "excerpt": "Work smarter, not harder: Kira Marie Cremer im GLOWCAST über Achtsamkeit und neue Arbeitsmethoden für mehr Produktivität und Zufriedenheit.",
-    "image": null
+    "image": "uploads/neu.png"
   },
   {
     "id": "2025-05-09-nwx-speaker-kira-marie-cremer",
@@ -78,7 +78,7 @@
     "date": "2025-05-09",
     "url": "https://nwx.new-work.se/events/nwx23/speaker/kira-marie-cremer",
     "excerpt": "Kira Marie Cremer, Gründerin von QUINGS und LinkedIn Coach, ist Host des Podcasts 'New Work Now' und eine bekannte New Work Stimme.",
-    "image": null
+    "image": "uploads/NWN.webp"
   },
   {
     "id": "2025-05-08-youtube-auf-und-up-depression-besiegt",
@@ -87,6 +87,6 @@
     "date": "2025-05-08",
     "url": "https://www.youtube.com/watch?v=UXNL0Sl78js",
     "excerpt": "New Work-Expertin Kira Marie Cremer spricht im AUF & UP Podcast darüber, wie sie ihre Depression überwunden hat und teilt ihre Erfahrungen.",
-    "image": null
+    "image": "uploads/generation.webp"
   }
 ]
