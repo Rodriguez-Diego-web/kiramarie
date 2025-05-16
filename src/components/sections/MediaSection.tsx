@@ -59,7 +59,7 @@ interface PressArticle {
 }
 
 const MediaSection: React.FC = () => {
-  const [visibleItems, setVisibleItems] = useState(6); 
+  const [visibleItems, setVisibleItems] = useState(4); 
   const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
 
   useEffect(() => {
