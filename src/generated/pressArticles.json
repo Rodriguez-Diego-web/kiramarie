@@ -1,38 +1,92 @@
 [
   {
-    "id": "2025-05-15-letzter-test",
-    "title": "LIVETEST",
-    "publication": "Letzter Test",
-    "date": "2025-05-15",
-    "url": "Letzter Test",
-    "excerpt": "Letzter Test",
-    "image": "Letzter Test"
+    "id": "2025-05-16-ntv-work-life-blending",
+    "title": "Expertin zu Work-Life-Blending: Welche Vorteile hat Verschmelzung von Beruf und Hobby?",
+    "publication": "n-tv.de",
+    "date": "2025-05-16",
+    "url": "https://www.n-tv.de/mediathek/videos/wirtschaft/Welche-Vorteile-hat-Verschmelzung-von-Beruf-und-Hobby-article24029406.html",
+    "excerpt": "Die Work-Life-Balance hat als Modell ausgedient. Heutzutage werde das Austarieren von Arbeit und Freizeit vom sogenannten Work-Life-Blending abgelöst. Was sich dahinter verbirgt und welche Vorteile das Konzept bietet, erklärt New-Work-Expertin Kira Maria Cremer im Interview mit ntv.",
+    "image": null
   },
   {
-    "id": "2025-05-15-supertestartikel",
-    "title": "SuperTestArtikel",
-    "publication": "SuperTestArtikel",
+    "id": "2025-05-15-horizont-corporate-influencing",
+    "title": "Corporate Influencing: Balanceakt zwischen Glamour und Glaubwürdigkeit",
+    "publication": "HORIZONT",
     "date": "2025-05-15",
-    "url": "SuperTestArtikel.de",
-    "excerpt": "SuperTestArtikel",
-    "image": "www.google.de"
+    "url": "https://www.horizont.net/marketing/nachrichten/corporate-influencing-balanceakt-zwischen-glamour-und-glaubwuerdigkeit-221436",
+    "excerpt": "Die neuen Faces of Henkel hat eine prominent besetzte Jury erkoren. Zunehmend mehr Unternehmen investieren beim Recruiting und Employer Branding in Markenbotschafter. Nicht immer so laut, aber nachhaltig. Warum lohnt sich das?",
+    "image": null
   },
   {
-    "id": "2025-05-15-test-test",
-    "title": "TEST TEST ",
-    "publication": "TEST TEST ",
-    "date": "2025-05-15",
-    "url": "TEST TEST ",
-    "excerpt": "TEST TEST",
-    "image": "www,google.com"
+    "id": "2025-05-14-businessinsider-generation-orientierungslos",
+    "title": "„Generation Orientierungslos“: Warum der Jobstart schwerfällt",
+    "publication": "Business Insider",
+    "date": "2025-05-14",
+    "url": "https://www.businessinsider.de/karriere/generation-orientierungslos-warum-der-jobstart-schwerfaellt/",
+    "excerpt": "Wie kommt es, dass in einem Land voller offener Ausbildungsplätze so viele junge Menschen keinen passenden Berufseinstieg finden?",
+    "image": null
   },
   {
-    "id": "2025-05-15-test",
-    "title": "Test ",
-    "publication": "TESt TEST ",
-    "date": "2025-05-15",
-    "url": "hier ist der lin ",
-    "excerpt": "sdffsdfssdds",
-    "image": "www.google.de"
+    "id": "2025-05-13-businessinsider-chef-zieht-ab",
+    "title": "Chef zieht 50 Euro vom Gehalt ab, weil Mitarbeiter Fehler machte",
+    "publication": "Business Insider",
+    "date": "2025-05-13",
+    "url": "https://www.businessinsider.de/karriere/chef-zieht-50-euro-vom-gehalt-ab-weil-mitarbeiter-fehler-machte/",
+    "excerpt": "Die New Work Expertin Kira Marie Cremer erklärt, was gute Führungskräfte von morgen ausmacht. Lest hier ein Kapitel aus ihrem neuen Buch.",
+    "image": null
+  },
+  {
+    "id": "2025-05-13-linkedin-jobstart-guide",
+    "title": "Jobstart-Guide 2025 Deutschland: Hier haben Berufsanfänger:innen die größten Chancen",
+    "publication": "LinkedIn News DACH",
+    "date": "2025-05-13",
+    "url": "https://www.linkedin.com/pulse/jobstart-guide-2025-deutschland-hier-haben-berufsanf%C3%A4ngerinnen-cauje/?trackingId=V9T414A6R%2BGDsWgn7URrGg%3D%3D",
+    "excerpt": "Der neue Jobstart-Guide von LinkedIn zeigt, welche Branchen, Tätigkeitsbereiche und Jobtitel unter Berufsanfänger:innen stark wachsen und wo sich jetzt spannende Chancen für sie ergeben.",
+    "image": null
+  },
+  {
+    "id": "2025-05-12-iba-online-generationenmanagement",
+    "title": "Generationenmanagement im Büro: 5 Fragen an Kira Marie Cremer",
+    "publication": "IBA Online",
+    "date": "2025-05-12",
+    "url": "https://iba.online/newsroom/perspektiven/generationenmanagement-im-buero-5-fragen-an-kira-marie-cremer/",
+    "excerpt": "IBA sprach in seinem Format „5 Fragen an …“ mit Kira Marie Cremer, New-Work-Expertin und Podcast-Host von „New Work Now“, über die Herausforderung für Unternehmen, die Bedürfnisse unterschiedlicher Arbeitnehmergenerationen auszutarieren, und über die Frage, wie gutes Generationenmanagement gelingen kann.",
+    "image": null
+  },
+  {
+    "id": "2025-05-11-personalwirtschaft-ins-tun-kommen",
+    "title": "Kira Marie Cremer: „Das Wichtigste ist, mehr ins Tun zu kommen“",
+    "publication": "Personalwirtschaft",
+    "date": "2025-05-11",
+    "url": "https://www.personalwirtschaft.de/news/allgemein/kira-marie-cremer-das-wichtigste-ist-mehr-ins-tun-zu-kommen-183473/",
+    "excerpt": "Kira Marie Cremer wurde für ihren New-Work-Podcast als HR Top Voice ausgezeichnet. Im Interview gibt sie Tipps für den eigenen HR-Podcast.",
+    "image": null
+  },
+  {
+    "id": "2025-05-10-youtube-glowcast-work-smarter",
+    "title": "Kira Marie Cremer: Work smarter, not harder - New Work | #55 | GLOWCAST | Miriam Jacks",
+    "publication": "GLOWCAST | Miriam Jacks (YouTube)",
+    "date": "2025-05-10",
+    "url": "https://www.youtube.com/watch?v=a3CyF7JCvLc",
+    "excerpt": "Gestresst im Job? Fühlst du dich ausgebrannt und sehnst dich nach einer besseren Work-Life-Balance? Du bist nicht allein! In der neuen Folge des GLOWCAST...",
+    "image": null
+  },
+  {
+    "id": "2025-05-09-nwx-speaker-kira-marie-cremer",
+    "title": "Kira Marie Cremer - New Work Experience",
+    "publication": "NWX (New Work Experience)",
+    "date": "2025-05-09",
+    "url": "https://nwx.new-work.se/events/nwx23/speaker/kira-marie-cremer",
+    "excerpt": "Kira Marie Cremer ist Gründerin von QUINGS, LinkedIn Coach und Host des Podcasts New Work Now. Als eine der bekanntesten New Work Stimmen auf LinkedIn begeistert die Wahlhamburgerin auf Social Media und als Kolumnistin ihre Leser.",
+    "image": null
+  },
+  {
+    "id": "2025-05-08-youtube-auf-und-up-depression-besiegt",
+    "title": "„So hab' ich meine Depression besiegt“: New Work-Expertin Kira Marie Cremer | AUF & UP #043",
+    "publication": "AUF & UP (YouTube)",
+    "date": "2025-05-08",
+    "url": "https://www.youtube.com/watch?v=UXNL0Sl78js",
+    "excerpt": "Du möchtest mehr Energie für dein persönliches AUF & UP des Lebens? Dann sichere dir jetzt meinen neuen kostenfreien digitalen „High-Energy Guide – die Es...",
+    "image": null
   }
 ]
