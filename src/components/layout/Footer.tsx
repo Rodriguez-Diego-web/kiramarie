@@ -1,56 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaInstagram, FaLinkedinIn, FaArrowRight } from 'react-icons/fa';
+import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { VscMail } from 'react-icons/vsc';
 
 const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In einer echten Anwendung würde hier der Newsletter-Subscribe-Request stehen
-    console.log('Newsletter anmeldung mit:', email);
-    setEmail('');
-    // Hier könnte eine Erfolgsmeldung oder ein API-Call folgen
-  };
-
   const currentYear = new Date().getFullYear();
 
   return (
     <FooterWrapper>
       <FooterGradient />
-      {/* Dunkler Hintergrundstreifen mit Lila-Akzenten für den Newsletter */}
-      <NewsletterBackground>
-        <Container>
-          {/* Newsletter Section */}
-          <NewsletterSection>
-          <NewsletterContent>
-            <NewsletterHeading>Newsletter abonnieren</NewsletterHeading>
-            <NewsletterDescription>
-              Erhalte monatlich spannende Impulse zu Leadership, Vertrauen und persönlicher Entwicklung direkt in dein Postfach.
-            </NewsletterDescription>
-          </NewsletterContent>
-          <NewsletterForm onSubmit={handleSubmit}>
-            <NewsletterInput 
-              type="email" 
-              placeholder="Deine E-Mail Adresse" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <SubscribeButton 
-              type="submit"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaArrowRight />
-            </SubscribeButton>
-          </NewsletterForm>
-          </NewsletterSection>
-        </Container>
-      </NewsletterBackground>
-      
       <Container>
         {/* Main Footer Content */}
         <FooterContent>
@@ -66,7 +25,7 @@ const Footer: React.FC = () => {
             <SocialLinks>
               {/* Instagram */}
               <SocialLink 
-                href="https://www.instagram.com/kira.marie.official/" 
+                href="https://www.instagram.com/kiramariecremer/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -78,7 +37,7 @@ const Footer: React.FC = () => {
               
               {/* LinkedIn */}
               <SocialLink 
-                href="https://www.linkedin.com/in/kira-marie/" 
+                href="https://www.linkedin.com/in/kiramariecremer/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -210,9 +169,10 @@ const FooterWrapper = styled.footer`
   background-color: #0a0a0a;
   padding: 4rem 0 2rem;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   z-index: 1;
   margin-top: 0; /* Kein Abstand mehr nötig */
+  width: 100%;
 `;
 
 const FooterGradient = styled.div`
@@ -226,129 +186,12 @@ const FooterGradient = styled.div`
   z-index: -1;
 `;
 
-const NewsletterBackground = styled.div`
-  background: transparent;
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding: 40px 0;
-  overflow: visible;
-  z-index: 0;
-`;
-
 const Container = styled.div`
   width: 92%;
   max-width: 1200px;
   margin: 0 auto;
-`;
-
-const NewsletterSection = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(15, 15, 15, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(205, 175, 253, 0.3);
-  box-shadow: 0 0 30px rgba(147, 112, 219, 0.4), inset 0 0 20px rgba(147, 112, 219, 0.1);
-  padding: 2.5rem;
-  border-radius: 16px;
-  margin-top: -12rem; /* Stärkere negative margin, um auf derselben Position zu bleiben */
-  margin-bottom: 4rem;
-  position: relative;
-  z-index: 2;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 16px;
-    background: linear-gradient(135deg, rgba(147, 112, 219, 0.1), transparent 80%);
-    pointer-events: none;
-  }
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-    padding: 2rem;
-    text-align: center;
-    gap: 1.5rem;
-    margin-top: -10rem;
-  }
-`;
-
-const NewsletterContent = styled.div`
-  flex: 1;
-`;
-
-const NewsletterHeading = styled.h3`
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 1.5rem;
-  color: #ffffff;
-  margin-bottom: 0.5rem;
-`;
-
-const NewsletterDescription = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  color: #cccccc;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  max-width: 500px;
-`;
-
-const NewsletterForm = styled.form`
-  display: flex;
-  max-width: 400px;
-  width: 100%;
-  position: relative;
-  align-items: center;
-`;
-
-const NewsletterInput = styled.input`
-  width: 100%;
-  padding: 0.9rem 1rem;
-  border: none;
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  height: 46px;
-  
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-  }
-  
-  &:focus {
-    outline: none;
-    border-color: rgba(205, 175, 253, 0.5);
-    box-shadow: 0 0 0 2px rgba(205, 175, 253, 0.25);
-  }
-`;
-
-const SubscribeButton = styled(motion.button)`
-  position: absolute;
-  right: 8px;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  background: linear-gradient(135deg, #cdaffd 0%, #9370DB 100%);
-  color: white;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 0.9rem;
+  overflow-x: hidden;
+  box-sizing: border-box;
 `;
 
 const FooterContent = styled.div`
