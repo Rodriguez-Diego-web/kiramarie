@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'; 
-import { FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa'; 
+import { FaInstagram, FaLinkedinIn } from 'react-icons/fa'; 
 import { Icon } from '../common/IconWrapper';
 
 const SectionContainer = styled.section`

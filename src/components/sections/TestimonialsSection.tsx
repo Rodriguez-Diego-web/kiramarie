@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface TestimonialItem {
   author: string;
