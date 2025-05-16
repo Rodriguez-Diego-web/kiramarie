@@ -19,7 +19,7 @@ type FloatingCircleProps = {
 
 const HeroSection: React.FC = () => {
   const { scrollY } = useScroll();
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLIFrameElement>(null);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   const [partnerLogos, setPartnerLogos] = useState<PartnerLogo[]>([]);
 
@@ -36,40 +36,41 @@ const HeroSection: React.FC = () => {
   }, []);
 
   const backgroundY = useTransform(scrollY, [0, 500], [0, 150]);
-  const textY = useTransform(scrollY, [0, 500], [0, -50]);
-  const opacityText = useTransform(scrollY, [0, 300], [1, 0.2]);
   const videoScale = useTransform(scrollY, [0, 300], [1, 1.1]);
   
   const parallaxValues = useMemo(() => ({
     backgroundY,
-    textY,
-    opacityText,
     videoScale
-  }), [backgroundY, textY, opacityText, videoScale]);
+  }), [backgroundY, videoScale]);
   
   useEffect(() => {
     const videoElement = videoRef.current;
     if (!videoElement) return;
-    
+
+    // IntersectionObserver-Logik ist nicht direkt mit YouTube iframe kompatibel ohne API
+    // und wird vorerst auskommentiert, da Autoplay über URL-Parameter gesteuert wird.
+    /*
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          videoElement.play().catch(() => {});
+          // Für iframes kann man nicht einfach .play() aufrufen
+          // Man bräuchte die YouTube Iframe API, um das Video zu steuern
+          // videoElement.play().catch(() => {});
         } else {
-          videoElement.pause();
+          // videoElement.pause();
         }
       },
       { threshold: 0.2 }
     );
     
     observer.observe(videoElement);
-    return () => observer.unobserve(videoElement);
+    return () => {
+      if (videoElement) { // Sicherstellen, dass videoElement noch existiert
+        observer.unobserve(videoElement);
+      }
+    };
+    */
   }, []);
-  
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
-  };
   
   const floatingCircles = [
     { size: 180, top: '15%', left: '10%', color: '#cdaffd30', delay: 0.2 },
@@ -88,16 +89,18 @@ const HeroSection: React.FC = () => {
       >
         <StyledVideo
           ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          onLoadedData={() => setVideoLoaded(true)}
+          src="https://www.youtube.com/embed/UXNL0Sl78js?autoplay=1&mute=1&loop=1&playlist=UXNL0Sl78js&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          onLoad={() => {
+            console.log('YouTube iframe onLoad event triggered');
+            setVideoLoaded(true);
+          }}
         >
-          <source src="/videos/kira-intro.mp4" type="video/mp4" />
-          Ihr Browser unterstützt keine Videos.
         </StyledVideo>
-        <VideoOverlay />
+        <VideoOverlay $loaded={videoLoaded} />
       </VideoContainer>
     
       <ParallaxBackground 
@@ -119,53 +122,8 @@ const HeroSection: React.FC = () => {
         ))}
       </ParallaxBackground>
       
-      <ContentWrapper style={{ y: parallaxValues.textY, opacity: parallaxValues.opacityText }}>
-        <SubTitle
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          LEADERSHIP & VERTRAUENSEXPERTIN
-        </SubTitle>
-        <MainTitle
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-        >
-          KIRA
-          <GlassmorphicHighlight>MARIE</GlassmorphicHighlight>
-        </MainTitle>
-        <Description
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-        >
-          Executive Coach · Speakerin · Autorin
-        </Description>
-        <HeroActions
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.7 }}
-        >
-          <PrimaryButton
-            whileHover={{ scale: 1.05, boxShadow: '0 8px 20px rgba(147, 112, 219, 0.4)' }}
-            whileTap={{ scale: 0.97 }}
-            href="#contact"
-            onClick={(e) => handleSmoothScroll(e, 'contact')}
-            aria-label="Kontakt aufnehmen"
-          >
-            KONTAKT
-          </PrimaryButton>
-          <SecondaryButton
-            whileHover={{ x: 8, opacity: 0.95 }}
-            whileTap={{ x: 3 }}
-            href="#about"
-            onClick={(e) => handleSmoothScroll(e, 'about')}
-            aria-label="Mehr über Kira Marie erfahren"
-          >
-            MEHR ERFAHREN
-          </SecondaryButton>
-        </HeroActions>
+      <ContentWrapper>
+        {/* Text und Buttons entfernt, da im Video enthalten */}
       </ContentWrapper>
       
       <TrustBanner>
@@ -231,24 +189,36 @@ const VideoContainer = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -2;
+  z-index: 0; /* Geändert von -2 */
   overflow: hidden;
 `;
 
-const StyledVideo = styled.video`
+const StyledVideo = styled.iframe`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
   object-fit: cover;
   background-color: black; /* Fallback bis Video geladen wird */
+  pointer-events: none; /* Verhindert Maus-Interaktionen mit dem YouTube-Player */
+
+  @media (max-width: 768px) {
+    transform: translate(-50%, -50%) scale(2.2);
+  }
 `;
 
-const VideoOverlay = styled.div`
+const VideoOverlay = styled.div<{ $loaded: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: black; /* Temporärer schwarzer Hintergrund bis Video verfügbar */
+  background: black;
+  opacity: ${({ $loaded }) => ($loaded ? 0 : 1)};
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none; /* Sicherstellen, dass Overlay keine Klicks abfängt */
 `;
 
 const ParallaxBackground = styled(motion.div)`
@@ -293,162 +263,6 @@ const ContentWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-`;
-
-const SubTitle = styled(motion.p)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 4px;
-  color: #cdaffd; /* Lila Farbton für Kontrast auf schwarzem Hintergrund */
-  margin-bottom: 1.2rem;
-  text-shadow: 0 0 15px rgba(205, 175, 253, 0.3);
-`;
-
-const MainTitle = styled(motion.h1)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 5.5rem;
-  font-weight: 800;
-  color: white;
-  margin-bottom: 1.5rem;
-  line-height: 1;
-  letter-spacing: 3px;
-  text-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
-  
-  @media (max-width: 992px) {
-    font-size: 4.5rem;
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 3.5rem;
-    letter-spacing: 2px;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 2.8rem;
-  }
-`;
-
-const GlassmorphicHighlight = styled.span`
-  display: block;
-  color: transparent;
-  background: linear-gradient(135deg, #cdaffd 0%, #b490eb 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  font-style: normal;
-  position: relative;
-  text-shadow: none;
-  filter: drop-shadow(0 0 18px rgba(205, 175, 253, 0.4));
-`;
-
-const Description = styled(motion.p)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.3rem;
-  line-height: 1.7;
-  color: #e6e6e6;
-  font-weight: 400;
-  max-width: 550px;
-  margin: 0 0 3rem auto;
-  letter-spacing: 1.2px;
-  
-  @media (max-width: 992px) {
-    font-size: 1.2rem;
-    max-width: 500px;
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
-    max-width: 450px;
-    margin-bottom: 2.5rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-`;
-
-const HeroActions = styled(motion.div)`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  width: auto;
-  max-width: 550px;
-  
-  @media (max-width: 992px) {
-    gap: 1.5rem;
-  }
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 1.2rem;
-    max-width: 450px;
-  }
-  
-  @media (max-width: 480px) {
-    gap: 1rem;
-    width: 100%;
-  }
-`;
-
-const PrimaryButton = styled(motion.a)`
-  display: inline-block;
-  padding: 12px 30px;
-  background-color: #9370DB; /* Lila Akzentfarbe */
-  color: #ffffff;
-  border-radius: 50px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-
-  /* Wichtig: Hover-Effekt mit der neuen Akzentfarbe anpassen */
-  &:hover {
-    background-color: color-mix(in srgb, #9370DB 85%, black); /* Dunkleres Lila im Hover */
-    box-shadow: 0 8px 25px rgba(147, 112, 219, 0.5); /* Angepasster Shadow mit Lila-Ton */
-    transform: translateY(-2px);
-  }
-`;
-
-const SecondaryButton = styled(motion.a)`
-  display: inline-flex;
-  align-items: center;
-  color: #e6e6e6;
-  text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  transition: all 0.3s ease;
-  padding: 14px 5px;
-  position: relative;
-  
-  &:after {
-    content: '→';
-    margin-left: 8px;
-    transition: transform 0.3s ease;
-  }
-  
-  &:hover {
-    color: white;
-  }
-  
-  &:hover:after {
-    transform: translateX(4px);
-  }
-  
-  &:focus {
-    outline: none;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
 `;
 
 const TrustBanner = styled.div`

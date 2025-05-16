@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaInstagram, FaTwitter, FaLinkedinIn, FaPaperPlane } from 'react-icons/fa';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion'; 
+import { FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa'; 
 import { Icon } from '../common/IconWrapper';
 
 const SectionContainer = styled.section`
@@ -11,6 +11,7 @@ const SectionContainer = styled.section`
   font-family: 'Montserrat', sans-serif; /* Globale Schriftart für die Sektion */
   position: relative; /* Notwendig für absolut positionierte Kindelemente (Parallax) */
   overflow: hidden;   /* Verhindert, dass der Parallax-Hintergrund übersteht */
+  z-index: 1;
 `;
 
 const ParallaxGradientBackground = styled(motion.div)`
@@ -62,39 +63,62 @@ const SectionHeading = styled.h2`
   font-size: 2.8rem;
   font-weight: 700;
   color: #ffffff; /* Weiß für Hauptüberschrift */
+  margin-bottom: 40px; /* Mehr Abstand nach unten */
 `;
 
 const ContactContent = styled.div`
   display: flex;
+  justify-content: center; /* Zentriert den Inhalt, da das Formular wegfällt */
   flex-wrap: wrap;
   gap: 40px;
   text-align: left;
 `;
 
 const ContactInfo = styled(motion.div)`
-  flex: 1;
-  min-width: 300px;
+  flex-basis: 100%; /* Nimmt die volle Breite ein, da es der Hauptinhalt ist */
+  max-width: 600px; /* Begrenzt die maximale Breite für bessere Lesbarkeit */
+  text-align: center; /* Zentriert den Text innerhalb der Info-Box */
 `;
 
 const ContactHeading = styled.h3`
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.8rem; /* Etwas kleiner, da "Kontakt" die Hauptüberschrift ist */
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   color: #ffffff;
+`;
+
+const EmailLink = styled.a`
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem; /* Größer für mehr Prominenz */
+  font-weight: 500;
+  color: #CDAFFD; /* Akzentfarbe */
+  text-decoration: none;
+  padding: 12px 25px;
+  border: 2px solid #CDAFFD;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #CDAFFD;
+    color: #000000;
+  }
 `;
 
 const ContactText = styled.p`
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   line-height: 1.7;
-  margin-bottom: 30px;
-  color: #c0c0c0; /* Etwas dunkleres Grau für Fließtext */
+  margin-bottom: 40px; /* Mehr Abstand zu Social Links */
+  color: #c0c0c0; 
 `;
 
 const SocialLinks = styled.div`
   display: flex;
-  gap: 20px;
+  justify-content: center; /* Zentriert die Social Media Icons */
+  gap: 25px; /* Etwas mehr Abstand */
   margin-bottom: 30px;
 `;
 
@@ -108,279 +132,54 @@ const SocialLink = styled(motion.a)`
   }
 `;
 
-const ContactDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-const ContactLink = styled.a`
-  font-family: 'Montserrat', sans-serif;
-  color: #b0b0b0;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 0.95rem;
-
-  &:hover {
-    color: var(--primary-color, #8A2BE2);
-  }
-`;
-
-const ContactForm = styled(motion.form)`
-  flex: 1;
-  min-width: 300px;
-  background-color: #2a2a2a; /* Leicht hellerer dunkler Hintergrund für Formular */
-  padding: 35px;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-`;
-
-const FormRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 25px;
-`;
-
-const FormGroup = styled.div`
-  flex: 1;
-  min-width: calc(50% - 10px);
-  margin-bottom: 25px;
-  &:last-child {
-    margin-bottom: 0; /* Entfernt doppelten Abstand wenn nur eine Gruppe in der Reihe ist */
-  }
-  /* Für Betreff und Nachricht, die volle Breite einnehmen könnten */
-  &.full-width {
-    min-width: 100%;
-  }
-`;
-
-const FormLabel = styled.label`
-  display: block;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #e0e0e0; /* Helle Labelfarbe */
-  margin-bottom: 8px;
-`;
-
-const commonInputStyles = `
-  width: 100%;
-  padding: 14px 18px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  color: #e0e0e0; /* Helle Textfarbe im Input */
-  background-color: #383838; /* Dunkler Hintergrund für Inputs */
-  border: 1px solid #555555; /* Hellerer dunkler Rahmen */
-  border-radius: 8px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
-  &::placeholder {
-    color: #888888; /* Hellerer Platzhalter */
-    opacity: 1;
-    font-family: 'Montserrat', sans-serif;
-  }
-
-  &:focus {
-    outline: none;
-    border-color: var(--primary-color, #8A2BE2);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color, #8A2BE2) 25%, transparent);
-  }
-`;
-
-const FormInput = styled.input`
-  ${commonInputStyles}
-`;
-
-const FormSelect = styled.select`
-  ${commonInputStyles}
-  appearance: none;
-  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23CCCCCC%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E'); /* Pfeilfarbe auf Hellgrau geändert */
-  background-repeat: no-repeat;
-  background-position: right 18px top 50%;
-  background-size: .65em auto;
-  padding-right: 40px;
-`;
-
-const FormTextarea = styled.textarea`
-  ${commonInputStyles}
-  resize: vertical;
-  min-height: 120px;
-`;
-
-const SubmitButton = styled(motion.button)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  padding: 16px 20px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff; /* Heller Text für Button */
-  background-color: #9370DB; /* Lila Akzentfarbe */
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-
-  &:hover:not(:disabled) {
-    background-color: color-mix(in srgb, #9370DB 85%, black); /* Dunkleres Lila im Hover */
-    transform: translateY(-2px);
-  }
-
-  &:disabled {
-    background-color: #555555; /* Dunkleres Grau für disabled Button */
-    color: #999999;
-    cursor: not-allowed;
-  }
-
-  svg {
-    font-size: 1.2em;
-  }
-`;
-
-const SuccessMessage = styled(motion.div)`
-  font-family: 'Montserrat', sans-serif;
-  margin-top: 20px;
-  padding: 15px;
-  background-color: color-mix(in srgb, var(--primary-color, #8A2BE2) 20%, #2a2a2a) ; /* Heller Akzent auf Form-Hintergrund */
-  color: #ffffff; /* Heller Text */
-  border-radius: 8px;
-  text-align: center;
-  font-size: 0.95rem;
-`;
-
 const ContactSection: React.FC = () => {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-  
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  });
+  const sectionRef = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  const gradientX = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
+  const gradientY = useTransform(scrollYProgress, [0, 1], ['-5%', '15%']);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-    
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormState({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
-      
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
-    }, 1500);
-  };
-  
+  const whiteGradientX = useTransform(scrollYProgress, [0, 1], ['15%', '-5%']);
+  const whiteGradientY = useTransform(scrollYProgress, [0, 1], ['10%', '-10%']);
+
+  const contentInView = useInView(sectionRef, { once: true, amount: 0.2 });
+
   return (
-    <SectionContainer ref={sectionRef}>
-      <ParallaxGradientBackground 
-        style={{
-          x: useTransform(scrollYProgress, [0, 1], ['-20%', '20%']),
-          y: useTransform(scrollYProgress, [0, 1], ['-20%', '15%']),
-        }}
-      />
-      <ParallaxWhiteDiagonalGradient
-        style={{
-          x: useTransform(scrollYProgress, [0, 1], ['-25%', '10%']),
-          y: useTransform(scrollYProgress, [0, 1], ['10%', '-25%'])
-        }}
-      />
+    <SectionContainer id="kontakt" ref={sectionRef}>
+      <ParallaxGradientBackground style={{ x: gradientX, y: gradientY }} />
+      <ParallaxWhiteDiagonalGradient style={{ x: whiteGradientX, y: whiteGradientY }} />
       <ContentWrapper>
         <SectionHeader
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: -30 }}
+            animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
         >
-          <SectionHeading>KONTAKT</SectionHeading>
+          <SectionHeading>Kontakt</SectionHeading>
         </SectionHeader>
-        
         <ContactContent>
           <ContactInfo
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <ContactHeading>Sprich mich an</ContactHeading>
+            <ContactHeading>Lassen Sie uns sprechen</ContactHeading>
+            <EmailLink href="mailto:DEINE-EMAIL-ADRESSE-HIER">DEINE-EMAIL-ADRESSE-HIER</EmailLink>
             <ContactText>
-              Hast du Fragen zu meiner Arbeit, möchtest du eine Zusammenarbeit besprechen oder einfach nur Hallo sagen? 
-              Ich freue mich auf deine Nachricht.
+              Ich freue mich darauf, von Ihnen zu hören. Für Projektanfragen, Kooperationen oder einen allgemeinen Austausch – Ihre Nachricht ist willkommen.
             </ContactText>
-            
             <SocialLinks>
-              <SocialLink href="https://instagram.com/kiramariecremer" target="_blank" rel="noopener noreferrer" whileHover={{ y: -5 }}> <Icon icon={FaInstagram} /> </SocialLink>
-              <SocialLink href="https://twitter.com/kiramariecremer" target="_blank" rel="noopener noreferrer" whileHover={{ y: -5 }}> <Icon icon={FaTwitter} /> </SocialLink>
-              <SocialLink href="https://linkedin.com/in/kiramariecremer" target="_blank" rel="noopener noreferrer" whileHover={{ y: -5 }}> <Icon icon={FaLinkedinIn} /> </SocialLink>
+              <SocialLink href="https://www.linkedin.com/in/kiramariecremer/" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
+                <Icon icon={FaLinkedinIn} />
+              </SocialLink>
+              <SocialLink href="https://www.instagram.com/kiramariecremer/" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
+                <Icon icon={FaInstagram} />
+              </SocialLink>
+              {/* Beispiel für weitere Links, falls vorhanden 
+              <SocialLink href="https://twitter.com/deinHandle" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
+                <Icon icon={FaTwitter} />
+              </SocialLink> 
+              */}
             </SocialLinks>
-            
-            <ContactDetails>
-              <ContactLink href="https://newworknow.podcast" target="_blank" rel="noopener noreferrer"> @newworknow.podcast </ContactLink>
-              <ContactLink href="https://linktr.ee/kiramariecremer" target="_blank" rel="noopener noreferrer"> linktr.ee/kiramariecremer </ContactLink>
-            </ContactDetails>
           </ContactInfo>
-          
-          <ContactForm
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            onSubmit={handleSubmit}
-          >
-            <FormRow>
-              <FormGroup>
-                <FormLabel htmlFor="name">Name</FormLabel>
-                <FormInput type="text" name="name" id="name" value={formState.name} onChange={(e) => setFormState(prev => ({ ...prev, name: e.target.value }))} required placeholder="Dein Name" />
-              </FormGroup>
-              <FormGroup>
-                <FormLabel htmlFor="email">Email</FormLabel>
-                <FormInput type="email" name="email" id="email" value={formState.email} onChange={(e) => setFormState(prev => ({ ...prev, email: e.target.value }))} required placeholder="Deine Email-Adresse" />
-              </FormGroup>
-            </FormRow>
-            
-            <FormGroup className="full-width">
-              <FormLabel htmlFor="subject">Betreff</FormLabel>
-              <FormSelect name="subject" id="subject" value={formState.subject} onChange={(e) => setFormState(prev => ({ ...prev, subject: e.target.value }))} required>
-                <option value="">Bitte wählen</option>
-                <option value="allgemein">Allgemeine Anfrage</option>
-                <option value="zusammenarbeit">Zusammenarbeit</option>
-                <option value="vortrag">Vortrags-/Workshopanfrage</option>
-                <option value="anderes">Sonstiges</option>
-              </FormSelect>
-            </FormGroup>
-            
-            <FormGroup className="full-width">
-              <FormLabel htmlFor="message">Nachricht</FormLabel>
-              <FormTextarea name="message" id="message" value={formState.message} onChange={(e) => setFormState(prev => ({ ...prev, message: e.target.value }))} required placeholder="Deine Nachricht..." rows={5} />
-            </FormGroup>
-            
-            <SubmitButton type="submit" disabled={isSubmitting} whileHover={!isSubmitting ? { y: -3 } : {}}>
-              {isSubmitting ? ('WIRD GESENDET...') : (<><Icon icon={FaPaperPlane} /> NACHRICHT SENDEN</>)}
-            </SubmitButton>
-            
-            {submitSuccess && (
-              <SuccessMessage initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
-                Vielen Dank für deine Nachricht! Ich werde mich so schnell wie möglich bei dir melden.
-              </SuccessMessage>
-            )}
-          </ContactForm>
         </ContactContent>
       </ContentWrapper>
     </SectionContainer>

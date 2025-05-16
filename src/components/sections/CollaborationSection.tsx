@@ -2,40 +2,41 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
-interface ActionButtonProps {
-  text: string;
-  link: string;
-  primary?: boolean;
-}
-
-interface CollaborationBoxProps {
+// Vereinfachte Datenstruktur für die Karten
+interface CollaborationCardData {
   imageSrc: string;
-  title: string;
-  subtitle?: string;
-  description: string;
-  actions: ActionButtonProps[];
+  buttonText: string;
+  link: string;
+  buttonColor: string; // Neue Eigenschaft für die Button-Farbe
 }
 
 const SectionContainer = styled.section`
   width: 100%;
-  padding: 100px 20px;
+  padding: 100px 20px 80px 20px; /* Bottom padding erhöht von 100px auf 180px */
   background-color: #000000; 
   color: #ffffff;
   overflow: hidden;
-  position: relative; /* Für Parallax-Hintergrund */
+  position: relative;
+
+  @media (max-width: 991px) {
+    padding: 80px 15px 150px 15px; /* Auch hier anpassen */
+  }
+  @media (max-width: 767px) {
+    padding: 60px 10px 120px 10px; /* Auch hier anpassen */
+  }
 `;
 
 const ParallaxCollaborationGradient = styled(motion.div)`
   position: absolute;
-  top: -18%; /* Etwas weiter nach außen verschoben */
-  left: -78%; /* Etwas weiter nach außen verschoben */
+  top: -18%; 
+  left: -78%; 
   width: 150%; 
   height: 150%;
   background-image: radial-gradient(
     circle at center, 
-    rgba(147, 112, 219, 0.06) 0%,  /* Sehr subtile Akzentfarbe für diese Sektion */
+    rgba(147, 112, 219, 0.06) 0%,
     rgba(147, 112, 219, 0.03) 30%,
-    rgba(0, 0, 0, 0) 60%  /* Ausblenden zu Schwarz */
+    rgba(0, 0, 0, 0) 60%
   );
   background-size: 100% 100%; 
   z-index: 0;
@@ -43,10 +44,11 @@ const ParallaxCollaborationGradient = styled(motion.div)`
 
 const ContentWrapper = styled.div`
   max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative; /* Um über dem Parallax-Hintergrund zu liegen */
+  margin: 0 auto; // Behält den Wrapper zentriert
+  text-align: left; // Textausrichtung für Kinder auf links
+  position: relative;
   z-index: 1;
+  padding: 0 80px; // Fügt seitliches Padding hinzu, damit Text nicht am Rand klebt
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -55,6 +57,7 @@ const SectionTitle = styled(motion.h2)`
   font-weight: 700;
   margin-bottom: 20px;
   color: #ffffff;
+  // margin-left: 0; // Explizit oder durch Entfernen von auto
 
   @media (max-width: 767px) {
     font-size: 2rem; 
@@ -69,49 +72,62 @@ const SectionSubtitle = styled(motion.p)`
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
   line-height: 1.7;
-  max-width: 700px;
-  margin: 0 auto 60px auto;
+  max-width: 700px; // Behält eine maximale Breite für den Lesefluss
+  margin: 0 0 40px 0; // Oben, Rechts, Unten, Links - kein auto mehr für horizontale Zentrierung
   color: #e0e0e0;
+`;
+
+// Neuer Wrapper für den weißen Hintergrund des Grids
+const GridBackground = styled.div`
+  background-color: #ffffff;
+  padding: 60px 40px 40px 40px; 
+  margin-top: 0;
+  width: 100%; // Nimmt die Breite des Elternelements
+  max-width: 1200px; // Zentriert mit maximaler Breite
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #000000; // Rahmen um den weißen Hintergrund
 `;
 
 const BoxesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px; /* Etwas mehr Gap für das neue Design */
-  margin-top: 40px;
+  gap: 30px; /* Erhöhter Abstand zwischen den Karten */
+  max-width: 1200px; /* Begrenzt die Breite des Grids selbst */
+  margin: 0 auto; /* Zentriert das Grid im GridBackground */
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1024px) { /* Tablet */
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 600px) { /* Mobile */
     grid-template-columns: 1fr;
-    gap: 25px; 
+    gap: 30px; /* Erhöhter Abstand zwischen den Karten */
   }
 `;
 
-// Komplette Neugestaltung des BoxItem
 const BoxItem = styled(motion.div)`
-  background-color: #ffffff; /* Heller Hintergrund für den Inhaltsbereich */
-  border-radius: 16px; /* Stärkere Abrundung */
-  overflow: hidden; /* Wichtig, damit das Bild die Abrundung oben übernimmt */
+  // Kein eigener Hintergrund oder Schatten mehr, dient als reiner Container
+  // border-radius: 0; // Bleibt 0, da der Container unsichtbar ist
+  // overflow: hidden; // Entfernen, falls der ActionButton sonst beschnitten wird
   display: flex;
-  flex-direction: column;
-  text-align: left;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  flex-direction: column; // Bild oben, Button unten
+  transition: transform 0.3s ease; // Nur noch Transform, kein Box-Shadow mehr hier
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    transform: translateY(-4px);
+    // Kein Box-Shadow-Change hier mehr
   }
 `;
 
 const CardImageWrapper = styled.div`
   width: 100%;
-  padding-top: 70%; /* Erhöht von 56.25% für ein höheres Bild */
+  padding-top: 100%; /* Quadratische Bilder, wie vom User eingestellt */
   position: relative;
-  background-color: #333; /* Platzhalter-Hintergrund für Bildbereich */
+  background-color: #e0e0e0; /* Heller Platzhalter-Hintergrund */
+  // Optional: leichter Schatten für das Bild selbst
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-radius: 0; // Sicherstellen, dass Bild-Wrapper eckig ist
 `;
 
 const CardImage = styled.img`
@@ -123,68 +139,29 @@ const CardImage = styled.img`
   object-fit: cover;
 `;
 
-const CardContentWrapper = styled.div`
-  padding: 20px; /* Reduziert von 25px */
-  color: #1c1c1c;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1; /* Nimmt verfügbaren Platz ein */
-`;
-
-const BoxTitle = styled.h3`
+// Button-Styling gemäß Bild
+const ActionButton = styled.a<{ buttonColor?: string }>` // Props-Typ für buttonColor
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.3rem;  /* Reduziert von 1.5rem */
-  font-weight: 600;
-  margin-bottom: 6px; /* Reduziert von 8px */
-`;
-
-const BoxSubtitle = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem; /* Reduziert von 0.9rem */
-  color: #555555;
-  margin-bottom: 12px; /* Reduziert von 15px */
-`;
-
-const BoxDescription = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem; /* Reduziert von 0.95rem */
-  line-height: 1.5;
-  color: #333333;
-  margin-bottom: 18px; /* Reduziert von 20px */
-  flex-grow: 1; /* Sorgt dafür, dass Buttons unten bleiben */
-`;
-
-const ActionsWrapper = styled.div`
-  display: flex;
-  gap: 10px;
-  margin-top: auto; /* Drückt Buttons nach unten, wenn Beschreibung kurz ist */
-`;
-
-const ActionButton = styled.a<{ primary?: boolean }>`
-  font-family: 'Montserrat', sans-serif;
-  padding: 8px 16px; /* Reduziert von 10px 20px */
-  border-radius: 8px;
+  display: block; 
+  width: 100%; // Volle Breite des BoxItem
+  padding: 19px 15px;
+  background-color: ${props => props.buttonColor || '#E9D8FD'}; // Dynamische Hintergrundfarbe
+  color:rgb(255, 255, 255); 
+  text-align: center;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
-  text-align: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0; // Reset base margins, position controls offset
+  position: relative; // Erforderlich für left/bottom Verschiebung
+  left: 10px; // Verschiebt den Button um 10px nach rechts
+  bottom: 10px; // Verschiebt den Button um 10px nach oben von seiner Normalposition
 
-  ${props => props.primary ? `
-    background-color: #9370DB; /* Lila für primäre Buttons */
-    color: #ffffff;
-    &:hover {
-      background-color: color-mix(in srgb, #9370DB 85%, black); /* Dunkleres Lila im Hover */
-      transform: scale(1.03);
-    }
-  ` : `
-    background-color: #e0e0e0;
-    color: #1c1c1c;
-    &:hover {
-      background-color: #d0d0d0;
-      transform: scale(1.03);
-    }
-  `}
+  &:hover {
+    background-color: ${props => props.buttonColor === '#FFC8DD' ? '#FFB6D9' : props.buttonColor === '#A2D2FF' ? '#87CEEB' : props.buttonColor === '#BDE0FE' ? '#ADD8E6' : props.buttonColor === '#FEC8D8' ? '#FFC0CB' : '#DBC6F9'}; 
+  }
 `;
 
 const fadeInUp = {
@@ -204,38 +181,30 @@ const CollaborationSection: React.FC = () => {
   const gradientX = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
   const gradientY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
 
-  const boxesData: CollaborationBoxProps[] = [
+  const boxesData: CollaborationCardData[] = [
     {
-      imageSrc: 'https://via.placeholder.com/400x225/333/fff?text=Buch',
-      title: 'Buch: Amazon',
-      subtitle: 'Dein Wegweiser',
-      description: 'Entdecke tiefgreifende Einblicke und Strategien im neuesten Werk.',
-      actions: [{ text: 'Zum Buch', link: '#', primary: true }]
+      imageSrc: '/images/Buch.JPG', // Korrigierter Pfad
+      buttonText: 'Buch',
+      link: 'https://amzn.to/43vzG7R', 
+      buttonColor: '#e53811' // Rot
     },
     {
-      imageSrc: '/images/collaboration/speaker.jpg',
-      title: 'SPEAKER',
-      subtitle: 'Keynotes & Impulse',
-      description: 'Internationale Speakerin für New Work, Digitale Transformation und Führung der Zukunft. Bekannt für energiegeladene und inspirierende Vorträge.',
-      actions: [
-        { text: 'Speaker Profil', link: 'https://disruptingminds.com/speaker/kira-marie-cremer/', primary: true },
-      ]
+      imageSrc: '/images/speaker.JPG', // Korrigierter Pfad
+      buttonText: 'Speaker',
+      link: 'https://nwx.new-work.se/events/nwx23/speaker/kira-marie-cremer', 
+      buttonColor: '#86a4fd' // Blau
     },
     {
-      imageSrc: '/images/placeholder-funke.jpg',
-      title: 'FUNKE MEDIA FEED',
-      subtitle: 'Aktuelle Beiträge & News',
-      description: 'Die neuesten Artikel und Einblicke aus der Zusammenarbeit mit der Funke Mediengruppe. Immer aktuell informiert.',
-      actions: [
-        { text: 'Zum Feed', link: '/kooperationen/funke-feed', primary: false },
-      ]
+      imageSrc: '/images/NWN.PNG', // Platzhalter, ggf. anpassen
+      buttonText: 'New Work Now',
+      link: 'https://disruptingminds.com/speaker/kira-marie-cremer/', 
+      buttonColor: '#ffe83c' // Gelb
     },
     {
-      imageSrc: 'https://via.placeholder.com/400x225/666/fff?text=Koops',
-      title: 'Mediakits / Koops',
-      subtitle: 'Partnerschaften',
-      description: 'Informationen für Kooperationen und gemeinsame Projekte.',
-      actions: [{ text: 'Download', link: '#', primary: true }, { text: 'Kontakt', link: '#'}]
+      imageSrc: '/images/mediakit.JPG', // Platzhalter, ggf. anpassen
+      buttonText: 'Mediakit',
+      link: '#', 
+      buttonColor: '#cdafff' // Lila
     }
   ];
 
@@ -258,35 +227,28 @@ const CollaborationSection: React.FC = () => {
           Zusammenarbeit
         </SectionTitle>
         <SectionSubtitle initial="hidden" animate={titleInView ? "visible" : "hidden"} variants={{...fadeInUp, visible: {...fadeInUp.visible, transition: {...fadeInUp.visible.transition, delay: 0.2}}}}>
-          Entdecke die vielfältigen Möglichkeiten der Zusammenarbeit und wie wir gemeinsam Werte schaffen können.
+          This is your services section. This is a great place to give more information about the services you provide. You can write a general description of what your business offers then add more details below. This section can be adapted for your website.
         </SectionSubtitle>
+      </ContentWrapper>
+      <GridBackground>
         <BoxesGrid>
           {boxesData.map((box, index) => (
             <BoxItem
               key={index}
               initial="hidden"
               animate={titleInView ? "visible" : "hidden"}
-              variants={{...fadeInUp, visible: {...fadeInUp.visible, transition: {...fadeInUp.visible.transition, delay: 0.3 + index * 0.1}}}}
+              variants={{...fadeInUp, visible: {...fadeInUp.visible, transition: {...fadeInUp.visible.transition, delay: 0.4 + index * 0.1}}}}
             >
               <CardImageWrapper>
-                <CardImage src={box.imageSrc} alt={box.title} />
+                <CardImage src={box.imageSrc} alt={box.buttonText} />
               </CardImageWrapper>
-              <CardContentWrapper>
-                <BoxTitle>{box.title}</BoxTitle>
-                {box.subtitle && <BoxSubtitle>{box.subtitle}</BoxSubtitle>}
-                <BoxDescription>{box.description}</BoxDescription>
-                <ActionsWrapper>
-                  {box.actions.map(action => (
-                    <ActionButton href={action.link} key={action.text} primary={action.primary} target="_blank" rel="noopener noreferrer">
-                      {action.text}
-                    </ActionButton>
-                  ))}
-                </ActionsWrapper>
-              </CardContentWrapper>
+              <ActionButton href={box.link} target="_blank" rel="noopener noreferrer" buttonColor={box.buttonColor}>
+                {box.buttonText}
+              </ActionButton>
             </BoxItem>
           ))}
         </BoxesGrid>
-      </ContentWrapper>
+      </GridBackground>
     </SectionContainer>
   );
 };

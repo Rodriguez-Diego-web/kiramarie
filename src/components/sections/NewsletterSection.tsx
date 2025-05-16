@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion';
 
 const NewsletterContainer = styled.section`
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 100px 0;
   position: relative;
   overflow: hidden;
@@ -43,24 +43,17 @@ const Subtitle = styled(motion.p)`
 const FormPlaceholder = styled(motion.div)`
   width: 100%;
   max-width: 600px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  padding: 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  background-color: transparent;
+  border-radius: 16px;
+  padding: 10px;
   margin-top: 20px;
   text-align: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
   
-  /* Platzhalter-Stil bis der Beehiiv-Code eingefügt wird */
-  h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  p {
-    color: #666;
-    margin-bottom: 30px;
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0;
   }
 `;
 
@@ -115,15 +108,21 @@ const NewsletterSection: React.FC = () => {
             }
           }}
         >
-          <h3>Newsletter-Anmeldung</h3>
-          <p>Hier wird der Beehiiv-Newsletter-Embed eingefügt.</p>
-          
-          {/* 
-            HIER DEN BEEHIIV-EMBED-CODE EINFÜGEN
-            
-    
-            />
-          */}
+          <iframe 
+            src="https://embeds.beehiiv.com/81fc6fc1-ddd0-4079-81fb-899807142dfd" 
+            data-test-id="beehiiv-embed" 
+            width="100%" 
+            height="320" 
+            frameBorder="0" 
+            scrolling="no" 
+            style={{ 
+              borderRadius: '12px', 
+              border: '2px solid rgba(205, 175, 253, 0.3)',
+              margin: 0, 
+              backgroundColor: 'transparent'
+            }}
+            title="Kira Marie Newsletter"
+          />
         </FormPlaceholder>
       </ContentWrapper>
     </NewsletterContainer>

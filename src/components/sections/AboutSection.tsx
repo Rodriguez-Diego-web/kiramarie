@@ -34,17 +34,17 @@ const ContentLayoutWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  flex: 0 0 55%; /* Deutlich vergrößert für ein wirklich größeres Bild */
+  flex: 0 0 45%; /* Reduziert von 55% */
   display: flex;
   justify-content: center;
   align-items: center;
   padding-right: 0; /* Padding entfernt für mehr Platz */
 
   img {
-    min-width: 450px; /* Garantiert eine Mindestbreite */
+    min-width: 350px; /* Reduziert von 450px */
     max-width: 100%;
-    min-height: 500px; /* Garantiert eine Mindesthöhe */
-    max-height: 800px; /* Weiter erhöht */
+    min-height: 400px; /* Reduziert von 500px */
+    max-height: 600px; /* Reduziert von 800px */
     height: auto;
     object-fit: cover;
     border-radius: 4px; /* Leichte Abrundung */
@@ -53,7 +53,7 @@ const ImageWrapper = styled.div`
   @media (max-width: 991px) {
     flex-basis: auto; /* Basis zurücksetzen */
     width: 100%;
-    max-width: 550px; /* Bildgröße erhöht */
+    max-width: 450px; /* Reduziert von 550px */
     min-width: auto; /* Min-width zurücksetzen für Mobile */
     padding-right: 0;
     margin-bottom: 30px;
@@ -76,48 +76,36 @@ const TextContent = styled.div`
   z-index: 1;
 `;
 
-const NameTag = styled.div`
-  display: inline-block;
-  background-color: #F4A27E; // Lachs-Orange/Pink
-  color: white;
-  padding: 8px 15px;
-  font-size: 0.9rem; // Kleinere Schrift für den Tag
-  font-weight: 600;
-  border-radius: 4px;
-  margin-bottom: 20px; // Abstand zur Hauptüberschrift
-  font-family: 'Montserrat', sans-serif;
-`;
-
 const Heading = styled.h2`
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.6rem; /* Ca. 26px */
-  line-height: 1.45;
-  margin-bottom: 25px;
-  font-weight: 300; /* Helleres Basisgewicht für den nicht-fetten Teil */
+  font-size: 1.4rem; /* Reduziert von 1.6rem */
+  line-height: 1.4;
+  margin-bottom: 20px; /* Reduziert von 25px */
+  font-weight: 300; 
   color: #1c1c1c;
 
   strong {
-    font-weight: 600; /* Fetter für den ersten Teil */
+    font-weight: 600; 
   }
 
   @media (max-width: 991px) {
-    font-size: 1.4rem;
+    font-size: 1.25rem; /* Reduziert von 1.4rem */
   }
   @media (max-width: 767px) {
-    font-size: 1.25rem;
-    margin-bottom: 20px;
+    font-size: 1.1rem; /* Reduziert von 1.25rem */
+    margin-bottom: 15px; /* Reduziert von 20px */
   }
 `;
 
 const Paragraph = styled.p`
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem; /* Ca. 15px */
-  line-height: 1.8;
+  font-size: 0.85rem; /* Reduziert von 0.95rem */
+  line-height: 1.7;
   color: #333333;
-  margin-bottom: 20px; // Platz vor eventuellen Tags/Stats
+  margin-bottom: 15px; /* Reduziert von 20px */
   
   @media (max-width: 767px) {
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* Reduziert von 0.9rem */
   }
 `;
 
@@ -179,10 +167,11 @@ const AboutSection: React.FC = () => {
         </ImageWrapper>
         <TextWrapper>
           <TextContent>
-            {name && <NameTag>{name}</NameTag>} 
             
             <Heading>
-              {name && <strong>{name}</strong>} {headlineMain}
+              {name && <strong>{name}</strong>}
+              {name && headlineMain && <br />}
+              {headlineMain}
             </Heading>
             
             {body && <Paragraph dangerouslySetInnerHTML={{ __html: body.replace(/\n/g, '<br />') }} />} 

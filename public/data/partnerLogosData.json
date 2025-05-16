@@ -18,27 +18,33 @@
     "order": 30
   },
   {
-    "name": "Cosmopolitan",
+    "name": "Funke",
     "image": "/uploads/1.png",
-    "alt_text": "Cosmopolitan Logo",
+    "alt_text": "Funke Logo",
     "order": 40
   },
   {
-    "name": "Funke Mediengruppe",
+    "name": "N-tv",
     "image": "/uploads/2.png",
-    "alt_text": "Funke Mediengruppe Logo",
+    "alt_text": "Ntv Logo",
     "order": 50
   },
   {
-    "name": "Horizont",
+    "name": "Cosmopolitan",
     "image": "/uploads/3.png",
-    "alt_text": "Horizont Logo",
+    "alt_text": "Cosmopolitan Logo",
     "order": 60
   },
   {
-    "name": "n-tv",
+    "name": "Horizont",
     "image": "/uploads/4.png",
-    "alt_text": "n-tv Logo",
+    "alt_text": "Horizonzt Logo",
     "order": 70
+  },
+  {
+    "name": "myself",
+    "image": "/uploads/myself.png",
+    "alt_text": "Myself Logo",
+    "order": 100
   }
 ]

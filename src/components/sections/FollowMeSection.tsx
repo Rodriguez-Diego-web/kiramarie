@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { FaLinkedin, FaInstagram, FaUserTie, FaSpotify } from 'react-icons/fa'; // Beispiel-Icons
 
 const SectionContainer = styled.section`
-  background-color: #111111; /* Dunkler Hintergrund, fast schwarz */
-  padding: 80px 20px 120px;
+  background-color:rgb(255, 255, 255); /* Dunkler Hintergrund, fast schwarz */
+  padding: 40px 20px 60px; /* Reduziertes Padding */
   color: #ffffff; /* Weiße Schriftfarbe für Kontrast */
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -14,32 +14,11 @@ const SectionContainer = styled.section`
   margin-top: -1px; /* Verhindert mögliche Lücke zum vorherigen Element */
 `;
 
-const ParallaxBackgroundPattern = styled(motion.div)`
-  position: absolute;
-  top: -50px;
-  left: 0;
-  width: 100%;
-  height: calc(100% + 100px); /* Höhe erhöht und extra Raum oben und unten */
-  background-image: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px); /* Deutlicheres Muster: 20% Deckkraft, 1px Größe */
-  background-size: 30px 30px; /* Etwas größere Punkte zum Testen */
-  z-index: 0; /* Hinter dem Inhalt */
-`;
-
 const ContentWrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   position: relative; /* Um über dem Parallax-Pattern zu liegen */
   z-index: 1;       /* Stellt sicher, dass der Inhalt oben ist */
-`;
-
-const SectionTitle = styled(motion.h2)`
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 50px;
-  text-transform: uppercase;
-  @media (max-width: 767px) {
-    font-size: 2.2rem; 
-  }
 `;
 
 const SocialLinksGrid = styled(motion.div)`
@@ -54,13 +33,13 @@ const SocialLinksGrid = styled(motion.div)`
   }
 `;
 
-const SocialLinkItem = styled(motion.a)`
+const StyledLinkCard = styled(motion.a)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.05); 
+  background-color: rgba(67, 63, 63, 0.05); 
   border-radius: 12px;
   text-decoration: none;
   color: #ffffff;
@@ -68,35 +47,36 @@ const SocialLinkItem = styled(motion.a)`
   width: 100%; 
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(66, 65, 65, 0.1);
     transform: translateY(-5px) scale(1.02); /* Leichte Skalierung beim Hover */
-    svg {
-      transform: scale(1.15) rotate(-8deg); /* Icon-Animation beim Hover */
-    }
   }
+`;
 
-  svg {
-    font-size: 3rem; 
-    margin-bottom: 15px;
-    color: #9370DB; 
-    transition: transform 0.3s ease; /* Wichtig für sanfte Icon-Animation */
-  }
-
-  span {
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center; 
-  }
-
-  .follower-count {
-    font-size: 0.8rem;
-    color: #b0b0b0; /* Helleres Grau für die Follower-Zahl */
-    margin-top: 5px;
-  }
+const PlatformIcon = styled.div<{
+  bgColor?: string;
+  hoverColor?: string;
+}>`
+  font-size: 1.8rem; /* Verkleinert von 2.2rem */
+  margin-bottom: 8px; /* Reduziert von 10px */
+  transition: color 0.3s ease;
+  color: ${({ color }) => color || '#CDAFFD'}; /* Standardfarbe, falls keine spezifische Farbe */
 
   @media (max-width: 767px) {
-    height: 160px; 
+    font-size: 1.6rem; /* Verkleinert für Mobile */
   }
+`;
+
+const PlatformName = styled.span`
+  font-size: 0.85rem; /* Verkleinert von 0.9rem */
+  font-weight: 500;
+  color:rgb(31, 31, 31); /* Etwas helleres Grau für bessere Lesbarkeit auf dunklem Grund */
+  text-align: center;
+`;
+
+const FollowerCount = styled.span`
+  font-size: 0.75rem; /* Kleinere Schrift für Follower */
+  color: #A0A0A0; /* Dezente Farbe für Follower */
+  margin-top: 4px;
 `;
 
 interface SocialDisplayDataItem {
@@ -110,17 +90,18 @@ interface SocialPlatform {
   icon: JSX.Element;
   url: string;
   followers?: string | null;
+  color?: string;
 }
 
 const baseSocialPlatforms: SocialPlatform[] = [
-  { name: 'LinkedIn', icon: <FaLinkedin />, url: 'https://de.linkedin.com/in/kiramariecremer', followers: 'Lade...' }, 
-  { name: 'Instagram', icon: <FaInstagram />, url: '#', followers: 'Lade...' },
+  { name: 'LinkedIn', icon: <FaLinkedin />, url: 'https://de.linkedin.com/in/kiramariecremer', followers: 'Lade...', color: '#0077B5' }, 
+  { name: 'Instagram', icon: <FaInstagram />, url: '#', followers: 'Lade...', color: '#FF69B4' },
   { name: 'Speaker Profil', icon: <FaUserTie />, url: 'https://disruptingminds.com/speaker/kira-marie-cremer/' }, 
-  { name: 'Spotify', icon: <FaSpotify />, url: '#', followers: 'Lade...' },
+  { name: 'Spotify', icon: <FaSpotify />, url: '#', followers: 'Lade...', color: '#1DB954' },
 ];
 
 const FollowMeSection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const [socialPlatformData, setSocialPlatformData] = useState<SocialPlatform[]>(baseSocialPlatforms);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -151,32 +132,18 @@ const FollowMeSection: React.FC = () => {
       });
   }, []);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const patternY = useTransform(scrollYProgress, [0, 1], ['-50%', '50%']);
-  const titleInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const titleInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   return (
     <SectionContainer ref={sectionRef} id="folge-mir">
-      <ParallaxBackgroundPattern style={{ y: patternY }} />
       <ContentWrapper>
-        <SectionTitle
-          initial={{ opacity: 0, y: -20 }}
-          animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-          transition={{ duration: 0.5 }}
-        >
-          Folge Mir
-        </SectionTitle>
         <SocialLinksGrid
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial="hidden"
+          animate={titleInView ? "visible" : "hidden"}
           transition={{ duration: 0.5, delay: 0.2, staggerChildren: 0.1 }}
         >
           {socialPlatformData.map((platform, index) => (
-            <SocialLinkItem
+            <StyledLinkCard
               key={platform.name}
               href={platform.url}
               target="_blank"
@@ -186,20 +153,12 @@ const FollowMeSection: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 + 0.3 }}
             >
-              {platform.icon}
-              <span>{platform.name}</span>
-              {platform.followers && (
-                <motion.span
-                  className="follower-count"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 + 0.5 }}
-                >
-                  {isLoading ? 'Lade...' : platform.followers}
-                </motion.span>
-              )}
-            </SocialLinkItem>
+              <PlatformIcon color={platform.color}>
+                {platform.icon}
+              </PlatformIcon>
+              <PlatformName>{platform.name}</PlatformName>
+              {platform.followers && <FollowerCount>{isLoading ? 'Lade...' : platform.followers}</FollowerCount>} 
+            </StyledLinkCard>
           ))}
         </SocialLinksGrid>
       </ContentWrapper>

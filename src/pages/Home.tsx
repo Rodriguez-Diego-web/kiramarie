@@ -107,13 +107,13 @@ const Home: React.FC = () => {
       <SectionsWithDiagonalWrapper>
         <SharedDiagonalLine />
         <AboutSection />
+        <FollowMeSection />
         <NewsletterSection />
       </SectionsWithDiagonalWrapper>
       <CollaborationSection />
+      <TestimonialsSection />
       <ContactSection />
       <MediaSection />
-      <TestimonialsSection />
-      <FollowMeSection />
     </HomeContainer>
   );
 };

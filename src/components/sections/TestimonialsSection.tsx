@@ -12,7 +12,7 @@ interface TestimonialItem {
 
 const SectionContainer = styled.section`
   background-color: #f9f9f9; // Heller Hintergrund zur Abwechslung
-  padding: 80px 20px;
+  padding: 60px 20px;
   color: #333;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -39,36 +39,37 @@ const TestimonialsGrid = styled(motion.div)`
 `;
 
 const TestimonialCard = styled(motion.div)`
-  background-color: #ffffff;
-  border-radius: 12px;
+  background-color: #ffffff; 
   padding: 30px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); 
   text-align: left;
+  height: 100%; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between; // Sorgt dafür, dass der Autor unten bleibt
-  min-height: 250px; // Mindesthöhe für gleichmäßigere Karten
+  justify-content: space-between;
 
   blockquote {
-    margin: 0;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     line-height: 1.7;
-    color: #444;
-    font-style: italic;
-    position: relative;
-    padding-left: 25px;
+    color: #333333; /* Explizit dunkle Farbe für Zitate */
     margin-bottom: 20px;
+    font-style: italic;
+    flex-grow: 1;
 
     &::before {
-      content: '\"'; // Unicode für linkes doppeltes Anführungszeichen
-      font-family: 'Georgia', serif; // Eine Serif-Schrift für Anführungszeichen
-      font-size: 3rem;
-      color: #9370DB; // Passend zum Farbschema
-      position: absolute;
-      left: -5px;
-      top: -15px;
-      opacity: 0.8;
+      content: '“';
+      font-size: 2.5em;
+      color: #CDAFFD; 
+      font-weight: bold;
+      line-height: 0.1;
+      margin-right: 5px;
+      vertical-align: -0.3em;
     }
+  }
+
+  @media (max-width: 767px) {
+    padding: 20px;
   }
 `;
 
@@ -89,58 +90,73 @@ const AuthorImage = styled.img`
 `;
 
 const AuthorDetails = styled.div`
+  text-align: left;
+  
   p {
     margin: 0;
     line-height: 1.4;
   }
+
   .author-name {
     font-weight: 600;
-    color: #1a1a1a;
+    color: #333333; /* Sicherstellen, dass Name dunkel ist */
+    font-size: 0.9em;
   }
+
   .author-position {
-    font-size: 0.9rem;
-    color: #777;
+    font-size: 0.8em;
+    color: #555555; /* Sicherstellen, dass Position dunkel ist */
+    font-style: italic;
   }
 `;
 
 const TestimonialsSection: React.FC = () => {
   const [testimonials, setTestimonials] = useState<TestimonialItem[]>([]);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const titleInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const sectionRef = useRef<HTMLDivElement>(null); 
+  // const titleInView = useInView(sectionRef, { once: true, amount: 0.2 }); // Vorübergehend auskommentieren
+
+  console.log('TestimonialsSection RENDERED. Testimonials length:', testimonials.length); // NEU
 
   useEffect(() => {
+    console.log('TestimonialsSection useEffect: Fetching data...'); // NEU
     fetch('/data/testimonialsData.json')
-      .then(response => response.json())
-      .then(data => setTestimonials(data))
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('TestimonialsSection useEffect: Data fetched successfully:', data); // NEU
+        setTestimonials(data);
+      })
       .catch(error => console.error('Error fetching testimonials data:', error));
   }, []);
 
   if (!testimonials.length) {
+    console.log('TestimonialsSection: No testimonials, returning null.'); // NEU
     return null;
   }
+
+  console.log('TestimonialsSection: Rendering with testimonials:', testimonials); // NEU
+
 
   return (
     <SectionContainer ref={sectionRef} id="testimonials">
       <SectionTitle
-        initial={{ opacity: 0, y: -20 }}
-        animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-        transition={{ duration: 0.6 }}
+        // initial={{ opacity: 0, y: -20 }} // Animationen für den Titel auch erstmal raus
+        // animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+        // transition={{ duration: 0.6 }}
       >
         Das sagen meine Kunden
       </SectionTitle>
       <TestimonialsGrid
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.5, delay: 0.3, staggerChildren: 0.15 }}
+      // Alle Animations-Props sind hier ja schon entfernt
       >
         {testimonials.map((testimonial, index) => (
           <TestimonialCard
             key={testimonial.author + index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.1 + 0.4 }}
+          // Alle Animations-Props sind hier ja schon entfernt
           >
             <blockquote dangerouslySetInnerHTML={{ __html: testimonial.quote.replace(/\n/g, '<br />') }} />
             <AuthorInfo>
