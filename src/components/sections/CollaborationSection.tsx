@@ -240,7 +240,7 @@ const CollaborationSection: React.FC = () => {
   ];
 
   return (
-    <SectionContainer ref={sectionRef}>
+    <SectionContainer id="zusammenarbeit" ref={sectionRef}>
       <ParallaxCollaborationGradient 
         style={{
           x: gradientX,
