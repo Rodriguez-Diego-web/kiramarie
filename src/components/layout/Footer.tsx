@@ -194,7 +194,7 @@ const Footer: React.FC = () => {
         <FooterBottom>
           <Copyright>&copy; {currentYear} Kira Marie. Alle Rechte vorbehalten.</Copyright>
           
-          <CreatedBy>Designed with ♥ in Germany</CreatedBy>
+          <CreatedBy>Designed with ♥ by Diego Rodriguez Web</CreatedBy>
         </FooterBottom>
       </Container>
     </FooterWrapper>
@@ -205,7 +205,7 @@ const FooterWrapper = styled.footer`
   background-color: #0a0a0a;
   padding: 4rem 0 2rem;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   z-index: 1;
 `;
 
@@ -236,8 +236,10 @@ const NewsletterSection = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   padding: 2.5rem;
   border-radius: 16px;
-  margin-top: 0;
+  margin-top: -2rem;
   margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
   
   @media (max-width: 768px) {
     flex-direction: column;
