@@ -20,9 +20,11 @@ const Footer: React.FC = () => {
   return (
     <FooterWrapper>
       <FooterGradient />
-      <Container>
-        {/* Newsletter Section */}
-        <NewsletterSection>
+      {/* Lila Hintergrundstreifen für den Newsletter */}
+      <NewsletterBackground>
+        <Container>
+          {/* Newsletter Section */}
+          <NewsletterSection>
           <NewsletterContent>
             <NewsletterHeading>Newsletter abonnieren</NewsletterHeading>
             <NewsletterDescription>
@@ -45,8 +47,11 @@ const Footer: React.FC = () => {
               <FaArrowRight />
             </SubscribeButton>
           </NewsletterForm>
-        </NewsletterSection>
-
+          </NewsletterSection>
+        </Container>
+      </NewsletterBackground>
+      
+      <Container>
         {/* Main Footer Content */}
         <FooterContent>
           <BrandColumn>
@@ -207,6 +212,7 @@ const FooterWrapper = styled.footer`
   position: relative;
   overflow: visible;
   z-index: 1;
+  margin-top: 6rem; /* Verschiebt den schwarzen Hintergrund nach unten */
 `;
 
 const FooterGradient = styled.div`
@@ -218,6 +224,14 @@ const FooterGradient = styled.div`
   border-radius: 50%;
   background: radial-gradient(circle, rgba(205, 175, 253, 0.15) 0%, rgba(205, 175, 253, 0) 70%);
   z-index: -1;
+`;
+
+const NewsletterBackground = styled.div`
+  background: linear-gradient(90deg, rgba(147, 112, 219, 0.2) 0%, rgba(147, 112, 219, 0.3) 50%, rgba(147, 112, 219, 0.2) 100%);
+  padding: 0;
+  width: 100%;
+  position: relative;
+  overflow: visible;
 `;
 
 const Container = styled.div`
@@ -236,7 +250,7 @@ const NewsletterSection = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   padding: 2.5rem;
   border-radius: 16px;
-  margin-top: -2rem;
+  margin-top: -12rem; /* Stärkere negative margin, um auf derselben Position zu bleiben */
   margin-bottom: 4rem;
   position: relative;
   z-index: 2;
@@ -246,6 +260,7 @@ const NewsletterSection = styled.div`
     padding: 2rem;
     text-align: center;
     gap: 1.5rem;
+    margin-top: -10rem;
   }
 `;
 
@@ -274,6 +289,7 @@ const NewsletterForm = styled.form`
   max-width: 400px;
   width: 100%;
   position: relative;
+  align-items: center;
 `;
 
 const NewsletterInput = styled.input`
@@ -286,6 +302,7 @@ const NewsletterInput = styled.input`
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.95rem;
+  height: 46px;
   
   &::placeholder {
     color: rgba(255, 255, 255, 0.5);
@@ -301,8 +318,9 @@ const NewsletterInput = styled.input`
 const SubscribeButton = styled(motion.button)`
   position: absolute;
   right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
+  margin: auto;
   background: linear-gradient(135deg, #cdaffd 0%, #9370DB 100%);
   color: white;
   border: none;

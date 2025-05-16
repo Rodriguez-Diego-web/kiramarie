@@ -5,20 +5,21 @@ import { FaLinkedin, FaInstagram, FaUserTie, FaSpotify } from 'react-icons/fa'; 
 
 const SectionContainer = styled.section`
   background-color: #111111; /* Dunkler Hintergrund, fast schwarz */
-  padding: 80px 20px;
+  padding: 80px 20px 120px;
   color: #ffffff; /* Weiße Schriftfarbe für Kontrast */
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   position: relative; /* Für Parallax-Kindelement */
   overflow: hidden; /* Verhindert, dass Pattern übersteht */
+  margin-top: -1px; /* Verhindert mögliche Lücke zum vorherigen Element */
 `;
 
 const ParallaxBackgroundPattern = styled(motion.div)`
   position: absolute;
-  top: 0;
+  top: -50px;
   left: 0;
   width: 100%;
-  height: 150%; /* Testweise Höhe erhöht */
+  height: calc(100% + 100px); /* Höhe erhöht und extra Raum oben und unten */
   background-image: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px); /* Deutlicheres Muster: 20% Deckkraft, 1px Größe */
   background-size: 30px 30px; /* Etwas größere Punkte zum Testen */
   z-index: 0; /* Hinter dem Inhalt */
