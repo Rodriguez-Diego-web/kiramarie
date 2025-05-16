@@ -1,9 +1,13 @@
 import React, { useState, useRef, useEffect, memo, useMemo } from 'react';
 import styled from 'styled-components';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import signalIduna from '../../assets/images/partner/2560px-Signal-iduna-250x43.png';
-import digitalXLogo from '../../assets/images/partner/digitalx_logo_disruptingminds-250x41.png';
-import sparkasseLogo from '../../assets/images/partner/sparkasse_koelnbonn_logo_disruptingminds-250x110.png';
+
+interface PartnerLogo {
+  name: string;
+  image: string;
+  alt_text: string;
+  order?: number;
+}
 
 type FloatingCircleProps = {
   size: number;
@@ -17,7 +21,20 @@ const HeroSection: React.FC = () => {
   const { scrollY } = useScroll();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
-  
+  const [partnerLogos, setPartnerLogos] = useState<PartnerLogo[]>([]);
+
+  useEffect(() => {
+    fetch('/data/partnerLogosData.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => setPartnerLogos(data))
+      .catch(error => console.error('Error fetching partner logos data:', error));
+  }, []);
+
   const backgroundY = useTransform(scrollY, [0, 500], [0, 150]);
   const textY = useTransform(scrollY, [0, 500], [0, -50]);
   const opacityText = useTransform(scrollY, [0, 300], [1, 0.2]);
@@ -155,23 +172,13 @@ const HeroSection: React.FC = () => {
         <TrustLabel>BEKANNT AUS</TrustLabel>
         <MarqueeWrapper>
           <MarqueeTrack>
-            {Array(10).fill(null).map((_, groupIndex) => (
+            {partnerLogos.length > 0 && Array(3).fill(null).map((_, groupIndex) => (
               <MarqueeGroup key={`group-${groupIndex}`}>
-                <LogoItem>
-                  <MediaLogo src={signalIduna} alt="Signal Iduna" />
-                </LogoItem>
-                <LogoItem>
-                  <MediaLogo src={digitalXLogo} alt="Digital X" />
-                </LogoItem>
-                <LogoItem>
-                  <MediaLogo src={sparkasseLogo} alt="Sparkasse Köln Bonn" />
-                </LogoItem>
-                <LogoItem>
-                  <MediaLogo src={signalIduna} alt="Signal Iduna" />
-                </LogoItem>
-                <LogoItem>
-                  <MediaLogo src={digitalXLogo} alt="Digital X" />
-                </LogoItem>
+                {partnerLogos.map((logo) => (
+                  <LogoItem key={logo.name}>
+                    <MediaLogo src={logo.image} alt={logo.alt_text} />
+                  </LogoItem>
+                ))}
               </MarqueeGroup>
             ))}
           </MarqueeTrack>
@@ -523,8 +530,9 @@ const LogoItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 120px;
-  padding: 0 0.8rem;
+  height: 50px;     /* Beibehaltung der Gesamthöhenbeschränkung */
+  width: 160px;     /* Jedem Logo-Slot eine konsistente Breite geben */
+  flex-shrink: 0;   /* Schrumpfen im Flex-Layout der MarqueeGroup verhindern */
   opacity: 0.85;
   transition: all 0.4s ease;
   
@@ -541,13 +549,11 @@ const LogoItem = styled.div`
 `;
 
 const MediaLogo = styled.img`
-  height: auto;
-  max-height: 35px;
-  width: auto;
-  max-width: 180px;
+  max-height: 100%; /* Passt in die 50px Höhe des LogoItem */
+  max-width: 100%;  /* Passt in die 160px Breite des LogoItem */
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  filter: grayscale(100%) brightness(300%) contrast(0%);
+  opacity: 0.7;
 `;
 
-// Optimiert für bessere Performance und UX Standards
-export default memo(HeroSection); // DRWEB-KM2025
+export default memo(HeroSection);

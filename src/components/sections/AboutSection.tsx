@@ -121,12 +121,11 @@ const Paragraph = styled.p`
   }
 `;
 
-// Interface für die Datenstruktur der "Über Mich"-Seite
 interface AboutPageData {
   name: string;
   headlineMain: string;
   profile_image: string;
-  body: string; // Geändert von bio zu body
+  body: string;
   page_title: string;
 }
 

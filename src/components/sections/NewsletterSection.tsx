@@ -121,15 +121,7 @@ const NewsletterSection: React.FC = () => {
           {/* 
             HIER DEN BEEHIIV-EMBED-CODE EINFÜGEN
             
-            Beispiel (zu ersetzen mit dem tatsächlichen Code):
-            <iframe 
-              src="https://embeds.beehiiv.com/DEINE-PUBLIKATIONS-ID" 
-              data-test-id="beehiiv-embed" 
-              width="100%" 
-              height="320" 
-              frameBorder="0" 
-              scrolling="no" 
-              style={{borderRadius: '4px'}}
+    
             />
           */}
         </FormPlaceholder>

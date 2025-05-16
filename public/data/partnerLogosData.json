@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Signal Iduna",
+    "image": "/uploads/2560px-Signal-iduna-250x43.png",
+    "alt_text": "Signal Iduna Logo",
+    "order": 10
+  },
+  {
+    "name": "Digital X",
+    "image": "/uploads/digitalx_logo_disruptingminds-250x41.png",
+    "alt_text": "Digital X Logo",
+    "order": 20
+  },
+  {
+    "name": "Sparkasse Köln Bonn",
+    "image": "/uploads/sparkasse_koelnbonn_logo_disruptingminds-250x110.png",
+    "alt_text": "Sparkasse Köln Bonn Logo",
+    "order": 30
+  },
+  {
+    "name": "Cosmopolitan",
+    "image": "/uploads/1.png",
+    "alt_text": "Cosmopolitan Logo",
+    "order": 40
+  },
+  {
+    "name": "Funke Mediengruppe",
+    "image": "/uploads/2.png",
+    "alt_text": "Funke Mediengruppe Logo",
+    "order": 50
+  },
+  {
+    "name": "Horizont",
+    "image": "/uploads/3.png",
+    "alt_text": "Horizont Logo",
+    "order": 60
+  },
+  {
+    "name": "n-tv",
+    "image": "/uploads/4.png",
+    "alt_text": "n-tv Logo",
+    "order": 70
+  }
+]

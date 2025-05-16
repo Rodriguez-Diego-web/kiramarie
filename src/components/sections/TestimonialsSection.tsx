@@ -2,14 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { motion, useInView } from 'framer-motion';
 
-// Interface für die Testimonial-Daten
 interface TestimonialItem {
   author: string;
   position?: string | null;
-  quote: string; // Markdown-formatierter String
+  quote: string;
   image?: string | null;
   order?: number;
-  // id?: string; // Falls wir später eine ID benötigen
 }
 
 const SectionContainer = styled.section`
@@ -118,9 +116,7 @@ const TestimonialsSection: React.FC = () => {
   }, []);
 
   if (!testimonials.length) {
-    // Optional: Ladezustand oder Fallback, wenn keine Testimonials vorhanden sind
-    // return <SectionContainer><p>Loading testimonials...</p></SectionContainer>;
-    return null; // Oder nichts rendern, bis Daten da sind
+    return null;
   }
 
   return (
@@ -140,14 +136,12 @@ const TestimonialsSection: React.FC = () => {
       >
         {testimonials.map((testimonial, index) => (
           <TestimonialCard
-            key={testimonial.author + index} // Eindeutiger Key, falls Autoren mehrfach vorkommen
+            key={testimonial.author + index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 + 0.4 }}
           >
-            {/* Die 'quote' ist Markdown, daher dangerouslySetInnerHTML, oder Markdown-Parser verwenden */}
-            {/* Für Sicherheit und bessere Kontrolle wäre ein Markdown-Parser (z.B. 'marked' oder 'react-markdown') besser */}
             <blockquote dangerouslySetInnerHTML={{ __html: testimonial.quote.replace(/\n/g, '<br />') }} />
             <AuthorInfo>
               {testimonial.image && <AuthorImage src={testimonial.image} alt={testimonial.author} />}

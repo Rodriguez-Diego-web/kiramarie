@@ -31,9 +31,9 @@ const ParallaxGradientBackground = styled(motion.div)`
 
 const ParallaxWhiteDiagonalGradient = styled(motion.div)`
   position: absolute;
-  top: -30%; /* Kann leicht variieren für unterschiedliche Effekte */
+  top: -30%;
   left: -30%;
-  width: 160%; /* Etwas größer für breitere Bewegung */
+  width: 160%;
   height: 160%;
   background-image: radial-gradient(
     circle at center,
@@ -273,7 +273,6 @@ const ContactSection: React.FC = () => {
     event.preventDefault();
     setIsSubmitting(true);
     
-    // Simulating form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
@@ -295,13 +294,13 @@ const ContactSection: React.FC = () => {
       <ParallaxGradientBackground 
         style={{
           x: useTransform(scrollYProgress, [0, 1], ['-20%', '20%']),
-          y: useTransform(scrollYProgress, [0, 1], ['-20%', '15%']), // Leichte Variation zur y-Bewegung
+          y: useTransform(scrollYProgress, [0, 1], ['-20%', '15%']),
         }}
       />
       <ParallaxWhiteDiagonalGradient
         style={{
-          x: useTransform(scrollYProgress, [0, 1], ['-25%', '10%']), // z.B. von links nach rechts
-          y: useTransform(scrollYProgress, [0, 1], ['10%', '-25%']), // z.B. von unten nach oben
+          x: useTransform(scrollYProgress, [0, 1], ['-25%', '10%']),
+          y: useTransform(scrollYProgress, [0, 1], ['10%', '-25%'])
         }}
       />
       <ContentWrapper>
@@ -363,7 +362,6 @@ const ContactSection: React.FC = () => {
                 <option value="allgemein">Allgemeine Anfrage</option>
                 <option value="zusammenarbeit">Zusammenarbeit</option>
                 <option value="vortrag">Vortrags-/Workshopanfrage</option>
-                {/* <option value="studie">Frage zur Studie</option> Entfernt, da Studie-Sektion gelöscht wurde */}
                 <option value="anderes">Sonstiges</option>
               </FormSelect>
             </FormGroup>

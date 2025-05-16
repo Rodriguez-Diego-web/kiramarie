@@ -30,13 +30,11 @@ exports.handler = async (event, context) => {
       // Für Podcasts ist oft item.enclosure[0].$.url der Link zur Audiodatei.
       // Und item.itunes:summary oder item.description für die Beschreibung.
 
-      // Beispielhafte, generische Extraktion (muss für den echten Feed angepasst werden!)
       const title = item.title && item.title[0] ? item.title[0] : 'Kein Titel';
       const link = item.link && item.link[0] ? item.link[0] : '#';
       const pubDate = item.pubDate && item.pubDate[0] ? item.pubDate[0] : new Date().toISOString();
       let description = (item.description && item.description[0]) || (item['content:encoded'] && item['content:encoded'][0]) || '';
-      // Manchmal ist die Beschreibung in CDATA, xml2js sollte das standardmäßig handhaben
-      if (typeof description === 'object' && description._) { // Prüfen ob es ein Objekt mit _ Property ist (CDATA)
+      if (typeof description === 'object' && description._) {
         description = description._;
       }
 
@@ -44,7 +42,6 @@ exports.handler = async (event, context) => {
         ? result.rss.channel[0].title[0]
         : 'Funke Mediengruppe';
 
-      // Datumsformatierung (Beispiel)
       const formattedDate = new Date(pubDate).toLocaleDateString('de-DE', {
         day: '2-digit',
         month: 'long',
@@ -54,9 +51,8 @@ exports.handler = async (event, context) => {
       return {
         id: (item.guid && item.guid[0] && (typeof item.guid[0] === 'string' ? item.guid[0] : item.guid[0]._)) || link || `item-${index}`,
         title: title,
-        description: description.substring(0, 200) + (description.length > 200 ? '...' : ''), // Kürze Beschreibung für die Übersicht
-        link: link, // Bei Podcasts könnte dies die Seite zum Podcast-Eintrag sein
-        // audioUrl: item.enclosure && item.enclosure[0] && item.enclosure[0].$.url ? item.enclosure[0].$.url : null, // Für Podcast-Player
+        description: description.substring(0, 200) + (description.length > 200 ? '...' : ''),
+        link: link,
         date: `Veröffentlicht: ${formattedDate}`,
         source: `Quelle: ${source}`,
       };
@@ -66,9 +62,9 @@ exports.handler = async (event, context) => {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', // Für lokale Entwicklung, später ggf. einschränken
+        'Access-Control-Allow-Origin': '*',
       },
-      body: JSON.stringify(formattedItems.slice(0, 10)), // Begrenze auf die neuesten 10 Einträge
+      body: JSON.stringify(formattedItems.slice(0, 10)),
     };
 
   } catch (error) {

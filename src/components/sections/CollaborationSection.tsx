@@ -201,8 +201,8 @@ const CollaborationSection: React.FC = () => {
     offset: ['start end', 'end start'],
   });
 
-  const gradientX = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']); /* Bewegung leicht reduziert */
-  const gradientY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']); /* Bewegung leicht reduziert */
+  const gradientX = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
+  const gradientY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
 
   const boxesData: CollaborationBoxProps[] = [
     {
@@ -222,12 +222,12 @@ const CollaborationSection: React.FC = () => {
       ]
     },
     {
-      imageSrc: '/images/placeholder-funke.jpg', // Platzhalter-Bild
+      imageSrc: '/images/placeholder-funke.jpg',
       title: 'FUNKE MEDIA FEED',
       subtitle: 'Aktuelle Beiträge & News',
       description: 'Die neuesten Artikel und Einblicke aus der Zusammenarbeit mit der Funke Mediengruppe. Immer aktuell informiert.',
       actions: [
-        { text: 'Zum Feed', link: '/kooperationen/funke-feed', primary: false }, // Link zur neuen Seite
+        { text: 'Zum Feed', link: '/kooperationen/funke-feed', primary: false },
       ]
     },
     {

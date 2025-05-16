@@ -1,8 +1,8 @@
 export const theme = {
   colors: {
-    primary: '#cdaffd',     // Lavendel/Lila
+    primary: '#cdaffd',     
     secondary: '#000000',
-    accent: '#cdaffd',     // Lavendel/Lila
+    accent: '#cdaffd',     
     text: '#333333',
     textLight: '#666666',
     background: '#ffffff',

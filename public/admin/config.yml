@@ -1,16 +1,11 @@
 backend:
   name: git-gateway
-  branch: main # Oder dein primärer Branch (z.B. master)
+  branch: main
   identity_url: "https://kiramarie.netlify.app/.netlify/identity"
   gateway_url: "https://kiramarie.netlify.app/.netlify/git"
 
-# Vorherige lokale Konfiguration (zur Referenz):
-# backend:
-#   name: test-repo
-#   local_backend: true
-
-media_folder: "public/uploads" # Wo hochgeladene Bilder gespeichert werden (relativ zum Projektstamm)
-public_folder: "/uploads"     # Der öffentliche Pfad zu den Bildern (wie im Browser aufgerufen)
+media_folder: "public/uploads"
+public_folder: "/uploads"
 
 collections:
   - name: "social_stats"
@@ -46,7 +41,7 @@ collections:
     files:
       - label: "Über Mich Seite"
         name: "about_page"
-        file: "src/content/about.md" # Einzelne Markdown-Datei für die "Über Mich"-Inhalte
+        file: "src/content/about.md"
         fields:
           - { label: "Seitentitel (für Browser/SEO)", name: "page_title", widget: "string", default: "Über Mich", required: false }
           - { label: "Name (für Tag & Überschrift)", name: "name_for_tag_and_headline", widget: "string", default: "Kira Marie Cremer" }
@@ -57,11 +52,23 @@ collections:
   - name: "testimonials"
     label: "Kundenstimmen / Testimonials"
     folder: "src/content/testimonials"
-    create: true # Erlaubt das Erstellen neuer Testimonials im CMS
-    slug: "{{slug}}" # Dateiname basiert auf dem Titel (oder einem Slug-Feld)
+    create: true
+    slug: "{{slug}}"
     fields:
       - { label: "Zitat Geber (Name)", name: "author", widget: "string" }
       - { label: "Position / Firma (optional)", name: "position", widget: "string", required: false }
       - { label: "Zitat", name: "quote", widget: "markdown" }
       - { label: "Bild (optional, z.B. Avatar oder Logo)", name: "image", widget: "image", required: false }
       - { label: "Reihenfolge (optional, niedrigere Zahlen zuerst)", name: "order", widget: "number", required: false, default: 100 }
+
+  - name: "partner_logos"
+    label: "Partner Logos (Hero Section)"
+    label_singular: "Partner Logo"
+    folder: "src/content/partner_logos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name des Partners", name: "name", widget: "string" }
+      - { label: "Logo Bild", name: "image", widget: "image" }
+      - { label: "Alt-Text für Bild", name: "alt_text", widget: "string" }
+      - { label: "Reihenfolge (für Anzeige)", name: "order", widget: "number", value_type: "int", default: 100, required: false }

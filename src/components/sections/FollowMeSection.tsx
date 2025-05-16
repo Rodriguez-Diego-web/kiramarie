@@ -98,26 +98,23 @@ const SocialLinkItem = styled(motion.a)`
   }
 `;
 
-// Interface für die Daten aus socialDisplayData.json
 interface SocialDisplayDataItem {
   name: string;
   url: string;
   followersDisplayString: string | null;
 }
 
-// Interface für die intern verwendete Struktur inkl. Icon
 interface SocialPlatform {
   name: string;
   icon: JSX.Element;
-  url: string; // Wird durch dynamische Daten überschrieben
-  followers?: string | null; // Wird durch dynamische Daten überschrieben
+  url: string;
+  followers?: string | null;
 }
 
-// Statische Basisdaten (Icons und Default-Namen/URLs)
 const baseSocialPlatforms: SocialPlatform[] = [
   { name: 'LinkedIn', icon: <FaLinkedin />, url: 'https://de.linkedin.com/in/kiramariecremer', followers: 'Lade...' }, 
   { name: 'Instagram', icon: <FaInstagram />, url: '#', followers: 'Lade...' },
-  { name: 'Speaker Profil', icon: <FaUserTie />, url: 'https://disruptingminds.com/speaker/kira-marie-cremer/' }, // Kein Follower-Feld initial
+  { name: 'Speaker Profil', icon: <FaUserTie />, url: 'https://disruptingminds.com/speaker/kira-marie-cremer/' }, 
   { name: 'Spotify', icon: <FaSpotify />, url: '#', followers: 'Lade...' },
 ];
 
@@ -139,7 +136,7 @@ const FollowMeSection: React.FC = () => {
           const dynamicPlatform = dynamicData.find(dp => dp.name === basePlatform.name);
           return {
             ...basePlatform,
-            url: dynamicPlatform?.url || basePlatform.url, // Fallback auf Basis-URL
+            url: dynamicPlatform?.url || basePlatform.url, 
             followers: dynamicPlatform ? dynamicPlatform.followersDisplayString : (basePlatform.followers === 'Lade...' ? null : basePlatform.followers)
           };
         });
@@ -148,7 +145,6 @@ const FollowMeSection: React.FC = () => {
       })
       .catch(error => {
         console.error("Could not fetch social display data:", error);
-        // Bei Fehler bleiben die Basis-Plattformen (evtl. ohne 'Lade...' Text)
         setSocialPlatformData(baseSocialPlatforms.map(p => ({...p, followers: p.followers === 'Lade...' ? null : p.followers })));
         setIsLoading(false);
       });
@@ -156,15 +152,11 @@ const FollowMeSection: React.FC = () => {
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"] // Beginnt, wenn Oberkante Sektion unteren Viewport erreicht, endet, wenn Unterkante Sektion oberen Viewport verlässt
+    offset: ["start end", "end start"]
   });
 
-  // Parallax-Effekt für das Hintergrundmuster
-  // Bewegt das Muster von -X% seiner Höhe nach +X% seiner Höhe, während die Sektion durchgescrollt wird.
-  // Dies lässt das Muster langsamer scrollen als den Inhalt.
-  // Kleinere Werte (z.B. '-10%', '10%') lassen es "fester" erscheinen.
-  const patternY = useTransform(scrollYProgress, [0, 1], ['-50%', '50%']); // Testweise stärkere Bewegung
-  const titleInView = useInView(sectionRef, { once: true, amount: 0.1 }); // Korrekter Hook für Titelanimation
+  const patternY = useTransform(scrollYProgress, [0, 1], ['-50%', '50%']);
+  const titleInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   return (
     <SectionContainer ref={sectionRef} id="folge-mir">
@@ -184,7 +176,7 @@ const FollowMeSection: React.FC = () => {
         >
           {socialPlatformData.map((platform, index) => (
             <SocialLinkItem
-              key={platform.name} // Namen sind hier eindeutiger als der Index, falls sich Reihenfolge ändert
+              key={platform.name}
               href={platform.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -200,8 +192,8 @@ const FollowMeSection: React.FC = () => {
                   className="follower-count"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} // Stellt sicher, dass die Animation nur einmal pro Element ausgelöst wird
-                  transition={{ duration: 0.4, delay: index * 0.1 + 0.5 }} // Verzögert nach Kachel-Animation
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 + 0.5 }}
                 >
                   {isLoading ? 'Lade...' : platform.followers}
                 </motion.span>
