@@ -62,7 +62,7 @@ const Tag = styled.span`
   background-color: var(--secondary-color, #003366); /* Deine Sekundärfarbe (Standard: Dunkelblau) */
   color: #ffffff;
   padding: 4px 10px;
-  border-radius: 6px;
+  border-radius: 0;
   font-size: 0.75rem;
   font-weight: 600;
   margin-bottom: 8px;
@@ -97,7 +97,7 @@ const ReadMoreButton = styled(motion.a)`
   background-color: #9370DB; /* Lila für den Button */
   color: #ffffff;
   padding: 10px 20px;
-  border-radius: 8px;
+  border-radius: 0;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.85rem;
