@@ -19,7 +19,7 @@ interface MediaCardProps {
 
 const CardWrapper = styled(motion.div)`
   background-color: #f9f9f9; /* Sehr helles Grau für Kartenhintergrund */
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   display: flex;
