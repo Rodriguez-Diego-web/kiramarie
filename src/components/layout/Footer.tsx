@@ -6,6 +6,26 @@ import { VscMail } from 'react-icons/vsc';
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
+  // Funktion für sanftes Scrollen zu Abschnitten
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    e.preventDefault();
+    
+    // Wenn zum Seitenanfang gescrollt werden soll
+    if (target === '#') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return;
+    }
+    
+    // Für alle anderen Ziele, suche das Element und scrolle dorthin
+    const targetElement = document.querySelector(target);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <FooterWrapper>
       <Container>
@@ -49,16 +69,16 @@ const Footer: React.FC = () => {
           
           <LinksSection>
             <LinkGroup>
-              <FooterLink href="/">Home</FooterLink>
-              <FooterLink href="/about">Über mich</FooterLink>
-              <FooterLink href="/services">Leistungen</FooterLink>
-              <FooterLink href="/impulse">Impulse</FooterLink>
+              <FooterLink href="#" onClick={(e) => handleSmoothScroll(e, '#')}>Home</FooterLink>
+              <FooterLink href="#about-section" onClick={(e) => handleSmoothScroll(e, '#about-section')}>Über mich</FooterLink>
+              <FooterLink href="#zusammenarbeit" onClick={(e) => handleSmoothScroll(e, '#zusammenarbeit')}>Zusammenarbeit</FooterLink>
+              <FooterLink href="#newsletter" onClick={(e) => handleSmoothScroll(e, '#newsletter')}>Newsletter</FooterLink>
             </LinkGroup>
             
             <LinkGroup>
-              <FooterLink href="/impressum">Impressum</FooterLink>
-              <FooterLink href="/datenschutz">Datenschutz</FooterLink>
-              <FooterLink href="/agb">AGB</FooterLink>
+              <FooterLink href="#folge-mir" onClick={(e) => handleSmoothScroll(e, '#folge-mir')}>Folge mir</FooterLink>
+              <FooterLink href="#kontakt" onClick={(e) => handleSmoothScroll(e, '#kontakt')}>Kontakt</FooterLink>
+              <FooterLink href="#presse" onClick={(e) => handleSmoothScroll(e, '#presse')}>Presse</FooterLink>
             </LinkGroup>
           </LinksSection>
         </FooterContent>
