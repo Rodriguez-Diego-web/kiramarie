@@ -40,7 +40,7 @@ const StyledLinkCard = styled(motion.a)`
   justify-content: center;
   padding: 20px;
   background-color: rgba(67, 63, 63, 0.05); 
-  border-radius: 12px;
+  border-radius: 0; /* Änderung zu eckigen Kanten */
   text-decoration: none;
   color: #ffffff;
   transition: background-color 0.3s ease, transform 0.3s ease;

@@ -47,7 +47,7 @@ const ImageWrapper = styled.div`
     max-height: 600px; /* Reduziert von 800px */
     height: auto;
     object-fit: cover;
-    border-radius: 4px; /* Leichte Abrundung */
+    border-radius: 0; /* Klare, eckige Kanten statt Abrundung */
   }
 
   @media (max-width: 991px) {
@@ -62,11 +62,11 @@ const ImageWrapper = styled.div`
 
 const TextWrapper = styled.div`
   flex: 1; /* Nimmt den verbleibenden Platz ein */
-  background-color: #FFFEF7; /* Sehr helles Creme/Off-White */
+  background-color: #e6dfd7; /* Sehr helles Creme/Off-White */
   padding: 50px; /* Etwas mehr Padding für Ästhetik */
   position: relative; /* Für diagonale Linien */
   color: #000000;
-  border-radius: 4px; /* Leichte Abrundung für die weiße Box */
+  border-radius: 0; /* Klare, eckige Kanten statt Abrundung */
   overflow: hidden; /* Wichtig, um diagonale Linien visuell einzuschließen, falls sie *innerhalb* wären */
   z-index: 1;
 `;

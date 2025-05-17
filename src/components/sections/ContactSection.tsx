@@ -183,7 +183,7 @@ const ContactSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <ContactHeading>Lassen Sie uns sprechen</ContactHeading>
-            <EmailLink href="mailto:DEINE-EMAIL-ADRESSE-HIER">DEINE-EMAIL-ADRESSE-HIER</EmailLink>
+            <EmailLink href="mailto:info@kiramariecremer.de">info@kiramariecremer.de</EmailLink>
             <ContactText>
               Ich freue mich darauf, von Ihnen zu hören. Für Projektanfragen, Kooperationen oder einen allgemeinen Austausch – Ihre Nachricht ist willkommen.
             </ContactText>

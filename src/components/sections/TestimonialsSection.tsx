@@ -58,7 +58,7 @@ const TestimonialsGrid = styled(motion.div)`
 const TestimonialCard = styled(motion.div)`
   background-color: #ffffff; 
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 0; /* Klare, eckige Kanten statt Abrundung */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); 
   text-align: left;
   height: 100%; 

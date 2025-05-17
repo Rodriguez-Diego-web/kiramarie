@@ -89,10 +89,10 @@ const HeroSection: React.FC = () => {
       >
         <StyledVideo
           ref={videoRef}
-          src="https://www.youtube.com/embed/UXNL0Sl78js?autoplay=1&mute=1&loop=1&playlist=UXNL0Sl78js&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+          src="https://www.youtube-nocookie.com/embed/UXNL0Sl78js?start=2736&controls=0&modestbranding=1&rel=0&playsinline=1&autoplay=1&mute=1&loop=1&playlist=UXNL0Sl78js"
           title="YouTube video player"
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           onLoad={() => {
             console.log('YouTube iframe onLoad event triggered');
@@ -197,7 +197,7 @@ const StyledVideo = styled.iframe`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1.5); /* Video näher herangezoomt mit Faktor 1.5 */
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -205,7 +205,7 @@ const StyledVideo = styled.iframe`
   pointer-events: none; /* Verhindert Maus-Interaktionen mit dem YouTube-Player */
 
   @media (max-width: 768px) {
-    transform: translate(-50%, -50%) scale(2.2);
+    transform: translate(-50%, -50%) scale(2.3); /* Noch näher für Mobile Ansicht */
   }
 `;
 
@@ -294,24 +294,7 @@ const MarqueeWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
-  &::before, &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 100px;
-    height: 100%;
-    z-index: 2;
-  }
-  
-  &::before {
-    left: 0;
-    background: linear-gradient(to right, rgba(205, 175, 253, 0.2), transparent);
-  }
-  
-  &::after {
-    right: 0;
-    background: linear-gradient(to left, rgba(205, 175, 253, 0.2), transparent);
-  }
+  /* Gradienten entfernt */
 `;
 
 const MarqueeTrack = styled.div`
@@ -344,10 +327,10 @@ const LogoItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;     /* Beibehaltung der Gesamthöhenbeschränkung */
-  width: 160px;     /* Jedem Logo-Slot eine konsistente Breite geben */
+  height: 60px;     /* Erhöhte Höhe für größere Logos */
+  width: 180px;     /* Mehr Breite für größere Logos */
   flex-shrink: 0;   /* Schrumpfen im Flex-Layout der MarqueeGroup verhindern */
-  opacity: 0.85;
+  opacity: 0.95;    /* Erhöhte Opazität für bessere Sichtbarkeit */
   transition: all 0.4s ease;
   
   &:hover {
@@ -363,11 +346,11 @@ const LogoItem = styled.div`
 `;
 
 const MediaLogo = styled.img`
-  max-height: 100%; /* Passt in die 50px Höhe des LogoItem */
-  max-width: 100%;  /* Passt in die 160px Breite des LogoItem */
+  max-height: 100%; /* Passt in die erhöhte Höhe des LogoItem */
+  max-width: 100%;  /* Passt in die erhöhte Breite des LogoItem */
   object-fit: contain;
-  filter: grayscale(100%) brightness(300%) contrast(0%);
-  opacity: 0.7;
+  filter: brightness(0) invert(1); /* Klarer weißer Filter für bessere Sichtbarkeit */
+  opacity: 0.9;     /* Erhöhte Opazität für bessere Sichtbarkeit */
 `;
 
 export default memo(HeroSection);
