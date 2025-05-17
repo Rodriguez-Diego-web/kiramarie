@@ -21,16 +21,13 @@ Eine moderne und elegante Landing Page für Kira Marie, Autorin und Dozentin im 
 ## Installation
 
 ```bash
-# Repository klonen
+
 git clone https://github.com/Rodriguez-Diego-web/kiramarie.git
 
-# In das Projektverzeichnis wechseln
 cd kiramarie
 
-# Abhängigkeiten installieren
 npm install
 
-# Entwicklungsserver starten
 npm start
 ```
 

@@ -9,24 +9,20 @@ const outputFileFunke = path.join(outputDir, 'funkeFeedSeoData.json');
 
 async function generateSeoData() {
   try {
-    // Stellen sicher, dass der Ausgabeordner existiert
     await fs.ensureDir(outputDir);
 
-    // Standard-SEO-Daten für die Startseite
     const defaultHomeSeo = {
       title: "Kira Marie - Leadership & Vertrauensexpertin | Executive Coach, Speakerin, Autorin",
       description: "Kira Marie ist Ihre Expertin für Leadership und Vertrauen. Als Executive Coach, Speakerin und Autorin unterstützt sie Führungskräfte und Unternehmen auf dem Weg zu nachhaltigem Erfolg und starker Führungskultur.",
       og_image: "/uploads/og-default.jpg"
     };
 
-    // Standard-SEO-Daten für die Funke Feed Seite
     const defaultFunkeSeo = {
       title: "Aktuelle Beiträge von Kira Marie bei Funke - Kira Marie",
       description: "Entdecken Sie die neuesten Artikel, Kolumnen und Beiträge von Kira Marie, veröffentlicht bei der Funke Mediengruppe.",
       og_image: "/uploads/og-funke-feed.jpg"
     };
 
-    // SEO-Daten für die Startseite laden
     try {
       const homeFilePath = path.join(seoDir, 'home.md');
       const homeFileContent = await fs.readFile(homeFilePath, 'utf8');
@@ -44,7 +40,6 @@ async function generateSeoData() {
       await fs.writeFile(outputFileHome, JSON.stringify(defaultHomeSeo, null, 2));
     }
 
-    // SEO-Daten für die Funke Feed Seite laden
     try {
       const funkeFilePath = path.join(seoDir, 'funke-feed.md');
       const funkeFileContent = await fs.readFile(funkeFilePath, 'utf8');

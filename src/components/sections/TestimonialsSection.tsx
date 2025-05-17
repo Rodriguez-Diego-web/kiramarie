@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { motion/*, useInView*/ } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface TestimonialItem {
   author: string;
@@ -11,7 +11,7 @@ interface TestimonialItem {
 }
 
 const SectionContainer = styled.section`
-  background-color: #f9f9f9; // Heller Hintergrund zur Abwechslung
+  background-color: #f9f9f9;
   padding: 60px 20px;
   color: #333;
   font-family: 'Montserrat', sans-serif;
@@ -21,29 +21,29 @@ const SectionContainer = styled.section`
 
 const PurpleBox = styled(motion.div)`
   position: absolute;
-  background-color: #9370DB; /* Lila Farbe */
-  height: 30px; /* Höhe angepasst */
-  width: 100%; /* Volle Breite des Titels */
+  background-color: #9370DB;
+  height: 30px;
+  width: 100%;
   z-index: -1;
-  bottom: 0px; /* Um 5px höher positioniert */
+  bottom: 0px;
   left: 0;
-  opacity: 0.7; /* Static opacity for now */
+  opacity: 0.7;
 `;
 
 const SectionTitle = styled(motion.h2)`
   font-size: 2.8rem;
   font-weight: 700;
-  margin-bottom: 110px; /* Weiter erhöhter Platz unter der Überschrift */
-  color: #1a1a1a; // Dunklerer Titel
+  margin-bottom: 110px;
+  color: #1a1a1a;
   text-transform: uppercase;
-  position: relative; /* Für die absolute Positionierung des Kastens */
-  z-index: 0; /* Ensure SectionTitle creates a stacking context */
-  padding: 0; /* Adjust padding as PurpleBox will be the background */
+  position: relative;
+  z-index: 0;
+  padding: 0;
   line-height: 1.5;
-  display: inline-block; /* Ensures the title still behaves well with text-align: center and PurpleBox width:100% */
+  display: inline-block;
   @media (max-width: 767px) {
     font-size: 2.2rem;
-    margin-bottom: 77px; /* Weiter angepasster Abstand für mobile Ansicht */
+    margin-bottom: 77px;
   }
 `;
 
@@ -58,7 +58,7 @@ const TestimonialsGrid = styled(motion.div)`
 const TestimonialCard = styled(motion.div)`
   background-color: #ffffff; 
   padding: 30px;
-  border-radius: 0; /* Klare, eckige Kanten statt Abrundung */
+  border-radius: 0;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); 
   text-align: left;
   height: 100%; 
@@ -69,7 +69,7 @@ const TestimonialCard = styled(motion.div)`
   blockquote {
     font-size: 0.95rem;
     line-height: 1.7;
-    color: #333333; /* Explizit dunkle Farbe für Zitate */
+    color: #333333;
     margin-bottom: 20px;
     font-style: italic;
     flex-grow: 1;
@@ -91,7 +91,7 @@ const TestimonialCard = styled(motion.div)`
 `;
 
 const AuthorInfo = styled.div`
-  margin-top: auto; // Schiebt den Autor nach unten, falls die Karte höher ist
+  margin-top: auto;
   padding-top: 15px;
   border-top: 1px solid #eee;
   display: flex;
@@ -116,13 +116,13 @@ const AuthorDetails = styled.div`
 
   .author-name {
     font-weight: 600;
-    color: #333333; /* Sicherstellen, dass Name dunkel ist */
+    color: #333333;
     font-size: 0.9em;
   }
 
   .author-position {
     font-size: 0.8em;
-    color: #555555; /* Sicherstellen, dass Position dunkel ist */
+    color: #555555;
     font-style: italic;
   }
 `;
@@ -130,12 +130,12 @@ const AuthorDetails = styled.div`
 const TestimonialsSection: React.FC = () => {
   const [testimonials, setTestimonials] = useState<TestimonialItem[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null); 
-  // const titleInView = useInView(sectionRef, { once: false, amount: 0.2 }); // Temporarily comment out as it's unused
 
-  console.log('TestimonialsSection RENDERED. Testimonials length:', testimonials.length); // NEU
+
+
 
   useEffect(() => {
-    console.log('TestimonialsSection useEffect: Fetching data...'); // NEU
+
     fetch('/data/testimonialsData.json')
       .then(response => {
         if (!response.ok) {
@@ -144,18 +144,18 @@ const TestimonialsSection: React.FC = () => {
         return response.json();
       })
       .then(data => {
-        console.log('TestimonialsSection useEffect: Data fetched successfully:', data); // NEU
+
         setTestimonials(data);
       })
       .catch(error => console.error('Error fetching testimonials data:', error));
   }, []);
 
   if (!testimonials.length) {
-    console.log('TestimonialsSection: No testimonials, returning null.'); // NEU
+
     return null;
   }
 
-  console.log('TestimonialsSection: Rendering with testimonials:', testimonials); // NEU
+
 
 
   return (

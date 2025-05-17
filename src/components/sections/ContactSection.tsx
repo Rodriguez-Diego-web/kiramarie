@@ -5,28 +5,28 @@ import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { Icon } from '../common/IconWrapper';
 
 const SectionContainer = styled.section`
-  background-color: #000000; /* Hintergrund auf Schwarz geändert */
-  color: #e0e0e0; /* Helle Standard-Textfarbe */
+  background-color: #000000;
+  color: #e0e0e0;
   padding: 100px 20px;
-  font-family: 'Montserrat', sans-serif; /* Globale Schriftart für die Sektion */
-  position: relative; /* Notwendig für absolut positionierte Kindelemente (Parallax) */
-  overflow: hidden;   /* Verhindert, dass der Parallax-Hintergrund übersteht */
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  overflow: hidden;
   z-index: 1;
 `;
 
 const ParallaxGradientBackground = styled(motion.div)`
   position: absolute;
-  top: -15%; /* Erlaube Überlappung für Bewegung */
+  top: -15%;
   left: -5%;
-  width: 60%; /* Größer als der Container, um Bewegung ohne Kanten zu ermöglichen */
+  width: 60%;
   height: 150%;
   background-image: radial-gradient(
     circle at center, 
-    rgba(147, 112, 219, 0.08) 0%,  /* Etwas intensiver für besseren Kontrast auf Schwarz */
+    rgba(147, 112, 219, 0.08) 0%,
     rgba(147, 112, 219, 0.04) 30%,
-    rgba(28, 28, 28, 0) 65%  /* Ausblenden zur Hintergrundfarbe der Sektion */
+    rgba(28, 28, 28, 0) 65%
   );
-  background-size: 100% 100%; /* Relative Größe, die Position wird animiert */
+  background-size: 100% 100%;
   z-index: 0;
 `;
 
@@ -38,19 +38,19 @@ const ParallaxWhiteDiagonalGradient = styled(motion.div)`
   height: 160%;
   background-image: radial-gradient(
     circle at center,
-    rgba(255, 255, 255, 0.04) 0%, /* Sehr subtiles Weiß */
+    rgba(255, 255, 255, 0.04) 0%,
     rgba(255, 255, 255, 0.02) 25%,
-    rgba(0, 0, 0, 0) 50%       /* Ausblenden zu Schwarz */
+    rgba(0, 0, 0, 0) 50%
   );
   background-size: 100% 100%;
-  z-index: 0; /* Gleicher z-index, überlagern sich */
+  z-index: 0;
 `;
 
 const ContentWrapper = styled.div`
   max-width: 1100px;
   margin: 0 auto;
   text-align: center;
-  position: relative; /* Stellt sicher, dass der Inhalt über dem Parallax-Hintergrund liegt */
+  position: relative;
   z-index: 1;
 `;
 
@@ -62,16 +62,16 @@ const SectionHeading = styled.h2`
   font-family: 'Montserrat', sans-serif;
   font-size: 2.8rem;
   font-weight: 700;
-  color: #ffffff; /* Weiß für Hauptüberschrift */
-  margin-bottom: 40px; /* Mehr Abstand nach unten */
-  position: relative; /* Für die absolute Positionierung des Kastens */
-  display: inline-block; /* Damit der Hintergrund nur die Textbreite umfasst */
-  z-index: 0; /* Ensure SectionTitle creates a stacking context */
+  color: #ffffff;
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+  z-index: 0;
 `;
 
 const PurpleBox = styled(motion.div)`
   position: absolute;
-  background-color: #e6dfd7; /* Lila Farbe aus anderen Elementen der Seite */
+  background-color: #e6dfd7;
   height: 25px;
   width: 100%;
   z-index: -1;
@@ -82,21 +82,21 @@ const PurpleBox = styled(motion.div)`
 
 const ContactContent = styled.div`
   display: flex;
-  justify-content: center; /* Zentriert den Inhalt, da das Formular wegfällt */
+  justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
   text-align: left;
 `;
 
 const ContactInfo = styled(motion.div)`
-  flex-basis: 100%; /* Nimmt die volle Breite ein, da es der Hauptinhalt ist */
-  max-width: 600px; /* Begrenzt die maximale Breite für bessere Lesbarkeit */
-  text-align: center; /* Zentriert den Text innerhalb der Info-Box */
+  flex-basis: 100%;
+  max-width: 600px;
+  text-align: center;
 `;
 
 const ContactHeading = styled.h3`
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.8rem; /* Etwas kleiner, da "Kontakt" die Hauptüberschrift ist */
+  font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 25px;
   color: #ffffff;
@@ -105,9 +105,9 @@ const ContactHeading = styled.h3`
 const EmailLink = styled.a`
   display: inline-block;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem; /* Größer für mehr Prominenz */
+  font-size: 1.2rem;
   font-weight: 500;
-  color: #CDAFFD; /* Akzentfarbe */
+  color: #CDAFFD;
   text-decoration: none;
   padding: 12px 25px;
   border: 2px solid #CDAFFD;
@@ -125,14 +125,14 @@ const ContactText = styled.p`
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   line-height: 1.7;
-  margin-bottom: 40px; /* Mehr Abstand zu Social Links */
+  margin-bottom: 40px;
   color: #c0c0c0; 
 `;
 
 const SocialLinks = styled.div`
   display: flex;
-  justify-content: center; /* Zentriert die Social Media Icons */
-  gap: 25px; /* Etwas mehr Abstand */
+  justify-content: center;
+  gap: 25px;
   margin-bottom: 30px;
 `;
 
@@ -142,7 +142,7 @@ const SocialLink = styled(motion.a)`
   transition: color 0.3s ease;
 
   &:hover {
-    color: var(--primary-color, #8A2BE2); /* Akzentfarbe beim Hover */
+    color: var(--primary-color, #8A2BE2);
   }
 `;
 
@@ -194,11 +194,6 @@ const ContactSection: React.FC = () => {
               <SocialLink href="https://www.instagram.com/kiramariecremer/" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
                 <Icon icon={FaInstagram} />
               </SocialLink>
-              {/* Beispiel für weitere Links, falls vorhanden 
-              <SocialLink href="https://twitter.com/deinHandle" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
-                <Icon icon={FaTwitter} />
-              </SocialLink> 
-              */}
             </SocialLinks>
           </ContactInfo>
         </ContactContent>

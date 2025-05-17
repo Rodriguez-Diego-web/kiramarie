@@ -6,11 +6,11 @@ import { VscMail } from 'react-icons/vsc';
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
-  // Funktion für sanftes Scrollen zu Abschnitten
+
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
     e.preventDefault();
     
-    // Wenn zum Seitenanfang gescrollt werden soll
+
     if (target === '#') {
       window.scrollTo({
         top: 0,
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
       return;
     }
     
-    // Für alle anderen Ziele, suche das Element und scrolle dorthin
+
     const targetElement = document.querySelector(target);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth' });

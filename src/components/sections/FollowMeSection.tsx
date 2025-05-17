@@ -1,24 +1,24 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, useInView } from 'framer-motion';
-import { FaLinkedin, FaInstagram, FaUserTie, FaSpotify } from 'react-icons/fa'; // Beispiel-Icons
+import { FaLinkedin, FaInstagram, FaUserTie, FaSpotify } from 'react-icons/fa';
 
 const SectionContainer = styled.section`
-  background-color:rgb(255, 255, 255); /* Dunkler Hintergrund, fast schwarz */
-  padding: 40px 20px 60px; /* Reduziertes Padding */
-  color: #ffffff; /* Weiße Schriftfarbe für Kontrast */
+  background-color:rgb(255, 255, 255);
+  padding: 40px 20px 60px;
+  color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  position: relative; /* Für Parallax-Kindelement */
-  overflow: hidden; /* Verhindert, dass Pattern übersteht */
-  margin-top: -1px; /* Verhindert mögliche Lücke zum vorherigen Element */
+  position: relative;
+  overflow: hidden;
+  margin-top: -1px;
 `;
 
 const ContentWrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
-  position: relative; /* Um über dem Parallax-Pattern zu liegen */
-  z-index: 1;       /* Stellt sicher, dass der Inhalt oben ist */
+  position: relative;
+  z-index: 1;
 `;
 
 const SocialLinksGrid = styled(motion.div)`
@@ -40,7 +40,7 @@ const StyledLinkCard = styled(motion.a)`
   justify-content: center;
   padding: 20px;
   background-color: rgba(67, 63, 63, 0.05); 
-  border-radius: 0; /* Änderung zu eckigen Kanten */
+  border-radius: 0;
   text-decoration: none;
   color: #ffffff;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -48,7 +48,7 @@ const StyledLinkCard = styled(motion.a)`
 
   &:hover {
     background-color: rgba(66, 65, 65, 0.1);
-    transform: translateY(-5px) scale(1.02); /* Leichte Skalierung beim Hover */
+    transform: translateY(-5px) scale(1.02);
   }
 `;
 
@@ -56,26 +56,26 @@ const PlatformIcon = styled.div<{
   bgColor?: string;
   hoverColor?: string;
 }>`
-  font-size: 1.8rem; /* Verkleinert von 2.2rem */
-  margin-bottom: 8px; /* Reduziert von 10px */
+  font-size: 1.8rem;
+  margin-bottom: 8px;
   transition: color 0.3s ease;
-  color: ${({ color }) => color || '#CDAFFD'}; /* Standardfarbe, falls keine spezifische Farbe */
+  color: ${({ color }) => color || '#CDAFFD'};
 
   @media (max-width: 767px) {
-    font-size: 1.6rem; /* Verkleinert für Mobile */
+    font-size: 1.6rem;
   }
 `;
 
 const PlatformName = styled.span`
-  font-size: 0.85rem; /* Verkleinert von 0.9rem */
+  font-size: 0.85rem;
   font-weight: 500;
-  color:rgb(31, 31, 31); /* Etwas helleres Grau für bessere Lesbarkeit auf dunklem Grund */
+  color:rgb(31, 31, 31);
   text-align: center;
 `;
 
 const FollowerCount = styled.span`
-  font-size: 0.75rem; /* Kleinere Schrift für Follower */
-  color: #A0A0A0; /* Dezente Farbe für Follower */
+  font-size: 0.75rem;
+  color: #A0A0A0;
   margin-top: 4px;
 `;
 

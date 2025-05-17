@@ -123,7 +123,6 @@ const HeroSection: React.FC = () => {
       </ParallaxBackground>
       
       <ContentWrapper>
-        {/* Text und Buttons entfernt, da im Video enthalten */}
       </ContentWrapper>
       
       <TrustBanner>
@@ -189,7 +188,7 @@ const VideoContainer = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Geändert von -2 */
+  z-index: 0;
   overflow: hidden;
 `;
 
@@ -197,15 +196,15 @@ const StyledVideo = styled.iframe`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.5); /* Video näher herangezoomt mit Faktor 1.5 */
+  transform: translate(-50%, -50%) scale(1.5);
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background-color: black; /* Fallback bis Video geladen wird */
-  pointer-events: none; /* Verhindert Maus-Interaktionen mit dem YouTube-Player */
+  background-color: black;
+  pointer-events: none;
 
   @media (max-width: 768px) {
-    transform: translate(-50%, -50%) scale(2.3); /* Noch näher für Mobile Ansicht */
+    transform: translate(-50%, -50%) scale(2.5);
   }
 `;
 
@@ -218,7 +217,7 @@ const VideoOverlay = styled.div<{ $loaded: boolean }>`
   background: black;
   opacity: ${({ $loaded }) => ($loaded ? 0 : 1)};
   transition: opacity 0.5s ease-in-out;
-  pointer-events: none; /* Sicherstellen, dass Overlay keine Klicks abfängt */
+  pointer-events: none;
 `;
 
 const ParallaxBackground = styled(motion.div)`
@@ -254,7 +253,7 @@ const ContentWrapper = styled(motion.div)`
   width: 90%;
   margin: 0 auto;
   padding: 0 2rem;
-  text-align: right; /* Text nach rechts ausgerichtet */
+  text-align: right;
   margin-left: auto;
   margin-right: 0;
   padding-right: 8%;
@@ -294,7 +293,7 @@ const MarqueeWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
-  /* Gradienten entfernt */
+
 `;
 
 const MarqueeTrack = styled.div`
@@ -327,10 +326,10 @@ const LogoItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60px;     /* Erhöhte Höhe für größere Logos */
-  width: 180px;     /* Mehr Breite für größere Logos */
-  flex-shrink: 0;   /* Schrumpfen im Flex-Layout der MarqueeGroup verhindern */
-  opacity: 0.95;    /* Erhöhte Opazität für bessere Sichtbarkeit */
+  height: 60px;
+  width: 180px;
+  flex-shrink: 0;
+  opacity: 0.95;
   transition: all 0.4s ease;
   
   &:hover {
@@ -346,11 +345,11 @@ const LogoItem = styled.div`
 `;
 
 const MediaLogo = styled.img`
-  max-height: 100%; /* Passt in die erhöhte Höhe des LogoItem */
-  max-width: 100%;  /* Passt in die erhöhte Breite des LogoItem */
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
-  filter: brightness(0) invert(1); /* Klarer weißer Filter für bessere Sichtbarkeit */
-  opacity: 0.9;     /* Erhöhte Opazität für bessere Sichtbarkeit */
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 `;
 
 export default memo(HeroSection);

@@ -26,7 +26,7 @@ async function generatePartnerLogosData() {
 
       logos.push({
         name: data.name,
-        image: data.image, // Path from CMS, usually starts with /uploads/
+        image: data.image,
         alt_text: data.alt_text,
         order: data.order === undefined ? 100 : Number(data.order),
       });

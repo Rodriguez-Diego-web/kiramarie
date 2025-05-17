@@ -5,12 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { Icon } from '../common/IconWrapper';
 
-// Header component with burger menu for mobile
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -24,10 +22,8 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Toggle menu
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Close menu when clicking a link
   const closeMenu = () => setIsOpen(false);
 
   return (
@@ -38,7 +34,6 @@ const Header: React.FC = () => {
           <LastName to="/">MARIE</LastName>
         </LogoContainer>
 
-        {/* Desktop navigation */}
         <DesktopMenu>
           <MenuItem>
             <MenuLink to="/" onClick={(e) => {
@@ -70,7 +65,6 @@ const Header: React.FC = () => {
           </MenuItem>
         </DesktopMenu>
 
-        {/* Burger menu toggle */}
         <MenuToggle onClick={toggleMenu}>
           <AnimatePresence mode="wait" initial={false}>
             {!isOpen ? (
@@ -97,7 +91,6 @@ const Header: React.FC = () => {
           </AnimatePresence>
         </MenuToggle>
 
-        {/* Mobile menu */}
         <AnimatePresence>
           {isOpen && (
             <MobileMenuOverlay
@@ -122,7 +115,6 @@ const Header: React.FC = () => {
                 </MobileMenuHeader>
 
                 <NavLinksList>
-                  {/* Hauptlinks */}
                   <MobileMenuItem>
                     <MobileMenuLinkPrimary to="/" onClick={(e) => {
                       e.preventDefault();
@@ -148,7 +140,6 @@ const Header: React.FC = () => {
                 </NavLinksList>
 
                 <SecondaryLinksList>
-                  {/* Sekundäre Links */}
                   <MobileMenuItemSecondary>
                     <MobileMenuLinkSecondary to="/impressum" onClick={closeMenu}>Impressum</MobileMenuLinkSecondary>
                   </MobileMenuItemSecondary>
@@ -170,7 +161,6 @@ const Header: React.FC = () => {
   );
 };
 
-// Styled components
 const HeaderWrapper = styled.header<{ $scrolled: boolean }>`
   position: fixed;
   top: 0;
@@ -350,7 +340,6 @@ const MobileMenuItem = styled(motion.li)`
   margin-bottom: 15px; 
 `;
 
-// Link-Stil für Hauptlinks
 const MobileMenuLinkPrimary = styled(Link)`
   font-family: 'Montserrat', sans-serif;
   font-size: 2.2rem; 
@@ -378,7 +367,6 @@ const MobileMenuItemSecondary = styled.li`
   margin-bottom: 10px;
 `;
 
-// Link-Stil für sekundäre Links
 const MobileMenuLinkSecondary = styled(Link)`
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem; 

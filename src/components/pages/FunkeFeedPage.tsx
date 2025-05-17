@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 
-// Styled Components
+
 const PageContainer = styled.div`
-  padding: 120px 20px 60px; // Mehr Padding oben wegen fixed Header
+  padding: 120px 20px 60px;
   min-height: 100vh;
-  background-color: #1c1c1c; // Dunkler Hintergrund passend zum Rest
+  background-color: #1c1c1c;
   color: #ffffff;
 `;
 
@@ -25,8 +25,8 @@ const PageTitle = styled.h1`
   color: #ffffff;
 `;
 
-const FeedItemStyled = styled(motion.div)` // Umbenannt von FeedItem zu FeedItemStyled zur Vermeidung von Namenskonflikten
-  background-color: #2a2a2a; // Etwas hellerer Hintergrund für Items
+const FeedItemStyled = styled(motion.div)`
+  background-color: #2a2a2a;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 8px;
@@ -37,7 +37,7 @@ const FeedItemStyled = styled(motion.div)` // Umbenannt von FeedItem zu FeedItem
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #9370DB; // Lila Akzent für Titel
+    color: #9370DB;
   }
 
   p {
@@ -77,7 +77,7 @@ const LoadingMessage = styled.p`
 const ErrorMessage = styled.p`
   text-align: center;
   font-size: 1.2rem;
-  color: #ff6b6b; // Rote Farbe für Fehler
+  color: #ff6b6b;
   padding: 40px;
 `;
 
@@ -86,7 +86,7 @@ interface FeedItemData {
   link: string;
   pubDate: string;
   description: string;
-  source?: string; // Quelle optional
+  source?: string;
 }
 
 interface FunkeFeedSeoData {
@@ -106,7 +106,7 @@ const FunkeFeedPage: React.FC = () => {
     og_image: "/uploads/og-funke-feed.jpg"
   });
 
-  // SEO-Daten laden
+
   useEffect(() => {
     fetch('/data/funkeFeedSeoData.json')
       .then(response => {
@@ -117,12 +117,12 @@ const FunkeFeedPage: React.FC = () => {
       .catch(error => console.error('Error loading SEO data:', error));
   }, []);
   
-  // Feed-Items laden
+
   useEffect(() => {
     const fetchFeed = async () => {
       try {
         setLoading(true);
-        // Der Pfad zur Netlify Function ist relativ zum Root der Seite
+
         const response = await fetch('/.netlify/functions/getFunkeFeed');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -133,7 +133,7 @@ const FunkeFeedPage: React.FC = () => {
       } catch (e: any) {
         console.error("Fehler beim Laden des Feeds:", e);
         setError(e.message || 'Fehler beim Laden der Daten.');
-        setFeedItems([]); // Bei Fehler leere Liste setzen
+        setFeedItems([]);
       } finally {
         setLoading(false);
       }
@@ -153,20 +153,20 @@ const FunkeFeedPage: React.FC = () => {
   return (
     <PageContainer>
       <Helmet>
-        {/* Dynamisch aus dem CMS-generierten SEO-Daten */}
+
         <title>{seoData.title}</title>
         <meta name="description" content={seoData.description} />
         
-        {/* Open Graph Tags */}
-        <meta property="og:title" content={seoData.title.split(' - ')[0]} /> {/* Nur den ersten Teil des Titels für OG */}
+
+        <meta property="og:title" content={seoData.title.split(' - ')[0]} />
         <meta property="og:description" content={seoData.description} />
-        <meta property="og:type" content="article" /> {/* Typ 'article' für Feed-Seiten ist passend */}
+        <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.kiramarie.app/kooperationen/funke-feed" />
         <link rel="canonical" href="https://www.kiramarie.app/kooperationen/funke-feed" />
         <meta property="og:image" content={`https://www.kiramarie.app${seoData.og_image}`} />
         <meta property="og:site_name" content="Kira Marie" />
 
-        {/* Twitter Card Tags */}
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoData.title.split(' - ')[0]} />
         <meta name="twitter:description" content={seoData.description} />
@@ -177,7 +177,7 @@ const FunkeFeedPage: React.FC = () => {
         <PageTitle>Aktuelles von Funke</PageTitle>
         {feedItems.length > 0 ? (
           feedItems.map((item, index) => (
-            <FeedItemStyled // Umbenannt von FeedItem zu FeedItemStyled
+            <FeedItemStyled
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -192,7 +192,7 @@ const FunkeFeedPage: React.FC = () => {
                 Veröffentlicht: {new Date(item.pubDate).toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}
                 {item.source && ` - Quelle: ${item.source}`}
               </small>
-            </FeedItemStyled> // Umbenannt von FeedItem zu FeedItemStyled
+            </FeedItemStyled>
           ))
         ) : (
           <p>Keine Beiträge gefunden.</p>

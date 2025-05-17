@@ -42,7 +42,6 @@ async function generatePressData() {
         continue;
       }
       
-      // Debug: Log the first few characters of the file
       const previewContent = fileContent.substring(0, 150) + (fileContent.length > 150 ? '...' : '');
       console.log(`📝 Preview of ${mdFile}: ${previewContent}`);  
 
@@ -59,47 +58,39 @@ async function generatePressData() {
         continue;
       }
 
-      // Debug: Log what we found in the frontmatter
       console.log(`🔍 Frontmatter in ${mdFile}:`, JSON.stringify(data, null, 2));
 
-      // Extract a default title from the filename if not in frontmatter
       const defaultTitle = mdFile
-        .replace(/^\d{4}-\d{2}-\d{2}-/, '') // Remove date prefix (YYYY-MM-DD-)
-        .replace(/\.md$/, '')                  // Remove .md extension
-        .replace(/-/g, ' ')                     // Replace hyphens with spaces
-        .split(' ')                            // Split into words
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize words
-        .join(' ');                            // Join back together
+        .replace(/^\d{4}-\d{2}-\d{2}-/, '')
+        .replace(/\.md$/, '')
+        .replace(/-/g, ' ')
+        .split(' ')                            
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) 
+        .join(' ');                            
 
-      // Use the filename creation date as default date if not in frontmatter
       const fileStats = await fs.stat(filePath);
-      const defaultDate = fileStats.birthtime.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+      const defaultDate = fileStats.birthtime.toISOString().split('T')[0];
 
-      // Create an article object with fallback values for missing fields
       const article = {
-        id: mdFile.replace(/\.md$/, ''),             // Use filename (without .md) as ID
-        title: data.title || defaultTitle,           // Use frontmatter title or fallback to filename-based title
-        publication: data.publication || 'Unbekannte Quelle',  // Default publication name
-        date: data.date || defaultDate,              // Use frontmatter date or file creation date
-        url: data.url || '#',                        // Default URL
-        excerpt: data.excerpt || (content.trim() ? content.substring(0, 150) + (content.length > 150 ? '...' : '') : 'Kein Auszug verfügbar'), // Use excerpt or content start
-        image: data.image || null                    // Image field, if present
+        id: mdFile.replace(/\.md$/, ''),             
+        title: data.title || defaultTitle,           
+        publication: data.publication || 'Unbekannte Quelle',  
+        date: data.date || defaultDate,              
+        url: data.url || '#',                        
+        excerpt: data.excerpt || (content.trim() ? content.substring(0, 150) + (content.length > 150 ? '...' : '') : 'Kein Auszug verfügbar'), 
+        image: data.image || null
       };
 
-      // Log what we're adding
       console.log(`➕ Adding article: ${article.title} (${article.date})`);
       
-      // Let the user know if we used fallback values
       if (!data.title) warnings.push(`Used filename-based title for ${mdFile} because no title field found in frontmatter`);
       if (!data.date) warnings.push(`Used file creation date for ${mdFile} because no date field found in frontmatter`);
 
       articles.push(article);
     }
 
-    // Sort articles by date, newest first
     articles.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // Print warnings after processing all files
     if (warnings.length > 0) {
       console.log('\n⚠️ Warnings:');
       warnings.forEach(warning => console.log(`  - ${warning}`));
@@ -109,7 +100,6 @@ async function generatePressData() {
     await fs.writeJson(outputFile, articles, { spaces: 2 });
     console.log(`✅ Successfully generated ${articles.length} press articles to ${outputFile}`);
 
-    // If we generated 0 articles, provide additional help
     if (articles.length === 0) {
       console.log('\n⚠️ No articles were processed. Possible reasons:');
       console.log('  1. No markdown files exist in the press directory.');
@@ -120,7 +110,6 @@ async function generatePressData() {
 
   } catch (error) {
     console.error('❌ Error generating press articles data:', error);
-    // Create an empty array in the output file to prevent import errors
     try {
       await fs.ensureDir(outputDir);
       await fs.writeJson(outputFile, [], { spaces: 2 });
@@ -128,7 +117,7 @@ async function generatePressData() {
     } catch (writeError) {
       console.error('Failed to create fallback file:', writeError);
     }
-    process.exit(1); // Exit with error code if script fails
+    process.exit(1);
   }
 }
 

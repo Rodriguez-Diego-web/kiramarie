@@ -5,10 +5,9 @@ const sourceFilePath = path.join(process.cwd(), 'src', 'content', 'social_stats.
 const outputDir = path.join(process.cwd(), 'public', 'data');
 const outputFilePath = path.join(outputDir, 'socialDisplayData.json');
 
-// Funktion zur Formatierung der Zahl
 function formatFollowerCount(name, count) {
   if (count === 0) {
-    return null; // Kein Anzeigetext für 0 Follower
+    return null;
   }
   let unit = 'Follower';
   if (name.toLowerCase() === 'spotify') {
@@ -26,10 +25,8 @@ function formatFollowerCount(name, count) {
 
 async function generateSocialDisplayData() {
   try {
-    // Sicherstellen, dass das Ausgabeverzeichnis existiert
     await fs.ensureDir(outputDir);
 
-    // Quelldatei lesen
     const rawData = await fs.readFile(sourceFilePath, 'utf8');
     const sourceData = JSON.parse(rawData);
 
@@ -44,7 +41,6 @@ async function generateSocialDisplayData() {
       followersDisplayString: formatFollowerCount(platform.name, platform.count)
     }));
 
-    // In die Zieldatei schreiben
     await fs.writeFile(outputFilePath, JSON.stringify(displayData, null, 2));
     console.log('Successfully generated socialDisplayData.json');
 

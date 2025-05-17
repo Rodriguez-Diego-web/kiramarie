@@ -18,13 +18,13 @@ interface MediaCardProps {
 }
 
 const CardWrapper = styled(motion.div)`
-  background-color: #f9f9f9; /* Sehr helles Grau für Kartenhintergrund */
+  background-color: #f9f9f9;
   border-radius: 0;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  height: 100%; /* Stellt sicher, dass alle Karten gleich hoch sind, wenn im Grid */
+  height: 100%;
   font-family: 'Montserrat', sans-serif;
   transition: box-shadow 0.3s ease-in-out;
 
@@ -35,7 +35,7 @@ const CardWrapper = styled(motion.div)`
 
 const ImageContainer = styled.div`
   width: 100%;
-  aspect-ratio: 16 / 9; /* Standard-Seitenverhältnis für Vorschaubilder */
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 
   img {
@@ -54,42 +54,42 @@ const ContentArea = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Wichtig, damit der Button am Ende ist */
+  flex-grow: 1;
 `;
 
 const Tag = styled.span`
   display: inline-block;
-  background-color: #e6dfd7; /* Beige */
-  color: #9370DB; /* Lila */
+  background-color: #e6dfd7;
+  color: #9370DB;
   padding: 4px 10px;
   border-radius: 0;
   font-size: 0.75rem;
   font-weight: 600;
   margin-bottom: 8px;
   text-transform: uppercase;
-  align-self: flex-start; /* Verhindert, dass der Tag die volle Breite einnimmt */
+  align-self: flex-start;
 `;
 
 const MetaInfo = styled.p`
   font-size: 0.8rem;
-  color: #666666; /* Dunkelgrau für Metadaten */
+  color: #666666;
   margin-bottom: 12px;
 `;
 
 const CardTitle = styled.h3`
   font-size: 1.15rem;
   font-weight: 700;
-  color: #222222; /* Fast Schwarz für Titel */
+  color: #222222;
   margin-bottom: 10px;
   line-height: 1.4;
 `;
 
 const CardDescription = styled.p`
   font-size: 0.9rem;
-  color: #555555; /* Dunkelgrau für Beschreibung */
+  color: #555555;
   line-height: 1.6;
   margin-bottom: 20px;
-  flex-grow: 1; /* Nimmt verfügbaren Platz ein, drückt Button nach unten */
+  flex-grow: 1;
 `;
 
 const ReadMoreButton = styled(motion.a)`
@@ -102,11 +102,11 @@ const ReadMoreButton = styled(motion.a)`
   text-decoration: none;
   font-weight: 600;
   font-size: 0.85rem;
-  margin-top: auto; /* Schiebt den Button ans untere Ende der CardContent */
+  margin-top: auto;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: color-mix(in srgb, #9370DB 85%, black); /* Dunkleres Beige im Hover */
+    background-color: color-mix(in srgb, #9370DB 85%, black);
   }
 `;
 

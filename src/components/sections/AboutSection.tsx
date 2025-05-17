@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-// DRWEB-KM2025 - Diego Rodriguez Webentwicklung
+
 
 const AboutSectionContainer = styled.section`
   display: flex;
-  align-items: stretch; /* Kinder füllen die Höhe */
-  background-color: #FFFFFF; /* Geändert von #121212 auf weiß */
-  padding: 80px 0; /* Horizontales Padding entfernt */
+  align-items: stretch;
+  background-color: #FFFFFF;
+  padding: 80px 0;
   position: relative;
-  overflow: hidden; /* Verhindert, dass Linien überlaufen */
+  overflow: hidden;
 
-  @media (max-width: 991px) { /* Tablet und Mobile */
+  @media (max-width: 991px) {
     flex-direction: column;
     align-items: center;
-    padding: 40px 0; /* Horizontales Padding entfernt */
+    padding: 40px 0;
   }
 `;
 
@@ -22,10 +22,10 @@ const ContentLayoutWrapper = styled.div`
   display: flex;
   align-items: stretch;
   width: 100%;
-  max-width: 1200px; /* Maximale Breite für den Inhalt, anpassbar */
-  margin: 0 auto; /* Zentriert den Inhaltswrapper */
-  position: relative; /* Hinzugefügt für z-index Kontext */
-  z-index: 2; /* Stellt sicher, dass der Inhalt über der globalen Diagonallinie liegt */
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 991px) {
     flex-direction: column;
@@ -34,53 +34,53 @@ const ContentLayoutWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  flex: 0 0 45%; /* Reduziert von 55% */
+  flex: 0 0 45%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-right: 0; /* Padding entfernt für mehr Platz */
+  padding-right: 0;
 
   img {
-    min-width: 350px; /* Reduziert von 450px */
+    min-width: 350px;
     max-width: 100%;
-    min-height: 400px; /* Reduziert von 500px */
-    max-height: 600px; /* Reduziert von 800px */
+    min-height: 400px;
+    max-height: 600px;
     height: auto;
     object-fit: cover;
-    border-radius: 0; /* Klare, eckige Kanten statt Abrundung */
+    border-radius: 0;
   }
 
   @media (max-width: 991px) {
-    flex-basis: auto; /* Basis zurücksetzen */
+    flex-basis: auto;
     width: 100%;
-    max-width: 450px; /* Reduziert von 550px */
-    min-width: auto; /* Min-width zurücksetzen für Mobile */
+    max-width: 450px;
+    min-width: auto;
     padding-right: 0;
     margin-bottom: 30px;
   }
 `;
 
 const TextWrapper = styled.div`
-  flex: 1; /* Nimmt den verbleibenden Platz ein */
-  background-color: #e6dfd7; /* Sehr helles Creme/Off-White */
-  padding: 50px; /* Etwas mehr Padding für Ästhetik */
-  position: relative; /* Für diagonale Linien */
+  flex: 1;
+  background-color: #e6dfd7;
+  padding: 50px;
+  position: relative;
   color: #000000;
-  border-radius: 0; /* Klare, eckige Kanten statt Abrundung */
-  overflow: hidden; /* Wichtig, um diagonale Linien visuell einzuschließen, falls sie *innerhalb* wären */
+  border-radius: 0;
+  overflow: hidden;
   z-index: 1;
 `;
 
 const TextContent = styled.div`
-  position: relative; /* Stellt sicher, dass Text über diagonalen Linien liegt */
+  position: relative;
   z-index: 1;
 `;
 
 const Heading = styled.h2`
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.4rem; /* Reduziert von 1.6rem */
+  font-size: 1.4rem;
   line-height: 1.4;
-  margin-bottom: 20px; /* Reduziert von 25px */
+  margin-bottom: 20px;
   font-weight: 300; 
   color: #1c1c1c;
 
@@ -89,23 +89,23 @@ const Heading = styled.h2`
   }
 
   @media (max-width: 991px) {
-    font-size: 1.25rem; /* Reduziert von 1.4rem */
+    font-size: 1.25rem;
   }
   @media (max-width: 767px) {
-    font-size: 1.1rem; /* Reduziert von 1.25rem */
-    margin-bottom: 15px; /* Reduziert von 20px */
+    font-size: 1.1rem;
+    margin-bottom: 15px;
   }
 `;
 
 const Paragraph = styled.p`
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem; /* Reduziert von 0.95rem */
+  font-size: 0.85rem;
   line-height: 1.7;
   color: #333333;
-  margin-bottom: 15px; /* Reduziert von 20px */
+  margin-bottom: 15px;
   
   @media (max-width: 767px) {
-    font-size: 0.8rem; /* Reduziert von 0.9rem */
+    font-size: 0.8rem;
   }
 `;
 
@@ -171,7 +171,7 @@ const AboutSection: React.FC = () => {
             
             <Heading>
               {name && <strong>{name}</strong>}
-              <br /> {/* Immer einen Zeilenumbruch nach dem Namen einfügen */}
+              <br />
               {additionalHeadline && additionalHeadline}
               {name && headlineMain && <br />}
               {headlineMain}
