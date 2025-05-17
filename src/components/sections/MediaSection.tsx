@@ -19,6 +19,20 @@ const SectionHeader = styled(motion.h2)`
   font-size: 2.5rem;
   margin-bottom: 40px;
   color: #333;
+  position: relative; /* Für die absolute Positionierung des Kastens */
+  display: inline-block; /* Damit der Hintergrund nur die Textbreite umfasst */
+  z-index: 0; /* Ensure SectionTitle creates a stacking context */
+`;
+
+const PurpleBox = styled(motion.div)`
+  position: absolute;
+  background-color: #9370DB; /* Lila Farbe */
+  height: 25px;
+  width: 100%;
+  z-index: -1;
+  bottom: -4px;
+  left: 0;
+  opacity: 0.7;
 `;
 
 const MediaGrid = styled(motion.div)`
@@ -93,6 +107,7 @@ const MediaSection: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           PRESSE
+          <PurpleBox />
         </SectionHeader>
         {mediaItems.length > 0 ? (
           <MediaGrid

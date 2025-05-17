@@ -171,7 +171,8 @@ const AboutSection: React.FC = () => {
             
             <Heading>
               {name && <strong>{name}</strong>}
-              {additionalHeadline && <><br />{additionalHeadline}</>}
+              <br /> {/* Immer einen Zeilenumbruch nach dem Namen einfügen */}
+              {additionalHeadline && additionalHeadline}
               {name && headlineMain && <br />}
               {headlineMain}
             </Heading>

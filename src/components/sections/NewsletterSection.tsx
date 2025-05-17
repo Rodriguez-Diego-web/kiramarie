@@ -21,6 +21,16 @@ const ContentWrapper = styled.div`
   padding: 0 20px;
 `;
 
+const PurpleBox = styled(motion.div)`
+  position: absolute;
+  background-color: #9370DB; /* Lila Farbe */
+  height: 30px; /* Höhe angepasst */
+  width: 100%; /* Volle Breite des Titels */
+  z-index: -1;
+  bottom: -10px; /* Leicht nach oben verschoben vom unteren Rand des Textes */
+  left: 0;
+`;
+
 const Title = styled(motion.h2)`
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
@@ -28,6 +38,7 @@ const Title = styled(motion.h2)`
   color: #1c1c1c;
   margin-bottom: 20px;
   text-align: center;
+  position: relative; /* Für die absolute Positionierung des Kastens */
 `;
 
 const Subtitle = styled(motion.p)`
@@ -80,6 +91,11 @@ const NewsletterSection: React.FC = () => {
           variants={fadeInUpAnimation}
         >
           Insights in deinen Posteingang
+          <PurpleBox 
+            initial={{ opacity: 0, width: 0 }}
+            animate={isInView ? { opacity: 0.7, width: "100%" } : { opacity: 0, width: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          />
         </Title>
         <Subtitle
           initial="hidden"

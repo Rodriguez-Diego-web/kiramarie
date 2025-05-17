@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion/*, useInView*/ } from 'framer-motion';
 
 interface TestimonialItem {
   author: string;
@@ -19,14 +19,31 @@ const SectionContainer = styled.section`
   overflow: hidden;
 `;
 
+const PurpleBox = styled(motion.div)`
+  position: absolute;
+  background-color: #9370DB; /* Lila Farbe */
+  height: 30px; /* Höhe angepasst */
+  width: 100%; /* Volle Breite des Titels */
+  z-index: -1;
+  bottom: 0px; /* Um 5px höher positioniert */
+  left: 0;
+  opacity: 0.7; /* Static opacity for now */
+`;
+
 const SectionTitle = styled(motion.h2)`
   font-size: 2.8rem;
   font-weight: 700;
-  margin-bottom: 60px;
+  margin-bottom: 110px; /* Weiter erhöhter Platz unter der Überschrift */
   color: #1a1a1a; // Dunklerer Titel
   text-transform: uppercase;
+  position: relative; /* Für die absolute Positionierung des Kastens */
+  z-index: 0; /* Ensure SectionTitle creates a stacking context */
+  padding: 0; /* Adjust padding as PurpleBox will be the background */
+  line-height: 1.5;
+  display: inline-block; /* Ensures the title still behaves well with text-align: center and PurpleBox width:100% */
   @media (max-width: 767px) {
     font-size: 2.2rem;
+    margin-bottom: 77px; /* Weiter angepasster Abstand für mobile Ansicht */
   }
 `;
 
@@ -113,7 +130,7 @@ const AuthorDetails = styled.div`
 const TestimonialsSection: React.FC = () => {
   const [testimonials, setTestimonials] = useState<TestimonialItem[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null); 
-  // const titleInView = useInView(sectionRef, { once: true, amount: 0.2 }); // Vorübergehend auskommentieren
+  // const titleInView = useInView(sectionRef, { once: false, amount: 0.2 }); // Temporarily comment out as it's unused
 
   console.log('TestimonialsSection RENDERED. Testimonials length:', testimonials.length); // NEU
 
@@ -143,20 +160,14 @@ const TestimonialsSection: React.FC = () => {
 
   return (
     <SectionContainer ref={sectionRef} id="testimonials">
-      <SectionTitle
-        // initial={{ opacity: 0, y: -20 }} // Animationen für den Titel auch erstmal raus
-        // animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-        // transition={{ duration: 0.6 }}
-      >
+      <SectionTitle>
         Das sagen meine Kunden
+        <PurpleBox />
       </SectionTitle>
-      <TestimonialsGrid
-      // Alle Animations-Props sind hier ja schon entfernt
-      >
+      <TestimonialsGrid>
         {testimonials.map((testimonial, index) => (
           <TestimonialCard
             key={testimonial.author + index}
-          // Alle Animations-Props sind hier ja schon entfernt
           >
             <blockquote dangerouslySetInnerHTML={{ __html: testimonial.quote.replace(/\n/g, '<br />') }} />
             <AuthorInfo>

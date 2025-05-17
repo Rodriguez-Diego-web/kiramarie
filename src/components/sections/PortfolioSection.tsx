@@ -93,7 +93,10 @@ const PortfolioSection: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <SectionTitle>Portfolio</SectionTitle>
+          <SectionTitle>
+            Presse
+            <PurpleBox />
+          </SectionTitle>
           <SectionSubtitle>Entdecke meine Arbeit in verschiedenen Bereichen</SectionSubtitle>
         </SectionHeader>
         
@@ -180,34 +183,29 @@ const PortfolioSection: React.FC = () => {
 const SectionContainer = styled.section`
   background-color: var(--background-alt);
   padding: 100px 0;
+  position: relative; /* Establish stacking context for the section itself */
 `;
 
 const ContentWrapper = styled.div`
   width: 90%;
   max-width: var(--max-width);
   margin: 0 auto;
+  position: relative; /* Ensure stacking context for children */
+  z-index: 2;         /* Lift above SectionContainer background */
 `;
 
 const SectionHeader = styled(motion.div)`
   text-align: center;
   margin-bottom: 3rem;
+  position: relative; /* Ensure stacking context */
+  z-index: 0;         /* Ensure it's above default background */
 `;
 
 const SectionTitle = styled.h2`
   position: relative;
   display: inline-block;
   margin-bottom: 1rem;
-  
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background-color: var(--accent);
-  }
+  z-index: 1; /* Lift SectionTitle's stacking context */
 `;
 
 const SectionSubtitle = styled.p`
@@ -420,6 +418,17 @@ const ModalButton = styled(motion.a)`
   &:hover {
     box-shadow: 0 6px 8px rgba(230, 57, 70, 0.3);
   }
+`;
+
+const PurpleBox = styled(motion.div)`
+  position: absolute;
+  background-color: #9370DB; /* Lila Farbe */
+  height: 30px;
+  width: 100%;
+  z-index: -1;
+  bottom: 0px; /* Consistent with TestimonialsSection */
+  left: 0;
+  opacity: 0.7;
 `;
 
 export default PortfolioSection;
