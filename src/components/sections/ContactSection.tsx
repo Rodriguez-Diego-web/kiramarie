@@ -64,6 +64,20 @@ const SectionHeading = styled.h2`
   font-weight: 700;
   color: #ffffff; /* Weiß für Hauptüberschrift */
   margin-bottom: 40px; /* Mehr Abstand nach unten */
+  position: relative; /* Für die absolute Positionierung des Kastens */
+  display: inline-block; /* Damit der Hintergrund nur die Textbreite umfasst */
+  z-index: 0; /* Ensure SectionTitle creates a stacking context */
+`;
+
+const PurpleBox = styled(motion.div)`
+  position: absolute;
+  background-color: #e6dfd7; /* Lila Farbe aus anderen Elementen der Seite */
+  height: 25px;
+  width: 100%;
+  z-index: -1;
+  bottom: -4px;
+  left: 0;
+  opacity: 0.7;
 `;
 
 const ContactContent = styled.div`
@@ -153,7 +167,14 @@ const ContactSection: React.FC = () => {
             animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
             transition={{ duration: 0.7, delay: 0.1 }}
         >
-          <SectionHeading>Kontakt</SectionHeading>
+          <SectionHeading>
+            Kontakt
+            <PurpleBox 
+              initial={{ opacity: 0, width: 0 }}
+              animate={contentInView ? { opacity: 0.7, width: "100%" } : { opacity: 0, width: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+            />
+          </SectionHeading>
         </SectionHeader>
         <ContactContent>
           <ContactInfo

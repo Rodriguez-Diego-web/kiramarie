@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { VscMail } from 'react-icons/vsc';
 
@@ -9,156 +8,66 @@ const Footer: React.FC = () => {
 
   return (
     <FooterWrapper>
-      <FooterGradient />
       <Container>
-        {/* Main Footer Content */}
         <FooterContent>
-          <BrandColumn>
-            <LogoContainer>
-              <FooterLogo>
-                <FirstName>KIRA</FirstName>
-                <LastName>MARIE</LastName>
-              </FooterLogo>
-              <TagLine>Leadership & Vertrauensexpertin</TagLine>
-            </LogoContainer>
+          <BrandSection>
+            <NameContainer>
+              <FirstName>KIRA</FirstName>
+              <LastName>MARIE</LastName>
+            </NameContainer>
+            
+            <TagLine>Leadership & Vertrauensexpertin</TagLine>
             
             <SocialLinks>
-              {/* Instagram */}
               <SocialLink 
                 href="https://www.instagram.com/kiramariecremer/"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+                aria-label="Instagram"
               >
                 <FaInstagram />
               </SocialLink>
               
-              {/* LinkedIn */}
               <SocialLink 
                 href="https://www.linkedin.com/in/kiramariecremer/" 
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+                aria-label="LinkedIn"
               >
                 <FaLinkedinIn />
               </SocialLink>
               
-              {/* Email */}
               <SocialLink 
                 href="mailto:kontakt@kira-marie.com" 
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+                aria-label="Email"
               >
                 <VscMail />
               </SocialLink>
             </SocialLinks>
-          </BrandColumn>
+          </BrandSection>
           
           <LinksSection>
-            <LinkColumn>
-              <LinkHeading>Navigation</LinkHeading>
-              
-              <FooterLink
-                href="/"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                Home
-              </FooterLink>
-              
-              <FooterLink
-                href="/about"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                Über mich
-              </FooterLink>
-              
-              <FooterLink
-                href="/services"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                Leistungen
-              </FooterLink>
-              
-              <FooterLink
-                href="/impulse"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                Impulse
-              </FooterLink>
-            </LinkColumn>
+            <LinkGroup>
+              <FooterLink href="/">Home</FooterLink>
+              <FooterLink href="/about">Über mich</FooterLink>
+              <FooterLink href="/services">Leistungen</FooterLink>
+              <FooterLink href="/impulse">Impulse</FooterLink>
+            </LinkGroup>
             
-            <LinkColumn>
-              <LinkHeading>Kooperationen</LinkHeading>
-              
-              <FooterLink
-                href="/kooperationen/funke-feed"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                Funke Feed
-              </FooterLink>
-              
-              <FooterLink
-                href="/kooperationen/podcast"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                Podcast
-              </FooterLink>
-              
-              <FooterLink
-                href="/kooperationen/shopping"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                Shopping
-              </FooterLink>
-            </LinkColumn>
-            
-            <LinkColumn>
-              <LinkHeading>Rechtliches</LinkHeading>
-              
-              <FooterLink
-                href="/impressum"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                Impressum
-              </FooterLink>
-              
-              <FooterLink
-                href="/datenschutz"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                Datenschutz
-              </FooterLink>
-              
-              <FooterLink
-                href="/agb"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                AGB
-              </FooterLink>
-            </LinkColumn>
+            <LinkGroup>
+              <FooterLink href="/impressum">Impressum</FooterLink>
+              <FooterLink href="/datenschutz">Datenschutz</FooterLink>
+              <FooterLink href="/agb">AGB</FooterLink>
+            </LinkGroup>
           </LinksSection>
         </FooterContent>
         
+        <Divider />
+        
         <FooterBottom>
           <Copyright>&copy; {currentYear} Kira Marie. Alle Rechte vorbehalten.</Copyright>
-          
-          <CreatedBy>Designed with ♥ by Diego Rodriguez Web</CreatedBy>
+          <CreatedBy>Designed by Diego Rodriguez Web</CreatedBy>
         </FooterBottom>
       </Container>
     </FooterWrapper>
@@ -167,208 +76,137 @@ const Footer: React.FC = () => {
 
 const FooterWrapper = styled.footer`
   background-color: #0a0a0a;
-  padding: 4rem 0 2rem;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  margin-top: 0; /* Kein Abstand mehr nötig */
+  padding: 3rem 0 1.5rem;
   width: 100%;
 `;
 
-const FooterGradient = styled.div`
-  position: absolute;
-  top: -150px;
-  right: -150px;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(205, 175, 253, 0.15) 0%, rgba(205, 175, 253, 0) 70%);
-  z-index: -1;
-`;
-
 const Container = styled.div`
-  width: 92%;
+  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  overflow-x: hidden;
-  box-sizing: border-box;
 `;
 
 const FooterContent = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 4rem;
-  margin-bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
   
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    flex-direction: column;
+    gap: 2.5rem;
   }
 `;
 
-const BrandColumn = styled.div`
+const BrandSection = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.2rem;
 `;
 
-const LogoContainer = styled.div`
+const NameContainer = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const FooterLogo = styled.div`
-  margin-bottom: 1rem;
 `;
 
 const FirstName = styled.span`
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-size: 1.5rem;
+  font-weight: 500;
   color: #ffffff;
   display: block;
 `;
 
 const LastName = styled.span`
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 300;
-  letter-spacing: 0.1em;
-  background: linear-gradient(135deg, #cdaffd 0%, #b490eb 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #cdaffd;
   display: block;
 `;
 
 const TagLine = styled.p`
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  font-style: italic;
-  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: #cccccc;
   margin: 0;
-  opacity: 0.8;
 `;
 
 const LinksSection = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  display: flex;
+  gap: 4rem;
   
   @media (max-width: 576px) {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    flex-wrap: wrap;
   }
 `;
 
-const LinkColumn = styled.div`
+const LinkGroup = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 0.7rem;
 `;
 
-const LinkHeading = styled.h4`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #cdaffd;
-  margin-bottom: 1.5rem;
-  position: relative;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 2rem;
-    height: 2px;
-    background: linear-gradient(to right, rgba(205, 175, 253, 0.7), rgba(205, 175, 253, 0));
-  }
-`;
-
-const FooterLink = styled(motion.a)`
+const FooterLink = styled.a`
   font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
-  color: #e0e0e0;
-  margin-bottom: 1rem;
+  color: #cccccc;
   text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    left: -10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-    border-left: 0px solid #cdaffd;
-    opacity: 0;
-    transition: all 0.3s ease;
-  }
+  transition: color 0.2s ease;
   
   &:hover {
     color: #cdaffd;
-    
-    &::before {
-      left: -15px;
-      border-left-width: 4px;
-      opacity: 1;
-    }
   }
+`;
+
+const Divider = styled.div`
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.07);
+  margin: 2.5rem 0 1.5rem 0;
 `;
 
 const FooterBottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
   
   @media (max-width: 576px) {
     flex-direction: column;
-    gap: 1rem;
-    align-items: center;
+    gap: 0.8rem;
     text-align: center;
   }
 `;
 
 const Copyright = styled.p`
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  color: #aaaaaa;
+  font-size: 0.8rem;
+  color: #888888;
+  margin: 0;
 `;
 
 const CreatedBy = styled.p`
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  color: #aaaaaa;
+  font-size: 0.8rem;
+  color: #888888;
+  margin: 0;
 `;
 
 const SocialLinks = styled.div`
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 `;
 
-const SocialLink = styled(motion.a)`
+const SocialLink = styled.a`
   color: #ffffff;
-  font-size: 1.4rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
+  font-size: 1.2rem;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: color 0.2s ease;
   
   &:hover {
-    background-color: rgba(205, 175, 253, 0.2);
+    color: #cdaffd;
   }
 `;
 

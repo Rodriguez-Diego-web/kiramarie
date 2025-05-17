@@ -57,6 +57,9 @@ const SectionTitle = styled(motion.h2)`
   font-weight: 700;
   margin-bottom: 20px;
   color: #ffffff;
+  position: relative; /* Für die absolute Positionierung des Kastens */
+  display: inline-block; /* Damit der Hintergrund nur die Textbreite umfasst */
+  z-index: 0; /* Ensure SectionTitle creates a stacking context */
   // margin-left: 0; // Explizit oder durch Entfernen von auto
 
   @media (max-width: 767px) {
@@ -66,6 +69,17 @@ const SectionTitle = styled(motion.h2)`
   @media (max-width: 480px) {
     font-size: 1.8rem; 
   }
+`;
+
+const BeigeBox = styled(motion.div)`
+  position: absolute;
+  background-color: #e6dfd7; /* Beige Farbe */
+  height: 25px;
+  width: 100%;
+  z-index: -1;
+  bottom: -4px;
+  left: 0;
+  opacity: 0.7;
 `;
 
 const SectionSubtitle = styled(motion.p)`
@@ -225,6 +239,13 @@ const CollaborationSection: React.FC = () => {
           }}
         >
           Zusammenarbeit
+          <BeigeBox 
+            style={{ 
+              opacity: titleInView ? 0.7 : 0,
+              width: titleInView ? '100%' : '0%',
+              transition: 'opacity 0.7s ease-out, width 0.7s ease-out'
+            }} 
+          />
         </SectionTitle>
         <SectionSubtitle initial="hidden" animate={titleInView ? "visible" : "hidden"} variants={{...fadeInUp, visible: {...fadeInUp.visible, transition: {...fadeInUp.visible.transition, delay: 0.2}}}}>
           This is your services section. This is a great place to give more information about the services you provide. You can write a general description of what your business offers then add more details below. This section can be adapted for your website.
