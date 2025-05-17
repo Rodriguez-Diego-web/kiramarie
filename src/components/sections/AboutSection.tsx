@@ -111,6 +111,7 @@ const Paragraph = styled.p`
 
 interface AboutPageData {
   name: string;
+  additionalHeadline?: string;
   headlineMain: string;
   profile_image: string;
   body: string;
@@ -157,7 +158,7 @@ const AboutSection: React.FC = () => {
     return <AboutSectionContainer><p>No data available.</p></AboutSectionContainer>;
   }
 
-  const { name, headlineMain, profile_image, body } = aboutData;
+  const { name, additionalHeadline, headlineMain, profile_image, body } = aboutData;
 
   return (
     <AboutSectionContainer id="about-section"> 
@@ -170,6 +171,7 @@ const AboutSection: React.FC = () => {
             
             <Heading>
               {name && <strong>{name}</strong>}
+              {additionalHeadline && <><br />{additionalHeadline}</>}
               {name && headlineMain && <br />}
               {headlineMain}
             </Heading>
