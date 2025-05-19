@@ -1,8 +1,8 @@
 backend:
   name: git-gateway
   branch: main
-  identity_url: "https://kiramarie.netlify.app/.netlify/identity"
-  gateway_url: "https://kiramarie.netlify.app/.netlify/git"
+  identity_url: "https://www.kiramariecremer.de/.netlify/identity"
+  gateway_url: "https://www.kiramariecremer.de/.netlify/git"
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
