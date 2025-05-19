@@ -49,25 +49,39 @@ const ContentWrapper = styled.div`
   position: relative;
   z-index: 1;
   padding: 0 80px; // Fügt seitliches Padding hinzu, damit Text nicht am Rand klebt
+  
+  @media (max-width: 767px) {
+    text-align: center; // Zentriert Text auf mobilen Geräten
+    padding: 0; // Kein Padding, um sicherzustellen, dass der Titel wirklich zentriert ist
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 const SectionTitle = styled(motion.h2)`
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 700;
   margin-bottom: 20px;
   color: #ffffff;
   position: relative; /* Für die absolute Positionierung des Kastens */
   display: inline-block; /* Damit der Hintergrund nur die Textbreite umfasst */
   z-index: 0; /* Ensure SectionTitle creates a stacking context */
-  // margin-left: 0; // Explizit oder durch Entfernen von auto
+  padding: 0 20px; /* Etwas Platz links und rechts für den Balken */
 
   @media (max-width: 767px) {
-    font-size: 2rem; 
+    font-size: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: auto;
+    align-self: center; /* Zusätzliche Zentrierung */
   }
 
   @media (max-width: 480px) {
-    font-size: 1.8rem; 
+    font-size: 3rem;
   }
 `;
 
@@ -75,11 +89,18 @@ const BeigeBox = styled(motion.div)`
   position: absolute;
   background-color: #e6dfd7; /* Beige Farbe */
   height: 25px;
-  width: 100%;
+  width: 10%; /* Etwas schmaler als zuvor */
   z-index: -1;
   bottom: -4px;
-  left: 0;
+  left: 50%; /* Vom Mittelpunkt des Titels ausgehend */
+  transform: translateX(-50%); /* Genau zentrieren */
   opacity: 0.7;
+  
+  @media (max-width: 767px) {
+    width: 50%; /* Schmaler auf Mobilgeräten */
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `;
 
 const SectionSubtitle = styled(motion.p)`
@@ -89,6 +110,13 @@ const SectionSubtitle = styled(motion.p)`
   max-width: 700px; // Behält eine maximale Breite für den Lesefluss
   margin: 0 0 40px 0; // Oben, Rechts, Unten, Links - kein auto mehr für horizontale Zentrierung
   color: #e0e0e0;
+  
+  @media (max-width: 767px) {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 1rem;
+  }
 `;
 
 // Neuer Wrapper für den weißen Hintergrund des Grids
@@ -204,12 +232,12 @@ const CollaborationSection: React.FC = () => {
     },
     {
       imageSrc: '/images/speaker.JPG', // Korrigierter Pfad
-      buttonText: 'Speaker',
+      buttonText: 'Speakings',
       link: 'https://nwx.new-work.se/events/nwx23/speaker/kira-marie-cremer', 
       buttonColor: '#86a4fd' // Blau
     },
     {
-      imageSrc: '/images/NWN.PNG', // Platzhalter, ggf. anpassen
+      imageSrc: '/images/Podcast_Cover.jpeg', // Platzhalter, ggf. anpassen
       buttonText: 'New Work Now',
       link: 'https://disruptingminds.com/speaker/kira-marie-cremer/', 
       buttonColor: '#ffe83c' // Gelb
@@ -223,7 +251,7 @@ const CollaborationSection: React.FC = () => {
   ];
 
   return (
-    <SectionContainer id="zusammenarbeit" ref={sectionRef}>
+    <SectionContainer id="expertise" ref={sectionRef}>
       <ParallaxCollaborationGradient 
         style={{
           x: gradientX,
@@ -235,20 +263,22 @@ const CollaborationSection: React.FC = () => {
           style={{ 
             opacity: titleInView ? 1 : 0,
             transform: titleInView ? 'translateY(0)' : 'translateY(30px)',
-            transition: 'opacity 0.6s ease-out, transform 0.6s ease-out'
+            transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+            textAlign: 'center', // Zusätzliche Inline-Zentrierung
+            width: '100%' // Nimmt die volle Breite ein
           }}
         >
-          Zusammenarbeit
+          EXPERTISE
           <BeigeBox 
             style={{ 
               opacity: titleInView ? 0.7 : 0,
-              width: titleInView ? '100%' : '0%',
+              width: titleInView ? '30%' : '0%', // Kürzere Breite für den Balken
               transition: 'opacity 0.7s ease-out, width 0.7s ease-out'
             }} 
           />
         </SectionTitle>
         <SectionSubtitle initial="hidden" animate={titleInView ? "visible" : "hidden"} variants={{...fadeInUp, visible: {...fadeInUp.visible, transition: {...fadeInUp.visible.transition, delay: 0.2}}}}>
-          This is your services section. This is a great place to give more information about the services you provide. You can write a general description of what your business offers then add more details below. This section can be adapted for your website.
+          Entdecken Sie die vielfältigen Möglichkeiten einer Zusammenarbeit mit mir. Als Expertin für New Work und moderne Arbeitskonzepte biete ich maßgeschneiderte Lösungen für Unternehmen und Organisationen. Von inspirierenden Keynotes über praxisnahe Workshops bis hin zu strategischer Beratung – gemeinsam gestalten wir die Arbeitswelt von morgen.
         </SectionSubtitle>
       </ContentWrapper>
       <GridBackground>

@@ -5,6 +5,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import { theme } from './styles/theme';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import ScrollToTopButton from './components/common/ScrollToTopButton';
 import Home from './pages/Home';
 import FunkeFeedPage from './components/pages/FunkeFeedPage';
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/kooperationen/funke-feed" element={<FunkeFeedPage />} /> 
           {/* Add more routes as needed */}
         </Routes>
+        <ScrollToTopButton />
         <Footer />
       </Router>
     </ThemeProvider>

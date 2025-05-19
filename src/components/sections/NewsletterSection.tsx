@@ -1,148 +1,123 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { motion, useInView } from 'framer-motion';
 
-const NewsletterContainer = styled.section`
-  width: 100%;
-  background-color: #ffffff;
-  padding: 100px 0;
-  position: relative;
-  overflow: hidden;
-`;
-
-const ContentWrapper = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-  padding: 0 20px;
-`;
-
-const PurpleBox = styled(motion.div)`
-  position: absolute;
-  background-color: #9370DB; /* Lila Farbe */
-  height: 30px; /* Höhe angepasst */
-  width: 100%; /* Volle Breite des Titels */
-  z-index: -1;
-  bottom: -10px; /* Leicht nach oben verschoben vom unteren Rand des Textes */
-  left: 0;
-`;
-
-const Title = styled(motion.h2)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #1c1c1c;
-  margin-bottom: 20px;
-  text-align: center;
-  position: relative; /* Für die absolute Positionierung des Kastens */
-`;
-
-const Subtitle = styled(motion.p)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #333;
-  max-width: 650px;
-  text-align: center;
-  margin-bottom: 40px;
-`;
-
-const FormPlaceholder = styled(motion.div)`
-  width: 100%;
-  max-width: 600px;
-  background-color: transparent;
-  border-radius: 16px;
-  padding: 10px;
-  margin-top: 20px;
-  text-align: center;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  
-  @media (max-width: 768px) {
-    width: 100%;
-    padding: 0;
-  }
-`;
-
-// Animationseffekte
-const fadeInUpAnimation = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" }
-  }
-};
-
+// Moderne, stilvolle Komponenten mit visuellem Interesse
 const NewsletterSection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
-  
   return (
-    <NewsletterContainer id="newsletter" ref={sectionRef}>
-      <ContentWrapper>
-        <Title
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeInUpAnimation}
-        >
-          Insights in deinen Posteingang
-          <PurpleBox 
-            initial={{ opacity: 0, width: 0 }}
-            animate={isInView ? { opacity: 0.7, width: "100%" } : { opacity: 0, width: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          />
-        </Title>
-        <Subtitle
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { 
-              opacity: 1, 
-              y: 0,
-              transition: { duration: 0.7, delay: 0.2, ease: "easeOut" }
-            }
-          }}
-        >
-          Abonniere meinen Newsletter für exklusive Einblicke, Tipps und Trends rund um New Work und die Zukunft der Arbeit – direkt in dein Postfach.
-        </Subtitle>
-        
-        <FormPlaceholder
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { 
-              opacity: 1, 
-              y: 0,
-              transition: { duration: 0.8, delay: 0.3 }
-            }
-          }}
-        >
-          <iframe 
-            src="https://embeds.beehiiv.com/81fc6fc1-ddd0-4079-81fb-899807142dfd" 
-            data-test-id="beehiiv-embed" 
-            width="100%" 
-            height="320" 
-            frameBorder="0" 
-            scrolling="no" 
-            style={{ 
-              borderRadius: '12px', 
-              border: '2px solid rgba(205, 175, 253, 0.3)',
-              margin: 0, 
-              backgroundColor: 'transparent'
-            }}
-            title="Kira Marie Newsletter"
-          />
-        </FormPlaceholder>
-      </ContentWrapper>
-    </NewsletterContainer>
+    <NewsletterWrapper id="newsletter">
+      <ContentContainer>
+        <NewsletterCard>
+          <LogoContainer>
+            <NewsletterLogo 
+              src="/uploads/Newsletter Logo.png" 
+              alt="What The Work?! Newsletter" 
+            />
+          </LogoContainer>
+          
+          <FormContainer>
+            <IntroText>
+              Deine wöchentliche Dosis Inspiration und praktische Tipps für die moderne Arbeitswelt
+            </IntroText>
+            
+            <NewsletterForm>
+              <StyledIframe 
+                src="https://embeds.beehiiv.com/81fc6fc1-ddd0-4079-81fb-899807142dfd" 
+                data-test-id="beehiiv-embed"
+                title="Kira Marie Newsletter"
+                frameBorder="0" 
+                scrolling="no" 
+              />
+            </NewsletterForm>
+          </FormContainer>
+        </NewsletterCard>
+      </ContentContainer>
+    </NewsletterWrapper>
   );
 };
+
+// Styled Components mit modernen Design-Elementen
+const NewsletterWrapper = styled.section`
+  width: 100%;
+  background-color: #ffffff;
+  padding: 80px 0;
+  position: relative;
+`;
+
+
+
+const ContentContainer = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+`;
+
+const NewsletterCard = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  align-items: stretch;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-color:#8facfd;
+  
+  @media (max-width: 768px) {
+    padding: 25px;
+  }
+`;
+
+const NewsletterLogo = styled.img`
+  width: 200%;
+  max-width: 380px;
+  height: auto;
+  display: block;
+`;
+
+const FormContainer = styled.div`
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  @media (max-width: 768px) {
+    padding: 30px;
+  }
+`;
+
+const IntroText = styled.p`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+  margin: 0 0 20px;
+  
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`;
+
+const NewsletterForm = styled.div`
+  width: 100%;
+`;
+
+const StyledIframe = styled.iframe`
+  width: 100%;
+  height: 320px;
+  border: none;
+  background-color: transparent;
+`;
 
 export default NewsletterSection;

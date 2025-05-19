@@ -52,16 +52,16 @@ const Header: React.FC = () => {
             }}>NEWSLETTER</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/#zusammenarbeit" onClick={() => {
+            <MenuLink to="/#expertise" onClick={() => {
               closeMenu();
-              document.getElementById('zusammenarbeit')?.scrollIntoView({ behavior: 'smooth' });
-            }}>ZUSAMMENARBEIT</MenuLink>
+              document.getElementById('expertise')?.scrollIntoView({ behavior: 'smooth' });
+            }}>EXPERTISE</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/#folge-mir" onClick={() => {
+            <MenuLink to="/#presse" onClick={() => {
               closeMenu();
-              document.getElementById('folge-mir')?.scrollIntoView({ behavior: 'smooth' });
-            }}>FOLGE MIR</MenuLink>
+              document.getElementById('presse')?.scrollIntoView({ behavior: 'smooth' });
+            }}>PRESSE</MenuLink>
           </MenuItem>
         </DesktopMenu>
 
@@ -129,10 +129,10 @@ const Header: React.FC = () => {
                     <MobileMenuLinkPrimary to="/#newsletter" onClick={() => { closeMenu(); document.getElementById('newsletter')?.scrollIntoView({ behavior: 'smooth' }); }}>NEWSLETTER</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#zusammenarbeit" onClick={() => { closeMenu(); document.getElementById('zusammenarbeit')?.scrollIntoView({ behavior: 'smooth' }); }}>ZUSAMMENARBEIT</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/#expertise" onClick={() => { closeMenu(); document.getElementById('expertise')?.scrollIntoView({ behavior: 'smooth' }); }}>EXPERTISE</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#folge-mir" onClick={() => { closeMenu(); document.getElementById('folge-mir')?.scrollIntoView({ behavior: 'smooth' }); }}>FOLGE MIR</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/#presse" onClick={() => { closeMenu(); document.getElementById('presse')?.scrollIntoView({ behavior: 'smooth' }); }}>PRESSE</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
                     <MobileMenuLinkPrimary to="/#leistungen" onClick={() => { closeMenu(); document.getElementById('leistungen')?.scrollIntoView({ behavior: 'smooth' }); }}>LEISTUNGEN</MobileMenuLinkPrimary>

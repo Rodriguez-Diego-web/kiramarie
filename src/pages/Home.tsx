@@ -19,22 +19,22 @@ const SectionsWithDiagonalWrapper = styled.div`
 const SharedDiagonalLine = styled.div`
   position: absolute;
   background-color: rgba(205, 175, 253, 0.65);
-  height: 400px;
+  height: 200px; /* Reduziert von 400px für einen dünneren Balken */
   width: 250%;
   transform: rotate(-20deg);
-  left: -75%;   /* Startet weit links außerhalb des sichtbaren Bereichs */
-  top: 20%;      /* Erhöht von 10% */
-  z-index: 1;   /* Liegt hinter dem Sektionsinhalt (der z-index: 2 hat) */
+  left: -75%;
+  top: 30%; /* Angepasst, damit der dünnere Balken besser positioniert ist */
+  z-index: 1;
   pointer-events: none;
 
   @media (max-width: 991px) {
-    height: 350px;
-    top: 25%;    /* Erhöht von 15% */
+    height: 180px; /* Reduziert von 350px */
+    top: 32%;
     transform: rotate(-22deg);
   }
   @media (max-width: 767px) {
-    height: 300px;
-    top: 30%;    /* Erhöht von 20% */
+    height: 150px; /* Reduziert von 300px */
+    top: 35%;
     transform: rotate(-24deg);
   }
 `;

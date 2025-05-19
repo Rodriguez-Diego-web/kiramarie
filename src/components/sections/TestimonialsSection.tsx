@@ -23,11 +23,18 @@ const PurpleBox = styled(motion.div)`
   position: absolute;
   background-color: #9370DB;
   height: 30px;
-  width: 100%;
+  width: 120%; /* Breiter als der Text */
   z-index: -1;
   bottom: 0px;
-  left: 0;
+  left: 50%; /* Vom Mittelpunkt des Titels ausgehend */
+  transform: translateX(-50%); /* Genau zentrieren */
   opacity: 0.7;
+  
+  @media (max-width: 767px) {
+    width: 140%; /* Auch auf Mobilgeräten breiter als der Text */
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -42,7 +49,7 @@ const SectionTitle = styled(motion.h2)`
   line-height: 1.5;
   display: inline-block;
   @media (max-width: 767px) {
-    font-size: 2.2rem;
+    font-size: 2.8rem; /* Größer auf mobilen Geräten, wie die KONTAKT-Überschrift */
     margin-bottom: 77px;
   }
 `;
@@ -161,7 +168,7 @@ const TestimonialsSection: React.FC = () => {
   return (
     <SectionContainer ref={sectionRef} id="testimonials">
       <SectionTitle>
-        Das sagen meine Kunden
+        REVIEWS
         <PurpleBox />
       </SectionTitle>
       <TestimonialsGrid>

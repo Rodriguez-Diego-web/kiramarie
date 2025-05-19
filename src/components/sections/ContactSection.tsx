@@ -73,11 +73,18 @@ const PurpleBox = styled(motion.div)`
   position: absolute;
   background-color: #e6dfd7;
   height: 25px;
-  width: 100%;
+  width: 130%; /* Breiter als der Text */
   z-index: -1;
   bottom: -4px;
-  left: 0;
+  left: 50%; /* Vom Mittelpunkt des Titels ausgehend */
+  transform: translateX(-50%); /* Genau zentrieren */
   opacity: 0.7;
+  
+  @media (max-width: 767px) {
+    width: 140%; /* Auch auf Mobilgeräten breiter als der Text */
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `;
 
 const ContactContent = styled.div`
@@ -168,10 +175,10 @@ const ContactSection: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
         >
           <SectionHeading>
-            Kontakt
+            KONTAKT
             <PurpleBox 
               initial={{ opacity: 0, width: 0 }}
-              animate={contentInView ? { opacity: 0.7, width: "100%" } : { opacity: 0, width: 0 }}
+              animate={contentInView ? { opacity: 0.7, width: "120%" } : { opacity: 0, width: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
             />
           </SectionHeading>

@@ -196,15 +196,23 @@ const StyledVideo = styled.iframe`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.5);
+  transform: translate(-50%, -50%) scale(1.2);
   width: 100%;
   height: 100%;
+  
+  @media (max-width: 768px) {
+    transform: translate(-50%, -50%) scale(5.5); /* Stärkerer Zoom auf mobilen Geräten */
+  }
+  
+  @media (max-width: 480px) {
+    transform: translate(-50%, -50%) scale(6.5); /* Noch stärkerer Zoom auf sehr kleinen Displays */
+  }
   object-fit: cover;
   background-color: black;
   pointer-events: none;
 
   @media (max-width: 768px) {
-    transform: translate(-50%, -50%) scale(2.5);
+    transform: translate(-50%, -50%) scale(4);
   }
 `;
 

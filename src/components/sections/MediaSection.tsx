@@ -16,7 +16,7 @@ const ContentWrapper = styled.div`
 `;
 
 const SectionHeader = styled(motion.h2)`
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 40px;
   color: #333;
   position: relative; /* Für die absolute Positionierung des Kastens */
@@ -28,11 +28,18 @@ const PurpleBox = styled(motion.div)`
   position: absolute;
   background-color: #9370DB; /* Lila Farbe */
   height: 25px;
-  width: 100%;
+  width: 125%; /* Breiter als der Text */
   z-index: -1;
   bottom: -4px;
-  left: 0;
+  left: 50%; /* Vom Mittelpunkt des Titels ausgehend */
+  transform: translateX(-50%); /* Genau zentrieren */
   opacity: 0.7;
+  
+  @media (max-width: 767px) {
+    width: 140%; /* Auch auf Mobilgeräten breiter als der Text */
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `;
 
 const MediaGrid = styled(motion.div)`

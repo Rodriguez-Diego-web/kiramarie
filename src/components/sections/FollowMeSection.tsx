@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, useInView } from 'framer-motion';
-import { FaLinkedin, FaInstagram, FaUserTie, FaSpotify } from 'react-icons/fa';
+import { FaLinkedin, FaInstagram, FaSpotify } from 'react-icons/fa';
 
 const SectionContainer = styled.section`
   background-color:rgb(255, 255, 255);
@@ -25,11 +25,15 @@ const SocialLinksGrid = styled(motion.div)`
   display: grid;
   gap: 30px; 
   justify-items: center;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   @media (max-width: 767px) { 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px; 
+  }
+  
+  @media (max-width: 480px) { 
+    gap: 15px; 
   }
 `;
 
@@ -49,6 +53,10 @@ const StyledLinkCard = styled(motion.a)`
   &:hover {
     background-color: rgba(66, 65, 65, 0.1);
     transform: translateY(-5px) scale(1.02);
+  }
+  
+  @media (max-width: 480px) {
+    padding: 15px 10px;
   }
 `;
 
@@ -96,7 +104,6 @@ interface SocialPlatform {
 const baseSocialPlatforms: SocialPlatform[] = [
   { name: 'LinkedIn', icon: <FaLinkedin />, url: 'https://de.linkedin.com/in/kiramariecremer', followers: 'Lade...', color: '#0077B5' }, 
   { name: 'Instagram', icon: <FaInstagram />, url: 'https://www.instagram.com/kiramariecremer/', followers: 'Lade...', color: '#FF69B4' },
-  { name: 'Speaker Profil', icon: <FaUserTie />, url: 'https://disruptingminds.com/speaker/kira-marie-cremer/' }, 
   { name: 'Spotify', icon: <FaSpotify />, url: 'https://open.spotify.com/show/67HR7TSSRScAXYuCEGAtgc?go=1&sp_cid=e578cde98c41cde20cf9c1e52209e8b9&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=9daa3857efdd48ca', followers: 'Lade...', color: '#1DB954' },
 ];
 

@@ -1,111 +1,162 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-
-
 const AboutSectionContainer = styled.section`
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
   background-color: #FFFFFF;
-  padding: 80px 0;
+  padding: 100px 20px;
   position: relative;
   overflow: hidden;
 
   @media (max-width: 991px) {
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 0;
+    padding: 60px 20px;
   }
 `;
 
 const ContentLayoutWrapper = styled.div`
   display: flex;
-  align-items: stretch;
+  align-items: center;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
-
+  gap: 50px;
+  
   @media (max-width: 991px) {
     flex-direction: column;
     align-items: center;
+    gap: 40px;
   }
 `;
 
-const ImageWrapper = styled.div`
-  flex: 0 0 45%;
+const ImageContainer = styled.div`
+  flex: 0 0 40%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-right: 0;
+  
+  @media (max-width: 991px) {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 767px) {
+    max-width: 280px;
+  }
+  
+  @media (max-width: 480px) {
+    max-width: 240px;
+  }
+`;
+
+const BackgroundBox = styled.div`
+  position: absolute;
+  top: -35px;
+  left: -35px;
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+  background-color: #e6dfd7; /* Beiger Hintergrund */
+  z-index: 1;
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
 
   img {
-    min-width: 350px;
-    max-width: 100%;
-    min-height: 400px;
-    max-height: 600px;
+    width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 0;
-  }
-
-  @media (max-width: 991px) {
-    flex-basis: auto;
-    width: 100%;
-    max-width: 450px;
-    min-width: auto;
-    padding-right: 0;
-    margin-bottom: 30px;
+    max-height: 500px;
+    
+    @media (max-width: 767px) {
+      max-height: 400px;
+    }
+    
+    @media (max-width: 480px) {
+      max-height: 350px;
+    }
   }
 `;
 
 const TextWrapper = styled.div`
   flex: 1;
-  background-color: #e6dfd7;
-  padding: 50px;
+  padding: 0;
   position: relative;
   color: #000000;
-  border-radius: 0;
-  overflow: hidden;
-  z-index: 1;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
 `;
 
 const TextContent = styled.div`
   position: relative;
-  z-index: 1;
 `;
 
 const Heading = styled.h2`
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.4rem;
-  line-height: 1.4;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  line-height: 1.3;
+  margin: 0;
   font-weight: 300; 
   color: #1c1c1c;
 
   strong {
-    font-weight: 600; 
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 5px;
   }
 
   @media (max-width: 991px) {
-    font-size: 1.25rem;
+    font-size: 1.8rem;
   }
   @media (max-width: 767px) {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
+    font-size: 1.5rem;
   }
 `;
 
-const Paragraph = styled.p`
+const Paragraph = styled.div`
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 1.7;
   color: #333333;
-  margin-bottom: 15px;
   
   @media (max-width: 767px) {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+  }
+`;
+
+const ContactButton = styled.a`
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  &:hover {
+    background-color: #333;
   }
 `;
 
@@ -158,27 +209,38 @@ const AboutSection: React.FC = () => {
     return <AboutSectionContainer><p>No data available.</p></AboutSectionContainer>;
   }
 
-  const { name, additionalHeadline, headlineMain, profile_image, body } = aboutData;
+  const { name, headlineMain, profile_image, body } = aboutData;
 
   return (
     <AboutSectionContainer id="about-section"> 
       <ContentLayoutWrapper>
-        <ImageWrapper>
-          <img src={profile_image || '/assets/images/default-profile.png'} alt={name || 'Profilbild'} />
-        </ImageWrapper>
+        <ImageContainer>
+          <BackgroundBox />
+          <ImageWrapper>
+            <img src={profile_image || '/assets/images/default-profile.png'} alt={name || 'Profilbild'} />
+          </ImageWrapper>
+        </ImageContainer>
         <TextWrapper>
           <TextContent>
-            
             <Heading>
               {name && <strong>{name}</strong>}
-              <br />
-              {additionalHeadline && additionalHeadline}
-              {name && headlineMain && <br />}
               {headlineMain}
             </Heading>
             
-            {body && <Paragraph dangerouslySetInnerHTML={{ __html: body.replace(/\n/g, '<br />') }} />} 
-
+            {body && <Paragraph dangerouslySetInnerHTML={{ __html: body.replace(/\n/g, '<br />') }} />}
+            
+            <ContactButton 
+              href="#kontakt" 
+              onClick={(e) => {
+                e.preventDefault();
+                const kontaktElement = document.getElementById('kontakt');
+                if (kontaktElement) {
+                  kontaktElement.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              MEHR ERFAHREN
+            </ContactButton>
           </TextContent>
         </TextWrapper>
       </ContentLayoutWrapper>

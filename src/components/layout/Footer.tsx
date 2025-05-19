@@ -71,12 +71,11 @@ const Footer: React.FC = () => {
             <LinkGroup>
               <FooterLink href="#" onClick={(e) => handleSmoothScroll(e, '#')}>Home</FooterLink>
               <FooterLink href="#about-section" onClick={(e) => handleSmoothScroll(e, '#about-section')}>Über mich</FooterLink>
-              <FooterLink href="#zusammenarbeit" onClick={(e) => handleSmoothScroll(e, '#zusammenarbeit')}>Zusammenarbeit</FooterLink>
+              <FooterLink href="#expertise" onClick={(e) => handleSmoothScroll(e, '#expertise')}>Expertise</FooterLink>
               <FooterLink href="#newsletter" onClick={(e) => handleSmoothScroll(e, '#newsletter')}>Newsletter</FooterLink>
             </LinkGroup>
             
             <LinkGroup>
-              <FooterLink href="#folge-mir" onClick={(e) => handleSmoothScroll(e, '#folge-mir')}>Folge mir</FooterLink>
               <FooterLink href="#kontakt" onClick={(e) => handleSmoothScroll(e, '#kontakt')}>Kontakt</FooterLink>
               <FooterLink href="#presse" onClick={(e) => handleSmoothScroll(e, '#presse')}>Presse</FooterLink>
             </LinkGroup>
@@ -87,7 +86,7 @@ const Footer: React.FC = () => {
         
         <FooterBottom>
           <Copyright>&copy; {currentYear} Kira Marie. Alle Rechte vorbehalten.</Copyright>
-          <CreatedBy>Designed by Diego Rodriguez Web</CreatedBy>
+          <CreatedBy>Developed by Diego Rodriguez Web</CreatedBy>
         </FooterBottom>
       </Container>
     </FooterWrapper>
