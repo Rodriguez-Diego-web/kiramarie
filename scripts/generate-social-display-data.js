@@ -14,6 +14,7 @@ function formatFollowerCount(name, count) {
     unit = 'Hörer';
   }
 
+  // Return formatted display string for the UI
   if (count >= 1000000) {
     return (count / 1000000).toFixed(1).replace('.0', '') + 'M ' + unit;
   } else if (count >= 1000) {
@@ -35,10 +36,18 @@ async function generateSocialDisplayData() {
       return;
     }
 
-    const displayData = sourceData.platforms.map(platform => ({
+    // Filter to only keep LinkedIn and Instagram
+    const filteredPlatforms = sourceData.platforms.filter(platform => 
+      platform.name === 'LinkedIn' || platform.name === 'Instagram'
+    );
+    
+    // Create the display data with both formatted strings and raw counts
+    const displayData = filteredPlatforms.map(platform => ({
       name: platform.name,
+
       url: platform.url,
-      followersDisplayString: formatFollowerCount(platform.name, platform.count)
+      followersDisplayString: formatFollowerCount(platform.name, platform.count),
+      rawCount: platform.count // Add raw count value for accurate animations
     }));
 
     await fs.writeFile(outputFilePath, JSON.stringify(displayData, null, 2));

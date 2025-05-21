@@ -2,21 +2,13 @@
   {
     "name": "LinkedIn",
     "url": "https://de.linkedin.com/in/kiramariecremer",
-    "followersDisplayString": "52K Follower"
+    "followersDisplayString": "52K Follower",
+    "rawCount": 52000
   },
   {
     "name": "Instagram",
     "url": "#",
-    "followersDisplayString": "11.5K Follower"
-  },
-  {
-    "name": "Speaker Profil",
-    "url": "https://disruptingminds.com/speaker/kira-marie-cremer/",
-    "followersDisplayString": null
-  },
-  {
-    "name": "Spotify",
-    "url": "#",
-    "followersDisplayString": "2.5K Hörer"
+    "followersDisplayString": "11.5K Follower",
+    "rawCount": 11500
   }
 ]

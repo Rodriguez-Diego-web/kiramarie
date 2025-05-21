@@ -36,8 +36,11 @@ collections:
           - label: "Plattformen"
             name: "platforms"
             widget: "list"
+            summary: "{{fields.name}}: {{fields.count}}"
+            min: 2
+            max: 2
             fields:
-              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Name", name: "name", widget: "select", options: ["LinkedIn", "Instagram"], default: "LinkedIn" }
               - { label: "Follower Anzahl", name: "count", widget: "number" }
               - { label: "Profil URL", name: "url", widget: "string" }
 
@@ -64,7 +67,10 @@ collections:
           - { label: "Seitentitel (für Browser/SEO)", name: "page_title", widget: "string", default: "Über Mich", required: false }
           - { label: "Name (für Tag & Überschrift)", name: "name_for_tag_and_headline", widget: "string", default: "Kira Marie Cremer" }
           - { label: "Haupttext der Überschrift (nach Name)", name: "headline_main_text", widget: "text", default: "ist eine der führenden deutschen Stimmen im Bereich New Work und Expertin für die Zukunft der Arbeitswelt." }
-          - { label: "Profilbild", name: "profile_image", widget: "image", required: false }
+          - { label: "Profilbild (Hauptbild)", name: "profile_image", widget: "image", required: false }
+          - { label: "Bild 1 (Linke Spalte oben)", name: "left_image_1", widget: "image", required: false }
+          - { label: "Bild 2 (Linke Spalte unten)", name: "left_image_2", widget: "image", required: false }
+          - { label: "Bild 3 (Rechte Spalte)", name: "right_image", widget: "image", required: false }
           - { label: "Biografie / Haupttext", name: "body", widget: "markdown" }
 
   - name: "testimonials"

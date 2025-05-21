@@ -89,7 +89,7 @@ const HeroSection: React.FC = () => {
       >
         <StyledVideo
           ref={videoRef}
-          src="https://www.youtube-nocookie.com/embed/UXNL0Sl78js?start=2736&controls=0&modestbranding=1&rel=0&playsinline=1&autoplay=1&mute=1&loop=1&playlist=UXNL0Sl78js"
+          src={`https://www.youtube.com/embed/KiwTZquAzSw?autoplay=1&mute=1&loop=1&playlist=KiwTZquAzSw&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -196,7 +196,7 @@ const StyledVideo = styled.iframe`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.2);
+  transform: translate(-50%, -50%) scale(1.1);
   width: 100%;
   height: 100%;
   
@@ -205,14 +205,14 @@ const StyledVideo = styled.iframe`
   }
   
   @media (max-width: 480px) {
-    transform: translate(-50%, -50%) scale(6.5); /* Noch stärkerer Zoom auf sehr kleinen Displays */
+    transform: translate(-50%, -50%) scale(4); /* Noch stärkerer Zoom auf sehr kleinen Displays */
   }
   object-fit: cover;
   background-color: black;
   pointer-events: none;
 
   @media (max-width: 768px) {
-    transform: translate(-50%, -50%) scale(4);
+    transform: translate(-50%, -50%) scale(3.2);
   }
 `;
 

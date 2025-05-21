@@ -30,8 +30,9 @@ const Header: React.FC = () => {
     <HeaderWrapper $scrolled={scrolled}>
       <Nav>
         <LogoContainer>
-          <FirstName to="/">KIRA</FirstName>
-          <LastName to="/">MARIE</LastName>
+          <LogoLink to="/">
+            <Logo src="/images/KMC logo schwarz_02.png" alt="Kira Marie Cremer Logo" />
+          </LogoLink>
         </LogoContainer>
 
         <DesktopMenu>
@@ -75,7 +76,7 @@ const Header: React.FC = () => {
                 exit={{ opacity: 0, rotate: 90 }}
                 transition={{ duration: 0.3 }}
               >
-                <Icon icon={FiMenu} size={26} /> 
+                <Icon icon={FiMenu} size={26} color="#333333" /> 
               </motion.div>
             ) : (
               <motion.div
@@ -85,7 +86,7 @@ const Header: React.FC = () => {
                 exit={{ opacity: 0, rotate: -90 }}
                 transition={{ duration: 0.3 }}
               >
-                <Icon icon={FiX} size={26} /> 
+                <Icon icon={FiX} size={26} color="#333333" /> 
               </motion.div>
             )}
           </AnimatePresence>
@@ -109,8 +110,9 @@ const Header: React.FC = () => {
               >
                 <MobileMenuHeader>
                   <LogoContainerInMenu>
-                    <FirstNameInMenu to="/" onClick={closeMenu}>KIRA</FirstNameInMenu>
-                    <LastNameInMenu to="/" onClick={closeMenu}>MARIE</LastNameInMenu>
+                    <LogoLink to="/" onClick={closeMenu}>
+                      <Logo src="/images/KMC logo schwarz_02.png" alt="Kira Marie Cremer Logo" />
+                    </LogoLink>
                   </LogoContainerInMenu>
                 </MobileMenuHeader>
 
@@ -168,9 +170,10 @@ const HeaderWrapper = styled.header<{ $scrolled: boolean }>`
   width: 100%;
   z-index: 1000;
   transition: all 0.3s ease;
-  background-color: ${props => props.$scrolled ? 'rgba(0, 0, 0, 0.9)' : 'transparent'};
-  box-shadow: ${props => props.$scrolled ? '0 1px 8px rgba(0, 0, 0, 0.2)' : 'none'};
-  height: var(--header-height);
+  background-color: #e6dfd7; // Always beige
+  box-shadow: ${({ $scrolled }) => $scrolled ? '0 1px 8px rgba(0, 0, 0, 0.2)' : 'none'}; // Shadow based on scroll
+  height: auto; // Let content determine height
+  padding: 0.5rem 0; // Further reduced vertical padding for thinner header
   display: flex;
   align-items: center;
 `;
@@ -182,76 +185,84 @@ const Nav = styled.nav`
   width: 90%;
   max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0;
 `;
 
 const LogoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin: 0;
+  padding: 0;
 `;
 
-const FirstName = styled(Link)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: white;
-  line-height: 1;
-  text-decoration: none;
+const LogoLink = styled(Link)`
+  z-index: 1001; // Ensure logo is above mobile menu background
+  margin: 0;
+  padding: 0;
+  line-height: 0; /* Removes extra space below image */
 `;
 
-const LastName = styled(Link)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  color: #cdaffd;
-  line-height: 1;
-  margin-top: 2px;
-  text-decoration: none;
+const Logo = styled.img`
+  height: 55px; /* Increased */
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    height: 36px; /* Increased */
+  }
 `;
 
 const DesktopMenu = styled.ul`
   display: flex;
-  gap: 2.5rem;
+  gap: 1.5rem; /* Reduced gap between items */
 
   @media (max-width: 768px) {
     display: none;
   }
 `;
 
-const MenuItem = styled.li``;
+const MenuItem = styled.li`
+  list-style: none; /* Remove default list item marker */
+  position: relative; /* For potential ::before elements */
+
+  /* Attempt to remove any existing dot/separator from ::before */
+  &::before {
+    display: none !important; 
+    content: '' !important;
+  }
+
+  /* Remove styling for specific separator if it's done via first-child/last-child logic */
+  &:not(:first-child)::before {
+    display: none !important;
+    content: '' !important;
+  }
+`;
 
 const MenuLink = styled(Link)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-family: 'Almarai', sans-serif;
+  font-size: 0.8rem;
   letter-spacing: 0.1em;
-  color: white;
+  font-weight: 400; /* Changed to regular weight */
+  text-transform: uppercase;
+  color: #333333;
   text-decoration: none;
+  padding: 0.05rem 0.6rem; /* Minimal vertical padding, reduced horizontal */
   position: relative;
-  padding: 0.5rem 0;
-  
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background-color: #cdaffd;
-    transition: width 0.3s ease;
-  }
-  
-  &:hover:after {
-    width: 100%;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #8c7851; 
   }
 `;
 
 const MenuToggle = styled.button`
   background: none;
   border: none;
-  color: white;
+  color: #333333;
   cursor: pointer;
   z-index: 1001; 
   display: none; 
@@ -308,27 +319,6 @@ const LogoContainerInMenu = styled.div`
   flex-direction: column;
 `;
 
-const FirstNameInMenu = styled(Link)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.8rem; 
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #ffffff;
-  line-height: 1;
-  text-decoration: none;
-`;
-
-const LastNameInMenu = styled(Link)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.8rem; 
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  color: #9370DB; 
-  line-height: 1;
-  margin-top: 2px;
-  text-decoration: none;
-`;
-
 const NavLinksList = styled.ul`
   list-style: none;
   padding: 0;
@@ -341,13 +331,15 @@ const MobileMenuItem = styled(motion.li)`
 `;
 
 const MobileMenuLinkPrimary = styled(Link)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.2rem; 
-  font-weight: 700;
-  color: #ffffff;
-  text-decoration: none;
-  padding: 10px 0; 
   display: block;
+  padding: 1.2rem 2rem;
+  font-family: 'Montserrat', sans-serif; /* Reverted font */
+  font-size: 2.2rem; /* Reverted size */
+  font-weight: 700; /* Reverted weight */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #333333;
+  text-decoration: none;
   transition: color 0.3s ease;
 
   &:hover {
@@ -370,7 +362,7 @@ const MobileMenuItemSecondary = styled.li`
 const MobileMenuLinkSecondary = styled(Link)`
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem; 
-  color: #cccccc; 
+  color: #555555; 
   text-decoration: none;
   display: block;
   padding: 5px 0;

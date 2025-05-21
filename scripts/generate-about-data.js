@@ -23,6 +23,9 @@ async function generateAboutData() {
       name: data.name_for_tag_and_headline || '',
       headlineMain: data.headline_main_text || '',
       profile_image: data.profile_image ? resolveImagePath(data.profile_image, 'profile_image') : '',
+      left_image_1: data.left_image_1 ? resolveImagePath(data.left_image_1, 'left_image_1') : '',
+      left_image_2: data.left_image_2 ? resolveImagePath(data.left_image_2, 'left_image_2') : '',
+      right_image: data.right_image ? resolveImagePath(data.right_image, 'right_image') : '',
       body: content || '',
       page_title: data.page_title || 'Über Mich'
     };
