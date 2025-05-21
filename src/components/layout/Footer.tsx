@@ -6,10 +6,8 @@ import { VscMail } from 'react-icons/vsc';
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
-
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
     e.preventDefault();
-    
 
     if (target === '#') {
       window.scrollTo({
@@ -18,7 +16,6 @@ const Footer: React.FC = () => {
       });
       return;
     }
-    
 
     const targetElement = document.querySelector(target);
     if (targetElement) {
@@ -31,13 +28,7 @@ const Footer: React.FC = () => {
       <Container>
         <FooterContent>
           <BrandSection>
-            <NameContainer>
-              <FirstName>KIRA</FirstName>
-              <LastName>MARIE</LastName>
-            </NameContainer>
-            
-            <TagLine>Leadership & Vertrauensexpertin</TagLine>
-            
+            <LogoImage src="/images/KMC logo weiß_01.png" alt="Kira Marie Cremer Logo" />
             <SocialLinks>
               <SocialLink 
                 href="https://www.instagram.com/kiramariecremer/"
@@ -69,20 +60,13 @@ const Footer: React.FC = () => {
           
           <LinksSection>
             <LinkGroup>
-              <FooterLink href="#" onClick={(e) => handleSmoothScroll(e, '#')}>Home</FooterLink>
-              <FooterLink href="#about-section" onClick={(e) => handleSmoothScroll(e, '#about-section')}>Über mich</FooterLink>
-              <FooterLink href="#expertise" onClick={(e) => handleSmoothScroll(e, '#expertise')}>Expertise</FooterLink>
-              <FooterLink href="#newsletter" onClick={(e) => handleSmoothScroll(e, '#newsletter')}>Newsletter</FooterLink>
-            </LinkGroup>
-            
-            <LinkGroup>
-              <FooterLink href="#kontakt" onClick={(e) => handleSmoothScroll(e, '#kontakt')}>Kontakt</FooterLink>
-              <FooterLink href="#presse" onClick={(e) => handleSmoothScroll(e, '#presse')}>Presse</FooterLink>
+              <FooterLink href="#kontakt" onClick={(e) => handleSmoothScroll(e, '#kontakt')}>KONTAKT</FooterLink>
+              <FooterLink href="#about-section" onClick={(e) => handleSmoothScroll(e, '#about-section')}>ÜBER MICH</FooterLink>
+              <FooterLink href="#presse" onClick={(e) => handleSmoothScroll(e, '#presse')}>ZUSAMMENARBEIT</FooterLink> 
+              <FooterLink href="#collaboration" onClick={(e) => handleSmoothScroll(e, '#collaboration')}>PODCAST: NEW WORK NOW</FooterLink> 
             </LinkGroup>
           </LinksSection>
         </FooterContent>
-        
-        <Divider />
         
         <FooterBottom>
           <Copyright>&copy; {currentYear} Kira Marie. Alle Rechte vorbehalten.</Copyright>
@@ -95,7 +79,7 @@ const Footer: React.FC = () => {
 
 const FooterWrapper = styled.footer`
   background-color: #0a0a0a;
-  padding: 3rem 0 1.5rem;
+  padding: 1rem 0 1.5rem;
   width: 100%;
 `;
 
@@ -118,95 +102,13 @@ const FooterContent = styled.div`
 const BrandSection = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  align-items: flex-start;
+  gap: 1.5rem;
 `;
 
-const NameContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const FirstName = styled.span`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #ffffff;
-  display: block;
-`;
-
-const LastName = styled.span`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: #cdaffd;
-  display: block;
-`;
-
-const TagLine = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  color: #cccccc;
-  margin: 0;
-`;
-
-const LinksSection = styled.div`
-  display: flex;
-  gap: 4rem;
-  
-  @media (max-width: 576px) {
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-`;
-
-const LinkGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-`;
-
-const FooterLink = styled.a`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  color: #cccccc;
-  text-decoration: none;
-  transition: color 0.2s ease;
-  
-  &:hover {
-    color: #cdaffd;
-  }
-`;
-
-const Divider = styled.div`
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.07);
-  margin: 2.5rem 0 1.5rem 0;
-`;
-
-const FooterBottom = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  
-  @media (max-width: 576px) {
-    flex-direction: column;
-    gap: 0.8rem;
-    text-align: center;
-  }
-`;
-
-const Copyright = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.8rem;
-  color: #888888;
-  margin: 0;
-`;
-
-const CreatedBy = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.8rem;
-  color: #888888;
-  margin: 0;
+const LogoImage = styled.img`
+  height: 60px;
+  width: auto;
 `;
 
 const SocialLinks = styled.div`
@@ -227,6 +129,63 @@ const SocialLink = styled.a`
   &:hover {
     color: #cdaffd;
   }
+`;
+
+const LinksSection = styled.div`
+  display: flex;
+  gap: 4rem;
+  
+  @media (max-width: 576px) {
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+`;
+
+const LinkGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: flex-end;
+`;
+
+const FooterLink = styled.a`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: #cccccc;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  text-transform: uppercase;
+  
+  &:hover {
+    color: #cdaffd;
+  }
+`;
+
+const FooterBottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+  
+  @media (max-width: 576px) {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+`;
+
+const Copyright = styled.p`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  color: #888888;
+  margin: 0;
+`;
+
+const CreatedBy = styled.p`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  color: #888888;
+  margin: 0;
 `;
 
 export default Footer;

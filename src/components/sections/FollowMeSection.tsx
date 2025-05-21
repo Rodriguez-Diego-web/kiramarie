@@ -4,39 +4,36 @@ import { motion } from 'framer-motion';
 import { FaLinkedin, FaInstagram } from 'react-icons/fa';
 import CountUp from 'react-countup';
 
-const SectionContainer = styled.section`
-  padding: 70px 10px;
+const FollowMeSectionWrapper = styled.section`
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   position: relative;
-  overflow: hidden;
-  margin-top: -1px;
-`;
-
-const BeigeBackground = styled.div`
-  background-color: #e6dfd7; /* Beige background */
-  height: 350px; /* Thinner beige section */
-  width: 100%;
-  position: absolute;
-  top: 59%;
-  left: 0;
-  transform: translateY(-50%);
-  z-index: 0;
+  overflow: hidden; 
+  margin-top: 60px; 
+  padding: 0; 
 `;
 
 const SectionTitle = styled.h2`
-  font-family: 'Kingdom', sans-serif; /* Use Kingdom font */
-  font-size: 3.2rem;
-  font-weight: normal; /* Kingdom font works better with normal weight */
+  font-family: 'Kingdom', sans-serif;
+  font-size: 4rem;
+  font-weight: normal;
   color: #000;
-  margin-bottom: 60px;
+  margin-bottom: 30px; 
   position: relative;
   z-index: 1;
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 20px; 
   }
+`;
+
+const BeigeBarContainer = styled.div`
+  background-color: #E6DFD7; 
+  padding: 40px 10px; 
+  position: relative; 
+  width: 100%; 
+  margin-top: -70px; /* Pulls the bar up into the title's bottom margin space */
 `;
 
 const ContentWrapper = styled.div`
@@ -48,7 +45,7 @@ const ContentWrapper = styled.div`
 
 const SocialLinksGrid = styled(motion.div)`
   display: grid;
-  grid-template-columns: 1fr 1px 1fr; /* Middle column for divider */
+  grid-template-columns: 1fr 1px 1fr; 
   gap: 0;
   justify-items: center;
   align-items: center;
@@ -64,7 +61,7 @@ const SocialLinksGrid = styled(motion.div)`
 
 const VerticalDivider = styled.div`
   width: 1px;
-  height: 100px;
+  height: 100px; 
   background-color: rgba(0, 0, 0, 0.2);
   
   @media (max-width: 767px) {
@@ -78,25 +75,24 @@ const PlatformContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 40px;
+  padding: 0 20px; 
   width: 100%;
 `;
 
 const PlatformIcon = styled.div`
   font-size: 2.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 5px; 
   color: #000;
   position: relative;
   z-index: 1;
-  /* Icons already have their own styling */
 `;
 
 const FollowerCount = styled.div`
-  font-family: 'Kingdom', sans-serif; /* Use Kingdom font for numbers */
+  font-family: 'Kingdom', sans-serif; 
   font-size: 2.5rem;
-  font-weight: normal; /* Kingdom font works better with normal weight */
+  font-weight: normal; 
   color: #000;
-  margin: 20px 0 20px;
+  margin: 0px 0 0px; 
   position: relative;
   z-index: 1;
   text-align: center;
@@ -118,6 +114,7 @@ const ProfileButton = styled.a`
   cursor: pointer;
   position: relative;
   z-index: 1;
+  margin-top: 15px; 
   
   &:hover {
     background-color: #333;
@@ -129,7 +126,7 @@ interface SocialDisplayDataItem {
   name: string;
   url: string;
   followersDisplayString: string | null;
-  rawCount?: number; // Raw follower count for precise animations
+  rawCount?: number; 
 }
 
 interface SocialPlatform {
@@ -137,7 +134,7 @@ interface SocialPlatform {
   icon: JSX.Element;
   url: string;
   followers?: string | null;
-  followersNumber?: number; // Numeric value for counter
+  followersNumber?: number; 
   buttonText: string;
 }
 
@@ -147,7 +144,7 @@ const baseSocialPlatforms: SocialPlatform[] = [
     icon: <FaLinkedin />, 
     url: 'https://de.linkedin.com/in/kiramariecremer', 
     followers: '11.500', 
-    followersNumber: 11500, // Full number value
+    followersNumber: 11500, 
     buttonText: 'ZUM PROFIL'
   },
   { 
@@ -155,13 +152,10 @@ const baseSocialPlatforms: SocialPlatform[] = [
     icon: <FaInstagram />, 
     url: 'https://www.instagram.com/kiramariecremer/', 
     followers: '52.000', 
-    followersNumber: 52000, // Full number value
+    followersNumber: 52000, 
     buttonText: 'ZUM PROFIL'
   }
 ];
-
-// We're using static follower numbers instead of animation
-// Number Counter removed for simplicity
 
 const FollowMeSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -176,23 +170,14 @@ const FollowMeSection: React.FC = () => {
         return response.json();
       })
       .then((dynamicData: SocialDisplayDataItem[]) => {
-        // The data is already filtered to LinkedIn and Instagram in generate-social-display-data.js
-        
-        // Extract numeric values from follower strings
-        // Function to extract the numeric value from CMS follower string
         const extractNumber = (str: string | null): number => {
           if (!str) return 0;
-          
-          // Check if string has K format (e.g. "52K Follower" or "11.5K Follower")
           if (str.includes('K')) {
-            // Extract number before K
-            const matches = str.match(/(\d+\.?\d*)/); // Extract number part (with decimal)
+            const matches = str.match(/(\d+\.?\d*)/);
             if (matches && matches[1]) {
-              return parseFloat(matches[1]) * 1000; // Convert to full number (11.5K -> 11500)
+              return parseFloat(matches[1]) * 1000;
             }
           }
-          
-          // For full numbers
           const cleanedStr = str.replace(/[^0-9.,]/g, '');
           const matches = cleanedStr.match(/(\d+[\d.,]*)/);
           if (matches && matches[1]) {
@@ -200,120 +185,62 @@ const FollowMeSection: React.FC = () => {
           }
           return 0;
         };
-        
-        const updatedPlatforms = baseSocialPlatforms.map(basePlatform => {
-          const dynamicPlatform = dynamicData.find((dp: SocialDisplayDataItem) => dp.name === basePlatform.name);
-          const followerString = dynamicPlatform ? dynamicPlatform.followersDisplayString : basePlatform.followers;
-          // Use rawCount directly if available, otherwise extract from formatted string
-          const followerNumber = dynamicPlatform?.rawCount || 
-                               (dynamicPlatform ? extractNumber(dynamicPlatform.followersDisplayString) : basePlatform.followersNumber);
-          
-          return {
-            ...basePlatform,
-            url: dynamicPlatform?.url || basePlatform.url,
-            followers: followerString,
-            followersNumber: followerNumber
-          };
+
+        const updatedPlatforms = baseSocialPlatforms.map(platform => {
+          const foundData = dynamicData.find(d => d.name.toLowerCase() === platform.name.toLowerCase());
+          if (foundData) {
+            return {
+              ...platform,
+              followers: foundData.followersDisplayString || platform.followers,
+              followersNumber: foundData.rawCount || extractNumber(foundData.followersDisplayString) || platform.followersNumber,
+            };
+          }
+          return platform;
         });
-        
         setSocialPlatformData(updatedPlatforms);
       })
       .catch(error => {
-        console.error("Could not fetch social display data:", error);
+        console.error("Error loading or processing social display data:", error);
+        setSocialPlatformData(baseSocialPlatforms); 
       });
   }, []);
 
-  // Section reference for animations
-
   return (
-    <SectionContainer ref={sectionRef} id="folge-mir">
-      <BeigeBackground />
-      <ContentWrapper>
-        <SectionTitle 
-          as={motion.h2}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          Werde Teil meiner Community!
-        </SectionTitle>
-        
-        <SocialLinksGrid
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          {/* LinkedIn */}
-          <PlatformContainer
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
+    <FollowMeSectionWrapper ref={sectionRef}>
+      <SectionTitle>
+        Werde Teil meiner Community!
+      </SectionTitle>
+      <BeigeBarContainer>
+        <ContentWrapper>
+          <SocialLinksGrid
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <PlatformIcon>
-              <FaLinkedin />
-            </PlatformIcon>
-            <FollowerCount>
-              + <CountUp 
-                  end={52000} 
-                  duration={2.5} 
-                  separator="."
-                  formattingFn={(value) => {
-                    // Format full number with German thousands separator
-                    return new Intl.NumberFormat('de-DE').format(value);
-                  }}
-                  enableScrollSpy={true}
-                  scrollSpyDelay={200}
-                />
-            </FollowerCount>
-            <ProfileButton 
-              href={socialPlatformData.find(p => p.name === 'LinkedIn')?.url || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ZUM PROFIL
-            </ProfileButton>
-          </PlatformContainer>
-          
-          {/* Divider */}
-          <VerticalDivider />
-          
-          {/* Instagram */}
-          <PlatformContainer
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-          >
-            <PlatformIcon>
-              <FaInstagram />
-            </PlatformIcon>
-            <FollowerCount>
-              + <CountUp 
-                  end={11500} 
-                  duration={2.5}
-                  separator="."
-                  formattingFn={(value) => {
-                    // Format full number with German thousands separator
-                    return new Intl.NumberFormat('de-DE').format(value);
-                  }}
-                  enableScrollSpy={true}
-                  scrollSpyDelay={300}
-                />
-            </FollowerCount>
-            <ProfileButton 
-              href={socialPlatformData.find(p => p.name === 'Instagram')?.url || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ZUM PROFIL
-            </ProfileButton>
-          </PlatformContainer>
-        </SocialLinksGrid>
-      </ContentWrapper>
-    </SectionContainer>
+            {socialPlatformData.map((platform, index) => (
+              <React.Fragment key={platform.name}>
+                <PlatformContainer
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                >
+                  <PlatformIcon>{platform.icon}</PlatformIcon>
+                  {platform.followersNumber !== undefined && (
+                    <FollowerCount>
+                       + <CountUp start={0} end={platform.followersNumber} duration={2.5} separator="." decimal="," />
+                    </FollowerCount>
+                  )}
+                  <ProfileButton href={platform.url} target="_blank" rel="noopener noreferrer">
+                    {platform.buttonText}
+                  </ProfileButton>
+                </PlatformContainer>
+                {index < socialPlatformData.length - 1 && <VerticalDivider />}
+              </React.Fragment>
+            ))}
+          </SocialLinksGrid>
+        </ContentWrapper>
+      </BeigeBarContainer>
+    </FollowMeSectionWrapper>
   );
 };
 

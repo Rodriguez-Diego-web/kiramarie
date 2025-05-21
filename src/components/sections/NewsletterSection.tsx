@@ -1,41 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Moderne, stilvolle Komponenten mit visuellem Interesse
 const NewsletterSection: React.FC = () => {
   return (
     <NewsletterWrapper id="newsletter">
       <ContentContainer>
-        <NewsletterCard>
-          <LogoContainer>
-            <NewsletterLogo 
-              src="/uploads/Newsletter Logo.png" 
-              alt="What The Work?! Newsletter" 
+        <NewsletterContent>
+          <MockupImageContainer>
+            <MockupImage 
+              src="/images/Mockup.png" 
+              alt="What The Work?! Newsletter Mockup" 
             />
-          </LogoContainer>
+          </MockupImageContainer>
           
-          <FormContainer>
-            <IntroText>
-              Deine wöchentliche Dosis Inspiration und praktische Tipps für die moderne Arbeitswelt
-            </IntroText>
+          <TextContentContainer>
+            <NewsletterTitle>
+              In meinem wöchentlichen Newsletter „What The Work?!" schreibe ich jede Woche über Karriere-Hacks, die dich wirklich weiterbringen: klar, praxisnah und auf den Punkt.
+            </NewsletterTitle>
             
-            <NewsletterForm>
-              <StyledIframe 
-                src="https://embeds.beehiiv.com/81fc6fc1-ddd0-4079-81fb-899807142dfd" 
-                data-test-id="beehiiv-embed"
-                title="Kira Marie Newsletter"
-                frameBorder="0" 
-                scrolling="no" 
+            <NewsletterSubtext>
+              Ob Mindset, Selbstorganisation oder Future Skills: Ich teile, was funktioniert und was ich gern früher gewusst hätte.
+            </NewsletterSubtext>
+            
+            <SubscribeTagline>
+              Jede Woche praktische Hacks für mehr Erfolg in deiner Karriere! Geschrieben von mir, Kira Marie Cremer.
+            </SubscribeTagline>
+            
+            <SubscribeForm>
+              <EmailInput 
+                type="email" 
+                placeholder="Enter your email" 
               />
-            </NewsletterForm>
-          </FormContainer>
-        </NewsletterCard>
+              <SubscribeButton>
+                Subscribe
+              </SubscribeButton>
+            </SubscribeForm>
+          </TextContentContainer>
+        </NewsletterContent>
       </ContentContainer>
     </NewsletterWrapper>
   );
 };
 
-// Styled Components mit modernen Design-Elementen
 const NewsletterWrapper = styled.section`
   width: 100%;
   background-color: #ffffff;
@@ -43,81 +49,123 @@ const NewsletterWrapper = styled.section`
   position: relative;
 `;
 
-
-
 const ContentContainer = styled.div`
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
-  z-index: 2;
 `;
 
-const NewsletterCard = styled.div`
+const NewsletterContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-  align-items: stretch;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const LogoContainer = styled.div`
-  display: flex;
+  gap: 40px;
   align-items: center;
-  justify-content: center;
-  padding: 30px;
-  background-color:#8facfd;
   
-  @media (max-width: 768px) {
-    padding: 25px;
+  @media (max-width: 991px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 `;
 
-const NewsletterLogo = styled.img`
-  width: 200%;
-  max-width: 380px;
+const MockupImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  @media (max-width: 991px) {
+    order: 1;
+  }
+`;
+
+const MockupImage = styled.img`
+  max-width: 100%;
   height: auto;
   display: block;
 `;
 
-const FormContainer = styled.div`
-  padding: 40px;
+const TextContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 20px;
   
-  @media (max-width: 768px) {
-    padding: 30px;
-  }
-`;
-
-const IntroText = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #333;
-  margin: 0 0 20px;
-  
-  @media (max-width: 768px) {
+  @media (max-width: 991px) {
+    order: 2;
     text-align: center;
   }
 `;
 
-const NewsletterForm = styled.div`
-  width: 100%;
+const NewsletterTitle = styled.h2`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
 `;
 
-const StyledIframe = styled.iframe`
+const NewsletterSubtext = styled.p`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  margin: 0;
+`;
+
+const SubscribeTagline = styled.p`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #555;
+  margin: 25px 0 10px;
+`;
+
+const SubscribeForm = styled.div`
+  display: flex;
   width: 100%;
-  height: 320px;
+  margin-top: 5px;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+`;
+
+const EmailInput = styled.input`
+  flex: 1;
+  height: 44px;
+  padding: 0 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  
+  @media (max-width: 768px) {
+    border-radius: 4px;
+  }
+`;
+
+const SubscribeButton = styled.button`
+  height: 44px;
+  padding: 0 20px;
+  background-color: #8facfd;
+  color: white;
   border: none;
-  background-color: transparent;
+  border-radius: 0 4px 4px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: #7b9af9;
+  }
+  
+  @media (max-width: 768px) {
+    border-radius: 4px;
+  }
 `;
 
 export default NewsletterSection;

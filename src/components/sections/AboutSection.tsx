@@ -133,7 +133,7 @@ const SmallImage2Wrapper = styled.div`
 const SmallImage3Wrapper = styled.div`
   grid-column: 2;
   grid-row: 1 / span 2; /* Spans both rows */
-  transform: scale(1.3); /* Further reduced to make images smaller */
+  transform: scale(1.5); /* Further reduced to make images smaller */
   transform-origin: top left;
 `;
 
@@ -150,23 +150,23 @@ const MainImageContainer = styled.div`
   width: 100%;
   max-width: 80%; 
   margin: 0 auto; 
-  transform: translate(-15px, -18px); /* Moved 40px upward from previous position */
+  transform: translate(40px, 210px); /* Y-translate set to 120px to move image lower */
   
 `;
 
 const AuthorBioTextWrapper = styled.div`
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   color: #333333;
-  margin-top: 0px; /* Increased from 40px to 80px to move text down more */
-  max-width: 60%; /* Make text container narrower */
+  margin-top: 230px; /* Increased further to move the whole text block lower */
+  max-width: 90%; /* Made wider */
   margin-left: 0; /* Align to the left */
   
   .headline-main {
-    margin-top: 10px; /* Move only this specific text down 180px total */
+    margin-top: 20px; /* Reduced significantly from 600px, adjust as needed */
     margin-bottom: 0px;
-    margin-left: -200px;
+    margin-left: -200px; /* This is a large negative margin, review if needed */
   }
   
   .body-bottom {
@@ -180,7 +180,7 @@ const AuthorBioTextWrapper = styled.div`
   }
   
   h2 {
-    font-size: 1.2rem;
+    font-size: 1 rem;
     font-weight: 600;
     margin-bottom: 10px;
     color: #1c1c1c;

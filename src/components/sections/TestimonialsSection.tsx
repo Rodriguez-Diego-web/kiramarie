@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 interface TestimonialItem {
   author: string;
@@ -11,138 +15,127 @@ interface TestimonialItem {
 }
 
 const SectionContainer = styled.section`
-  background-color: #f9f9f9;
-  padding: 60px 20px;
+  background-color: #E6DFD7; 
+  padding: 20px 0; 
   color: #333;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  overflow: hidden;
+  overflow: visible; 
+  position: relative; 
+  z-index: 1; /* Attempt to bring this section (and its overflowing icon) forward */
+  width: 100vw; 
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 `;
 
-const PurpleBox = styled(motion.div)`
+// Icon is now a direct child of SectionContainer, so its position is relative to it.
+const QuoteIcon = styled.div`
+  font-family: 'Georgia', 'Times New Roman', Times, serif; 
+  font-size: 14rem; 
+  color: #FFFFFF; 
   position: absolute;
-  background-color: #9370DB;
-  height: 30px;
-  width: 120%; /* Breiter als der Text */
-  z-index: -1;
-  bottom: 0px;
-  left: 50%; /* Vom Mittelpunkt des Titels ausgehend */
-  transform: translateX(-50%); /* Genau zentrieren */
-  opacity: 0.7;
-  
-  @media (max-width: 767px) {
-    width: 140%; /* Auch auf Mobilgeräten breiter als der Text */
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  top: -150px; /* Relative to SectionContainer's content box top edge */
+  left: 115px;  /* Relative to SectionContainer's content box left edge */
+  line-height: 0.7; 
+  z-index: 2; /* Ensures it's above Swiper if there's any overlap with swiper buttons etc. */
+  opacity: 0.9; 
+  transform: rotate(180deg); 
 `;
 
-const SectionTitle = styled(motion.h2)`
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 110px;
-  color: #1a1a1a;
-  text-transform: uppercase;
-  position: relative;
-  z-index: 0;
-  padding: 0;
-  line-height: 1.5;
-  display: inline-block;
-  @media (max-width: 767px) {
-    font-size: 2.8rem; /* Größer auf mobilen Geräten, wie die KONTAKT-Überschrift */
-    margin-bottom: 77px;
-  }
-`;
-
-const TestimonialsGrid = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
+const StyledSwiperWrapper = styled.div`
+  width: 100%; 
   margin: 0 auto;
-`;
+  position: relative; /* For swiper navigation buttons */
+  overflow: visible; /* Still allow slides content if it ever needed to overflow, though icon is separate */
 
-const TestimonialCard = styled(motion.div)`
-  background-color: #ffffff; 
-  padding: 30px;
-  border-radius: 0;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); 
-  text-align: left;
-  height: 100%; 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  .swiper-button-prev, .swiper-button-next {
+    color: #333333; 
+    background-color: transparent; 
+    width: 50px; 
+    height: 50px;
+    top: 50%; 
+    transform: translateY(-50%);
+    z-index: 10; /* Ensure nav buttons are clickable above slides */
 
-  blockquote {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #333333;
-    margin-bottom: 20px;
-    font-style: italic;
-    flex-grow: 1;
-
-    &::before {
-      content: '“';
-      font-size: 2.5em;
-      color: #CDAFFD; 
+    &::after {
+      font-size: 2rem; 
       font-weight: bold;
-      line-height: 0.1;
-      margin-right: 5px;
-      vertical-align: -0.3em;
     }
   }
 
+  .swiper-button-prev {
+    left: 20px; 
+  }
+  .swiper-button-next {
+    right: 20px; 
+  }
+
   @media (max-width: 767px) {
-    padding: 20px;
+    .swiper-button-prev {
+        left: 10px; 
+    }
+    .swiper-button-next {
+        right: 10px; 
+    }
+    .swiper-button-prev::after, .swiper-button-next::after {
+        font-size: 1.5rem; 
+    }
   }
 `;
 
-const AuthorInfo = styled.div`
-  margin-top: auto;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
+const SlideContent = styled.div`
+  background-color: #E6DFD7; 
+  padding: 20px 10px; 
+  border-radius: 0;
+  min-height: 300px; 
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  position: relative; /* For QuoteText/AuthorDisplay z-index if ever needed */
+  box-shadow: none; 
+  width: 100%; 
+  /* overflow: visible; Icon is no longer a child, so this isn't for the icon */
 `;
 
-const AuthorImage = styled.img`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 15px;
-  object-fit: cover;
+const QuoteText = styled.blockquote`
+  font-size: 1.20rem; 
+  line-height: 1.8;
+  color: #333333; 
+  margin: 20px 0 25px 0; 
+  font-style: normal; 
+  max-width: 680px; 
+  z-index: 1;          
+  position: relative;  
+  text-align: center;  
 `;
 
-const AuthorDetails = styled.div`
-  text-align: left;
-  
-  p {
-    margin: 0;
-    line-height: 1.4;
-  }
+const AuthorDisplay = styled.div`
+  font-size: 0.95rem; 
+  color: #555555;
+  margin-top: 15px;
+  z-index: 1;
+  position: relative;
+  text-align: center; 
+  width: 100%; 
+  max-width: 680px; 
 
   .author-name {
     font-weight: 600;
-    color: #333333;
-    font-size: 0.9em;
   }
-
   .author-position {
-    font-size: 0.8em;
-    color: #555555;
     font-style: italic;
   }
 `;
 
+
 const TestimonialsSection: React.FC = () => {
   const [testimonials, setTestimonials] = useState<TestimonialItem[]>([]);
-  const sectionRef = useRef<HTMLDivElement>(null); 
-
-
-
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-
     fetch('/data/testimonialsData.json')
       .then(response => {
         if (!response.ok) {
@@ -151,42 +144,46 @@ const TestimonialsSection: React.FC = () => {
         return response.json();
       })
       .then(data => {
-
-        setTestimonials(data);
+        const sortedData = data.sort((a: TestimonialItem, b: TestimonialItem) => (a.order ?? Infinity) - (b.order ?? Infinity));
+        setTestimonials(sortedData);
       })
       .catch(error => console.error('Error fetching testimonials data:', error));
   }, []);
 
   if (!testimonials.length) {
-
     return null;
   }
 
-
-
-
   return (
     <SectionContainer ref={sectionRef} id="testimonials">
-      <SectionTitle>
-        REVIEWS
-        <PurpleBox />
-      </SectionTitle>
-      <TestimonialsGrid>
-        {testimonials.map((testimonial, index) => (
-          <TestimonialCard
-            key={testimonial.author + index}
-          >
-            <blockquote dangerouslySetInnerHTML={{ __html: testimonial.quote.replace(/\n/g, '<br />') }} />
-            <AuthorInfo>
-              {testimonial.image && <AuthorImage src={testimonial.image} alt={testimonial.author} />}
-              <AuthorDetails>
-                <p className="author-name">{testimonial.author}</p>
-                {testimonial.position && <p className="author-position">{testimonial.position}</p>}
-              </AuthorDetails>
-            </AuthorInfo>
-          </TestimonialCard>
-        ))}
-      </TestimonialsGrid>
+      <QuoteIcon>“</QuoteIcon> {/* Icon is now a direct child here */}
+      <StyledSwiperWrapper>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={0} 
+          loop={true}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          navigation={true}
+          grabCursor={true} 
+          modules={[Navigation, Autoplay]} 
+        >
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={testimonial.author + index}>
+              <SlideContent>
+                {/* Icon removed from here */}
+                <QuoteText dangerouslySetInnerHTML={{ __html: testimonial.quote.replace(/\n/g, '<br />') }} />
+                <AuthorDisplay>
+                  <span className="author-name">{testimonial.author}</span>
+                  {testimonial.position && <span className="author-position">, {testimonial.position}</span>}
+                </AuthorDisplay>
+              </SlideContent>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </StyledSwiperWrapper>
     </SectionContainer>
   );
 };

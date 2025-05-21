@@ -12,17 +12,17 @@ interface CollaborationCardData {
 
 const SectionContainer = styled.section`
   width: 100%;
-  padding: 100px 20px 80px 20px; /* Bottom padding erhöht von 100px auf 180px */
+  padding: 0px 20px 60px 20px; 
   background-color: #000000; 
-  color: #ffffff;
-  overflow: hidden;
+  color:rgb(1, 1, 1);
+  overflow: visible; 
   position: relative;
 
   @media (max-width: 991px) {
-    padding: 80px 15px 150px 15px; /* Auch hier anpassen */
+    padding: 20px 15px 120px 15px; 
   }
   @media (max-width: 767px) {
-    padding: 60px 10px 120px 10px; /* Auch hier anpassen */
+    padding: 20px 10px 100px 10px; 
   }
 `;
 
@@ -44,62 +44,58 @@ const ParallaxCollaborationGradient = styled(motion.div)`
 
 const ContentWrapper = styled.div`
   max-width: 1200px;
-  margin: 0 auto; // Behält den Wrapper zentriert
-  text-align: left; // Textausrichtung für Kinder auf links
+  margin: 0 auto; 
+  text-align: center; 
   position: relative;
   z-index: 1;
-  padding: 0 80px; // Fügt seitliches Padding hinzu, damit Text nicht am Rand klebt
+  padding: 0 20px; 
   
   @media (max-width: 767px) {
-    text-align: center; // Zentriert Text auf mobilen Geräten
-    padding: 0; // Kein Padding, um sicherzustellen, dass der Titel wirklich zentriert ist
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
   }
 `;
 
 const SectionTitle = styled(motion.h2)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #ffffff;
-  position: relative; /* Für die absolute Positionierung des Kastens */
-  display: inline-block; /* Damit der Hintergrund nur die Textbreite umfasst */
-  z-index: 0; /* Ensure SectionTitle creates a stacking context */
-  padding: 0 20px; /* Etwas Platz links und rechts für den Balken */
-
+  font-family: 'Kingdom', sans-serif; 
+  font-size: 4rem; 
+  font-weight: normal; 
+  margin-top: 0; 
+  margin-bottom: 30px; 
+  color: rgb(0, 0, 0); 
+  position: relative; 
+  display: inline-block; 
+  z-index: 0; 
+  padding-top: 30px; 
+  padding-left: 0; 
+  padding-right: 0; 
+  
   @media (max-width: 767px) {
-    font-size: 3rem;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    width: auto;
-    align-self: center; /* Zusätzliche Zentrierung */
+    font-size: 2.8rem; 
+    padding-left: 0; 
+    padding-right: 0; 
   }
 
   @media (max-width: 480px) {
-    font-size: 3rem;
+    font-size: 2.5rem; 
   }
 `;
 
 const BeigeBox = styled(motion.div)`
   position: absolute;
-  background-color: #e6dfd7; /* Beige Farbe */
-  height: 25px;
-  width: 10%; /* Etwas schmaler als zuvor */
-  z-index: -1;
-  bottom: -4px;
-  left: 50%; /* Vom Mittelpunkt des Titels ausgehend */
-  transform: translateX(-50%); /* Genau zentrieren */
+  background-color: #e6dfd7; 
+  height: 45px; /* Increased height to make it thicker */
+  width: 100%; 
+  z-index: auto; 
+  top: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
   opacity: 0.7;
   
   @media (max-width: 767px) {
-    width: 50%; /* Schmaler auf Mobilgeräten */
-    left: 50%;
-    transform: translateX(-50%);
+    height: 12px; 
   }
 `;
 
@@ -107,69 +103,62 @@ const SectionSubtitle = styled(motion.p)`
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
   line-height: 1.7;
-  max-width: 700px; // Behält eine maximale Breite für den Lesefluss
-  margin: 0 0 40px 0; // Oben, Rechts, Unten, Links - kein auto mehr für horizontale Zentrierung
+  max-width: 850px; /* Increased max-width to make it wider */
+  margin: 0 auto 50px auto; 
   color: #e0e0e0;
+  text-align: center; 
   
   @media (max-width: 767px) {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
     font-size: 1rem;
+    max-width: 95%; 
   }
 `;
 
-// Neuer Wrapper für den weißen Hintergrund des Grids
 const GridBackground = styled.div`
   background-color: #ffffff;
   padding: 60px 40px 40px 40px; 
   margin-top: 0;
-  width: 100%; // Nimmt die Breite des Elternelements
-  max-width: 1200px; // Zentriert mit maximaler Breite
+  width: 100%; 
+  max-width: 1200px; 
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid #000000; // Rahmen um den weißen Hintergrund
+  border: 1px solid #000000; 
 `;
 
 const BoxesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px; /* Erhöhter Abstand zwischen den Karten */
-  max-width: 1200px; /* Begrenzt die Breite des Grids selbst */
-  margin: 0 auto; /* Zentriert das Grid im GridBackground */
+  gap: 30px; 
+  max-width: 1200px; 
+  margin: 0 auto; 
 
-  @media (max-width: 1024px) { /* Tablet */
+  @media (max-width: 1024px) { 
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 600px) { /* Mobile */
+  @media (max-width: 600px) { 
     grid-template-columns: 1fr;
-    gap: 30px; /* Erhöhter Abstand zwischen den Karten */
+    gap: 30px; 
   }
 `;
 
 const BoxItem = styled(motion.div)`
-  // Kein eigener Hintergrund oder Schatten mehr, dient als reiner Container
-  // border-radius: 0; // Bleibt 0, da der Container unsichtbar ist
-  // overflow: hidden; // Entfernen, falls der ActionButton sonst beschnitten wird
   display: flex;
-  flex-direction: column; // Bild oben, Button unten
-  transition: transform 0.3s ease; // Nur noch Transform, kein Box-Shadow mehr hier
+  flex-direction: column; 
+  transition: transform 0.3s ease; 
 
   &:hover {
     transform: translateY(-4px);
-    // Kein Box-Shadow-Change hier mehr
   }
 `;
 
 const CardImageWrapper = styled.div`
   width: 100%;
-  padding-top: 100%; /* Quadratische Bilder, wie vom User eingestellt */
+  padding-top: 100%; 
   position: relative;
-  background-color: #e0e0e0; /* Heller Platzhalter-Hintergrund */
-  // Optional: leichter Schatten für das Bild selbst
+  background-color: #e0e0e0; 
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  border-radius: 0; // Sicherstellen, dass Bild-Wrapper eckig ist
+  border-radius: 0; 
 `;
 
 const CardImage = styled.img`
@@ -181,25 +170,25 @@ const CardImage = styled.img`
   object-fit: cover;
 `;
 
-// Button-Styling gemäß Bild
-const ActionButton = styled.a<{ buttonColor?: string }>` // Props-Typ für buttonColor
+const ActionButton = styled.a<{ buttonColor?: string }>` 
   font-family: 'Montserrat', sans-serif;
   display: block; 
-  width: 100%; // Volle Breite des BoxItem
-  padding: 19px 15px;
-  background-color: ${props => props.buttonColor || '#E9D8FD'}; // Dynamische Hintergrundfarbe
-  color:rgb(255, 255, 255); 
+  width: 100%; 
+  padding: 15px 10px; /* Adjusted padding */
+  background-color: ${props => props.buttonColor || '#E9D8FD'}; 
+  color: ${props => props.buttonColor === '#ffe83c' ? 'rgb(255, 255, 255)' : 'rgb(255,255,255)'}; /* Conditional text color */
   text-align: center;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem; /* Reduced font size */
+  line-height: 1.3; /* Added line-height for wrapped text */
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: 0; // Reset base margins, position controls offset
-  position: relative; // Erforderlich für left/bottom Verschiebung
-  left: 10px; // Verschiebt den Button um 10px nach rechts
-  bottom: 10px; // Verschiebt den Button um 10px nach oben von seiner Normalposition
+  margin: 0; 
+  position: relative; 
+  left: 10px; 
+  bottom: 10px; 
 
   &:hover {
     background-color: ${props => props.buttonColor === '#FFC8DD' ? '#FFB6D9' : props.buttonColor === '#A2D2FF' ? '#87CEEB' : props.buttonColor === '#BDE0FE' ? '#ADD8E6' : props.buttonColor === '#FEC8D8' ? '#FFC0CB' : '#DBC6F9'}; 
@@ -225,33 +214,33 @@ const CollaborationSection: React.FC = () => {
 
   const boxesData: CollaborationCardData[] = [
     {
-      imageSrc: '/images/Buch.JPG', // Korrigierter Pfad
-      buttonText: 'Buch',
+      imageSrc: '/images/Buch.JPG', 
+      buttonText: 'BUCH',
       link: 'https://amzn.to/43vzG7R', 
-      buttonColor: '#e53811' // Rot
+      buttonColor: '#e53811' 
     },
     {
-      imageSrc: '/images/speaker.JPG', // Korrigierter Pfad
-      buttonText: 'Speakings',
+      imageSrc: '/images/speaker.JPG', 
+      buttonText: 'SPEAKINGS',
       link: 'https://nwx.new-work.se/events/nwx23/speaker/kira-marie-cremer', 
-      buttonColor: '#86a4fd' // Blau
+      buttonColor: '#86a4fd' 
     },
     {
-      imageSrc: '/images/Podcast_Cover.jpeg', // Platzhalter, ggf. anpassen
-      buttonText: 'New Work Now',
+      imageSrc: '/images/Podcast_Cover.jpeg', 
+      buttonText: 'PODCAST: NEW WORK NOW',
       link: 'https://disruptingminds.com/speaker/kira-marie-cremer/', 
-      buttonColor: '#ffe83c' // Gelb
+      buttonColor: '#ffe83c' 
     },
     {
-      imageSrc: '/images/mediakit.JPG', // Platzhalter, ggf. anpassen
-      buttonText: 'Mediakit',
+      imageSrc: '/images/mediakit.JPG', 
+      buttonText: 'MEDIAKIT-DOWNLOAD', /* Corrected typo */
       link: '#', 
-      buttonColor: '#cdafff' // Lila
+      buttonColor: '#cdafff' 
     }
   ];
 
   return (
-    <SectionContainer id="expertise" ref={sectionRef}>
+    <SectionContainer id="collaboration" ref={sectionRef}>
       <ParallaxCollaborationGradient 
         style={{
           x: gradientX,
@@ -264,21 +253,21 @@ const CollaborationSection: React.FC = () => {
             opacity: titleInView ? 1 : 0,
             transform: titleInView ? 'translateY(0)' : 'translateY(30px)',
             transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-            textAlign: 'center', // Zusätzliche Inline-Zentrierung
-            width: '100%' // Nimmt die volle Breite ein
+            textAlign: 'center', 
+            width: '100%' 
           }}
         >
-          EXPERTISE
           <BeigeBox 
             style={{ 
               opacity: titleInView ? 0.7 : 0,
-              width: titleInView ? '30%' : '0%', // Kürzere Breite für den Balken
+              width: titleInView ? '100%' : '0%', 
               transition: 'opacity 0.7s ease-out, width 0.7s ease-out'
             }} 
           />
+          <span style={{ position: 'relative', top: '-60px', display: 'inline-block', zIndex: 10 }}>Projekte & Kooperationen</span>
         </SectionTitle>
         <SectionSubtitle initial="hidden" animate={titleInView ? "visible" : "hidden"} variants={{...fadeInUp, visible: {...fadeInUp.visible, transition: {...fadeInUp.visible.transition, delay: 0.2}}}}>
-          Entdecken Sie die vielfältigen Möglichkeiten einer Zusammenarbeit mit mir. Als Expertin für New Work und moderne Arbeitskonzepte biete ich maßgeschneiderte Lösungen für Unternehmen und Organisationen. Von inspirierenden Keynotes über praxisnahe Workshops bis hin zu strategischer Beratung – gemeinsam gestalten wir die Arbeitswelt von morgen.
+          Egal ob als Autorin, Dozentin, Speakerin, Podcast-Host oder Creatorin: Ich setze mich leidenschaftlich für eine Arbeitswelt ein, die menschlicher, flexibler und sinnstiftender ist. In meinen Projekten verbinde ich fundiertes Wissen mit pragmatischer Umsetzung. Eine Übersicht meiner aktuellen Formate und möglichen Kooperationen:
         </SectionSubtitle>
       </ContentWrapper>
       <GridBackground>

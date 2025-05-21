@@ -55,7 +55,7 @@ const Button = styled(motion.button)`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: rgba(205, 175, 253, 0.9); /* Lila/Beige-Ton, passt zur Seite */
+  background-color: rgba(128, 128, 128, 0.9); /* Changed to gray */
   color: white;
   border: none;
   display: flex;
