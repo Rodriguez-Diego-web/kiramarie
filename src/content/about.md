@@ -14,7 +14,4 @@ headline_main_text: >
   für alle, die Lust auf gute Arbeit haben.
 profile_image: /uploads/kira.jpg
 ---
-
-# Über Mich
-
 Ich glaube: Arbeit kann besser sein. Menschlicher, flexibler, sinnvoller. Aber dafür müssen wir aufhören, nur über Buzzwords zu reden – und anfangen, wirklich etwas zu verändern.
