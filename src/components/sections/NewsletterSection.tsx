@@ -22,10 +22,6 @@ const NewsletterSection: React.FC = () => {
               Ob Mindset, Selbstorganisation oder Future Skills: Ich teile, was funktioniert und was ich gern früher gewusst hätte.
             </NewsletterSubtext>
             
-            <SubscribeTagline>
-              Jede Woche praktische Hacks für mehr Erfolg in deiner Karriere! Geschrieben von mir, Kira Marie Cremer.
-            </SubscribeTagline>
-            
             <SubscribeForm>
               <EmailInput 
                 type="email" 
@@ -45,8 +41,12 @@ const NewsletterSection: React.FC = () => {
 const NewsletterWrapper = styled.section`
   width: 100%;
   background-color: #ffffff;
-  padding: 80px 0;
+  padding: 80px 0; /* Desktop default */
   position: relative;
+
+  @media (max-width: 991px) {
+    padding: 50px 0; /* Mobile: Reduced padding */
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -58,13 +58,13 @@ const ContentContainer = styled.div`
 
 const NewsletterContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1fr 1fr; /* Desktop default */
+  gap: 40px; /* Desktop default */
   align-items: center;
   
   @media (max-width: 991px) {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    grid-template-columns: 1fr; /* Mobile: Stack */
+    gap: 30px; /* Mobile: Adjusted gap */
   }
 `;
 
@@ -82,17 +82,23 @@ const MockupImage = styled.img`
   max-width: 100%;
   height: auto;
   display: block;
+
+  @media (max-width: 768px) {
+    max-width: 85%;
+    margin-bottom: 25px;
+  }
 `;
 
 const TextContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
+  gap: 20px; /* Desktop default */
   
   @media (max-width: 991px) {
     order: 2;
     text-align: center;
+    gap: 15px; /* Mobile: Reduced gap */
   }
 `;
 
@@ -103,6 +109,10 @@ const NewsletterTitle = styled.h2`
   line-height: 1.5;
   color: #333;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const NewsletterSubtext = styled.p`
@@ -113,22 +123,19 @@ const NewsletterSubtext = styled.p`
   margin: 0;
 `;
 
-const SubscribeTagline = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #555;
-  margin: 25px 0 10px;
-`;
-
 const SubscribeForm = styled.div`
   display: flex;
   width: 100%;
   margin-top: 5px;
   
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row; /* Keep elements in a row */
+    gap: 0; /* No gap between input and button */
+    align-items: stretch; /* Make input and button same height */
+    background-color: #f0f0f0; /* Background for the combined unit */
+    border: 1px solid #e0e0e0; /* Border for the unit */
+    border-radius: 8px; /* Rounded corners for the unit */
+    padding: 4px; /* Internal padding for the unit */
   }
 `;
 
@@ -136,13 +143,20 @@ const EmailInput = styled.input`
   flex: 1;
   height: 44px;
   padding: 0 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px 0 0 4px;
+  border: 1px solid #ddd; /* Desktop default */
+  border-radius: 4px 0 0 4px; /* Desktop default */
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
+  background-color: #fff; /* Desktop default */
   
   @media (max-width: 768px) {
-    border-radius: 4px;
+    border-radius: 6px 0 0 6px; /* Mobile: rounded corners on left */
+    width: auto; /* Override previous 100% width if any */
+    border: none; /* Mobile: no individual border */
+    background-color: #fff; /* Mobile: white background inside the form unit */
+    height: 38px; /* Mobile: fixed height */
+    padding: 0 12px; /* Mobile: adjusted padding */
+    /* flex: 1; is already defined for desktop and applies here */
   }
 `;
 
@@ -152,7 +166,7 @@ const SubscribeButton = styled.button`
   background-color: #8facfd;
   color: white;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0; /* Desktop default */
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -164,7 +178,10 @@ const SubscribeButton = styled.button`
   }
   
   @media (max-width: 768px) {
-    border-radius: 4px;
+    border-radius: 0 6px 6px 0; /* Mobile: rounded corners on right */
+    width: auto; /* Override previous 100% width if any */
+    height: 38px; /* Mobile: fixed height, matching input */
+    padding: 0 18px; /* Mobile: adjusted padding */
   }
 `;
 

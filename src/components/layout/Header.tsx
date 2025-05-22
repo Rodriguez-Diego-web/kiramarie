@@ -37,7 +37,7 @@ const Header: React.FC = () => {
 
         <DesktopMenu>
           <MenuItem>
-            <MenuLink to="/" onClick={(e) => {
+            <MenuLink to="/#about-section" onClick={(e) => {
               e.preventDefault();
               closeMenu();
               const aboutSection = document.querySelector('#ueber-mich, #about-section, #about');
@@ -47,22 +47,25 @@ const Header: React.FC = () => {
             }}>ÜBER MICH</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/#newsletter" onClick={() => {
-              closeMenu();
-              document.getElementById('newsletter')?.scrollIntoView({ behavior: 'smooth' });
-            }}>NEWSLETTER</MenuLink>
-          </MenuItem>
-          <MenuItem>
-            <MenuLink to="/#expertise" onClick={() => {
-              closeMenu();
-              document.getElementById('expertise')?.scrollIntoView({ behavior: 'smooth' });
-            }}>EXPERTISE</MenuLink>
-          </MenuItem>
-          <MenuItem>
-            <MenuLink to="/#presse" onClick={() => {
+            <MenuLink to="/#presse" onClick={(e) => {
+              e.preventDefault();
               closeMenu();
               document.getElementById('presse')?.scrollIntoView({ behavior: 'smooth' });
-            }}>PRESSE</MenuLink>
+            }}>ZUSAMMENARBEIT</MenuLink>
+          </MenuItem>
+          <MenuItem>
+            <MenuLink to="/#collaboration" onClick={(e) => {
+              e.preventDefault();
+              closeMenu();
+              document.getElementById('collaboration')?.scrollIntoView({ behavior: 'smooth' });
+            }}>PODCAST: NEW WORK NOW</MenuLink>
+          </MenuItem>
+          <MenuItem>
+            <MenuLink to="/#kontakt" onClick={(e) => {
+              e.preventDefault();
+              closeMenu();
+              document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' });
+            }}>KONTAKT</MenuLink>
           </MenuItem>
         </DesktopMenu>
 
@@ -86,7 +89,7 @@ const Header: React.FC = () => {
                 exit={{ opacity: 0, rotate: -90 }}
                 transition={{ duration: 0.3 }}
               >
-                <Icon icon={FiX} size={26} color="#333333" /> 
+                <Icon icon={FiX} size={26} color="#FFFFFF" /> {/* Changed to white for dark menu */}
               </motion.div>
             )}
           </AnimatePresence>
@@ -108,17 +111,9 @@ const Header: React.FC = () => {
                 transition={{ duration: 0.4, type: 'tween' }} 
                 onClick={(e) => e.stopPropagation()} 
               >
-                <MobileMenuHeader>
-                  <LogoContainerInMenu>
-                    <LogoLink to="/" onClick={closeMenu}>
-                      <Logo src="/images/KMC logo schwarz_02.png" alt="Kira Marie Cremer Logo" />
-                    </LogoLink>
-                  </LogoContainerInMenu>
-                </MobileMenuHeader>
-
                 <NavLinksList>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/" onClick={(e) => {
+                    <MobileMenuLinkPrimary to="/#about-section" onClick={(e) => {
                       e.preventDefault();
                       closeMenu();
                       const aboutSection = document.querySelector('#ueber-mich, #about-section, #about');
@@ -128,16 +123,25 @@ const Header: React.FC = () => {
                     }}>ÜBER MICH</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#newsletter" onClick={() => { closeMenu(); document.getElementById('newsletter')?.scrollIntoView({ behavior: 'smooth' }); }}>NEWSLETTER</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/#presse" onClick={(e) => {
+                      e.preventDefault();
+                      closeMenu(); 
+                      document.getElementById('presse')?.scrollIntoView({ behavior: 'smooth' }); 
+                    }}>ZUSAMMENARBEIT</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#expertise" onClick={() => { closeMenu(); document.getElementById('expertise')?.scrollIntoView({ behavior: 'smooth' }); }}>EXPERTISE</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/#collaboration" onClick={(e) => {
+                      e.preventDefault();
+                      closeMenu(); 
+                      document.getElementById('collaboration')?.scrollIntoView({ behavior: 'smooth' }); 
+                    }}>PODCAST: NEW WORK NOW</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#presse" onClick={() => { closeMenu(); document.getElementById('presse')?.scrollIntoView({ behavior: 'smooth' }); }}>PRESSE</MobileMenuLinkPrimary>
-                  </MobileMenuItem>
-                  <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#leistungen" onClick={() => { closeMenu(); document.getElementById('leistungen')?.scrollIntoView({ behavior: 'smooth' }); }}>LEISTUNGEN</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/#kontakt" onClick={(e) => {
+                      e.preventDefault();
+                      closeMenu(); 
+                      document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' }); 
+                    }}>KONTAKT</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                 </NavLinksList>
 
@@ -173,9 +177,13 @@ const HeaderWrapper = styled.header<{ $scrolled: boolean }>`
   background-color: #e6dfd7; // Always beige
   box-shadow: ${({ $scrolled }) => $scrolled ? '0 1px 8px rgba(0, 0, 0, 0.2)' : 'none'}; // Shadow based on scroll
   height: auto; // Let content determine height
-  padding: 0.5rem 0; // Further reduced vertical padding for thinner header
+  padding: 0.5rem 0; // Default/Desktop vertical padding
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 1rem 0; // Increased vertical padding for mobile
+  }
 `;
 
 const Nav = styled.nav`
@@ -260,28 +268,17 @@ const MenuLink = styled(Link)`
 `;
 
 const MenuToggle = styled.button`
+  display: none;
   background: none;
   border: none;
-  color: #333333;
   cursor: pointer;
-  z-index: 1001; 
-  display: none; 
-  padding: 5px; 
-  position: relative; 
-  width: 36px; 
-  height: 36px;
-  box-sizing: border-box;
-
-  svg { 
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+  z-index: 1001; /* Ensure toggle is above overlay */
+  padding: 0.5rem;
+  margin-right: -0.5rem; /* Counteract padding for alignment */
 
   @media (max-width: 768px) {
-    display: block; 
+    display: block;
+    /* Adjust icon color if needed when menu is open, handled by FiX props for now */
   }
 `;
 
@@ -289,87 +286,94 @@ const MobileMenuOverlay = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); 
-  z-index: 999; 
-  display: flex; 
-  justify-content: flex-end; 
-`;
-
-const MobileMenu = styled(motion.div)`
-  width: 100%; 
+  width: 100%;
   height: 100%;
-  background-color: #000000; 
-  box-shadow: -5px 0px 15px rgba(0,0,0,0.2); 
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay, can be removed if menu is solid */
+  z-index: 999; /* Below toggle, above page content */
+  display: flex; /* To help position MobileMenu if needed, though MobileMenu is also fixed */
+  justify-content: flex-end; /* If menu wasn't full width and sliding from right */
 `;
 
-const MobileMenuHeader = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 40px; 
-`;
-
-const LogoContainerInMenu = styled.div`
+const MobileMenu = styled(motion.nav)`
+  position: fixed;
+  top: 0;
+  right: 0; /* Start from the right edge */
+  width: 100%; /* Full width */
+  height: 100vh; /* Full viewport height */
+  background-color: #0A0A0A; /* Dark background - same as footer */
+  color: #FFFFFF; /* White text for links */
+  padding: 2rem;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Above overlay, below toggle if toggle needs to be on top of it */
   display: flex;
   flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  overflow-y: auto; /* Scroll if content exceeds height */
 `;
 
 const NavLinksList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center links */
+  gap: 1.5rem; /* Increased gap */
+  width: 100%;
 `;
 
-const MobileMenuItem = styled(motion.li)`
-  margin-bottom: 15px; 
+const MobileMenuItem = styled.li`
+  width: 100%;
+  text-align: center;
 `;
 
-const MobileMenuLinkPrimary = styled(Link)`
-  display: block;
-  padding: 1.2rem 2rem;
-  font-family: 'Montserrat', sans-serif; /* Reverted font */
-  font-size: 2.2rem; /* Reverted size */
-  font-weight: 700; /* Reverted weight */
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #333333;
+const MobileMenuLink = styled(Link)` // Generic link for reuse
+  font-family: 'Montserrat', sans-serif;
+  color: #FFFFFF;
   text-decoration: none;
   transition: color 0.3s ease;
+  display: block;
+  width: 100%;
 
-  &:hover {
-    color: #9370DB; 
+  &:hover,
+  &:focus {
+    color: #CDAFFD; /* Accent color on hover */
   }
+`;
+
+const MobileMenuLinkPrimary = styled(MobileMenuLink)`
+  font-size: 1.8rem; /* Larger font size for primary links */
+  font-weight: 500;
+  padding: 0.8rem 0;
+  text-transform: uppercase;
 `;
 
 const SecondaryLinksList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 20px 0; 
-  border-top: 1px solid #333333; 
-  padding-top: 20px;
+  margin-top: 3rem; /* Space above secondary links */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
 `;
 
 const MobileMenuItemSecondary = styled.li`
-  margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
 `;
 
-const MobileMenuLinkSecondary = styled(Link)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem; 
-  color: #555555; 
-  text-decoration: none;
-  display: block;
-  padding: 5px 0;
-  transition: color 0.3s ease;
+const MobileMenuLinkSecondary = styled(MobileMenuLink)`
+  font-size: 1rem; /* Standard font size for secondary */
+  font-weight: 400;
+  color: #CCCCCC; /* Slightly dimmer color for secondary links */
+  padding: 0.5rem 0;
 
-  &:hover {
-    color: #9370DB; 
+  &:hover,
+  &:focus {
+    color: #CDAFFD;
   }
 `;
 

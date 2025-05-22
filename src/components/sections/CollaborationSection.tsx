@@ -51,7 +51,7 @@ const ContentWrapper = styled.div`
   padding: 0 20px; 
   
   @media (max-width: 767px) {
-    padding: 0;
+    padding: 10px 0; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,11 +64,11 @@ const SectionTitle = styled(motion.h2)`
   font-weight: normal; 
   margin-top: 0; 
   margin-bottom: 30px; 
-  color: rgb(0, 0, 0); 
+  color: rgb(0, 0, 0); /* Default (Desktop): BLACK */
   position: relative; 
   display: inline-block; 
   z-index: 0; 
-  padding-top: 30px; 
+  padding-top: 30px; /* Desktop padding-top */
   padding-left: 0; 
   padding-right: 0; 
   
@@ -76,26 +76,32 @@ const SectionTitle = styled(motion.h2)`
     font-size: 2.8rem; 
     padding-left: 0; 
     padding-right: 0; 
+    padding-top: 0px; 
+    color:rgb(0, 0, 0); /* Mobile: WHITE for visibility */
   }
 
   @media (max-width: 480px) {
-    font-size: 2.5rem; 
+    font-size: 2rem; 
+    padding-top: 10px; 
+    transform: translateY(-130px); /* Shift title block upwards */
+    /* color is inherited */
   }
 `;
 
 const BeigeBox = styled(motion.div)`
   position: absolute;
   background-color: #e6dfd7; 
-  height: 45px; /* Increased height to make it thicker */
+  height: 45px; /* Desktop height */
   width: 100%; 
-  z-index: auto; 
-  top: 0; 
+  z-index: auto; /* Should be -1 if title has z-index:0 and text should be on top */
+  top: 0; /* Desktop top */
   left: 50%; 
   transform: translateX(-50%); 
   opacity: 0.7;
   
   @media (max-width: 767px) {
-    height: 12px; 
+    height: 20px; /* Mobile height - increased for more thickness */
+    top: -30px; /* Mobile: Reset top, will move with transformed SectionTitle */
   }
 `;
 
@@ -103,7 +109,7 @@ const SectionSubtitle = styled(motion.p)`
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
   line-height: 1.7;
-  max-width: 850px; /* Increased max-width to make it wider */
+  max-width: 850px; 
   margin: 0 auto 50px auto; 
   color: #e0e0e0;
   text-align: center; 
@@ -111,6 +117,7 @@ const SectionSubtitle = styled(motion.p)`
   @media (max-width: 767px) {
     font-size: 1rem;
     max-width: 95%; 
+    margin: 0 auto 30px auto; 
   }
 `;
 
@@ -174,14 +181,14 @@ const ActionButton = styled.a<{ buttonColor?: string }>`
   font-family: 'Montserrat', sans-serif;
   display: block; 
   width: 100%; 
-  padding: 15px 10px; /* Adjusted padding */
+  padding: 15px 10px; 
   background-color: ${props => props.buttonColor || '#E9D8FD'}; 
-  color: ${props => props.buttonColor === '#ffe83c' ? 'rgb(255, 255, 255)' : 'rgb(255,255,255)'}; /* Conditional text color */
+  color: ${props => props.buttonColor === '#ffe83c' ? 'rgb(255, 255, 255)' : 'rgb(255,255,255)'}; 
   text-align: center;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem; /* Reduced font size */
-  line-height: 1.3; /* Added line-height for wrapped text */
+  font-size: 0.9rem; 
+  line-height: 1.3; 
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -233,7 +240,7 @@ const CollaborationSection: React.FC = () => {
     },
     {
       imageSrc: '/images/mediakit.JPG', 
-      buttonText: 'MEDIAKIT-DOWNLOAD', /* Corrected typo */
+      buttonText: 'MEDIAKIT-DOWNLOAD', 
       link: '#', 
       buttonColor: '#cdafff' 
     }

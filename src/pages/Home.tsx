@@ -18,7 +18,7 @@ const SectionsWithDiagonalWrapper = styled.div`
 
 const SharedDiagonalLine = styled.div`
   position: absolute;
-  background-color: rgba(205, 175, 253, 0.65);
+  background-color: transparent;
   height: 200px; /* Reduziert von 400px für einen dünneren Balken */
   width: 250%;
   transform: rotate(-20deg);

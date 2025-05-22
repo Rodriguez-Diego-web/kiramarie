@@ -201,18 +201,18 @@ const StyledVideo = styled.iframe`
   height: 100%;
   
   @media (max-width: 768px) {
-    transform: translate(-50%, -50%) scale(5.5); /* Stärkerer Zoom auf mobilen Geräten */
+    transform: translate(-50%, -50%) scale(6); /* Stärkerer Zoom auf mobilen Geräten */
   }
   
   @media (max-width: 480px) {
-    transform: translate(-50%, -50%) scale(4); /* Noch stärkerer Zoom auf sehr kleinen Displays */
+    transform: translate(-50%, -50%) scale(5); /* Noch stärkerer Zoom auf sehr kleinen Displays */
   }
   object-fit: cover;
   background-color: black;
   pointer-events: none;
 
   @media (max-width: 768px) {
-    transform: translate(-50%, -50%) scale(3.2);
+    transform: translate(-50%, -50%) scale(4);
   }
 `;
 

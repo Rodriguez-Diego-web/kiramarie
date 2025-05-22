@@ -81,7 +81,7 @@ const PlatformContainer = styled(motion.div)`
 
 const PlatformIcon = styled.div`
   font-size: 2.5rem;
-  margin-bottom: 5px; 
+  margin-bottom: -10px; 
   color: #000;
   position: relative;
   z-index: 1;

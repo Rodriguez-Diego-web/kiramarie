@@ -110,6 +110,13 @@ const QuoteText = styled.blockquote`
   z-index: 1;          
   position: relative;  
   text-align: center;  
+
+  @media (max-width: 767px) {
+    font-size: .8rem; /* Reduced font size for mobile */
+    line-height: 1.7; /* Optional: adjust line-height if needed for smaller font */
+    margin: 15px 0 10px 0; /* Optional: adjust margins for mobile */
+    max-width: 60%; /* Reduced max-width for mobile */
+  }
 `;
 
 const AuthorDisplay = styled.div`
@@ -127,6 +134,12 @@ const AuthorDisplay = styled.div`
   }
   .author-position {
     font-style: italic;
+  }
+  @media (max-width: 767px) {
+    font-size: .8rem; /* Reduced font size for mobile */
+    line-height: 1.7; /* Optional: adjust line-height if needed for smaller font */
+    margin: 15px 0 10px 0; /* Optional: adjust margins for mobile */
+   
   }
 `;
 

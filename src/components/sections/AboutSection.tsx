@@ -82,6 +82,10 @@ const LeftColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px; // Gap between paragraph and image cluster
+
+  @media (max-width: 991px) {
+    display: contents; /* Make children grid items of MainContentWrapper on mobile */
+  }
 `;
 
 const TopParagraphTextWrapper = styled.div`
@@ -96,6 +100,10 @@ const TopParagraphTextWrapper = styled.div`
   
   @media (max-width: 991px) {
     text-align: center;
+    order: 1; /* Mobile order: First after title */
+    width: 100%; /* Full width on mobile */
+    padding-left: 0; /* Reset desktop padding */
+    margin-top: 20px;
   }
 `;
 
@@ -110,6 +118,15 @@ const ImagesCluster = styled.div`
   margin-top: 20px;
   margin-bottom: 30px;
   padding-left: 20px; /* Move all left column images 20px to the right */
+
+  @media (max-width: 991px) {
+    order: 4; /* Mobile order: After Main Image */
+    grid-template-columns: 1fr; /* Stack images vertically */
+    width: 100%;
+    padding-left: 0;
+    margin-top: 30px;
+    gap: 20px;
+  }
 `;
 
 // New: Wrapper for the first small image (normal size)
@@ -118,6 +135,18 @@ const SmallImage1Wrapper = styled.div`
   grid-row: 1;
   transform: scale(0.96); /* Further reduced to make images smaller */
   transform-origin: top left;
+
+  @media (max-width: 991px) {
+    grid-column: auto;
+    grid-row: auto;
+    transform: none;
+    width: 100%; /* Ensure images can be full width if desired */
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
 `;
 
 // New: Wrapper for the second image - now smaller
@@ -127,6 +156,19 @@ const SmallImage2Wrapper = styled.div`
   transform: scale(1.6); /* Further reduced to make images smaller */
   transform-origin: top left;
   margin-bottom: 20px;
+
+  @media (max-width: 991px) {
+    grid-column: auto;
+    grid-row: auto;
+    transform: none;
+    margin-bottom: 0;
+    width: 100%;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
 `;
 
 // New: Wrapper for the third image
@@ -135,6 +177,18 @@ const SmallImage3Wrapper = styled.div`
   grid-row: 1 / span 2; /* Spans both rows */
   transform: scale(1.5); /* Further reduced to make images smaller */
   transform-origin: top left;
+
+  @media (max-width: 991px) {
+    grid-column: auto;
+    grid-row: auto;
+    transform: none;
+    width: 100%;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
 `;
 
 const RightColumn = styled.div`
@@ -142,6 +196,10 @@ const RightColumn = styled.div`
   flex-direction: column;
   gap: 30px;
   padding-right: 15px; /* Add some padding to prevent text from touching the edge */
+
+  @media (max-width: 991px) {
+    display: contents; /* Make children grid items of MainContentWrapper on mobile */
+  }
 `;
 
 // Wrapper for the main image in the RightColumn (can reuse or make specific)
@@ -150,8 +208,16 @@ const MainImageContainer = styled.div`
   width: 100%;
   max-width: 80%; 
   margin: 0 auto; 
-  transform: translate(40px, 210px); /* Y-translate set to 120px to move image lower */
+  transform: translate(40px, 185px); /* Y-translate set to 120px to move image lower */
   
+  @media (max-width: 991px) {
+    order: 2; /* Mobile order: After Top Paragraph */
+    transform: none; /* Reset desktop transform */
+    max-width: 100%; /* Full width on mobile */
+    margin-top: 30px;
+    margin-bottom: 0; /* Adjusted from auto to control spacing better */
+    padding-right: 0; /* Reset desktop padding if any was implied */
+  }
 `;
 
 const AuthorBioTextWrapper = styled.div`
@@ -159,7 +225,7 @@ const AuthorBioTextWrapper = styled.div`
   font-size: 1.2rem;
   line-height: 1.6;
   color: #333333;
-  margin-top: 230px; /* Increased further to move the whole text block lower */
+  margin-top: 200px; /* Increased further to move the whole text block lower */
   max-width: 90%; /* Made wider */
   margin-left: 0; /* Align to the left */
   
@@ -177,6 +243,14 @@ const AuthorBioTextWrapper = styled.div`
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    order: 5; /* Mobile order: Last */
+    margin-top: 30px; /* Reset desktop margin-top */
+    max-width: 100%; /* Full width on mobile */
+    
+    .headline-main {
+      margin-top: 20px; 
+      margin-left: 0; /* Reset desktop negative margin */
+    }
   }
   
   h2 {
@@ -196,6 +270,7 @@ const BackgroundBox = styled.div`
   width: calc(100% - 20px);
   height: calc(100% - 20px);
 `;
+
 // General ImageWrapper for smaller images (maintains natural aspect ratio)
 const ImageWrapper = styled.div`
   position: relative;

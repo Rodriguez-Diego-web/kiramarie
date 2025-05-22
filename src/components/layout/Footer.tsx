@@ -135,9 +135,14 @@ const LinksSection = styled.div`
   display: flex;
   gap: 4rem;
   
-  @media (max-width: 576px) {
+  @media (max-width: 768px) {
+    align-self: flex-end;
     gap: 2rem;
+  }
+
+  @media (max-width: 576px) {
     flex-wrap: wrap;
+    justify-content: flex-end;
   }
 `;
 
