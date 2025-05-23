@@ -1,204 +1,338 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Helmet } from 'react-helmet-async';
-import { motion } from 'framer-motion';
 
+// Define the Episode interface
+interface Episode {
+  id: string;
+  title: string;
+  date: string;
+  duration: string;
+  description: string;
+  imageUrl: string;
+  altText: string;
+}
 
 const PageContainer = styled.div`
-  padding: 120px 20px 60px;
-  min-height: 100vh;
-  background-color: #1c1c1c;
-  color: #ffffff;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #333; // Assuming a dark text color on a light background
+  text-align: center; /* Center content within PageContainer by default */
+`;
+
+const IntroSection = styled.section`
+  display: flex;
+  align-items: flex-start;
+  gap: 10rem;
+  margin-bottom: 3rem;
+  margin-top: -2rem;
+  text-align: left; /* Reset text-align for children of IntroSection */
+  max-width: 1000px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const TextColumn = styled.div`
+  flex: 1;
+  max-width: 600px; 
+`;
+
+const ImageColumn = styled.div`
+  flex: 0 0 80%; // Adjust percentage as needed for image size
+  max-width: 450px; // Max width for the image container
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-left: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
+    max-width: 350px;
+    margin-bottom: 2rem;
+  }
+`;
+
+const MainTitle = styled.h1`
+  font-size: 4rem; // Adjust as needed
+  font-family: var(--heading-font); /* Added */
+  font-weight: normal; /* Kingdom font might have its own weight, adjust if needed */
+  margin-bottom: 1.5rem; /* Reduced margin-bottom as it's now a main section title */
+  position: relative;
+  display: inline-block; /* Keep inline-block for the highlight effect */
+  z-index: 0;
+  margin-top: 6rem; /* Add some space above the title */
+  margin-bottom: .5rem; /* Add space below title, before columns */
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 5px; // Adjust position of highlight
+    left: 0;
+    height: 40px; // Height of the highlight
+    width: 125%;
+    background-color: #FFD700; // Yellow color for highlight
+    z-index: -1;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    text-align: center;
+    display: block;
+  }
+`;
+
+const Paragraph = styled.p`
+  font-size: 1rem;
+  font-family: var(--body-font); /* Added */
+  line-height: 1.6;
+  margin-bottom: 1rem;
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 900px;
+  max-width: 1000px; // Consistent with IntroSection max-width
   margin: 0 auto;
+  padding: 0 2rem; // Standard horizontal padding
 `;
 
-const PageTitle = styled.h1`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 40px;
+const LatestEpisodesSection = styled.section`
+  background-color: #f7f4f1; // Beige background
+  padding: 2rem 0 4rem 0; // Adjusted top padding from 4rem to 2rem
+  width: 100%; // Ensure it spans full width
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 4rem;
+  font-family: var(--heading-font);
+  font-weight: normal;
   text-align: center;
-  color: #ffffff;
-`;
+  margin-bottom: 2.5rem; // Space below title, before first episode card (ContentWrapper)
+  margin-top: -60px; // Title will be 2rem from top of beige due to LatestEpisodesSection padding-top
+  color: #333;
 
-const FeedItemStyled = styled(motion.div)`
-  background-color: #2a2a2a;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-
-  h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #9370DB;
-  }
-
-  p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 10px;
-    color: #e0e0e0;
-  }
-
-  a {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    color: #9370DB;
-    text-decoration: none;
-    font-weight: 600;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  small {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.8rem;
-    color: #aaaaaa;
-    display: block;
-    margin-top: 10px;
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    text-align: center;
   }
 `;
 
-const LoadingMessage = styled.p`
-  text-align: center;
-  font-size: 1.2rem;
-  padding: 40px;
+const EpisodeCardWrapper = styled.div`
+  display: flex;
+  margin: 0 auto 2rem auto; 
+  max-width: 900px; 
+  text-align: left;
+  gap: 2rem;
+  flex-grow: 1;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
-const ErrorMessage = styled.p`
-  text-align: center;
-  font-size: 1.2rem;
-  color: #ff6b6b;
-  padding: 40px;
+const EpisodeImage = styled.img`
+  width: 200px; 
+  height: 200px;
+  object-fit: cover;
+  /* border-radius: 4px; */ // Removed for angular design
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 1rem;
+  }
 `;
 
-interface FeedItemData {
-  title: string;
-  link: string;
-  pubDate: string;
-  description: string;
-  source?: string;
-}
+const EpisodeContent = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`;
 
-interface FunkeFeedSeoData {
-  title: string;
-  description: string;
-  og_image: string;
-}
+const EpisodeTitle = styled.h3`
+  font-family: var(--body-font); // Montserrat for episode titles
+  font-size: 1.5rem;
+  font-weight: 700; // Bolder Montserrat, as in image
+  margin-bottom: 0.75rem;
+  color: #333;
+  line-height: 1.4;
+`;
+
+const EpisodeMeta = styled.p`
+  font-family: var(--body-font);
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+`;
+
+const EpisodeDescription = styled.p`
+  font-family: var(--body-font);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; // Pushes button and icons to the bottom
+`;
+
+const ActionsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; // Space between button and icon group
+  margin-top: auto; // Pushes this container to the bottom if EpisodeDescription doesn't fill space
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+`;
+
+const ListenButton = styled.button`
+  font-family: var(--body-font);
+  background-color: transparent;
+  color: #000; // Black text
+  border: 1px solid #000; // Thin black border
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  border-radius: 0; // Ensure angular
+
+  &:hover {
+    opacity: 0.7;
+    /* background-color: #333; */ // Removed hover background change
+    /* color: #fff; */ // Removed hover text color change
+  }
+
+  @media (max-width: 768px) {
+    align-self: center;
+  }
+`;
+
+const PlatformIconsContainer = styled.div`
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  img { // Style for the actual icon images
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+`;
+
+const StyledDivider = styled.hr`
+  border: 0;
+  height: 2px;
+  background-color:rgb(98, 98, 98);
+  opacity: .5;
+  width: 75%;
+  margin: 0 0 2rem 1rem;
+`;
+
+const LoadMoreButton = styled.button`
+  font-family: var(--body-font);
+  background-color: #000; // Black background
+  color: #fff; // White text
+  border: 1px solid #000; // Black border (can be removed if redundant)
+  padding: 0.8rem 3.5rem;
+  font-size: .5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  border-radius: 0; // Angular design
+  display: block; // To allow centering with margin auto
+  margin: 2rem auto; // Center the button, add space above
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
 
 const FunkeFeedPage: React.FC = () => {
-  const [feedItems, setFeedItems] = useState<FeedItemData[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  
-  const [seoData, setSeoData] = useState<FunkeFeedSeoData>({
-    title: "Aktuelle Beiträge von Kira Marie bei Funke - Kira Marie",
-    description: "Entdecken Sie die neuesten Artikel, Kolumnen und Beiträge von Kira Marie, veröffentlicht bei der Funke Mediengruppe.",
-    og_image: "/uploads/og-funke-feed.jpg"
-  });
-
+  const [episodes, setEpisodes] = useState<Episode[]>([]);
 
   useEffect(() => {
-    fetch('/data/funkeFeedSeoData.json')
+    // Fetch data from the public folder
+    fetch('/data/podcastEpisodes.json')
       .then(response => {
-        if (!response.ok) throw new Error('Could not load SEO data');
-        return response.json();
-      })
-      .then(data => setSeoData(data))
-      .catch(error => console.error('Error loading SEO data:', error));
-  }, []);
-  
-
-  useEffect(() => {
-    const fetchFeed = async () => {
-      try {
-        setLoading(true);
-
-        const response = await fetch('/.netlify/functions/getFunkeFeed');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
-        setFeedItems(data);
-        setError(null);
-      } catch (e: any) {
-        console.error("Fehler beim Laden des Feeds:", e);
-        setError(e.message || 'Fehler beim Laden der Daten.');
-        setFeedItems([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFeed();
+        return response.json();
+      })
+      .then((data: { all_episodes: Episode[] }) => { // Expect an object with all_episodes key
+        setEpisodes(data.all_episodes); // Access the array via data.all_episodes
+      })
+      .catch(error => {
+        console.error("Could not fetch podcast episodes:", error);
+      });
   }, []);
 
-  if (loading) {
-    return <PageContainer><LoadingMessage>Lade aktuelle Beiträge...</LoadingMessage></PageContainer>;
-  }
-
-  if (error) {
-    return <PageContainer><ErrorMessage>Fehler: {error}</ErrorMessage></PageContainer>;
-  }
-
   return (
+    <>
     <PageContainer>
-      <Helmet>
+      <MainTitle>New Work Now</MainTitle>
+      <IntroSection>
+        <ImageColumn>
+          <img src="/images/Podcast_Cover.jpeg" alt="New Work Now Podcast Artwork" />
+        </ImageColumn>
+        <TextColumn>
+          <Paragraph>
+            Die Arbeitswelt verändert sich rasant – und mittendrin: wir. New Work Now gibt Orientierung, Inspiration und konkrete Impulse für alle, die Arbeit neu denken wollen. Was bedeutet „New Work“ wirklich? Wie gelingt der Wandel in Unternehmen? Und was können wir selbst dazu beitragen?
+          </Paragraph>
+          <Paragraph>
+            Jede Woche spricht Host Kira Marie Cremer mit UnternehmerInnen, Kreativen und VordenkerInnen – über Herausforderungen, Best Practices und persönliche Aha-Momente. Immer dienstags, im Wechsel Interviews und kompakte Solo-Folgen mit Tipps und Denkanstößen.
+          </Paragraph>
+        </TextColumn>
+      </IntroSection>
+    </PageContainer>
 
-        <title>{seoData.title}</title>
-        <meta name="description" content={seoData.description} />
-        
-
-        <meta property="og:title" content={seoData.title.split(' - ')[0]} />
-        <meta property="og:description" content={seoData.description} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://www.kiramarie.app/kooperationen/funke-feed" />
-        <link rel="canonical" href="https://www.kiramarie.app/kooperationen/funke-feed" />
-        <meta property="og:image" content={`https://www.kiramarie.app${seoData.og_image}`} />
-        <meta property="og:site_name" content="Kira Marie" />
-
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={seoData.title.split(' - ')[0]} />
-        <meta name="twitter:description" content={seoData.description} />
-        <meta name="twitter:image" content={`https://www.kiramarie.app${seoData.og_image}`} />
-      </Helmet>
-
+    <LatestEpisodesSection>
+      <SectionTitle>Neueste Folgen</SectionTitle>
       <ContentWrapper>
-        <PageTitle>Aktuelles von Funke</PageTitle>
-        {feedItems.length > 0 ? (
-          feedItems.map((item, index) => (
-            <FeedItemStyled
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <h2>{item.title}</h2>
-              <p>{item.description}</p>
-              <a href={item.link} target="_blank" rel="noopener noreferrer">
-                Weiterlesen
-              </a>
-              <small>
-                Veröffentlicht: {new Date(item.pubDate).toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}
-                {item.source && ` - Quelle: ${item.source}`}
-              </small>
-            </FeedItemStyled>
-          ))
-        ) : (
-          <p>Keine Beiträge gefunden.</p>
+        {episodes.map(episode => (
+          <React.Fragment key={episode.id}>
+            <EpisodeCardWrapper>
+              <EpisodeImage src={episode.imageUrl} alt={episode.altText} />
+              <EpisodeContent>
+                <EpisodeTitle>{episode.title}</EpisodeTitle>
+                <EpisodeMeta>{episode.date} | {episode.duration}</EpisodeMeta>
+                <EpisodeDescription>
+                  {episode.description}
+                </EpisodeDescription>
+                <ActionsContainer>
+                  <ListenButton>JETZT HÖREN +</ListenButton>
+                  <PlatformIconsContainer>
+                    <img src="/images/icons8-youtube-48.png" alt="YouTube" />
+                    <img src="/images/icons8-spotify-50.png" alt="Spotify" />
+                    <img src="/images/icons8-apple-music-50.png" alt="Apple Music" />
+                    <img src="/images/icons8-google-podcasts-50.png" alt="Google Podcasts" />
+                  </PlatformIconsContainer>
+                </ActionsContainer>
+              </EpisodeContent>
+            </EpisodeCardWrapper>
+            <StyledDivider />
+          </React.Fragment>
+        ))}
+        
+        {episodes.length > 0 && (
+          <LoadMoreButton>MEHR LADEN</LoadMoreButton>
         )}
       </ContentWrapper>
-    </PageContainer>
+    </LatestEpisodesSection>
+    </>
   );
 };
 

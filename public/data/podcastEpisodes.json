@@ -1,0 +1,31 @@
+{
+  "all_episodes": [
+    {
+      "id": "podcast-143",
+      "title": "#143 Vereinbarkeit, Karriere, Muttersein – warum Working Women oft unterschätzt werden",
+      "date": "20.05.2025",
+      "duration": "41 Minuten",
+      "description": "Mutterschaft trifft Karriere – wie Vereinbarkeit im echten Leben funktionieren kann.",
+      "imageUrl": "/images/143-vereinbarkeit-karriere-muttersein-warum-working-women-oft-unterschaetzt-werden.png",
+      "altText": "#143 Vereinbarkeit, Karriere, Muttersein"
+    },
+    {
+      "id": "podcast-142",
+      "title": "#142 New Work im Krankenhaus mit Waldkliniken Eisenberg CEO David-Ruben Thies (TBT)",
+      "date": "13.05.2025",
+      "duration": "35 Minuten",
+      "description": "New Work im Krankenhaus? David-Ruben Thies zeigt, wie es in den Waldkliniken Eisenberg gelebt wird.",
+      "imageUrl": "/images/142-new-work-im-krankenhaus-mit-waldkliniken-eisenberg-ceo-david-ruben-thies-tbt.png",
+      "altText": "#142 New Work im Krankenhaus"
+    },
+    {
+      "id": "podcast-141",
+      "title": "#141 Erfolgreiches Change Management mit PwC Change Managerin Marina Ziblis",
+      "date": "06.05.2025",
+      "duration": "39 Minuten",
+      "description": "Im Gespräch mit Marina Ziblis über mutige Entscheidungen, berufliche Vielfalt und den Weg zu erfüllter Arbeit.",
+      "imageUrl": "/images/141-erfolgreiches-change-management-mit-pwc-change-managerin-marina-ziblis.png",
+      "altText": "#141 Erfolgreiches Change Management"
+    }
+  ]
+}

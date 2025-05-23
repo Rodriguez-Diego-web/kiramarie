@@ -96,3 +96,29 @@ collections:
       - { label: "Logo Bild", name: "image", widget: "image" }
       - { label: "Alt-Text für Bild", name: "alt_text", widget: "string" }
       - { label: "Reihenfolge (für Anzeige)", name: "order", widget: "number", value_type: "int", default: 100, required: false }
+
+  - name: "podcast_episodes"
+    label: "Podcast Episoden"
+    label_singular: "Podcast Episode"
+    description: "Verwaltung der Podcast Episoden für die 'Neueste Folgen' Sektion."
+    files:
+      - name: "all_podcast_episodes_file"
+        label: "Alle Podcast Episoden"
+        file: "public/data/podcastEpisodes.json"
+        editor:
+          preview: false
+        fields:
+          - name: "all_episodes"
+            label: "Episoden Liste"
+            widget: "list"
+            add_to_top: true
+            label_singular: "Neue Episode hinzufügen"
+            summary: "{{fields.title}} | {{fields.date}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "Eindeutige ID, z.B. podcast-143. Muss manuell vergeben werden." }
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Datum", name: "date", widget: "string", hint: "Format: TT.MM.JJJJ (z.B. 20.05.2025)" }
+              - { label: "Dauer", name: "duration", widget: "string", hint: "z.B. 41 Minuten" }
+              - { label: "Beschreibung", name: "description", widget: "text" }
+              - { label: "Bild", name: "imageUrl", widget: "image", hint: "Podcast Episodenbild. Wird in /public/uploads gespeichert." }
+              - { label: "Alternativtext für Bild", name: "altText", widget: "string", hint: "Kurze Beschreibung des Bildes für Barrierefreiheit." }
