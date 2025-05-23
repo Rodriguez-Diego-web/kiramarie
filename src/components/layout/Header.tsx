@@ -8,6 +8,7 @@ import { Icon } from '../common/IconWrapper';
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = window.location.pathname;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +26,24 @@ const Header: React.FC = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const closeMenu = () => setIsOpen(false);
+  
+  // Handle navigation to section on homepage or navigate to homepage first
+  const handleSectionNavigation = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    closeMenu();
+    
+    // If we're not on the homepage, navigate to homepage first
+    if (location !== '/') {
+      window.location.href = '/' + sectionId;
+      return;
+    }
+    
+    // If we're on the homepage, just scroll to the section
+    const section = document.querySelector(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <HeaderWrapper $scrolled={scrolled}>
@@ -37,38 +56,23 @@ const Header: React.FC = () => {
 
         <DesktopMenu>
           <MenuItem>
-            <MenuLink to="/#about-section" onClick={(e) => {
-              e.preventDefault();
-              closeMenu();
-              const aboutSection = document.querySelector('#ueber-mich, #about-section, #about');
-              if (aboutSection) {
-                aboutSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}>ÜBER MICH</MenuLink>
+            <MenuLink to="/#about-section" onClick={(e) => handleSectionNavigation(e, '#about-section')}>ÜBER MICH</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/#presse" onClick={(e) => {
-              e.preventDefault();
-              closeMenu();
-              document.getElementById('presse')?.scrollIntoView({ behavior: 'smooth' });
-            }}>ZUSAMMENARBEIT</MenuLink>
+            <MenuLink to="/#presse" onClick={(e) => handleSectionNavigation(e, '#presse')}>ZUSAMMENARBEIT</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/#collaboration" onClick={(e) => {
-              e.preventDefault();
-              closeMenu();
-              document.getElementById('collaboration')?.scrollIntoView({ behavior: 'smooth' });
-            }}>PODCAST: NEW WORK NOW</MenuLink>
+            <MenuLink to="/#collaboration" onClick={(e) => handleSectionNavigation(e, '#collaboration')}>PODCAST: NEW WORK NOW</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/funke-rss" onClick={closeMenu}>FUNKE FEED</MenuLink>
+            <MenuLink to="/funke-rss" onClick={(e) => {
+              closeMenu();
+              // Force scroll to top when navigating to Funke Feed page
+              window.scrollTo(0, 0);
+            }}>FUNKE FEED</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/#kontakt" onClick={(e) => {
-              e.preventDefault();
-              closeMenu();
-              document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' });
-            }}>KONTAKT</MenuLink>
+            <MenuLink to="/#kontakt" onClick={(e) => handleSectionNavigation(e, '#kontakt')}>KONTAKT</MenuLink>
           </MenuItem>
         </DesktopMenu>
 
@@ -116,38 +120,23 @@ const Header: React.FC = () => {
               >
                 <NavLinksList>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#about-section" onClick={(e) => {
-                      e.preventDefault();
+                    <MobileMenuLinkPrimary to="/#about-section" onClick={(e) => handleSectionNavigation(e, '#about-section')}>ÜBER MICH</MobileMenuLinkPrimary>
+                  </MobileMenuItem>
+                  <MobileMenuItem>
+                    <MobileMenuLinkPrimary to="/#presse" onClick={(e) => handleSectionNavigation(e, '#presse')}>ZUSAMMENARBEIT</MobileMenuLinkPrimary>
+                  </MobileMenuItem>
+                  <MobileMenuItem>
+                    <MobileMenuLinkPrimary to="/#collaboration" onClick={(e) => handleSectionNavigation(e, '#collaboration')}>PODCAST: NEW WORK NOW</MobileMenuLinkPrimary>
+                  </MobileMenuItem>
+                  <MobileMenuItem>
+                    <MobileMenuLinkPrimary to="/funke-rss" onClick={(e) => {
                       closeMenu();
-                      const aboutSection = document.querySelector('#ueber-mich, #about-section, #about');
-                      if (aboutSection) {
-                        aboutSection.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}>ÜBER MICH</MobileMenuLinkPrimary>
+                      // Force scroll to top when navigating to Funke Feed page
+                      window.scrollTo(0, 0);
+                    }}>FUNKE FEED</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#presse" onClick={(e) => {
-                      e.preventDefault();
-                      closeMenu(); 
-                      document.getElementById('presse')?.scrollIntoView({ behavior: 'smooth' }); 
-                    }}>ZUSAMMENARBEIT</MobileMenuLinkPrimary>
-                  </MobileMenuItem>
-                  <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#collaboration" onClick={(e) => {
-                      e.preventDefault();
-                      closeMenu(); 
-                      document.getElementById('collaboration')?.scrollIntoView({ behavior: 'smooth' }); 
-                    }}>PODCAST: NEW WORK NOW</MobileMenuLinkPrimary>
-                  </MobileMenuItem>
-                  <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/funke-rss" onClick={closeMenu}>FUNKE FEED</MobileMenuLinkPrimary>
-                  </MobileMenuItem>
-                  <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#kontakt" onClick={(e) => {
-                      e.preventDefault();
-                      closeMenu(); 
-                      document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' }); 
-                    }}>KONTAKT</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/#kontakt" onClick={(e) => handleSectionNavigation(e, '#kontakt')}>KONTAKT</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                 </NavLinksList>
 
