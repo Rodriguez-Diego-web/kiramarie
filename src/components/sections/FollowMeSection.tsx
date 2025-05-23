@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { FaLinkedin, FaInstagram } from 'react-icons/fa';
 import CountUp from 'react-countup';
 
@@ -159,7 +159,16 @@ const baseSocialPlatforms: SocialPlatform[] = [
 
 const FollowMeSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 1.0 });
   const [socialPlatformData, setSocialPlatformData] = useState<SocialPlatform[]>(baseSocialPlatforms);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  // Track when the section comes into view
+  useEffect(() => {
+    if (isInView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [isInView, hasAnimated]);
 
   useEffect(() => {
     fetch('/data/socialDisplayData.json')
@@ -214,20 +223,32 @@ const FollowMeSection: React.FC = () => {
         <ContentWrapper>
           <SocialLinksGrid
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             {socialPlatformData.map((platform, index) => (
               <React.Fragment key={platform.name}>
                 <PlatformContainer
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
                 >
                   <PlatformIcon>{platform.icon}</PlatformIcon>
                   {platform.followersNumber !== undefined && (
                     <FollowerCount>
-                       + <CountUp start={0} end={platform.followersNumber} duration={2.5} separator="." decimal="," />
+                       + {isInView ? (
+                         <CountUp 
+                           start={0} 
+                           end={platform.followersNumber} 
+                           duration={2.5} 
+                           separator="." 
+                           decimal=","
+                           useEasing={true}
+                           delay={0.3}
+                         />
+                       ) : (
+                         "0"
+                       )}
                     </FollowerCount>
                   )}
                   <ProfileButton href={platform.url} target="_blank" rel="noopener noreferrer">
