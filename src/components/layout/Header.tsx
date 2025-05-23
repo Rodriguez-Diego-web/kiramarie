@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { Icon } from '../common/IconWrapper';
@@ -8,7 +8,7 @@ import { Icon } from '../common/IconWrapper';
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = window.location.pathname;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,18 +32,8 @@ const Header: React.FC = () => {
     e.preventDefault();
     closeMenu();
     
-    // If we're not on the homepage, navigate to homepage with the hash
-    if (location !== '/') {
-      // Navigate to homepage with the hash - simpler approach
-      window.location.href = '/' + sectionId;
-      return;
-    }
-    
-    // If we're on the homepage, just scroll to the section
-    const sectionElement = document.querySelector(sectionId);
-    if (sectionElement) {
-      sectionElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Use React Router's navigate function for proper routing
+    navigate('/' + sectionId);
   };
 
   return (
@@ -67,9 +57,9 @@ const Header: React.FC = () => {
           </MenuItem>
           <MenuItem>
             <MenuLink to="/funke-rss" onClick={(e) => {
+              e.preventDefault();
               closeMenu();
-              // Force scroll to top when navigating to Funke Feed page
-              window.scrollTo(0, 0);
+              navigate('/funke-rss');
             }}>FUNKE FEED</MenuLink>
           </MenuItem>
           <MenuItem>
@@ -131,9 +121,9 @@ const Header: React.FC = () => {
                   </MobileMenuItem>
                   <MobileMenuItem>
                     <MobileMenuLinkPrimary to="/funke-rss" onClick={(e) => {
+                      e.preventDefault();
                       closeMenu();
-                      // Force scroll to top when navigating to Funke Feed page
-                      window.scrollTo(0, 0);
+                      navigate('/funke-rss');
                     }}>FUNKE FEED</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
