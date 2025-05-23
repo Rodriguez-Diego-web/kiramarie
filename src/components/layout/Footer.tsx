@@ -60,17 +60,18 @@ const Footer: React.FC = () => {
           
           <LinksSection>
             <LinkGroup>
-              <FooterLink href="#kontakt" onClick={(e) => handleSmoothScroll(e, '#kontakt')}>KONTAKT</FooterLink>
               <FooterLink href="#about-section" onClick={(e) => handleSmoothScroll(e, '#about-section')}>ÜBER MICH</FooterLink>
               <FooterLink href="#presse" onClick={(e) => handleSmoothScroll(e, '#presse')}>ZUSAMMENARBEIT</FooterLink> 
               <FooterLink href="#collaboration" onClick={(e) => handleSmoothScroll(e, '#collaboration')}>PODCAST: NEW WORK NOW</FooterLink> 
+              <FooterLink href="#kontakt" onClick={(e) => handleSmoothScroll(e, '#kontakt')}>KONTAKT</FooterLink>
+              <FooterLink href="#about-section" onClick={(e) => handleSmoothScroll(e, '#about-section')}>ÜBER MICH</FooterLink>
             </LinkGroup>
           </LinksSection>
         </FooterContent>
         
         <FooterBottom>
           <Copyright>&copy; {currentYear} Kira Marie. Alle Rechte vorbehalten.</Copyright>
-          <CreatedBy>Developed by Diego Rodriguez Web</CreatedBy>
+          <CreatedBy>Designed by Hannah // Developed by Diego Rodriguez Web</CreatedBy>
         </FooterBottom>
       </Container>
     </FooterWrapper>
@@ -92,6 +93,8 @@ const Container = styled.div`
 const FooterContent = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
   
   @media (max-width: 768px) {
     flex-direction: column;
@@ -107,7 +110,7 @@ const BrandSection = styled.div`
 `;
 
 const LogoImage = styled.img`
-  height: 60px;
+  height: 90px;
   width: auto;
 `;
 
@@ -154,9 +157,9 @@ const LinkGroup = styled.div`
 `;
 
 const FooterLink = styled.a`
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--body-font);
   font-size: 0.9rem;
-  color: #cccccc;
+  color: #fff;
   text-decoration: none;
   transition: color 0.2s ease;
   text-transform: uppercase;
