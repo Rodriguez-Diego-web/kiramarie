@@ -9,7 +9,6 @@ import ScrollToTopButton from './components/common/ScrollToTopButton';
 import ScrollToHash from './components/utility/ScrollToHash';
 import Home from './pages/Home';
 import FunkeFeedPage from './components/pages/FunkeFeedPage';
-import FunkeRssPage from './pages/FunkeRssPage';
 
 function App() {
   return (
@@ -20,8 +19,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/kooperationen/funke-feed" element={<FunkeFeedPage />} />
-          <Route path="/funke-rss" element={<FunkeRssPage />} />
+          {/* <Route path="/kooperationen/funke-feed" element={<FunkeFeedPage />} /> */}
+          <Route path="/funke-rss" element={<FunkeFeedPage />} /> {/* Changed element to FunkeFeedPage */}
           {/* Add more routes as needed */}
         </Routes>
         <ScrollToTopButton />

@@ -50,17 +50,10 @@ const Header: React.FC = () => {
             <MenuLink to="/#about-section" onClick={(e) => handleSectionNavigation(e, '#about-section')}>ÜBER MICH</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/#presse" onClick={(e) => handleSectionNavigation(e, '#presse')}>ZUSAMMENARBEIT</MenuLink>
+            <MenuLink to="/#collaboration" onClick={(e) => handleSectionNavigation(e, '#collaboration')}>ZUSAMMENARBEIT</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/#collaboration" onClick={(e) => handleSectionNavigation(e, '#collaboration')}>PODCAST: NEW WORK NOW</MenuLink>
-          </MenuItem>
-          <MenuItem>
-            <MenuLink to="/funke-rss" onClick={(e) => {
-              e.preventDefault();
-              closeMenu();
-              navigate('/funke-rss');
-            }}>FUNKE FEED</MenuLink>
+            <MenuLink to="/funke-rss">PODCAST: NEW WORK NOW</MenuLink>
           </MenuItem>
           <MenuItem>
             <MenuLink to="/#kontakt" onClick={(e) => handleSectionNavigation(e, '#kontakt')}>KONTAKT</MenuLink>
@@ -114,17 +107,10 @@ const Header: React.FC = () => {
                     <MobileMenuLinkPrimary to="/#about-section" onClick={(e) => handleSectionNavigation(e, '#about-section')}>ÜBER MICH</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#presse" onClick={(e) => handleSectionNavigation(e, '#presse')}>ZUSAMMENARBEIT</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/#collaboration" onClick={(e) => handleSectionNavigation(e, '#collaboration')}>ZUSAMMENARBEIT</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/#collaboration" onClick={(e) => handleSectionNavigation(e, '#collaboration')}>PODCAST: NEW WORK NOW</MobileMenuLinkPrimary>
-                  </MobileMenuItem>
-                  <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/funke-rss" onClick={(e) => {
-                      e.preventDefault();
-                      closeMenu();
-                      navigate('/funke-rss');
-                    }}>FUNKE FEED</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/funke-rss">PODCAST: NEW WORK NOW</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
                     <MobileMenuLinkPrimary to="/#kontakt" onClick={(e) => handleSectionNavigation(e, '#kontakt')}>KONTAKT</MobileMenuLinkPrimary>
@@ -237,10 +223,10 @@ const MenuItem = styled.li`
 `;
 
 const MenuLink = styled(Link)`
-  font-family: 'Almarai', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.8rem;
   letter-spacing: 0.1em;
-  font-weight: 400; /* Changed to regular weight */
+  font-weight: 400; /* Regular weight */
   text-transform: uppercase;
   color: #333333;
   text-decoration: none;

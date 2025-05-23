@@ -1,6 +1,20 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
+  @font-face {
+    font-family: 'Kingdom';
+    src: url('/fonts/Kingdom.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype-variations');
+    font-weight: 100 900; 
+    font-style: normal;
+  }
+
   :root {
     --primary: #cdaffd;
     --secondary: #000000;
@@ -11,8 +25,8 @@ const GlobalStyles = createGlobalStyle`
     --background-alt: #f8f5ff;
     --shadow: rgba(0, 0, 0, 0.05);
     --header-height: 80px;
-    --heading-font: 'Montserrat', sans-serif;
-    --body-font: 'Cormorant Garamond', serif;
+    --heading-font: 'Kingdom', sans-serif; 
+    --body-font: 'Montserrat', sans-serif; 
   }
 
   * {

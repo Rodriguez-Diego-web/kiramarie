@@ -89,7 +89,7 @@ const HeroSection: React.FC = () => {
       >
         <StyledVideo
           ref={videoRef}
-          src={`https://www.youtube.com/embed/KiwTZquAzSw?autoplay=1&mute=1&loop=1&playlist=KiwTZquAzSw&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0`}
+          src={`https://www.youtube.com/embed/KiwTZquAzSw?autoplay=1&mute=1&loop=1&playlist=KiwTZquAzSw&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&vq=hd1080&hd=1&quality=highres`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -196,24 +196,29 @@ const StyledVideo = styled.iframe`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.01);
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  background-color: black;
+  /* Angepasste Größe für besseren Überblick */
+  min-width: 110%;
+  min-height: 110%;
   
   @media (max-width: 768px) {
-    transform: translate(-50%, -50%) scale(6); /* Stärkerer Zoom auf mobilen Geräten */
+    transform: translate(-50%, -50%) scale(1.3); /* Minimaler Zoom für bessere Übersicht */
+    min-width: 120%;
+    min-height: 120%;
   }
   
   @media (max-width: 480px) {
-    transform: translate(-50%, -50%) scale(5); /* Noch stärkerer Zoom auf sehr kleinen Displays */
+    transform: translate(-50%, -50%) scale(1.5); /* Minimaler Zoom für bessere Übersicht */
+    min-width: 120%;
+    min-height: 120%;
   }
   object-fit: cover;
   background-color: black;
   pointer-events: none;
-
-  @media (max-width: 768px) {
-    transform: translate(-50%, -50%) scale(4);
-  }
 `;
 
 const VideoOverlay = styled.div<{ $loaded: boolean }>`

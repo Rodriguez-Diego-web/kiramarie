@@ -88,9 +88,9 @@ const PlatformIcon = styled.div`
 `;
 
 const FollowerCount = styled.div`
-  font-family: 'Kingdom', sans-serif; 
+  font-family: 'Montserrat', sans-serif !important; 
   font-size: 2.5rem;
-  font-weight: normal; 
+  font-weight: 400; 
   color: #000;
   margin: 0px 0 0px; 
   position: relative;

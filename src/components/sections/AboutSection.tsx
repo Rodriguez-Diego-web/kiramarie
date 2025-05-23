@@ -89,14 +89,28 @@ const LeftColumn = styled.div`
 `;
 
 const TopParagraphTextWrapper = styled.div`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1rem; /* Vereinheitlichte Schriftgröße */
+  line-height: 1.8; /* Angepasst auf 1.8 wie im AuthorBioTextWrapper */
   color: #333333;
   padding-left: 20px; /* Keep alignment consistent */
   width: 80%; /* Make narrower to truncate text */
   margin-top: 20px; /* Move text lower */
   overflow: hidden; /* Ensure text gets truncated */
+  font-weight: 400; /* Einheitliche Schriftstärke */
+  
+  .body-text {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+  
+  /* Stelle sicher, dass alle Textelemente innerhalb Montserrat verwenden */
+  p, div, span, br {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1rem;
+    font-weight: 400;
+  }
   
   @media (max-width: 991px) {
     text-align: center;
@@ -208,7 +222,7 @@ const MainImageContainer = styled.div`
   width: 100%;
   max-width: 80%; 
   margin: 0 auto; 
-  transform: translate(40px, 185px); /* Y-translate set to 120px to move image lower */
+  transform: translate(40px, 131px); /* Y-Wert reduziert, um das Bild höher zu positionieren */
   
   @media (max-width: 991px) {
     order: 2; /* Mobile order: After Top Paragraph */
@@ -221,22 +235,27 @@ const MainImageContainer = styled.div`
 `;
 
 const AuthorBioTextWrapper = styled.div`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
-  line-height: 1.6;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1rem; /* Vereinheitlichte Schriftgröße */
+  line-height: 1.8;
   color: #333333;
-  margin-top: 200px; /* Increased further to move the whole text block lower */
-  max-width: 90%; /* Made wider */
-  margin-left: 0; /* Align to the left */
+  margin-top: 140px; /* Increased further to move the whole text block lower */
+  max-width: 120%; /* Volle Breite für den Text */
+  margin-left: -200px; /* Align to the left */
+  font-weight: 400; /* Einheitliche Schriftstärke */
   
   .headline-main {
-    margin-top: 20px; /* Reduced significantly from 600px, adjust as needed */
-    margin-bottom: 0px;
-    margin-left: -200px; /* This is a large negative margin, review if needed */
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 400; /* Einheitliche Schriftstärke */
+    font-size: 1rem; /* Vereinheitlichte Schriftgröße */
+    margin-bottom: 20px;
   }
   
   .body-bottom {
-    margin-bottom: 20px; /* Add spacing between text sections */
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 400; /* Einheitliche Schriftstärke */
+    font-size: 1rem; /* Vereinheitlichte Schriftgröße */
+    margin-top: 20px;
   }
   
   @media (max-width: 991px) {
@@ -304,16 +323,16 @@ const ProfileImageWrapper = styled.div`
   }
 `;
 
-interface AboutPageData {
+// Typ-Definition für die About-Seiten-Daten
+type AboutPageData = {
   name: string;
-  additionalHeadline?: string;
+  body: string;
+  body_bottom: string;
   headlineMain: string;
   profile_image: string;
-  left_image_1?: string;
-  left_image_2?: string;
-  right_image?: string;
-  body: string;
-  body_bottom?: string;
+  left_image_1: string;
+  left_image_2: string;
+  right_image: string;
   page_title: string;
 }
 
@@ -321,6 +340,17 @@ const AboutSection: React.FC = () => {
   const [aboutData, setAboutData] = useState<AboutPageData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  // Animation-Varianten für Framer Motion
+  const textAnimationVariants = {
+    hidden: { opacity: 0.2, y: 20, filter: "blur(4px)" },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -379,8 +409,20 @@ const AboutSection: React.FC = () => {
                 Hi, ich bin Kira
               </MainTitle>
             </HeaderContainer>
-            <TopParagraphTextWrapper>
-              {body && <div dangerouslySetInnerHTML={{ __html: body.replace(/\n/g, '<br />') }} />}
+            <TopParagraphTextWrapper
+              as={motion.div}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.05 }}
+              variants={textAnimationVariants}
+            >
+              {body && (
+                <div 
+                  className="body-text" 
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                  dangerouslySetInnerHTML={{ __html: body.replace(/\n/g, '<br />') }} 
+                />
+              )}
             </TopParagraphTextWrapper>
             <ImagesCluster>
               {smallImage1 && (
@@ -420,18 +462,30 @@ const AboutSection: React.FC = () => {
             )}
             <AuthorBioTextWrapper className="author-bio-content">
               {headlineMain && (
-                <div className="headline-main">
+                <motion.div 
+                  className="headline-main"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.05 }}
+                  variants={textAnimationVariants}
+                >
                   <div dangerouslySetInnerHTML={{ 
                     __html: headlineMain
                       .replace('Als Speakerin', '<br /><br />Als Speakerin')
                       .replace(/\n/g, '<br />') 
                   }} />
-                </div>
+                </motion.div>
               )}
               {body_bottom && (
-                <div className="body-bottom">
+                <motion.div 
+                  className="body-bottom"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.05 }}
+                  variants={textAnimationVariants}
+                >
                   <div dangerouslySetInnerHTML={{ __html: body_bottom.replace(/\n/g, '<br />') }} />
-                </div>
+                </motion.div>
               )}
             </AuthorBioTextWrapper>
           </RightColumn>

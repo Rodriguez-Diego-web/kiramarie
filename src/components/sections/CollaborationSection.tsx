@@ -88,20 +88,20 @@ const SectionTitle = styled(motion.h2)`
   }
 `;
 
-const BeigeBox = styled(motion.div)`
+const NewTitleBackground = styled(motion.div)`
   position: absolute;
-  background-color: #e6dfd7; 
-  height: 45px; /* Desktop height */
+  background-color: #e6dfd7; /* Komplett weiß */
+  height: 45px; 
   width: 100%; 
-  z-index: auto; /* Should be -1 if title has z-index:0 and text should be on top */
-  top: 0; /* Desktop top */
+  z-index: 1; /* Extrem hoher z-index */
+  top: 0; 
   left: 50%; 
   transform: translateX(-50%); 
-  opacity: 0.7;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Leichter Schatten für Tiefe */
   
   @media (max-width: 767px) {
-    height: 20px; /* Mobile height - increased for more thickness */
-    top: -30px; /* Mobile: Reset top, will move with transformed SectionTitle */
+    height: 20px; 
+    top: -30px; 
   }
 `;
 
@@ -202,20 +202,44 @@ const ActionButton = styled.a<{ buttonColor?: string }>`
   }
 `;
 
+// Verschiedene Animation-Varianten für ein natürlicheres Gesamtbild
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
-const CollaborationSection: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const titleInView = useInView(sectionRef, { once: true, amount: 0.2 });
+const fadeInRight = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } }
+};
 
+const fadeInLeft = {
+  hidden: { opacity: 0, x: 20 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } }
+};
+
+const popIn = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.175, 0.885, 0.32, 1.275] } }
+};
+
+const CollaborationSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  
+  // useInView für verschiedene Elemente mit viel späteren Triggerpunkten
+  const titleInView = useInView(titleRef, { once: true, amount: 0.6 }); // Erst bei 60% Sichtbarkeit
+  const subtitleInView = useInView(subtitleRef, { once: true, amount: 0.7 }); // Erst bei 70% Sichtbarkeit
+  const gridInView = useInView(gridRef, { once: true, amount: 0.4 }); // Erst bei 40% Sichtbarkeit
+  
+  // Scroll-basierte Parallax-Animation
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['start end', 'end start'],
+    offset: ['start end', 'end start']
   });
-
+  
   const gradientX = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
   const gradientY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
 
@@ -229,13 +253,13 @@ const CollaborationSection: React.FC = () => {
     {
       imageSrc: '/images/speaker.JPG', 
       buttonText: 'SPEAKINGS',
-      link: 'https://nwx.new-work.se/events/nwx23/speaker/kira-marie-cremer', 
+      link: 'https://disruptingminds.com/speaker/kira-marie-cremer/', 
       buttonColor: '#86a4fd' 
     },
     {
       imageSrc: '/images/Podcast_Cover.jpeg', 
       buttonText: 'PODCAST: NEW WORK NOW',
-      link: 'https://disruptingminds.com/speaker/kira-marie-cremer/', 
+      link: '/funke-rss', 
       buttonColor: '#ffe83c' 
     },
     {
@@ -256,6 +280,7 @@ const CollaborationSection: React.FC = () => {
       />
       <ContentWrapper>
         <SectionTitle 
+          ref={titleRef}
           style={{ 
             opacity: titleInView ? 1 : 0,
             transform: titleInView ? 'translateY(0)' : 'translateY(30px)',
@@ -264,28 +289,55 @@ const CollaborationSection: React.FC = () => {
             width: '100%' 
           }}
         >
-          <BeigeBox 
+          <NewTitleBackground 
             style={{ 
-              opacity: titleInView ? 0.7 : 0,
+              opacity: titleInView ? 1 : 0, /* Keine Transparenz */
               width: titleInView ? '100%' : '0%', 
               transition: 'opacity 0.7s ease-out, width 0.7s ease-out'
             }} 
           />
           <span style={{ position: 'relative', top: '-60px', display: 'inline-block', zIndex: 10 }}>Projekte & Kooperationen</span>
         </SectionTitle>
-        <SectionSubtitle initial="hidden" animate={titleInView ? "visible" : "hidden"} variants={{...fadeInUp, visible: {...fadeInUp.visible, transition: {...fadeInUp.visible.transition, delay: 0.2}}}}>
+        <SectionSubtitle 
+          ref={subtitleRef}
+          initial="hidden" 
+          animate={subtitleInView ? "visible" : "hidden"} 
+          variants={{...fadeInRight, visible: {...fadeInRight.visible, transition: {...fadeInRight.visible.transition, delay: 0.3}}}}>
           Egal ob als Autorin, Dozentin, Speakerin, Podcast-Host oder Creatorin: Ich setze mich leidenschaftlich für eine Arbeitswelt ein, die menschlicher, flexibler und sinnstiftender ist. In meinen Projekten verbinde ich fundiertes Wissen mit pragmatischer Umsetzung. Eine Übersicht meiner aktuellen Formate und möglichen Kooperationen:
         </SectionSubtitle>
       </ContentWrapper>
       <GridBackground>
-        <BoxesGrid>
-          {boxesData.map((box, index) => (
-            <BoxItem
-              key={index}
-              initial="hidden"
-              animate={titleInView ? "visible" : "hidden"}
-              variants={{...fadeInUp, visible: {...fadeInUp.visible, transition: {...fadeInUp.visible.transition, delay: 0.4 + index * 0.1}}}}
-            >
+        <BoxesGrid ref={gridRef}>
+          {boxesData.map((box, index) => {
+            // Wähle eine Animation basierend auf dem Index
+            let animation;
+            switch (index % 4) {
+              case 0:
+                animation = fadeInUp;
+                break;
+              case 1:
+                animation = fadeInRight;
+                break;
+              case 2:
+                animation = fadeInLeft;
+                break;
+              case 3:
+                animation = popIn;
+                break;
+              default:
+                animation = fadeInUp;
+            }
+            
+            // Zufällige kleine Verzögerungen für natürlicheres Erscheinungsbild
+            const randomDelay = 0.2 + (Math.random() * 0.3) + (index * 0.1);
+            
+            return (
+              <BoxItem
+                key={index}
+                initial="hidden"
+                animate={gridInView ? "visible" : "hidden"}
+                variants={{...animation, visible: {...animation.visible, transition: {...animation.visible.transition, delay: randomDelay}}}}
+              >
               <CardImageWrapper>
                 <CardImage src={box.imageSrc} alt={box.buttonText} />
               </CardImageWrapper>
@@ -293,7 +345,8 @@ const CollaborationSection: React.FC = () => {
                 {box.buttonText}
               </ActionButton>
             </BoxItem>
-          ))}
+            );
+          })}
         </BoxesGrid>
       </GridBackground>
     </SectionContainer>

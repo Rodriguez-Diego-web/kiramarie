@@ -16,7 +16,7 @@ interface TestimonialItem {
 
 const SectionContainer = styled.section`
   background-color: #E6DFD7; 
-  padding: 20px 0; 
+  padding: 50px 0 80px 0; /* Erhöhtes Padding, besonders unten */
   color: #333;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -36,8 +36,8 @@ const QuoteIcon = styled.div`
   font-size: 14rem; 
   color: #FFFFFF; 
   position: absolute;
-  top: -150px; /* Relative to SectionContainer's content box top edge */
-  left: 115px;  /* Relative to SectionContainer's content box left edge */
+  top: -100px; /* Relative to SectionContainer's content box top edge */
+  left: 145px;  /* Relative to SectionContainer's content box left edge */
   line-height: 0.7; 
   z-index: 2; /* Ensures it's above Swiper if there's any overlap with swiper buttons etc. */
   opacity: 0.9; 
@@ -55,7 +55,7 @@ const StyledSwiperWrapper = styled.div`
     background-color: transparent; 
     width: 50px; 
     height: 50px;
-    top: 50%; 
+    top: 60%; /* Deutlich tiefer positioniert für bessere Zentrierung */
     transform: translateY(-50%);
     z-index: 10; /* Ensure nav buttons are clickable above slides */
 
