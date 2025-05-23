@@ -61,6 +61,9 @@ const Header: React.FC = () => {
             }}>PODCAST: NEW WORK NOW</MenuLink>
           </MenuItem>
           <MenuItem>
+            <MenuLink to="/funke-rss" onClick={closeMenu}>FUNKE FEED</MenuLink>
+          </MenuItem>
+          <MenuItem>
             <MenuLink to="/#kontakt" onClick={(e) => {
               e.preventDefault();
               closeMenu();
@@ -135,6 +138,9 @@ const Header: React.FC = () => {
                       closeMenu(); 
                       document.getElementById('collaboration')?.scrollIntoView({ behavior: 'smooth' }); 
                     }}>PODCAST: NEW WORK NOW</MobileMenuLinkPrimary>
+                  </MobileMenuItem>
+                  <MobileMenuItem>
+                    <MobileMenuLinkPrimary to="/funke-rss" onClick={closeMenu}>FUNKE FEED</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
                     <MobileMenuLinkPrimary to="/#kontakt" onClick={(e) => {
