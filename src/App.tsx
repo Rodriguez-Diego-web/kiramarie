@@ -8,6 +8,7 @@ import Footer from './components/layout/Footer';
 import ScrollToTopButton from './components/common/ScrollToTopButton';
 import Home from './pages/Home';
 import FunkeFeedPage from './components/pages/FunkeFeedPage';
+import FunkeRssPage from './pages/FunkeRssPage';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/kooperationen/funke-feed" element={<FunkeFeedPage />} /> 
+          <Route path="/kooperationen/funke-feed" element={<FunkeFeedPage />} />
+          <Route path="/funke-rss" element={<FunkeRssPage />} />
           {/* Add more routes as needed */}
         </Routes>
         <ScrollToTopButton />
