@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 
 const FunkeRssPage: React.FC = () => {
+  // Ensure the page scrolls to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Helmet>
