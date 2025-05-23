@@ -34,49 +34,17 @@ const Header: React.FC = () => {
     
     // If we're not on the homepage, navigate to homepage with the hash
     if (location !== '/') {
-      // Store the target section ID in sessionStorage
-      sessionStorage.setItem('scrollToSection', sectionId);
-      // Navigate to homepage
-      window.location.href = '/';
+      // Navigate to homepage with the hash - simpler approach
+      window.location.href = '/' + sectionId;
       return;
     }
     
     // If we're on the homepage, just scroll to the section
-    scrollToSection(sectionId);
-  };
-  
-  // Function to handle the scrolling to a section
-  const scrollToSection = (sectionId: string) => {
-    let section;
-    
-    // Special case for about section which might have multiple IDs
-    if (sectionId === '#about-section') {
-      section = document.querySelector('#ueber-mich, #about-section, #about');
-    } else {
-      // Remove the # if it exists
-      const id = sectionId.startsWith('#') ? sectionId.substring(1) : sectionId;
-      section = document.getElementById(id);
-    }
-    
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+    const sectionElement = document.querySelector(sectionId);
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: 'smooth' });
     }
   };
-  
-  // Check if we need to scroll to a section (after navigating from another page)
-  useEffect(() => {
-    if (location === '/') {
-      const targetSection = sessionStorage.getItem('scrollToSection');
-      if (targetSection) {
-        // Small delay to ensure the page is fully loaded
-        setTimeout(() => {
-          scrollToSection(targetSection);
-          // Clear the stored section
-          sessionStorage.removeItem('scrollToSection');
-        }, 100);
-      }
-    }
-  }, [location]);
 
   return (
     <HeaderWrapper $scrolled={scrolled}>
