@@ -79,10 +79,11 @@ const LoadMoreButton = styled.button`
   background-color: #000000; /* Black background */
   color: #fff;
   cursor: pointer;
-  font-size: 1rem; /* Slightly larger font */
+  font-size: .8rem; /* Slightly larger font */
   font-weight: bold;
   text-transform: uppercase;
   transition: background-color 0.3s ease;
+  font-family: var(--body-font); 
 
   &:hover {
     background-color: #333; /* Darken on hover */

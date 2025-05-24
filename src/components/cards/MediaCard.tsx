@@ -25,7 +25,7 @@ const CardWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   height: 100%;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--body-font);
   transition: box-shadow 0.3s ease-in-out;
 
   &:hover {
@@ -74,10 +74,12 @@ const MetaInfo = styled.p`
   font-size: 0.8rem;
   color: #666666;
   margin-bottom: 12px;
+  line-height: 1.4;
 `;
 
 const CardTitle = styled.h3`
-  font-size: 1.15rem;
+  font-family: var(--body-font);
+  font-size: 1.05rem;
   font-weight: 700;
   color: #222222;
   margin-bottom: 10px;
@@ -104,6 +106,7 @@ const ReadMoreButton = styled(motion.a)`
   font-size: 0.85rem;
   margin-top: auto;
   transition: background-color 0.3s ease;
+  font-family: var(--body-font);
 
   &:hover {
     background-color: color-mix(in srgb, #9370DB 85%, black);
