@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const DESKTOP_VIDEO_ID = 'hvcr7Tt-coE';
-const MOBILE_VIDEO_ID = '7336JPwjjJE';
+const LOCAL_MOBILE_VIDEO_SRC = '/video/4-5.mp4';
 const MOBILE_BREAKPOINT = 768;
 
 const getYouTubeEmbedUrl = (videoId: string) =>
@@ -26,13 +26,13 @@ type FloatingCircleProps = {
 
 const HeroSection: React.FC = () => {
   const { scrollY } = useScroll();
-  const videoRef = useRef<HTMLIFrameElement>(null);
+  const videoRef = useRef<HTMLIFrameElement | HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   const [partnerLogos, setPartnerLogos] = useState<PartnerLogo[]>([]);
   const [currentVideoSrc, setCurrentVideoSrc] = useState(() => {
     if (typeof window !== 'undefined') {
       return window.innerWidth < MOBILE_BREAKPOINT 
-        ? getYouTubeEmbedUrl(MOBILE_VIDEO_ID) 
+        ? LOCAL_MOBILE_VIDEO_SRC 
         : getYouTubeEmbedUrl(DESKTOP_VIDEO_ID);
     }
     return getYouTubeEmbedUrl(DESKTOP_VIDEO_ID); 
@@ -41,7 +41,7 @@ const HeroSection: React.FC = () => {
   useEffect(() => {
     const handleResize = () => {
       const newSrc = window.innerWidth < MOBILE_BREAKPOINT 
-        ? getYouTubeEmbedUrl(MOBILE_VIDEO_ID) 
+        ? LOCAL_MOBILE_VIDEO_SRC 
         : getYouTubeEmbedUrl(DESKTOP_VIDEO_ID);
       setCurrentVideoSrc(prevSrc => prevSrc === newSrc ? prevSrc : newSrc);
     };
@@ -75,7 +75,10 @@ const HeroSection: React.FC = () => {
   useEffect(() => {
     const videoElement = videoRef.current;
     if (!videoElement) return;
-  }, []);
+
+    // Optional: Wenn du spezifische Aktionen für das Video-Element nach dem Laden durchführen möchtest
+    // z.B. videoElement.play() explizit aufrufen, falls autoplay nicht zuverlässig ist.
+  }, [currentVideoSrc]);
 
   const floatingCircles = [
     { size: 180, top: '15%', left: '10%', color: '#cdaffd30', delay: 0.2 },
@@ -84,8 +87,8 @@ const HeroSection: React.FC = () => {
     { size: 100, top: '75%', left: '15%', color: '#cdaffd35', delay: 0.3 }
   ];
   
-  const isShortVideo = currentVideoSrc.includes(MOBILE_VIDEO_ID);
-  
+  const isLocalVideo = currentVideoSrc === LOCAL_MOBILE_VIDEO_SRC;
+
   return (
     <HeroContainer>
       <VideoContainer
@@ -94,21 +97,36 @@ const HeroSection: React.FC = () => {
         animate={{ opacity: videoLoaded ? 0.8 : 0 }}
         transition={{ duration: 1.5 }}
       >
-        <StyledVideo
-          key={currentVideoSrc}
-          ref={videoRef}
-          src={currentVideoSrc}
-          isShortVideo={isShortVideo}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          onLoad={() => {
-            console.log('YouTube iframe onLoad event triggered');
-            setVideoLoaded(true);
-          }}
-        >
-        </StyledVideo>
+        {isLocalVideo ? (
+          <StyledHTMLVideo
+            key={currentVideoSrc}
+            ref={videoRef as React.RefObject<HTMLVideoElement>}
+            src={currentVideoSrc}
+            autoPlay
+            muted
+            loop
+            playsInline
+            onLoadedData={() => {
+              console.log('Local video onLoadedData event triggered');
+              setVideoLoaded(true);
+            }}
+          />
+        ) : (
+          <StyledVideo
+            key={currentVideoSrc}
+            ref={videoRef as React.RefObject<HTMLIFrameElement>}
+            src={currentVideoSrc}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            onLoad={() => {
+              console.log('YouTube iframe onLoad event triggered');
+              setVideoLoaded(true);
+            }}
+          >
+          </StyledVideo>
+        )}
         <VideoOverlay $loaded={videoLoaded} />
       </VideoContainer>
     
@@ -191,8 +209,8 @@ const HeroContainer = styled.section`
   background-color: black;
 
   @media (max-width: ${MOBILE_BREAKPOINT}px) {
-    height: 80vh; // Reduce height on mobile
-    min-height: 550px; // Reduce min-height on mobile
+    height: 80vh; 
+    min-height: 550px; 
   }
 `;
 
@@ -206,20 +224,45 @@ const VideoContainer = styled(motion.div)`
   overflow: hidden;
 `;
 
-const StyledVideo = styled.iframe<{ isShortVideo: boolean }>`
+const StyledHTMLVideo = styled.video`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: ${({ isShortVideo }) =>
-    isShortVideo
-      ? 'translate(-50%, -50%) scale(1.1)' 
-      : 'translate(-50%, -50%) scale(1.1)'}; 
+  transform: translate(-50%, -50%) scale(1.1); 
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  background-color: black;
+  min-width: 110%; 
+  min-height: 110%;
+  pointer-events: none; 
+
+  @media (max-width: ${MOBILE_BREAKPOINT}px) {
+    transform: translate(-50%, -50%) scale(1.0); 
+    object-fit: contain; 
+    min-width: 100%; 
+    min-height: 100%; 
+  }
   
-  min-height: ${({ isShortVideo }) => (isShortVideo ? 'auto' : '110%')};
+  @media (max-width: 480px) {
+    transform: translate(-50%, -50%) scale(1.2); 
+    object-fit: contain; 
+    min-width: 100%;
+    min-height: 100%;
+  }
+`;
+
+const StyledVideo = styled.iframe`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.1); 
+  
+  min-height: 110%;
   
   width: 100%;
   height: 100%;
-  object-fit: ${({ isShortVideo }) => (isShortVideo ? 'contain' : 'cover')};
+  object-fit: cover;
   background-color: black;
   min-width: 110%;
   min-height: 110%;
