@@ -1,31 +1,1300 @@
 {
   "all_episodes": [
     {
-      "id": "podcast-143",
+      "id": "podcast-03b341fd-5bac-4860-8318-87dcc3125a27",
       "title": "#143 Vereinbarkeit, Karriere, Muttersein – warum Working Women oft unterschätzt werden",
       "date": "20.05.2025",
-      "duration": "41 Minuten",
+      "duration": "Unbekannte Länge",
       "description": "Mutterschaft trifft Karriere – wie Vereinbarkeit im echten Leben funktionieren kann.",
-      "imageUrl": "/images/143-vereinbarkeit-karriere-muttersein-warum-working-women-oft-unterschaetzt-werden.png",
-      "altText": "#143 Vereinbarkeit, Karriere, Muttersein"
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_206250_cover.jpg?v=3",
+      "altText": "#143 Vereinbarkeit, Karriere, Muttersein – warum Working Women oft unterschätzt werden"
     },
     {
-      "id": "podcast-142",
+      "id": "podcast-0087be18-d1a9-4491-9b66-15da141ebb01",
       "title": "#142 New Work im Krankenhaus mit Waldkliniken Eisenberg CEO David-Ruben Thies (TBT)",
       "date": "13.05.2025",
-      "duration": "35 Minuten",
+      "duration": "Unbekannte Länge",
       "description": "New Work im Krankenhaus? David-Ruben Thies zeigt, wie es in den Waldkliniken Eisenberg gelebt wird.",
-      "imageUrl": "/images/142-new-work-im-krankenhaus-mit-waldkliniken-eisenberg-ceo-david-ruben-thies-tbt.png",
-      "altText": "#142 New Work im Krankenhaus"
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_205216_cover.jpg?v=5",
+      "altText": "#142 New Work im Krankenhaus mit Waldkliniken Eisenberg CEO David-Ruben Thies (TBT)"
     },
     {
-      "id": "podcast-141",
+      "id": "podcast-7825d860-a4b4-4d6a-a44f-8a2d527e34ce",
       "title": "#141 Erfolgreiches Change Management mit PwC Change Managerin Marina Ziblis",
       "date": "06.05.2025",
-      "duration": "39 Minuten",
+      "duration": "Unbekannte Länge",
       "description": "Im Gespräch mit Marina Ziblis über mutige Entscheidungen, berufliche Vielfalt und den Weg zu erfüllter Arbeit.",
-      "imageUrl": "/images/141-erfolgreiches-change-management-mit-pwc-change-managerin-marina-ziblis.png",
-      "altText": "#141 Erfolgreiches Change Management"
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_205387_cover.jpg?v=7",
+      "altText": "#141 Erfolgreiches Change Management mit PwC Change Managerin Marina Ziblis"
+    },
+    {
+      "id": "podcast-3a1d4d37-36f2-4cc9-b92a-a11f07d64d4c",
+      "title": "#140 Weniger Stress in den 30ern mit Stressmanagement Trainerin Sue Fengler",
+      "date": "29.04.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Kira spricht mit Sue Fengler über Stressbewältigung, Achtsamkeit und den Mut zum beruflichen Downshifting.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_204465_cover.jpg?v=9",
+      "altText": "#140 Weniger Stress in den 30ern mit Stressmanagement Trainerin Sue Fengler"
+    },
+    {
+      "id": "podcast-e26a72a9-453d-442d-bed2-218d98be2da4",
+      "title": "#139 Mehr Erfolg bei Networking Events",
+      "date": "22.04.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Fünf Tipps für authentisches Networking – ganz ohne Verstellen, aber mit echter Verbindung.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_203939_cover.jpg?v=9",
+      "altText": "#139 Mehr Erfolg bei Networking Events"
+    },
+    {
+      "id": "podcast-bc829373-c315-4490-ac9e-51cf7d3cc802",
+      "title": "#138 Gründen: Tipps & Fails der Founders Circle Academy Gründerinnen Caro von Cube & Nora-Vanessa Wohlert",
+      "date": "15.04.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Caro von Cube und Nora-Vanessa Wohlert sprechen über ihre Gründung, persönliche Lernprozesse und warum Leadership bei einem selbst beginnt.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_203865_cover.jpg?v=8",
+      "altText": "#138 Gründen: Tipps & Fails der Founders Circle Academy Gründerinnen Caro von Cube & Nora-Vanessa Wohlert"
+    },
+    {
+      "id": "podcast-be2ca0fa-eb2c-4496-b637-2b7a724340d0",
+      "title": "#137 Dinge, die ich gerne zur Beginn meiner Karriere gewusst hätte",
+      "date": "08.04.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Es gibt nicht den einen richtigen Weg zum beruflichen Erfolg. Dennoch erleichtern bestimmte Strategien den Karriereweg.​",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_203343_cover.jpg?v=11",
+      "altText": "#137 Dinge, die ich gerne zur Beginn meiner Karriere gewusst hätte"
+    },
+    {
+      "id": "podcast-7222678c-0a3d-425e-9149-b6a13b3bad74",
+      "title": "#136 Die Herausforderungen der Tool-Flut meistern und wie Odoo Unternehmen hilft, effizient zu arbeiten, mit Managing Director Germany DACH Johannes Kreuzen",
+      "date": "01.04.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Johannes Kreuzen über smarte Business-Tools, digitale Transformation und die Macht von Open Source bei Odoo.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_202704_cover.jpg?v=13",
+      "altText": "#136 Die Herausforderungen der Tool-Flut meistern und wie Odoo Unternehmen hilft, effizient zu arbeiten, mit Managing Director Germany DACH Johannes Kreuzen"
+    },
+    {
+      "id": "podcast-303ba13c-3933-4064-bf45-4c049a50343e",
+      "title": "#135 Kiras Studie „Ready, Set, Work!“ über die Hürden des Berufseinstiegs mit Louise Leitsch von appinio",
+      "date": "25.03.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Warum junge Menschen sich überfordert fühlen und wie Unterstützung aussehen kann.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_202479_cover.jpg?v=12",
+      "altText": "#135 Kiras Studie „Ready, Set, Work!“ über die Hürden des Berufseinstiegs mit Louise Leitsch von appinio"
+    },
+    {
+      "id": "podcast-23106411-1b25-4bb6-a8b0-e0a59a8e56de",
+      "title": "#134 Ist die 4-Tage-Woche Revolution oder Illusion?",
+      "date": "18.03.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Weniger arbeiten, aber genauso produktiv sein – ist das die Zukunft der Arbeit oder nur eine schöne Wunschvorstellung?",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_201408_cover.jpg?v=13",
+      "altText": "#134 Ist die 4-Tage-Woche Revolution oder Illusion?"
+    },
+    {
+      "id": "podcast-3ae8a98f-2da1-4fc5-9d92-804a002e89e2",
+      "title": "#133 Eure Fragen zum Arbeitsrecht und wissenswerte Neuerungen mit Rechtsanwältin Livia Merla",
+      "date": "11.03.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Livia Merla ist Fachanwältin für Arbeitsrecht. Sie macht rechtliche Themen verständlich und hilft ihrer Community, ihre Rechte im Arbeitsalltag durchzusetzen.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_201195_cover.jpg?v=13",
+      "altText": "#133 Eure Fragen zum Arbeitsrecht und wissenswerte Neuerungen mit Rechtsanwältin Livia Merla"
+    },
+    {
+      "id": "podcast-664e1095-dd90-483c-a5fd-11b2fc571d9b",
+      "title": "#132 Krank im Job ohne schlechtes Gewissen",
+      "date": "04.03.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Aktuell sind aktuell 8 Mio. Menschen von der Krankheitswelle betroffen, doch in der deutschen Arbeitskultur gibt es nach wie vor eine Hürde, wenn es um das Krankmelden geht: Präsentismus.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_200579_cover.jpg?v=18",
+      "altText": "#132 Krank im Job ohne schlechtes Gewissen"
+    },
+    {
+      "id": "podcast-6115649f-84b7-4fdb-8226-0facb3b117fe",
+      "title": "#131 Social Media Trends 2025 mit Experte Ravi Walia",
+      "date": "25.02.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Ravi Walia, Geschäftsführer der Social Media Agentur RAVIWALIA GmbH und Coach, zeigt, wie man erfolgreich auf Plattformen wie Instagram und LinkedIn auftritt.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_200068_cover.jpg?v=11",
+      "altText": "#131 Social Media Trends 2025 mit Experte Ravi Walia"
+    },
+    {
+      "id": "podcast-087ed9c3-cf1b-47bb-9c98-3d137698bd38",
+      "title": "#130 Gehaltstransparenz und Führung in Sozialunternehmen mit Stadtbienen CEO Martin Stelter",
+      "date": "18.02.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Martin Stelter ist Unternehmer – doch vorrangig ist er Bienenfreund. Mit seinem Sozialunternehmen „STADTBIENEN“ bringt er Jung und Alt die Natur in die Stadt.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_198806_cover.jpg?v=19",
+      "altText": "#130 Gehaltstransparenz und Führung in Sozialunternehmen mit Stadtbienen CEO Martin Stelter"
+    },
+    {
+      "id": "podcast-cece9598-4ee7-4082-b0b1-360e526dcc1e",
+      "title": "#129 Zehn Tipps zu eurer Personal Brand (TBT)",
+      "date": "11.02.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Reichweite und Follower kommen nicht von allein – dahinter stecken Strategie und harte Arbeit. Kira verrät euch ihre besten Tipps für ein starkes Standing.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_198957_cover.jpg?v=20",
+      "altText": "#129 Zehn Tipps zu eurer Personal Brand (TBT)"
+    },
+    {
+      "id": "podcast-2e5d9035-debc-46a6-9f09-1ad3cbe99178",
+      "title": "#128 Internationales Recruiting und Lösungsansätze gegen den Fachkräftemangel mit Fabian Scholz",
+      "date": "04.02.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Fabian, Co-Founder der WTE Group, hat sich als Ziel gesetzt, geeignete Fachkräfte aus Indien nach Deutschland zu holen.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_198156_cover.jpg?v=21",
+      "altText": "#128 Internationales Recruiting und Lösungsansätze gegen den Fachkräftemangel mit Fabian Scholz"
+    },
+    {
+      "id": "podcast-1b49955d-9d19-4240-ad49-47c207d9fed1",
+      "title": "#127 Welche Future Skills, politische Entwicklungen und Herausforderungen die Arbeitswelt 2025 prägen",
+      "date": "28.01.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Unsere Arbeitswelt und politische Entwicklungen sind eng miteinander verknüpft. In dieser Folge erfahrt ihr, wie ihr euch für die großen Umbrüche wappnen könnt.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_198157_cover.jpg?v=23",
+      "altText": "#127 Welche Future Skills, politische Entwicklungen und Herausforderungen die Arbeitswelt 2025 prägen"
+    },
+    {
+      "id": "podcast-1022f471-9759-49e2-b7c7-a886f4d33292",
+      "title": "#126 Mentale Gesundheit am Arbeitsplatz fördern mit Psychologin Dr. Eva Elisa Schneider",
+      "date": "21.01.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Für Dr. Eva Elisa Schneider ist es unmissverständlich: Mentale Gesundheit ist ein essenzieller Bestandteil der Arbeitswelt. Zu oft sehen sich Arbeitnehmer:innen mit Stress, Burnout oder Depression kon...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_196343_cover.jpg?v=24",
+      "altText": "#126 Mentale Gesundheit am Arbeitsplatz fördern mit Psychologin Dr. Eva Elisa Schneider"
+    },
+    {
+      "id": "podcast-bcae248f-2e99-4a96-a853-182a868864dd",
+      "title": "#125 Rebranding mal anders mit Ex-Monrose Sängerin Bahar Kizil",
+      "date": "14.01.2025",
+      "duration": "Unbekannte Länge",
+      "description": "In dieser Folge von New Work Now spricht Kira mit Bahar, einer der ehemaligen Sängerinnen von Monrose, über ihre berufliche Reise – von den ersten Erfahrungen in der Gastronomie bis hin zum Übergang z...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_196342_cover.jpg?v=12",
+      "altText": "#125 Rebranding mal anders mit Ex-Monrose Sängerin Bahar Kizil"
+    },
+    {
+      "id": "podcast-ca0163b1-9ee9-4bb0-9227-08ab4d89c11c",
+      "title": "#124 Über Selbstorganisation, Atomic Habits und Dinge, die ihr über Kira noch nicht wusstet",
+      "date": "07.01.2025",
+      "duration": "Unbekannte Länge",
+      "description": "Happy erste NEW WORK NOW-Folge in 2025! Wir starten das neue Jahr direkt mit spannenden Neuerungen: Drei vielseitige Kategorien machen jede Folge noch konkreter und bieten euch noch mehr wertvolle Tip...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_195990_cover.jpg?v=27",
+      "altText": "#124 Über Selbstorganisation, Atomic Habits und Dinge, die ihr über Kira noch nicht wusstet"
+    },
+    {
+      "id": "podcast-d7230ed8-292c-4c79-a273-20fb4f20164f",
+      "title": "#123 So gelingt die Jahresplanung 2025",
+      "date": "17.12.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Das Jahr 2024 neigt sich dem Ende zu – eine perfekte Gelegenheit, die letzten Wochen und Monate Revue passieren zu lassen.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_195986_cover.jpg?v=31",
+      "altText": "#123 So gelingt die Jahresplanung 2025"
+    },
+    {
+      "id": "podcast-4854edc1-8873-4d9f-a67f-40ea5dce78e3",
+      "title": "#122 KI Revolution in der Arbeitswelt mit Thomas Jenewein, Jörg Staff und Henrike Alfeis",
+      "date": "10.12.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Künstliche Intelligenz (KI) wird in der Arbeitswelt oft mit gemischten Gefühlen betrachtet. Viele sehen sie kritisch, als Bedrohung für Arbeitsplätze oder als Tool, das den Menschen ersetzen könnte. D...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_195148_cover.jpg?v=6",
+      "altText": "#122 KI Revolution in der Arbeitswelt mit Thomas Jenewein, Jörg Staff und Henrike Alfeis"
+    },
+    {
+      "id": "podcast-5afe8650-a424-4d83-8244-d96fdd6b0b66",
+      "title": "#121 Bastian Bärenfänger | Der Mensch als KPI, Transformation in Unternehmen und Taylorismus",
+      "date": "03.12.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Viele schreiben Bücher, doch nur wenige schaffen es, wirklich zum Nachdenken anzuregen und neue Perspektiven zu eröffnen. Bastian Bärenfänger gelingt dies mit seinem Buch „Krise kann mich mal! Digital...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_195147_cover.jpg?v=6",
+      "altText": "#121 Bastian Bärenfänger | Der Mensch als KPI, Transformation in Unternehmen und Taylorismus"
+    },
+    {
+      "id": "podcast-d18645d8-0e7a-415e-8096-3bc405555865",
+      "title": "#120 Overthinking überwinden",
+      "date": "26.11.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Habt ihr euch schon mal stundenlang mit ein und demselben Gedanken befasst, der euch einfach nicht mehr loslassen wollte? Dann kennt ihr sicher das Phänomen namens Overthinking. Doch was steckt eigent...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_193658_cover.jpg?v=23",
+      "altText": "#120 Overthinking überwinden"
+    },
+    {
+      "id": "podcast-3e385bf7-f671-4737-81e0-840bd370d6b2",
+      "title": "#119 Miriam Jacks | Über JACKS beauty line, die Macht von Glaubenssätzen und über den gegenseitigen Support von Frauen",
+      "date": "19.11.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Ihr erstes Geld verdiente Miriam Jacks in einem Spargelkostüm und heute ist sie Gründerin von JACKS beauty line sowie Podcast-Hostin von GLOWCAST. Schon früh verfolgte sie das Ziel, Make-up-Artistin z...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_193083_cover.jpg?v=20",
+      "altText": "#119 Miriam Jacks | Über JACKS beauty line, die Macht von Glaubenssätzen und über den gegenseitigen Support von Frauen"
+    },
+    {
+      "id": "podcast-9dee4b84-1f77-4c95-a1ed-c2aa33e3a132",
+      "title": "#118 John Strelecky | Über den Sinn des Lebens, mentale Gesundheit und sein neuestes Buch",
+      "date": "12.11.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Eine Premiere bei New Work Now: Im Podcast zu Gast ist der amerikanische Bestsellerautor und Speaker John Strelecky - daher ist diese Folge auf Englisch.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_192931_cover.jpg?v=22",
+      "altText": "#118 John Strelecky | Über den Sinn des Lebens, mentale Gesundheit und sein neuestes Buch"
+    },
+    {
+      "id": "podcast-3d62d141-9ddd-4d86-aae6-9c612cc24187",
+      "title": "#117 Alexander Kornelsen | Über Nachhaltigkeit und Klimaschutz und Leadership in gemeinnützige Organisationen",
+      "date": "05.11.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Klimaschutz und Nachhaltigkeit sind zentrale Themen unserer Zeit – doch wie lassen sie sich mit dem beruflichen Alltag verknüpfen?",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_191829_cover.jpg?v=25",
+      "altText": "#117 Alexander Kornelsen | Über Nachhaltigkeit und Klimaschutz und Leadership in gemeinnützige Organisationen"
+    },
+    {
+      "id": "podcast-96828e3f-33b5-4cbd-90d1-230d6e305f96",
+      "title": "#116 Dr. Sabrina Zeplin | Über Restart Career, die Gefahr von Rebound Jobs und berufliche Neuorientierung",
+      "date": "29.10.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Steckt ihr vielleicht in einer beruflichen Krise fest oder fragt ihr euch, ob der aktuelle Job auch wirklich zu euch passt?",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_191632_cover.jpg?v=42",
+      "altText": "#116 Dr. Sabrina Zeplin | Über Restart Career, die Gefahr von Rebound Jobs und berufliche Neuorientierung"
+    },
+    {
+      "id": "podcast-929667fe-fd51-418b-9c1d-0d0003b53a0a",
+      "title": "#115 Janina Schönitz & Stefanie Junghans | Über Co-Leadership, die Relevanz von Kommunikation und die Vorteile und Herausforderungen von Tandemarbeit",
+      "date": "22.10.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Zwei Führungskräfte auf einer Führungsposition – das geht? Tatsächlich ja, und zwar mit dem Konzept des Co-Leaderships. Was verbirgt sich genau dahinter und gibt es einen großen Unterschied zum bekann...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_191088_cover.jpg?v=43",
+      "altText": "#115 Janina Schönitz & Stefanie Junghans | Über Co-Leadership, die Relevanz von Kommunikation und die Vorteile und Herausforderungen von Tandemarbeit"
+    },
+    {
+      "id": "podcast-e61d2d07-88d2-42f6-902e-ad6cdbf295a9",
+      "title": "#114 Motiviert durch den Winter: So bleibst Du auch in der kalten Jahreszeit voller Energie",
+      "date": "15.10.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Die Tage werden kürzer, das Wetter ist grau und regnerisch – und die Motivation, aus dem Bett zu kommen, lässt oft zu wünschen übrig. Willkommen im Herbst- und Winterblues! Doch was kann dagegen wirkl...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_191033_cover.jpg?v=42",
+      "altText": "#114 Motiviert durch den Winter: So bleibst Du auch in der kalten Jahreszeit voller Energie"
+    },
+    {
+      "id": "podcast-95ffc538-46b4-418c-886d-1b8037ffc2fa",
+      "title": "#113 INSIDE: Öffentliche Verwaltung | Wie der öffentliche Sektor durch New Work transformiert wird",
+      "date": "08.10.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Was verbindet ihr mit dem öffentlichen Sektor? Vielleicht sind es Vorurteile wie „Arbeiten Behörden überhaupt?“ oder „Digitalisierung? Fehlanzeige!“. Doch wie sieht es wirklich hinter den Kulissen aus...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_189626_cover.jpg?v=20",
+      "altText": "#113 INSIDE: Öffentliche Verwaltung | Wie der öffentliche Sektor durch New Work transformiert wird"
+    },
+    {
+      "id": "podcast-d7800b0a-430c-4baf-9ee0-84fa3aaf7239",
+      "title": "#112 Caroline Renée Kroll | Über Nø Cosmetics, die familiäre Zusammenarbeit und die Relevanz eines transparenten und reflektierten Führungsstils",
+      "date": "01.10.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Vor sechs Jahren begann die Reise von Nø Cosmetics im Keller der Familie Kroll. Heute sind die Kosmetikprodukte in der ganzen DACH-Region erhältlich.",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_188214_cover.jpg?v=16",
+      "altText": "#112 Caroline Renée Kroll | Über Nø Cosmetics, die familiäre Zusammenarbeit und die Relevanz eines transparenten und reflektierten Führungsstils"
+    },
+    {
+      "id": "podcast-a70e24f4-a0e6-46c0-b99d-333d17a3c2bc",
+      "title": "#111 Christine Münch | Über ihren Weg aus dem Burnout, Inner Work und ihre Academy “We Love Mondays”",
+      "date": "24.09.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Wie findet man nach einem Burnout zurück in die Kraft – und wieso braucht es eine Self-Leadership Academy für Frauen? \nIn dieser Folge teilt Christine Münch, Self-Leadership Coach, Moderatorin, Speake...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_187138_cover.jpg?v=14",
+      "altText": "#111 Christine Münch | Über ihren Weg aus dem Burnout, Inner Work und ihre Academy “We Love Mondays”"
+    },
+    {
+      "id": "podcast-ec29d427-38c7-4bec-b7e9-6fd231a6a3d4",
+      "title": "#110 Jan Friedrich | Über die Transformation von Sage und die Herausforderungen für HR",
+      "date": "17.09.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Über 20 Jahre Unternehmenszugehörigkeit - in der heutigen Zeit kaum vorstellbar, oder? Nicht für Jan Friedrich: Seine Karriere bei Sage, einem Softwareunternehmen, begann vor über zwei Jahrzehnten als...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_185841_cover.jpg?v=13",
+      "altText": "#110 Jan Friedrich | Über die Transformation von Sage und die Herausforderungen für HR"
+    },
+    {
+      "id": "podcast-e8e9424a-ea9f-49d5-961b-d3cbffed3c04",
+      "title": "#109 20 Dinge, die ich in meinen Zwanzigern gerne gewusst hätte",
+      "date": "10.09.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Happy Birthday to Podcast-Hostin Kira Marie Cremer! Heute ist ihr 30. Geburtstag und sie hat sich etwas ganz Besonderes einfallen lassen: Sie teilt mit euch 20 Dinge, die sie gerne in ihren 20ern gewu...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_184377_cover.jpg?v=13",
+      "altText": "#109 20 Dinge, die ich in meinen Zwanzigern gerne gewusst hätte"
+    },
+    {
+      "id": "podcast-7344cf03-0384-438a-ba9d-0f49cea17bd4",
+      "title": "#108 Marie Seliger & Heiner Kolde | Über die ideale Raumgestaltung, eine vielseitige Arbeitswelt und die Erfüllung im Beruf",
+      "date": "03.09.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Die ideale Raumgestaltung ist nicht nur in den privaten vier Wänden sehr relevant, sondern auch in der Arbeitswelt. Das wissen Gründer und CEO der bkp GmbH Heiner Kolde und Head of New Work Marie Seli...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_183687_cover.jpg?v=13",
+      "altText": "#108 Marie Seliger & Heiner Kolde | Über die ideale Raumgestaltung, eine vielseitige Arbeitswelt und die Erfüllung im Beruf"
+    },
+    {
+      "id": "podcast-1d4c1e10-ef50-4308-9900-faab00d1bd01",
+      "title": "#107 Dr. David Bausch | Über digitalen Stress, die psychische Gefährdungsbeurteilung und die Entwicklung einer digitalen Kernarbeitszeit",
+      "date": "27.08.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Die fortschreitende Digitalisierung bringt zahlreiche Vorteile, aber auch neue Herausforderungen mit sich – digitaler Stress ist eine davon. Doch was genau verursacht diesen Stress, und wie lässt er s...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_181133_cover.jpg?v=15",
+      "altText": "#107 Dr. David Bausch | Über digitalen Stress, die psychische Gefährdungsbeurteilung und die Entwicklung einer digitalen Kernarbeitszeit"
+    },
+    {
+      "id": "podcast-34b82278-611f-4049-9280-1ac2c95699ff",
+      "title": "#106 Sophia Rödiger & Carsten Buchberger | Über 1KOMMA5°, eine diverse Unternehmenskultur und digitale Achtsamkeit",
+      "date": "20.08.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Das 1,5-Grad-Ziel betrifft uns alle und genau darauf konzentriert sich das Unternehmen 1KOMMA5° mit innovativen Ansätzen wie dem Einsatz von Künstlicher Intelligenz zur Förderung des Klimaschutzes. Ch...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_181132_cover.jpg?v=14",
+      "altText": "#106 Sophia Rödiger & Carsten Buchberger | Über 1KOMMA5°, eine diverse Unternehmenskultur und digitale Achtsamkeit"
+    },
+    {
+      "id": "podcast-331c285d-5bff-40e9-8a7f-62e15080a617",
+      "title": "#105 Dr. Irène Y. Kilubi | Über Age Diversity, Female Leadership und den Fokus auf das eigene Business",
+      "date": "13.08.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Hattet ihr schon einmal mit Altersdiskriminierung zu kämpfen und Sätze gehört wie: „Dafür bist du noch zu jung“ oder „schon zu alt“? Dr. Irène Kilubi kennt das nur zu gut. In dieser Folge spricht sie ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_179997_cover.jpg?v=14",
+      "altText": "#105 Dr. Irène Y. Kilubi | Über Age Diversity, Female Leadership und den Fokus auf das eigene Business"
+    },
+    {
+      "id": "podcast-4c16c4fc-50ab-4bea-a5b3-1f746548e4cd",
+      "title": "#104 New Work damals vs. heute",
+      "date": "06.08.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Wie sah die New Work Welt noch vor zwei Jahren aus? Vor welchen Herausforderungen stehen wir heute? Und was können wir noch verbessern? Das erklärt euch Hostin Kira Marie Cremer. In verschiedenen Kate...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_178704_cover.jpg?v=15",
+      "altText": "#104 New Work damals vs. heute"
+    },
+    {
+      "id": "podcast-6f8c6473-5cc5-442f-b8b0-3cbd8f4fa614",
+      "title": "#103 Lena Katharina Bödecker | Über umweltfreundlichere Unternehmensaktivitäten, Handabdruck vs. Fußabdruck und Gender Parity",
+      "date": "30.07.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Nachhaltiges Handeln lässt sich oft viel einfacher umsetzen, als man denkt. Im heutigen Live-Podcast beim Greentech Festival dreht sich alles darum, wie ihr und auch Unternehmen – sowohl im Kleinen al...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_175264_cover.jpg?v=24",
+      "altText": "#103 Lena Katharina Bödecker | Über umweltfreundlichere Unternehmensaktivitäten, Handabdruck vs. Fußabdruck und Gender Parity"
+    },
+    {
+      "id": "podcast-8cf6280b-8061-417d-9e19-9143be8c8f0b",
+      "title": "#102 INSIDE: Studierende | Relevanz von Studierenden am Arbeitsmarkt",
+      "date": "23.07.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Seit der Pandemie hat sich unsere Arbeitswelt enorm gewandelt, was auch Studierende stark zu spüren bekommen haben. Viele konnten ihre bisherigen Nebenjobs nicht mehr ausüben und waren gezwungen, neue...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_175582_cover.jpg?v=18",
+      "altText": "#102 INSIDE: Studierende | Relevanz von Studierenden am Arbeitsmarkt"
+    },
+    {
+      "id": "podcast-bd41058d-1ebe-48d1-96f4-50f6a4a79f5a",
+      "title": "#101 Chris Surel | Über die Tiefschlaf-Formel, Selbstverantwortung und die Identifikation von Energiekillern",
+      "date": "16.07.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Schlafprobleme, Energiekiller und noch viele weitere Faktoren können unsere mentale Gesundheit negativ beeinflussen. Vielleicht seid ihr gerade jetzt davon betroffen. Recovery und Sleep Coach Chris Su...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_174440_cover.jpg?v=18",
+      "altText": "#101 Chris Surel | Über die Tiefschlaf-Formel, Selbstverantwortung und die Identifikation von Energiekillern"
+    },
+    {
+      "id": "podcast-8e02db06-f68c-44d4-813c-f2c3da7ec5a6",
+      "title": "#100 Best of NEW WORK NOW",
+      "date": "09.07.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Herzlich Willkommen zur 100. Folge von NEW WORK NOW! Vor fast zwei Jahren starteten Hostin Kira Marie Cremer und ihr Team diese unglaubliche Reise. Wie aber genau dieses Projekt entstanden ist, wie sc...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_173326_cover.jpg?v=22",
+      "altText": "#100 Best of NEW WORK NOW"
+    },
+    {
+      "id": "podcast-48528264-3f4a-47ab-bbed-226a880beed5",
+      "title": "#99 Marie Kanellopulos | Über DONE!BERLIN, die Verbesserung von HR-Prozessen und politische Haltung zeigen",
+      "date": "02.07.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Ihre Karriere begann in der Modewelt, doch dann führte ihr Weg sie in einen ganz anderen Bereich: die HR-Branche. Heute ist Marie Kanellopulos Managing Partner bei der Personalberatung DONE!BERLIN und...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_171403_cover.jpg?v=23",
+      "altText": "#99 Marie Kanellopulos | Über DONE!BERLIN, die Verbesserung von HR-Prozessen und politische Haltung zeigen"
+    },
+    {
+      "id": "podcast-59003bd6-a7e5-4dd5-b04d-2527041ed852",
+      "title": "#98 Joanne Glinka (Joi Bella) | Über New Work im Social Media, den Umgang mit toxischen Führungskräften und das Leben ist eine Achterbahnfahrt",
+      "date": "25.06.2024",
+      "duration": "Unbekannte Länge",
+      "description": "„Bye Bye, Toxic Leader: Was, wenn der Traumjob zum Albtraum wird?“ ist das neue Buch von Autorin Joanne Glinka. Vielleicht befindet ihr euch grade in einer solchen toxischen Situation und wisst nicht,...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_170833_cover.jpg?v=27",
+      "altText": "#98 Joanne Glinka (Joi Bella) | Über New Work im Social Media, den Umgang mit toxischen Führungskräften und das Leben ist eine Achterbahnfahrt"
+    },
+    {
+      "id": "podcast-bfae0154-5e35-426b-b13e-87df5c04d0f5",
+      "title": "#97 Hans Rusinek | Über Erschöpfungskrisen, den Anti-Anti-Arbeits-Club und die 16. Sekunde",
+      "date": "18.06.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Erschöpfungskrisen nehmen bei Arbeitnehmer:innen immer weiter zu und oft ist kein Ausweg in Sicht. Dagegen setzt sich Gast Hans Rusinek ein. Als Berater und Speaker macht er auf dieses Thema aufmerksa...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_169119_cover.jpg?v=35",
+      "altText": "#97 Hans Rusinek | Über Erschöpfungskrisen, den Anti-Anti-Arbeits-Club und die 16. Sekunde"
+    },
+    {
+      "id": "podcast-f828ee4e-b56b-4928-b7d3-6d177e5b371d",
+      "title": "#96 Elly Oldenbourg | Über Sidepreneurship, den Hebel der Arbeit und Entscheider:innen in der Privatwirtschaft",
+      "date": "11.06.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Sidepreneurship - Was steckt dahinter? Das weiß Managerin, Dozentin, Speakerin, Beraterin und Aufsichtsrätin Elly Oldenbourg nur zu gut, denn sie wird selbst als Sidepreneurin bezeichnet. Sie teilt ih...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_169088_cover.jpg?v=22",
+      "altText": "#96 Elly Oldenbourg | Über Sidepreneurship, den Hebel der Arbeit und Entscheider:innen in der Privatwirtschaft"
+    },
+    {
+      "id": "podcast-285bac6b-06c6-45a8-a75a-a9cd3cb390ad",
+      "title": "#95 How to Recharge",
+      "date": "04.06.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Die eigene Energie wieder aufladen, sich regelmäßig Zeit für Erholung nehmen, aber wie? Hostin Kira Marie Cremer gibt euch Einblicke in ihr Leben und zeigt, wie sie das Thema „How to Recharge“ persönl...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_167132_cover.jpg?v=30",
+      "altText": "#95 How to Recharge"
+    },
+    {
+      "id": "podcast-a43502cf-adf9-4a69-a52e-6b0844c8e67d",
+      "title": "#94 Lea Lange | Über LUNARY, das Gender Health Gap und das Gründen in verschiedenen Lebensphasen",
+      "date": "28.05.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Wusstet ihr, dass sich die Forschung meist auf männliche Patienten konzentriert? Dieses Ungleichgewicht zwischen Männern und Frauen wird als Gender Health Gap bezeichnet. Lea Lange möchte dies mit ihr...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_165853_cover.jpg?v=37",
+      "altText": "#94 Lea Lange | Über LUNARY, das Gender Health Gap und das Gründen in verschiedenen Lebensphasen"
+    },
+    {
+      "id": "podcast-1a13182f-0803-433e-856c-9b6723f5af35",
+      "title": "#93 Anastasia Barner| Über Reverse-Mentoring, die Realität des Gründens und die beruflichen Wünsche der Gen Z",
+      "date": "21.05.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Mit nur 20 Jahren gründete Anastasia Barner die erste Reverse-Mentoring-Plattform in Europa namens FeMentor und schafft seitdem einen wertvollen Austausch auf Augenhöhe zwischen den Generationen. Anas...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_164824_cover.jpg?v=29",
+      "altText": "#93 Anastasia Barner| Über Reverse-Mentoring, die Realität des Gründens und die beruflichen Wünsche der Gen Z"
+    },
+    {
+      "id": "podcast-836eb94f-48f2-4424-a4b5-d1b7c1451677",
+      "title": "#92 Lesung und Recap Buchparty",
+      "date": "14.05.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Am 26.04.2024 war ein ganz besonderer Tag für Hostin Kira Marie Cremer: Ihr Buch „Eingetaucht: New Work: Wie werden wir in Zukunft arbeiten?\" wurde endlich überall veröffentlicht. Die Autorin feierte ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_164120_cover.jpg?v=28",
+      "altText": "#92 Lesung und Recap Buchparty"
+    },
+    {
+      "id": "podcast-44145c79-5ffe-42fa-a04a-4fd58144e8d2",
+      "title": "#91 Daniel Sauerzapf | Über New Work in der Finanzbranche, die gezielte Ansprache der nextgen und offenes Mindset",
+      "date": "07.05.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Wie bleibt die Finanzwelt für die nächste Generation attraktiv? Für Daniel Sauerzapf, Managing Director und Co-Head des Wealth Managements bei der Hauck Aufhäuser Lampe Privatbank, ist das von großer ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_160847_cover.jpg?v=29",
+      "altText": "#91 Daniel Sauerzapf | Über New Work in der Finanzbranche, die gezielte Ansprache der nextgen und offenes Mindset"
+    },
+    {
+      "id": "podcast-fcd2977a-24d4-46b8-8671-9e148364260e",
+      "title": "#90 Felix Mohr | Über desk.ly, hybride Arbeit und zukunftsfähige Arbeitsplätze",
+      "date": "30.04.2024",
+      "duration": "Unbekannte Länge",
+      "description": "ANZEIGE: Diese Folge wird von desk.ly gesponsert.\n\nSein ständiger Begleiter ist hybride Arbeit, und seiner Meinung nach, sollte dieses Arbeitsmodell individuell eingesetzt werden. Felix Mohr ist Co-Fo...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_160496_cover.jpg?v=29",
+      "altText": "#90 Felix Mohr | Über desk.ly, hybride Arbeit und zukunftsfähige Arbeitsplätze"
+    },
+    {
+      "id": "podcast-39a5ac7e-6c79-4063-bcd6-83aea3530b9b",
+      "title": "#89 Isabelle Gardt | Über New Work bei OMR, 50:50 in der Arbeitswelt und Zusammenhalt",
+      "date": "23.04.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Von Werkstudentin bis hin zum Teil der Geschäftsführung? Ihr denkt, das ist unmöglich? Auf keinen Fall. Isabelle Gardt begann ihre Karriere bei OMR während ihres Studiums. Was ein Anruf mit ihrer heut...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_160175_cover.jpg?v=29",
+      "altText": "#89 Isabelle Gardt | Über New Work bei OMR, 50:50 in der Arbeitswelt und Zusammenhalt"
+    },
+    {
+      "id": "podcast-1a262ac9-15b5-4450-8fb3-549963b8ec8f",
+      "title": "#88 INSIDE: Recruiting | Wie sieht ein idealer Recruiting-Prozess aus?",
+      "date": "16.04.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Was sollte im Lebenslauf auf keinen Fall fehlen? Wie sollte ich mich während des Bewerbungsprozesses verhalten? Und worauf legen Recruiter:innen heutzutage besonderen Wert? In dieser Themenfolge erhal...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_157932_cover.jpg?v=30",
+      "altText": "#88 INSIDE: Recruiting | Wie sieht ein idealer Recruiting-Prozess aus?"
+    },
+    {
+      "id": "podcast-e224de41-4d4d-444e-b34b-cedec25c5dec",
+      "title": "#87 Tipps für ein 50:50 Jobmodell",
+      "date": "09.04.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Der traditionelle Nine-to-five-Job wird längst von moderneren Arbeitsmodellen wie Remote Work oder Jobsharing abgelöst. Auch Hostin Kira Marie Cremer startete nach ihrem Masterstudium mit einer flexib...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_157124_cover.jpg?v=31",
+      "altText": "#87 Tipps für ein 50:50 Jobmodell"
+    },
+    {
+      "id": "podcast-ecfcc2c1-fec0-4492-9136-7661118426a8",
+      "title": "#86 Rolf Liebig | Über Lease a Bike, Mitarbeitendenbindung & die betriebliche Gesundheitsförderung",
+      "date": "02.04.2024",
+      "duration": "Unbekannte Länge",
+      "description": "ANZEIGE: Diese Folge wird von Lease a Bike gesponsert.\n\nDas Leasing von Diensträdern hat sich mittlerweile als eines von vielen Benefits etabliert und bietet Arbeitgebenden sowie Arbeitnehmenden zahlr...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_154099_cover.jpg?v=33",
+      "altText": "#86 Rolf Liebig | Über Lease a Bike, Mitarbeitendenbindung & die betriebliche Gesundheitsförderung"
+    },
+    {
+      "id": "podcast-3272aefb-b5b3-4eca-9311-45afff060032",
+      "title": "#85 Miriam Wilhelm | Über like a zebra, die Organisation der Zukunft und die Abgabe von Macht",
+      "date": "26.03.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Selbstorganisation und Transformation sind Begriffe, die wahrscheinlich bei vielen von euch im beruflichen als auch privaten Alltag eine zentrale Rolle spielen. Auch für Miriam Wilhelm, systemische Or...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_154084_cover.jpg?v=32",
+      "altText": "#85 Miriam Wilhelm | Über like a zebra, die Organisation der Zukunft und die Abgabe von Macht"
+    },
+    {
+      "id": "podcast-fc6966fb-a04e-4749-807a-d2342f57e29c",
+      "title": "#84 Yves Brunschwiler | Über New Work bei Spotify, das Wohlbefinden der Bandmates und die Relevanz von Authentizität",
+      "date": "19.03.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Spotify begleitet die meisten von uns wahrscheinlich täglich und vielleicht hört ihr sogar gerade hier unseren Podcast. Um mehr über die Plattform und die sogenannten Bandmates zu erfahren, haben wir ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_152258_cover.jpg?v=33",
+      "altText": "#84 Yves Brunschwiler | Über New Work bei Spotify, das Wohlbefinden der Bandmates und die Relevanz von Authentizität"
+    },
+    {
+      "id": "podcast-d41c0c55-40c8-48c1-a5d2-e92c9c2c1fd5",
+      "title": "#83 Laura Lewandowski | Über rethink.careers, moderne Karrieren und KI im Alltag",
+      "date": "12.03.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Laura Lewandowski ist Journalistin und Mitgründerin von rethink.careers. In dieser Folge gibt sie euch exklusive Einblicke in das Unternehmen, das sie gemeinsam mit Julius Bachmann ins Leben gerufen h...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_150862_cover.jpg?v=35",
+      "altText": "#83 Laura Lewandowski | Über rethink.careers, moderne Karrieren und KI im Alltag"
+    },
+    {
+      "id": "podcast-1d26fe2c-26fa-49fc-bf88-29abd7e5df26",
+      "title": "#82 Kompetenzen der Zukunft",
+      "date": "05.03.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Welche Fähigkeiten sind im Jahr 2024 erforderlich, und wie können wir diese effektiv fördern? Dies sind die zentralen Themen, mit denen sich Hostin Kira Marie Cremer in dieser Folge auseinandersetzt. ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_150668_cover.jpg?v=35",
+      "altText": "#82 Kompetenzen der Zukunft"
+    },
+    {
+      "id": "podcast-0887fec4-29d1-4256-9e05-1e4ddaee64a2",
+      "title": "#81 INSIDE: Familienunternehmen | Wie gelingt die Nachfolge?",
+      "date": "27.02.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Steht ihr aktuell vor der Entscheidung einer Unternehmensnachfolge und seid euch unsicher, ob dies der richtige Weg für euch ist, oder aber ihr interessiert euch einfach für das Thema? In diesem Fall ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_148338_cover.jpg?v=37",
+      "altText": "#81 INSIDE: Familienunternehmen | Wie gelingt die Nachfolge?"
+    },
+    {
+      "id": "podcast-6d074193-654a-44e4-9901-0c82b31680ee",
+      "title": "#80 Max Klemmer | Über den Relaunch von Miss Germany, weibliche Vorbilder und Veränderungen in der Arbeitswelt",
+      "date": "20.02.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Miss Germany ist längst kein Schönheitswettbewerb mehr, sondern wurde durch Max Klemmer zur Mission für Female Empowerment. Er ist Geschäftsführender Gesellschafter der Miss Germany Studios GmbH & Co....",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_146846_cover.jpg?v=39",
+      "altText": "#80 Max Klemmer | Über den Relaunch von Miss Germany, weibliche Vorbilder und Veränderungen in der Arbeitswelt"
+    },
+    {
+      "id": "podcast-090f03e1-caed-4e33-b8cc-611ce2de1a5d",
+      "title": "#79 Dina Reit | Über die Unternehmensnachfolge bei der SK LASER GmbH, Learning by Doing und Selbstwirksamkeit",
+      "date": "13.02.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Als Trainee hat Dina Reit bei der SK LASER GmbH begonnen und ist heute Geschäftsführerin. Ursprünglich wollte sie mit ihrem Studium einen anderen Berufsweg einschlagen und gar nicht Teil des Familienu...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_145512_cover.jpg?v=40",
+      "altText": "#79 Dina Reit | Über die Unternehmensnachfolge bei der SK LASER GmbH, Learning by Doing und Selbstwirksamkeit"
+    },
+    {
+      "id": "podcast-8da405a0-095f-45aa-9b7d-03d648546775",
+      "title": "#78 Judith Gilbert | Über Business Spotlight, agiles Arbeiten in einer Redaktion und das amerikanische Mindset",
+      "date": "06.02.2024",
+      "duration": "Unbekannte Länge",
+      "description": "„Fast jede:r in der deutschsprachigen Welt braucht Englisch für die Arbeit oder das Leben“, so Chefredakteurin Judith Gilbert von Business Spotlight. Das Magazin ist führend in Business Englisch und b...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_144260_cover.jpg?v=42",
+      "altText": "#78 Judith Gilbert | Über Business Spotlight, agiles Arbeiten in einer Redaktion und das amerikanische Mindset"
+    },
+    {
+      "id": "podcast-1dfc3e2e-bcc6-444e-b0bd-ab7eba4fe4a0",
+      "title": "#77 Die Macht von LinkedIn",
+      "date": "30.01.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Die Plattform wächst, durch sie entstehen neue Jobs und Businessmodelle und auch die Themen Corporate Influencing, Employer Branding und Business Creating finden hier ihr Zuhause. Kira spricht offen ü...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_143010_cover.jpg?v=45",
+      "altText": "#77 Die Macht von LinkedIn"
+    },
+    {
+      "id": "podcast-1e9fead7-273e-4902-a081-f82c2bd20390",
+      "title": "#76 New (Work) Benefits",
+      "date": "23.01.2024",
+      "duration": "Unbekannte Länge",
+      "description": "In unserer Arbeitswelt sind sie kaum noch wegzudenken, und ihre Beliebtheit nimmt immer weiter zu. Die Rede ist von Benefits, die dazu dienen, Mitarbeitende langfristig zu binden und neue Talente für ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_141144_cover.jpg?v=45",
+      "altText": "#76 New (Work) Benefits"
+    },
+    {
+      "id": "podcast-41def335-11d9-416f-857c-60e936bbc581",
+      "title": "#75 Harry Gatterer & Prof. Dr. Stefan Tewes | Über die Zukunft von New Work, die Beobachtung von Trends und die Verschiebung der Arbeitswelt",
+      "date": "16.01.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Wolltet ihr schon immer mal einen tieferen Einblick in die Welt der Megatrends 2024 erhalten? Dann habt ihr jetzt die Gelegenheit dazu. Die heutigen Gäste Harry Gatter, geschäftsführender Gesellschaft...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_139777_cover.jpg?v=46",
+      "altText": "#75 Harry Gatterer & Prof. Dr. Stefan Tewes | Über die Zukunft von New Work, die Beobachtung von Trends und die Verschiebung der Arbeitswelt"
+    },
+    {
+      "id": "podcast-bea1ff1a-0fce-40c6-a155-d03fd9e85eab",
+      "title": "#74 Die New Work Trends in 2024, Podcast-Neuheiten und Kiras große News",
+      "date": "09.01.2024",
+      "duration": "Unbekannte Länge",
+      "description": "Willkommen bei der ersten NEW WORK NOW-Folge des Jahres 2024 und wir wünschen euch ein frohes neues Jahr! Freut euch auf spannende Gespräche rund um den New Work-Ansatz, Neuigkeiten zur zukünftigen Po...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_138436_cover.jpg?v=48",
+      "altText": "#74 Die New Work Trends in 2024, Podcast-Neuheiten und Kiras große News"
+    },
+    {
+      "id": "podcast-3ce2c9a0-a36b-493d-a018-e893d6bdc7c0",
+      "title": "#73 Das Jahr im Recap | Kira zieht Bilanz und beantwortet eure Fragen",
+      "date": "19.12.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Das Jahr 2023 neigt sich dem Ende zu und was könnte passender sein als ein Jahresrückblick von Hostin Kira Marie Cremer? Zusammen mit ihrem Verlobten Jannik geht sie auf ihre Hochs und Tiefs, erreicht...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_134901_cover.jpg?v=47",
+      "altText": "#73 Das Jahr im Recap | Kira zieht Bilanz und beantwortet eure Fragen"
+    },
+    {
+      "id": "podcast-506c7ab9-59f9-471d-9f35-ca8ad283183f",
+      "title": "#72 Christoph Magnussen | Über die Nutzung von KI, innovative Tools im Arbeitsalltag und die Bewegung in der Gesellschaft",
+      "date": "12.12.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Künstliche Intelligenz, kurz KI, hält mehr und mehr Einzug in unseren Arbeitsalltag. Auch bei BLACKBOAT wird KI mehr und mehr eingesetzt, um die Zusammenarbeit und interne Kommunikation in Unternehmen...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_134111_cover.jpg?v=48",
+      "altText": "#72 Christoph Magnussen | Über die Nutzung von KI, innovative Tools im Arbeitsalltag und die Bewegung in der Gesellschaft"
+    },
+    {
+      "id": "podcast-ed4843e3-74a7-4c4b-a9ab-7f997ff3970e",
+      "title": "#71 Elen Maluche | Über New Work bei TUI Cruises, aktive Impulschecks und die kommenden Trends im Personalwesen",
+      "date": "05.12.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Auch bei TUI Cruises ist der New Work-Ansatz nichts Neues mehr und wird auf vielfältige Weise in die Arbeitskultur integriert. Themen wie Employee Reskilling, die Bindung der Mitarbeitenden und auch d...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_131420_cover.jpg?v=49",
+      "altText": "#71 Elen Maluche | Über New Work bei TUI Cruises, aktive Impulschecks und die kommenden Trends im Personalwesen"
+    },
+    {
+      "id": "podcast-d4cd95b7-6a65-4068-abbe-781b4b852a53",
+      "title": "#70 Gaby Wasensteiner | Über New Work bei LinkedIn, die Vorteile des Quereinstiegs und die Relevanz von Soft Skills",
+      "date": "28.11.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Kompetenzen auseinanderzusetzen. Dadurch erhöht sich die Anzahl der Quereinstiege. Auch Gaby Wasensteiner, Senior Brand Managerin von LinkedIn, kam über verschiedene berufliche Stationen zu ihrem jetz...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_130126_cover.jpg?v=49",
+      "altText": "#70 Gaby Wasensteiner | Über New Work bei LinkedIn, die Vorteile des Quereinstiegs und die Relevanz von Soft Skills"
+    },
+    {
+      "id": "podcast-a6337ac3-8958-43a9-b124-52c7a3ecad17",
+      "title": "#69 VIDEO-PODCAST Kira schreibt ein Buch",
+      "date": "21.11.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Im April 2024 ist es soweit. Denn dann erscheint das Buch „Eingetaucht: New Work: Das Buch für Einsteiger*innen“ von Kira Marie Cremer. Ziel des Buches ist es, mit verschiedenen Impulsen, Erfahrungen ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_cover.jpg?v=5",
+      "altText": "#69 VIDEO-PODCAST Kira schreibt ein Buch"
+    },
+    {
+      "id": "podcast-b40c4636-1c7c-4117-b6e4-497de19180ea",
+      "title": "#68 Nicolas André Lulay | Über New Work als Identitätsfrage, das secova Bewusstsein und ein achtsames Miteinander",
+      "date": "14.11.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Innerhalb der secova GmbH & Co. KG wird der New Work-Ansatz seit dem Gründungsjahr 2008 gelebt. Im Gegensatz zu anderen Unternehmen wollen sie sich dem Thema von einer ganz anderen Seite nähern. Wie d...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_128408_cover.jpg?v=50",
+      "altText": "#68 Nicolas André Lulay | Über New Work als Identitätsfrage, das secova Bewusstsein und ein achtsames Miteinander"
+    },
+    {
+      "id": "podcast-a9c207a9-3af2-459c-a6cd-d5c4e5931d83",
+      "title": "#67 Catarina dos Santos-Wintz | Über New Work in der Politik, den Kampf gegen Desinformation und den Anteil von Frauen in der Politik",
+      "date": "07.11.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Wie wird New Work in unserer Politik umgesetzt? Das verrät Catarina dos Santos-Wintz, Abgeordnete im Deutschen Bundestag. Sie ist aber nicht nur in Berlin aktiv, sondern auch in der StädteRegion Aache...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_127746_cover.jpg?v=48",
+      "altText": "#67 Catarina dos Santos-Wintz | Über New Work in der Politik, den Kampf gegen Desinformation und den Anteil von Frauen in der Politik"
+    },
+    {
+      "id": "podcast-145dd327-5529-4b36-818a-3ab3fcab6544",
+      "title": "#66 Carsten Graf | Über den Wandel in der Bankenwelt, die Förderung des Ehrenamts und Entwicklungswege für Mitarbeitende",
+      "date": "31.10.2023",
+      "duration": "Unbekannte Länge",
+      "description": "New Work ist auch in der Bankenwelt möglich. Darüber berichtet Carsten Graf, Vorstandssprecher der PSD Bank Braunschweig. Die PSD Bank integriert bereits seit mehreren Jahren verschiedene Elemente des...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_126687_cover.jpg?v=50",
+      "altText": "#66 Carsten Graf | Über den Wandel in der Bankenwelt, die Förderung des Ehrenamts und Entwicklungswege für Mitarbeitende"
+    },
+    {
+      "id": "podcast-b48a626e-6a3c-4cd0-be3b-1ee94df904ac",
+      "title": "#65 Magdalena Rogl | Über Emotionalität im Beruf, Vielfalt in der Arbeitswelt & den eigenen Arbeitsrhythmus",
+      "date": "24.10.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Neuorientierungen sind in unserer Arbeitswelt nichts Neues mehr und bringen unterschiedliche Hintergründe zusammen. Von der Erzieherin zum Diversity und Inclusion Lead bei Microsoft Deutschland, das i...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_125079_cover.jpg?v=48",
+      "altText": "#65 Magdalena Rogl | Über Emotionalität im Beruf, Vielfalt in der Arbeitswelt & den eigenen Arbeitsrhythmus"
+    },
+    {
+      "id": "podcast-efd40886-5326-4509-9da1-c5deb5c4b5ee",
+      "title": "#64 VIDEO-PODCAST mit Verena Pausder | New Work Now Jubiläumsevent live in Hamburg",
+      "date": "17.10.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Happy Birthday to us! Wir werden ein Jahr alt und das haben wir zusammen mit 80 Gäst:innen in den Design Offices in Hamburg gefeiert. Eines dieser Highlights ist der erste Video-Podcast mit Special Gu...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_124429_cover.jpg?v=50",
+      "altText": "#64 VIDEO-PODCAST mit Verena Pausder | New Work Now Jubiläumsevent live in Hamburg"
+    },
+    {
+      "id": "podcast-58f4b3aa-af3c-424a-8a34-e065e7c90dbd",
+      "title": "#63 Dr. Thomas List | Über New Work im Maschinenbau, die Individualität der Mitarbeitenden und seine persönliche Entwicklung",
+      "date": "10.10.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Wir stellen euch immer wieder verschiedene Branchen vor, die den New Work-Ansatz in ihr Unternehmen integrieren wollen. In dieser Folge geht es um den Maschinenbau. Dr. Thomas List ist Chief Financial...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_123311_cover.jpg?v=51",
+      "altText": "#63 Dr. Thomas List | Über New Work im Maschinenbau, die Individualität der Mitarbeitenden und seine persönliche Entwicklung"
+    },
+    {
+      "id": "podcast-03c2c57f-480f-4dc5-a373-0f3652444601",
+      "title": "#62 Tatjana Kiel | Über Veränderungen in der Kommunikation, F.A.C.E. The Challenge und #WeAreAllUkrainians",
+      "date": "03.10.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Zu Beginn organisierte sie die Boxkämpfe der Klitschko-Brüder, heute ist Tatjana Kiel CEO von Klitschko Ventures. Als langjährige Geschäftspartnerin von Dr. Wladimir Klitschko ist sie auch mitverantwo...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_122163_cover.jpg?v=52",
+      "altText": "#62 Tatjana Kiel | Über Veränderungen in der Kommunikation, F.A.C.E. The Challenge und #WeAreAllUkrainians"
+    },
+    {
+      "id": "podcast-bde6eb96-2994-43b5-b9f0-002563d720c8",
+      "title": "#61 Tobias Hagenau | Über Glück bei der Arbeit, die Bedeutung einer Teamkultur und das Thema Gründen",
+      "date": "26.09.2023",
+      "duration": "Unbekannte Länge",
+      "description": "awork ist ein Workmangement-Tool, das Teams unter anderem bei der Projektplanung helfen soll und auch im Privatleben genutzt werden kann. Vielleicht kennt ihr es schon und nutzt es bereits in eurem Ar...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_121028_cover.jpg?v=54",
+      "altText": "#61 Tobias Hagenau | Über Glück bei der Arbeit, die Bedeutung einer Teamkultur und das Thema Gründen"
+    },
+    {
+      "id": "podcast-372088f1-d419-4ebe-a5b9-b93e884810a3",
+      "title": "#60 Lisa Rosa Bräutigam | Über Arbeitsplatz as-a-Service, die persönliche Weiterentwicklung und das Formen von Kulturen",
+      "date": "19.09.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Wie sollte euer idealer Arbeitsplatz aussehen? Habt ihr euch darüber schon mal Gedanken gemacht? Mit Hilfe von nuwo. ist das jetzt ganz einfach. Die Vision der Gründerin und CEO des Unternehmens Lisa ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_120059_cover.jpg?v=55",
+      "altText": "#60 Lisa Rosa Bräutigam | Über Arbeitsplatz as-a-Service, die persönliche Weiterentwicklung und das Formen von Kulturen"
+    },
+    {
+      "id": "podcast-2fd3c1cc-93d5-423e-b76d-3444e84110b3",
+      "title": "#59 Benjamin Jaksch | Über Life-Long-Learning, das Leben aus einer anderen Perspektive betrachten und die zwei Welten des Lernens",
+      "date": "12.09.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Jede:r von uns lernt anders und da gibt es auch nicht die eine Gebrauchsanweisung. Für Learning Catalyst Benjamin Jaksch ist es daher wichtig, sich zu fragen, was möchte ich können, und auch die Selbs...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_118958_cover.jpg?v=56",
+      "altText": "#59 Benjamin Jaksch | Über Life-Long-Learning, das Leben aus einer anderen Perspektive betrachten und die zwei Welten des Lernens"
+    },
+    {
+      "id": "podcast-e11336d6-28b3-4ba8-999c-87c5f8e58737",
+      "title": "#58 Nadine Nobile & Sven Franke | Über New Pay, Trends in der Vergütung und die Gestaltung der neuen Arbeitswelt",
+      "date": "05.09.2023",
+      "duration": "Unbekannte Länge",
+      "description": "New Pay taucht im Rahmen von New Work immer öfter auf und daher haben wir diese Woche die zwei Begründer:innen dieses Begriffs zu Gast. Vor sieben Jahren, als selbst New Work noch kaum Bekanntheit gen...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_117677_cover.jpg?v=58",
+      "altText": "#58 Nadine Nobile & Sven Franke | Über New Pay, Trends in der Vergütung und die Gestaltung der neuen Arbeitswelt"
+    },
+    {
+      "id": "podcast-0c16550e-e420-4e6e-867c-6d28cdf6ac74",
+      "title": "#57 Björn Steiner | Über den Work-Life Space BRAINHOUSE247, den Aufbau einer neuen Arbeitswelt und die Relevanz der Community",
+      "date": "29.08.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Weltweit gibt es mittlerweile über tausend Co-Working Möglichkeiten und auch in Deutschland werden sie immer beliebter. Auch das Unternehmen BRAINHOUSE247 mit Sitz in Hannover Laatzen ist ein Co-Worki...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_116297_cover.jpg?v=59",
+      "altText": "#57 Björn Steiner | Über den Work-Life Space BRAINHOUSE247, den Aufbau einer neuen Arbeitswelt und die Relevanz der Community"
+    },
+    {
+      "id": "podcast-5a2d93cf-5b51-4089-8288-675e5db729fe",
+      "title": "#56 Michael Trautmann und Swantje Allmers | Über ihre Definition von New Work, ihr zufälliges Perfect Match und die Gestaltung der Arbeitswelt",
+      "date": "22.08.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Swantje Allmers und Michael Trautmann sind die „Eltern“ des New Work-Ansatzes, laut Hostin Kira Marie Cremer. Und warum? Mit Hilfe ihres Unternehmens „New Work Masterskills GmbH“ (kurz NWMS) wollen si...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_114876_cover.jpg?v=59",
+      "altText": "#56 Michael Trautmann und Swantje Allmers | Über ihre Definition von New Work, ihr zufälliges Perfect Match und die Gestaltung der Arbeitswelt"
+    },
+    {
+      "id": "podcast-091a904c-1626-40f0-9007-b7aae1cccb4d",
+      "title": "#55 Annahita Esmailzadeh | Über ihr neues Buch „Von Quotenfrauen und alten weißen Männern. Schluss mit Vorurteilen in der Arbeitswelt“",
+      "date": "15.08.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Jede:r von uns hat sich sicherlich schon einmal bei einem unbewussten Vorurteil ertappt. Genau dazu erscheint nun das neue Buch von Autorin Annahita Esmailzadeh „Von Quotenfrauen und alten weißen Männ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_112554_cover.jpg?v=60",
+      "altText": "#55 Annahita Esmailzadeh | Über ihr neues Buch „Von Quotenfrauen und alten weißen Männern. Schluss mit Vorurteilen in der Arbeitswelt“"
+    },
+    {
+      "id": "podcast-fbde77a4-3de6-4fd9-bf53-e5dee5f2eced",
+      "title": "#54 Mitch Senf & Daniel Tröger | Über Inner Work, Potenzialentfaltung und die Fehlerkultur bei Flowplace",
+      "date": "08.08.2023",
+      "duration": "Unbekannte Länge",
+      "description": "2021 gründeten Mitch Senf, Expert for human potential development, und Daniel Tröger, Modern Leadership und Digital Transformation Expert, das Unternehmen „Flowplace“. Sie setzen auf einen menschenzen...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_111958_cover.jpg?v=61",
+      "altText": "#54 Mitch Senf & Daniel Tröger | Über Inner Work, Potenzialentfaltung und die Fehlerkultur bei Flowplace"
+    },
+    {
+      "id": "podcast-ee77decb-3978-4b99-80fa-ae06a8fd7568",
+      "title": "#53 Leni Bolt | Über Work-Life-Balance, die Wirkung der eigenen Reflexion und Diversity sollte nicht nur ein Trend sein",
+      "date": "01.08.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Wie könnt ihr ein gutes Zeitmanagement und mehr Achtsamkeit in Euren Arbeitsalltag integrieren? Expert:in in diesen beiden Bereichen, LinkedIn Top Voice 2023 und Work-Life-Coach:in Leni Bolt kann dies...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_110841_cover.jpg?v=63",
+      "altText": "#53 Leni Bolt | Über Work-Life-Balance, die Wirkung der eigenen Reflexion und Diversity sollte nicht nur ein Trend sein"
+    },
+    {
+      "id": "podcast-9ea8f790-af54-46c4-8397-8614240e8d26",
+      "title": "#52 Tipps & Learnings nach 1,5 Monaten Urlaub",
+      "date": "25.07.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Nach 1,5 Monaten voller Eindrücke und Learnings ist Hostin Kira Marie Cremer zurück aus ihrem Urlaub. Was sie währenddessen erlebt hat, präsentiert sie Euch zusammen mit ihren Tipps zur Vorbereitung d...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_109648_cover.jpg?v=61",
+      "altText": "#52 Tipps & Learnings nach 1,5 Monaten Urlaub"
+    },
+    {
+      "id": "podcast-ab8c1746-8fda-4617-8831-8ce3c161fa56",
+      "title": "#51 Daniel Jung | Über die Revolution im New Learning, mathematischen Content und zeitgemäße Bildung",
+      "date": "19.07.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Mit mehr als 300 Millionen Aufrufen ist er einer der meist gesehen Online-Tutor:innen auf YouTube. Die Rede ist von Daniel Jung. Seit 2012 veröffentlicht er kostenlose Inhalte zum Thema Mathematik und...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_108450_cover.jpg?v=63",
+      "altText": "#51 Daniel Jung | Über die Revolution im New Learning, mathematischen Content und zeitgemäße Bildung"
+    },
+    {
+      "id": "podcast-87985d8b-e3a5-403d-91a5-45972137b861",
+      "title": "#50 Diana Knodel | Über Lifelong Learning, die Förderung der digitalen Bildung und mehr New Work im Schulalltag",
+      "date": "11.07.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Inwieweit ist New Work in Schulen möglich? Welche Möglichkeiten gibt es überhaupt? Das kann Diana Knodel, Co-Founderin von Fobizz, beantworten. Fobizz ist die größte deutschsprachige Plattform für Wei...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_106594_cover.jpg?v=61",
+      "altText": "#50 Diana Knodel | Über Lifelong Learning, die Förderung der digitalen Bildung und mehr New Work im Schulalltag"
+    },
+    {
+      "id": "podcast-5db29b19-9561-4b55-aff7-7ffde9206519",
+      "title": "#49 Karin Lausch | Über New Work bei der Techniker Krankenkasse, mehr Sinn in der Arbeit und spezifisches Hinterfragen ermöglicht die richtigen Designs",
+      "date": "04.07.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Verschiedene Branchen greifen den New Work-Ansatz immer mehr und mehr auf. Das New Work beispielsweise auch in einer Krankenkasse Fuß fassen kann, zeigt Karin Lausch. Bei der Techniker Krankenkasse ge...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_106093_cover.jpg?v=61",
+      "altText": "#49 Karin Lausch | Über New Work bei der Techniker Krankenkasse, mehr Sinn in der Arbeit und spezifisches Hinterfragen ermöglicht die richtigen Designs"
+    },
+    {
+      "id": "podcast-056d0419-932a-4c4c-ac21-1b5ae9bd040a",
+      "title": "#48 Alena Brügger | Über Employee Experience, das Erkennen der eigenen Talente und mehr Entschleunigung in dynamischen Zeiten",
+      "date": "27.06.2023",
+      "duration": "Unbekannte Länge",
+      "description": "„Macht aus eurer Company eine #joypany“ ist das Motto, das Gründerin Alena Brügger mit ihrer Employee Experience Agentur Joypany verfolgt. Für sie spielt es nämlich eine große Rolle, Freude an der Arb...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_104968_cover.jpg?v=61",
+      "altText": "#48 Alena Brügger | Über Employee Experience, das Erkennen der eigenen Talente und mehr Entschleunigung in dynamischen Zeiten"
+    },
+    {
+      "id": "podcast-b0c542f4-a914-4af6-9df6-f4e7b352ff52",
+      "title": "#47 David-Ruben Thies | Über den New Work-Ansatz im Krankenhaus, der eigentlichen Berufung nachgehen und Selbstverantwortung",
+      "date": "20.06.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Habt ihr Euch schon mal gefragt, ob der New Work-Ansatz im Krankenhaus umgesetzt werden kann? David-Ruben Thies, CEO der Waldkliniken Eisenberg, kann Euch mehr dazu verraten. Er gibt Euch einen Einbli...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_103901_cover.jpg?v=61",
+      "altText": "#47 David-Ruben Thies | Über den New Work-Ansatz im Krankenhaus, der eigentlichen Berufung nachgehen und Selbstverantwortung"
+    },
+    {
+      "id": "podcast-0f83d045-7e91-4dc9-a8aa-d4f01e33e3e0",
+      "title": "#46 Johanna Geisler | Über innovative Recruiting-Methoden, das Erwartungsmanagement im Unternehmen und Weiterbildung nahbar machen",
+      "date": "13.06.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Wer hätte gedacht, dass auch Dating-Apps als Recruiting-Kanal funktionieren können? Mit der App „Bumble“ ist das möglich und Johanna Geisler, Head of Talent Acquisition & Employer Branding bei YOYABA,...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_102795_cover.jpg?v=61",
+      "altText": "#46 Johanna Geisler | Über innovative Recruiting-Methoden, das Erwartungsmanagement im Unternehmen und Weiterbildung nahbar machen"
+    },
+    {
+      "id": "podcast-580493e0-e670-4d68-ba74-f53846bf4cda",
+      "title": "#45 Stephan Rathgeber | Über New Hiring, die Perspektivenvielfalt im Recruiting und den Erhalt von Werten beim Bewerbungsprozess",
+      "date": "06.06.2023",
+      "duration": "Unbekannte Länge",
+      "description": "New Hiring bedeutet ein neues Verständnis von Recruiting und soll die Abläufe entsprechend anpassen. Stephan Rathgeber, Head of Marketing von onlyfy bei Xing, erzählt Euch, wie onlyfy das moderne Recr...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_101839_cover.jpg?v=61",
+      "altText": "#45 Stephan Rathgeber | Über New Hiring, die Perspektivenvielfalt im Recruiting und den Erhalt von Werten beim Bewerbungsprozess"
+    },
+    {
+      "id": "podcast-3c820806-fd0e-4afa-9389-ecc5de0ae9d9",
+      "title": "#44 Chérine De Bruijn | Über New Work in der Unternehmenskommunikation, Authentizität beim Netzwerken und mutige Persönlichkeiten",
+      "date": "30.05.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Wie wichtig New Work für die Unternehmenskommunikation sein kann, weiß Gründerin Chérine De Bruijn von CORPORATE KITCHEN ganz genau. New Work macht ihrer Meinung nach beweglich im Kopf und damit hat s...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_100550_cover.jpg?v=61",
+      "altText": "#44 Chérine De Bruijn | Über New Work in der Unternehmenskommunikation, Authentizität beim Netzwerken und mutige Persönlichkeiten"
+    },
+    {
+      "id": "podcast-4ead32f0-5ce5-4e4e-bb03-97ea7ec236de",
+      "title": "#43 Nicolas Höflinger | Über ein KI-basiertes Kommunikations-Tool, asynchrone Arbeit und Veränderungen von Gewohnheiten",
+      "date": "23.05.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Euch nerven Sprachnachrichten? Sei es bei der Arbeit oder im Privatleben? Dann probiert doch mal VoiceLine aus. Dieses Kommunikations-Tool erstellt KI-basierte Zusammenfassungen von Sprachnachrichten ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_99668_cover.jpg?v=61",
+      "altText": "#43 Nicolas Höflinger | Über ein KI-basiertes Kommunikations-Tool, asynchrone Arbeit und Veränderungen von Gewohnheiten"
+    },
+    {
+      "id": "podcast-81146ad5-ddc7-4001-9343-ff1a1ab870ba",
+      "title": "#42 Jan Peters | Über seine Tipps und Ratschläge im Arbeitsrecht, mehr Lebensqualität durch New Work und die ständige Weiterbildung",
+      "date": "16.05.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Ihr konntet Eure Fragen zum Thema Arbeitsrecht stellen und endlich ist die Folge da! Heute nimmt Euch Experte Jan Peters mit in sein Tätigkeitsfeld: das Arbeitsrecht. Er ist Rechtsanwalt und Fachanwal...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_98559_cover.jpg?v=64",
+      "altText": "#42 Jan Peters | Über seine Tipps und Ratschläge im Arbeitsrecht, mehr Lebensqualität durch New Work und die ständige Weiterbildung"
+    },
+    {
+      "id": "podcast-8875abda-b0ad-439e-ba74-6d29b5e86456",
+      "title": "#41 Johanna Hourrier | Über ihre nebenberufliche Gründung, Synergien und Raum für Entwicklung",
+      "date": "09.05.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Neue Arbeitsformen sind aus der heutigen Businesswelt nicht mehr wegzudenken und bieten viele Vorteile, wie mehr Selbstbestimmung und Flexibilität. Growth Expert und Team Leader bei media plan Johanna...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_89423_cover.jpg?v=68",
+      "altText": "#41 Johanna Hourrier | Über ihre nebenberufliche Gründung, Synergien und Raum für Entwicklung"
+    },
+    {
+      "id": "podcast-67f81a24-3dd2-42ca-a3fe-72cd508c07e7",
+      "title": "#40 SONDERFOLGE mit Jannis Johannmeier zu mentaler Gesundheit",
+      "date": "02.05.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Wie geht’s Dir? Eine kurze Frage mit großer Wirkung, der sich heute Kira Marie Cremer und Jannis Johannmeier unter anderem in ihrer SONDERFOLGE zu mentaler Gesundheit widmen. Gleichzeitig geben sie Ei...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_96940_cover.jpg?v=65",
+      "altText": "#40 SONDERFOLGE mit Jannis Johannmeier zu mentaler Gesundheit"
+    },
+    {
+      "id": "podcast-6911a74d-978b-425d-9b31-d0c344a43986",
+      "title": "#39 Hermann Scherer | Über den Funken im Speaking, das Selbstvergessen und New Life",
+      "date": "25.04.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Menschen zur Marke machen? Wie kann das gelingen, fragt ihr Euch? Hermann Scherer verrät es. Der Business-Experte, Berater, Speaker und Bestsellerautor verfügt über eine wirklich beeindruckende Bandbr...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_95926_cover.jpg?v=63",
+      "altText": "#39 Hermann Scherer | Über den Funken im Speaking, das Selbstvergessen und New Life"
+    },
+    {
+      "id": "podcast-2f52a5bb-138a-4015-88aa-4d266780e85a",
+      "title": "#38 Nico Combes | Über den Wandel im Agenturleben, TikTok-Chancen für New Work und das Gen Z Marketing",
+      "date": "18.04.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Kollaboration statt Ellenbogen im Agenturleben, das ist eines der vielen Dingen, die Nico Combes, Co-Founder und Managing Director, mit seinem Unternehmen ODALINE erreichen möchte. In dieser Folge erz...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_94721_cover.jpg?v=65",
+      "altText": "#38 Nico Combes | Über den Wandel im Agenturleben, TikTok-Chancen für New Work und das Gen Z Marketing"
+    },
+    {
+      "id": "podcast-2438aa7b-4f9f-4c65-81b4-3e97713b5fd1",
+      "title": "#37 Isabelle Evelyn Joswig | Über Inklusion am Arbeitsplatz, Chancengleichheit und Menschen mit Behinderungen in den Mittelpunkt stellen",
+      "date": "11.04.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Inklusion ist ein wichtiger Bestandteil des persönlichen und beruflichen Lebens. Wie Unternehmen als auch Einzelpersonen die Inklusion ermöglichen und Vorurteile aufheben können, verrät Euch Isabelle ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_93649_cover.jpg?v=67",
+      "altText": "#37 Isabelle Evelyn Joswig | Über Inklusion am Arbeitsplatz, Chancengleichheit und Menschen mit Behinderungen in den Mittelpunkt stellen"
+    },
+    {
+      "id": "podcast-d4b0a2bc-b6f7-4239-b142-8e44632e8828",
+      "title": "#36 Cansu Yildrim & Lisa Lunga | Über agieren auf Augenhöhe, Female Entrepreneurship und wichtige Werte einer Freundschaft",
+      "date": "04.04.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Cali & Friends ist ein Unternehmen, das nicht nur Schmuck, sondern auch Geschirrkollektionen anbietet. Die beiden Gründerinnen und Freundinnen, Cansu Yildrim und Lisa Lunga, legen besonderen Wert auf ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_92686_cover.jpg?v=70",
+      "altText": "#36 Cansu Yildrim & Lisa Lunga | Über agieren auf Augenhöhe, Female Entrepreneurship und wichtige Werte einer Freundschaft"
+    },
+    {
+      "id": "podcast-f99fcb14-1162-4a8f-b36b-9d73b0e56c2e",
+      "title": "#35 Raji Sarhi | Über die Nachhaltigkeit von Visitenkarten, Learnings als mehrfacher Gründer und die Förderung von Menschen mit Migrationshintergrund",
+      "date": "28.03.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Ihr sucht nach einer nachhaltigen Alternative zur normalen Visitenkarte? Dann schaut doch mal bei Lemontaps vorbei. Co-Founder Raji Sarhi gibt Euch nicht nur einen Einblick in sein nachhaltiges Untern...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_90503_cover.jpg?v=71",
+      "altText": "#35 Raji Sarhi | Über die Nachhaltigkeit von Visitenkarten, Learnings als mehrfacher Gründer und die Förderung von Menschen mit Migrationshintergrund"
+    },
+    {
+      "id": "podcast-e7522955-b69a-4882-a7f1-61d2ce8ceafa",
+      "title": "#34 Sandra von Au | Über den Alltag von Disrupting Minds, den Aufbau eines starken Netzwerks und die Menschlichkeit von Speaker:innen",
+      "date": "21.03.2023",
+      "duration": "Unbekannte Länge",
+      "description": "„Mit welchem Gefühl sollen die Gäst:innen den Vortrag verlassen? Schließlich hören Menschen Menschen zu\" ist nur einer der vielen Tipps, die Disrupting Minds Co-Founderin Sandra von Au den Speaker:inn...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_90499_cover.jpg?v=71",
+      "altText": "#34 Sandra von Au | Über den Alltag von Disrupting Minds, den Aufbau eines starken Netzwerks und die Menschlichkeit von Speaker:innen"
+    },
+    {
+      "id": "podcast-b2c40042-129c-48d0-936d-a8592b6178d5",
+      "title": "#33 Céline Flores Willers | Über das Branding von Menschen, den Aufbau ihrer Remote Company und das weitere Wachstum von LinkedIn",
+      "date": "14.03.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Céline Flores Willers ist mehrfache LinkedIn Top Voice, Gründerin und CEO von The People Branding Company und Co-Founderin des Unternehmens MerryLoo. Ihr fragt Euch wahrscheinlich, wie Céline es schaf...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_89109_cover.jpg?v=71",
+      "altText": "#33 Céline Flores Willers | Über das Branding von Menschen, den Aufbau ihrer Remote Company und das weitere Wachstum von LinkedIn"
+    },
+    {
+      "id": "podcast-a95792e5-766a-45b7-b73d-d4b252ba1796",
+      "title": "#32 Laura Bornmann | Über die Startup-Szene, Mut in der heutigen Zeit und die Förderung von Entrepreneurship und Intrapreneurship",
+      "date": "07.03.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Mehr als 10 Jahre war sie bei der REWE Dortmund SE & Co. KG, wo sie zuletzt als Head of HR Development mit ihrem Team die Ziele verfolgte, die Personalentwicklung zeitgemäßer zu gestalten und auch die...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_88202_cover.jpg?v=71",
+      "altText": "#32 Laura Bornmann | Über die Startup-Szene, Mut in der heutigen Zeit und die Förderung von Entrepreneurship und Intrapreneurship"
+    },
+    {
+      "id": "podcast-a3a252ea-0362-4342-bde7-4716066096cb",
+      "title": "#31 Till Beutling | Über die Digitalisierung der Arbeitswelt, die Zukunft des Metaverse und sein Leben als remote Führungskraft",
+      "date": "28.02.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Geschäftsführender Gesellschafter eines deutschen Unternehmens sein und in Portugal leben? Ist das möglich? Absolut, berichtet Till Beutling. Er ist geschäfstführender Gesellschafter der Digitalagentu...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_86910_cover.jpg?v=71",
+      "altText": "#31 Till Beutling | Über die Digitalisierung der Arbeitswelt, die Zukunft des Metaverse und sein Leben als remote Führungskraft"
+    },
+    {
+      "id": "podcast-a3c45249-c1a5-4d17-bbf7-bf6bd447b106",
+      "title": "#30 Zehn Tipps zu Eurer Personal Brand",
+      "date": "21.02.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Ihr wollt Eure Personal Brand ausbauen? Sei es im virtuellen Bereich oder auf Events und dabei im Gedächtnis bleiben? Aber ihr wisst nicht genau, wie ihr das anstellen sollt? Dann seid auf die Tipps v...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_82675_cover.jpg?v=73",
+      "altText": "#30 Zehn Tipps zu Eurer Personal Brand"
+    },
+    {
+      "id": "podcast-e9a377ca-1077-4a5b-a29c-8b1da683c79f",
+      "title": "#29 Vanessa Jobst-Jürgens | Über ihre New Work Studie, die Bedürfnisse der verschiedenen Generationen und Kommunikation auf Augenhöhe",
+      "date": "14.02.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Angefangen hat alles mit einer Studie zu New Work, aus der ein Buch wurde. Vielleicht kennt ihr es sogar: “New Work: Was relevante Arbeitnehmergruppen im Job wirklich wollen - eine empirische Betracht...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_81428_cover.jpg?v=72",
+      "altText": "#29 Vanessa Jobst-Jürgens | Über ihre New Work Studie, die Bedürfnisse der verschiedenen Generationen und Kommunikation auf Augenhöhe"
+    },
+    {
+      "id": "podcast-5d631419-3ec8-4c73-8c96-77cc21421d63",
+      "title": "#28 Benjamin Rolff | Über New Performance, neue Perspektiven und gesunde Führung",
+      "date": "07.02.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Unsere Arbeitswelt wird in bestimmten Branchen immer individueller und flexibler. Zugleich entstehen dadurch aber auch neue Herausforderungen und Überlastungen. Aus diesem Grund hat Benjamin Rolff die...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_80833_cover.jpg?v=72",
+      "altText": "#28 Benjamin Rolff | Über New Performance, neue Perspektiven und gesunde Führung"
+    },
+    {
+      "id": "podcast-98051cef-d4ed-465c-8e5e-c3db57e350ff",
+      "title": "#27 Aldina Salihodžić | Über New Pay, der New Work-Ansatz in einer Steuerberatungsfirma und der Mensch im Vordergrund",
+      "date": "31.01.2023",
+      "duration": "Unbekannte Länge",
+      "description": "New Pay bietet nicht nur alternative Vergütungsmodelle, sondern entkoppelt den Menschen vom Gehalt. Genau das setzen Aldina Salihodžić und ihr Mann bei der Team23 Steuerberatung in Wien um. Wie das in...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_79539_cover.jpg?v=72",
+      "altText": "#27 Aldina Salihodžić | Über New Pay, der New Work-Ansatz in einer Steuerberatungsfirma und der Mensch im Vordergrund"
+    },
+    {
+      "id": "podcast-adab25cc-2acf-482f-897c-f79659e6a3e4",
+      "title": "#26 Karin Heinzl | Über Mentoring, den Sinn im Leben und Selbstreflexion statt Selbstkritik",
+      "date": "24.01.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Was ist eigentlich Mentoring? Karin Heinzl, Gründerin von MentoMe, nimmt Euch heute mit in ihre Welt. Verschiedene Mentoring-Programme bietet MentorMe an, um Frauen im deutschsprachigen Raum berufsori...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_78499_cover.jpg?v=72",
+      "altText": "#26 Karin Heinzl | Über Mentoring, den Sinn im Leben und Selbstreflexion statt Selbstkritik"
+    },
+    {
+      "id": "podcast-f882a55f-7361-44d3-9e41-6ce188de7e94",
+      "title": "#25 Andreas Weck | Über New Work im Journalismus, Remote-Arbeit und seine Learnings",
+      "date": "17.01.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Andreas Weck ist t3n Magazin Ressortleiter für die Themen rund um Arbeit, Karriere und Management. Für ihn startete seine Karriere aber damals ganz woanders. Mehr zu ihm, seinem Werdegang und seiner Z...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_77130_cover.jpg?v=72",
+      "altText": "#25 Andreas Weck | Über New Work im Journalismus, Remote-Arbeit und seine Learnings"
+    },
+    {
+      "id": "podcast-91625574-1dfc-4053-8269-c6e8eaef2d9c",
+      "title": "#24 Annahita Esmailzadeh | Über Rebranding, die Zusammenarbeit mit der Generation Z und berufliche Freiräume - Teil 2",
+      "date": "10.01.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Im ersten Teil mit Annahita Esmailzadeh konntet ihr mehr über sie privat und auch als Führungskraft in der Tech-Branche erfahren, wie sich ihr ungeplanter Weg zu LinkedIn entwickelt hat und welchen Ra...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_76049_cover.jpg?v=71",
+      "altText": "#24 Annahita Esmailzadeh | Über Rebranding, die Zusammenarbeit mit der Generation Z und berufliche Freiräume - Teil 2"
+    },
+    {
+      "id": "podcast-c3b34032-35ae-4044-a437-91db4475bba0",
+      "title": "#23 Annahita Esmailzadeh | Über ihre Erfahrungen in der Technologiebranche, ihr ungeplanter Weg zu LinkedIn und das endliche Leben",
+      "date": "03.01.2023",
+      "duration": "Unbekannte Länge",
+      "description": "Sie ist Führungskraft in der Tech-Branche und leitet seit 2021 bei Microsoft den Bereich Customer Success Account Management für die Reise- und Transportindustrie sowie für den Energie- und Versorgung...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_75252_cover.jpg?v=73",
+      "altText": "#23 Annahita Esmailzadeh | Über ihre Erfahrungen in der Technologiebranche, ihr ungeplanter Weg zu LinkedIn und das endliche Leben"
+    },
+    {
+      "id": "podcast-6a710f20-7e52-4c09-ab9a-55c45808f42b",
+      "title": "#22 Das Jahr im Recap| Kira zieht Bilanz und beantwortet eure Fragen",
+      "date": "27.12.2022",
+      "duration": "Unbekannte Länge",
+      "description": "2022 war ein Wansinnsjahr. Was bleibt und wie wird 2023? Gemeinsam mit ihrer Schwester Tessa zieht Kira Bilanz, schaut auf die besondersten Momente und verrät, welchen Gast sie unbedingt noch im Podca...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_73266_cover.jpg?v=71",
+      "altText": "#22 Das Jahr im Recap| Kira zieht Bilanz und beantwortet eure Fragen"
+    },
+    {
+      "id": "podcast-098eee72-2f93-4344-b0a2-d44dab90951c",
+      "title": "#21 Jessica Haag | Über Rebranding, die Zusammenarbeit mit der Generation Z und berufliche Freiräume",
+      "date": "20.12.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Jessica Haag ist Head of Brand, Marketing und Communication bei dem Tech- und Beratungsunternehmen Exxeta AG. Sie hat nicht nur das Rebranding innerhalb des Unternehmens vorangetrieben, sondern setzt ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_72460_cover.jpg?v=72",
+      "altText": "#21 Jessica Haag | Über Rebranding, die Zusammenarbeit mit der Generation Z und berufliche Freiräume"
+    },
+    {
+      "id": "podcast-f66b57d5-f94c-4e55-a93c-68236645660f",
+      "title": "#20 Lorenz Illing & Patrick Gromm | Über eine definierte Unternehmenskultur, Selbstverantwortung bei Mitarbeitenden und offene Denkweisen",
+      "date": "13.12.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Die TAM-Akademie ist die älteste Trainer-Akademie Deutschlands, die sich 2016 neu positioniert hat und sich seitdem verstärkt auf Themen wie Modern Leadership und New Work konzentriert. Mit Hilfe der ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_71263_cover.jpg?v=72",
+      "altText": "#20 Lorenz Illing & Patrick Gromm | Über eine definierte Unternehmenskultur, Selbstverantwortung bei Mitarbeitenden und offene Denkweisen"
+    },
+    {
+      "id": "podcast-b5e1f82e-ce5a-4093-b8ad-8c5b41fdc080",
+      "title": "#19 Tim Jäger | Über die Überwindung von Pain Points, Veränderungsbereitschaft auch in guten Unternehmensphasen und mehr Flexibilität durch New Work",
+      "date": "06.12.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Tim Jäger hat es sich im Jahr 2017 zur Aufgabe gemacht, New Work bei dem Großkonzern Janssen Cilag GmbH einzuführen. Herausforderungen und ganz neue Aufgaben kamen dabei auf ihn zu. Angefangen hat dam...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_70391_cover.jpg?v=73",
+      "altText": "#19 Tim Jäger | Über die Überwindung von Pain Points, Veränderungsbereitschaft auch in guten Unternehmensphasen und mehr Flexibilität durch New Work"
+    },
+    {
+      "id": "podcast-c5d55048-f6a2-4f1b-9c49-a2985003a36e",
+      "title": "#18 Mentale Gesundheit am Arbeitsplatz",
+      "date": "29.11.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Psychische Gesundheit ist in der heutigen Arbeitswelt ein Tabuthema, dem unbedingt mehr Aufmerksamkeit geschenkt werden sollte. Das zeigt auch die Studie “Psychische Gesundheit in der Arbeitswelt: Das...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_69353_cover.jpg?v=72",
+      "altText": "#18 Mentale Gesundheit am Arbeitsplatz"
+    },
+    {
+      "id": "podcast-961cadfe-c8f0-4bfa-8d75-657c6f09146c",
+      "title": "Trailer: Was steckt hinter New Work Now?",
+      "date": "23.11.2022",
+      "duration": "Unbekannte Länge",
+      "description": "",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_cover.jpg?v=5",
+      "altText": "Trailer: Was steckt hinter New Work Now?"
+    },
+    {
+      "id": "podcast-f16ed144-d3d7-4862-a717-2974d2e5bb8e",
+      "title": "#17 Simone Carstens | Über wertschätzende Kommunikation, den Magenta Spirit und mehr Diversity im Arbeitsalltag",
+      "date": "22.11.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Simone Carstens ist mit Leidenschaft Teil der Telekom. Das spiegelt sich deutlich in ihrem Gespräch mit Hostin Kira Marie wider. Dabei setzt sie vor allem auf den Magenta Spirit, aber auch darauf, wie...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_68345_cover.jpg?v=72",
+      "altText": "#17 Simone Carstens | Über wertschätzende Kommunikation, den Magenta Spirit und mehr Diversity im Arbeitsalltag"
+    },
+    {
+      "id": "podcast-81c591c9-f5cc-464c-8fe6-22766bf0fe17",
+      "title": "#16 Selma Sadikovic | Über berufliche Entfaltung, Learning by Doing und Employer Branding",
+      "date": "15.11.2022",
+      "duration": "Unbekannte Länge",
+      "description": "SNOCKS ist heute eines der erfolgreichsten Start-ups in Deutschland. Damals verkauften die Gründer Johannes Kliesch und Felix Bauer noch Sneaker-Socken über den Amazon-Marktplatz. Heute beschäftigen d...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_66812_cover.jpg?v=72",
+      "altText": "#16 Selma Sadikovic | Über berufliche Entfaltung, Learning by Doing und Employer Branding"
+    },
+    {
+      "id": "podcast-f32cb312-3e54-47d5-8ff4-375876338892",
+      "title": "#15 Nico Gomez | Über seine Leidenschaft zur Musik, neue Denkweisen in der Musikbranche und öfter das Ziel als den Weg zu feiern",
+      "date": "08.11.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Musik und New Work – wie passen diese Bereiche zusammen, fragt ihr Euch? Das beantwortet Euch Singer-Songwriter Nico Gomez. Doch vorher erzählt er Euch mehr zu seinem Leben als Musiker und welche Schr...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_65623_cover.jpg?v=72",
+      "altText": "#15 Nico Gomez | Über seine Leidenschaft zur Musik, neue Denkweisen in der Musikbranche und öfter das Ziel als den Weg zu feiern"
+    },
+    {
+      "id": "podcast-b8ebbb75-959b-4e5b-8280-d98b36529320",
+      "title": "#14 Felicitas Birkner, Maren Haimhof, Dr. Holger Schmidt und Dominique René Fara | Über ein besonderes Projekt im Personalwesen, Co-Creation und den digitalen Wandel - Teil 2",
+      "date": "01.11.2022",
+      "duration": "Unbekannte Länge",
+      "description": "New Work Now geht mit Felicitas Birkner, Maren Haimhof, Dr. Holger Schmidt und Dominique René Fara in die zweite Runde. Im Verlauf des weiteren Gesprächs lernt ihr die vier noch besser kennen und erfa...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_64248_cover.jpg?v=74",
+      "altText": "#14 Felicitas Birkner, Maren Haimhof, Dr. Holger Schmidt und Dominique René Fara | Über ein besonderes Projekt im Personalwesen, Co-Creation und den digitalen Wandel - Teil 2"
+    },
+    {
+      "id": "podcast-f211887b-d323-455c-a1c1-69448107830c",
+      "title": "#13 Felicitas Birkner, Maren Haimhof, Dr. Holger Schmidt und Dominique René Fara | Über ein besonderes Projekt im Personalwesen, Co-Creation und den digitalen Wandel - Teil 1",
+      "date": "25.10.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Felicitas Birkner, Maren Haimhof, Dr. Holger Schmidt und Dominique René Fara haben alle etwas gemeinsam: Sie schreiben zusammen mit vielen weiteren Personaler:innen ein Buch. Vier spannende und schlau...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_63125_cover.jpg?v=73",
+      "altText": "#13 Felicitas Birkner, Maren Haimhof, Dr. Holger Schmidt und Dominique René Fara | Über ein besonderes Projekt im Personalwesen, Co-Creation und den digitalen Wandel - Teil 1"
+    },
+    {
+      "id": "podcast-3a035302-bc28-4bad-99ab-035c44683bab",
+      "title": "#12 Tatjana Biallas | Über Journalismus, verschiedene Arbeitskulturen und über die extra Meile im Leben",
+      "date": "18.10.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Neuer Name, neues Cover. New Work Now begrüßt euch heute zum ersten Mal im neuen Style. Welche Rolle dabei die neue Geschäftsführerin der FUNKE Medien Niedersachsen, Tatjana Biallas, gespielt hat und ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_61723_cover.jpg?v=78",
+      "altText": "#12 Tatjana Biallas | Über Journalismus, verschiedene Arbeitskulturen und über die extra Meile im Leben"
+    },
+    {
+      "id": "podcast-b856d8a8-4672-4e38-8eba-e7da71efb3a7",
+      "title": "#11 Fünf Tipps, wie du die Entwicklung der Arbeitswelt erfolgreich meisterst",
+      "date": "11.10.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Durch die jetzige Arbeitswelt bedingt prasseln ständig Eindrücke auf uns ein. Dabei kann man auch schnell den Überblick verlieren. Aus diesem Grund gibt euch Hostin Kira Marie Cremer heute fünf Tipps ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_60448_cover.jpg?v=80",
+      "altText": "#11 Fünf Tipps, wie du die Entwicklung der Arbeitswelt erfolgreich meisterst"
+    },
+    {
+      "id": "podcast-49898450-aa09-4fe0-87bd-d3839da7f9f3",
+      "title": "#10 Nadine und Nico Burchhardt I Über Social Recruiting, die New Work Power und ein Perfect Match",
+      "date": "04.10.2022",
+      "duration": "Unbekannte Länge",
+      "description": "New Work zeigt immer wieder auf, wie wichtig es ist, sich auf den Menschen zu fokussieren. Genau das ist die Mission der Burchhardt Solutions GmbH. Nico Burchhardt ist Geschäftsführer dieser Unternehm...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_59540_cover.jpg?v=78",
+      "altText": "#10 Nadine und Nico Burchhardt I Über Social Recruiting, die New Work Power und ein Perfect Match"
+    },
+    {
+      "id": "podcast-2bcba13a-e9d9-4eef-b22c-afc1d08cd89b",
+      "title": "#9 New Work meets Female Leadership - Paneltalk auf der Digital X 2022 mit Dr. Irène Kilubi und Annette Rompel",
+      "date": "27.09.2022",
+      "duration": "Unbekannte Länge",
+      "description": "New Work bedeutet nicht nur mehr Flexibilität im Arbeitsleben, sondern auch Diversität oder Vielfalt aufzugreifen. Solche Gesprächsthemen waren Teil des diesjährigen Digital X-Panels von Unternehmensb...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_58434_cover.jpg?v=78",
+      "altText": "#9 New Work meets Female Leadership - Paneltalk auf der Digital X 2022 mit Dr. Irène Kilubi und Annette Rompel"
+    },
+    {
+      "id": "podcast-b4727003-b986-4a12-972a-2ff3a729d620",
+      "title": "#8 Moritz Mann I Über The Moment of Truth, Personal Coaching und die Investition in die eigene Person",
+      "date": "20.09.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Extro- und/oder introvertiert zu sein, macht uns aus und spiegelt sich damit auch im jeweiligen Führungsverhalten wider. Das erstmal herauszufinden, kann aber auch eine Weile dauern. Unser heutiger Ga...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_57052_cover.jpg?v=82",
+      "altText": "#8 Moritz Mann I Über The Moment of Truth, Personal Coaching und die Investition in die eigene Person"
+    },
+    {
+      "id": "podcast-Kajabi-2147792588",
+      "title": "#7 Ariel Oscar Greith I Über die Leidenschaft zur Kunst und Freiheit im Berufsleben",
+      "date": "13.09.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Diplomfotograf und heutiger Creative Director des Unternehmens MISS GERMANY STUDIOS Ariel Oscar Greith ist so vieles, aber definitiv nicht langweilig. In der heutigen Folge ist er zu Gast und nimmt eu...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_56080_cover.jpg?v=80",
+      "altText": "#7 Ariel Oscar Greith I Über die Leidenschaft zur Kunst und Freiheit im Berufsleben"
+    },
+    {
+      "id": "podcast-Kajabi-2147784243",
+      "title": "#6 Gabriel Rath I Über Reflexion, mehr Fragen stellen und New Work im Familienalltag",
+      "date": "06.09.2022",
+      "duration": "Unbekannte Länge",
+      "description": "New Work Experte und Keynote Speaker Gabriel Rath ist heute zu Gast bei Kira Marie. Seit 2018 ist er selbst Host eines Podcasts und gibt auf seinem Blog Gedanken zur Vereinbarkeit von Familie und New ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_56081_cover.jpg?v=80",
+      "altText": "#6 Gabriel Rath I Über Reflexion, mehr Fragen stellen und New Work im Familienalltag"
+    },
+    {
+      "id": "podcast-Kajabi-2147784242",
+      "title": "#5 Was bedeutet New Work?",
+      "date": "30.08.2022",
+      "duration": "Unbekannte Länge",
+      "description": "“New Work ist so individuell wie wir Menschen”, so Kira Marie und es zeichnet so vieles aus. Daher wird in der heutigen Folge neben der Entstehungsgeschichte auch der Hype um New Work erläutert. Auch ...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_56082_cover.jpg?v=80",
+      "altText": "#5 Was bedeutet New Work?"
+    },
+    {
+      "id": "podcast-Kajabi-2147782812",
+      "title": "#4 Janna Linke I Über flexible Arbeitsmodelle, Female Empowerment und Selbsterfüllung im Job",
+      "date": "23.08.2022",
+      "duration": "Unbekannte Länge",
+      "description": "In der aktuellen Folge begrüßt Gastgeberin Kira Marie Cremer die ntv Redakteurin, Podcasterin und LinkedIn Top Voice Janna Linke. Die beiden sprechen über Female Empowerment, flexible Arbeitsmodelle u...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_56083_cover.jpg?v=80",
+      "altText": "#4 Janna Linke I Über flexible Arbeitsmodelle, Female Empowerment und Selbsterfüllung im Job"
+    },
+    {
+      "id": "podcast-Kajabi-2147777752",
+      "title": "#3 Jannis Johannmeier I Über Selbsterkenntnis, neue Arbeitswelten und ein Sprichwort aus Uganda",
+      "date": "16.08.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Warm Welcome zur dritten Folge von New Work Now. Im Interview begrüßt Gastgeberin Kira Marie Cremer diesmal den Co-Founder und CEO der PR-Agentur The Trailblazers und frisch gebackenen Papa Jannis Joh...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_56084_cover.jpg?v=80",
+      "altText": "#3 Jannis Johannmeier I Über Selbsterkenntnis, neue Arbeitswelten und ein Sprichwort aus Uganda"
+    },
+    {
+      "id": "podcast-Kajabi-2147774501",
+      "title": "#2 Kiras Weg zu New Work Now",
+      "date": "09.08.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Hostin Kira nimmt Dich in der zweiten Folge ihres Podcasts mit auf ihre ganz persönliche Reise hin zum Thema New Work und ihrem neuen Podcastformat - New Work Now. \n\nMehr zu Kira:\n\nLinkedIn: https://b...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_56085_cover.jpg?v=80",
+      "altText": "#2 Kiras Weg zu New Work Now"
+    },
+    {
+      "id": "podcast-Kajabi-2147774500",
+      "title": "#1 Warm Welcome zu New Work Now - Wer war Kira nochmal?",
+      "date": "09.08.2022",
+      "duration": "Unbekannte Länge",
+      "description": "Herzlich Willkommen zu New Work Now, der Podcast von und mit Kira Marie Cremer. Starten wir mit einer Vorstellungsrunde der Gastgeberin. Und wer könnte Kira besser vorstellen als ihre eigene Mutter? E...",
+      "imageUrl": "https://cdn.julephosting.de/podcasts/693-new-work-rebels-mit-kira-marie-cremer/693_56086_cover.jpg?v=80",
+      "altText": "#1 Warm Welcome zu New Work Now - Wer war Kira nochmal?"
     }
   ]
 }
