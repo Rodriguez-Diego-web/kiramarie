@@ -248,7 +248,7 @@ const CollaborationSection: React.FC = () => {
     {
       imageSrc: '/images/speaker.JPG', 
       buttonText: 'SPEAKINGS',
-      link: 'https://disruptingminds.com/speaker/kira-marie-cremer/', 
+      link: '#kontakt', 
       buttonColor: '#86a4fd' 
     },
     {
