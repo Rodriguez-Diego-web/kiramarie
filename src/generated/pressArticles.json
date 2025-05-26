@@ -1,42 +1,18 @@
 [
   {
+    "id": "2025-05-16-ntv-work-life-blending",
+    "title": "Expertin zu Work-Life-Blending: Welche Vorteile hat Verschmelzung von Beruf und Hobby?",
+    "publication": "n-tv.de",
+    "url": "https://www.n-tv.de/mediathek/videos/wirtschaft/Welche-Vorteile-hat-Verschmelzung-von-Beruf-und-Hobby-article24029406.html",
+    "excerpt": "Work-Life-Balance ist out, Work-Life-Blending ist in. New-Work-Expertin Kira Marie Cremer erklärt die Vorteile des neuen Konzepts im ntv-Interview.",
+    "image": "/uploads/ntvbild.png"
+  },
+  {
     "id": "2025-05-08-youtube-auf-und-up-depression-besiegt",
     "title": "AUF UND UP - Depression besiegt, Leben gemeistert | Kira Marie Cremer",
     "publication": "YouTube (René Träder)",
     "url": "https://www.youtube.com/watch?v=6_04u_q_XyI",
     "excerpt": "Kira Marie Cremer spricht mit René Träder über ihren Weg aus der Depression und wie sie ihr Leben gemeistert hat.",
-    "image": "uploads/generation.webp"
-  },
-  {
-    "id": "2025-05-09-nwx-speaker-kira-marie-cremer",
-    "title": "Kira Marie Cremer - New Work Experience",
-    "publication": "NWX (New Work Experience)",
-    "url": "https://nwx.new-work.se/events/nwx23/speaker/kira-marie-cremer",
-    "excerpt": "Kira Marie Cremer, Gründerin von QUINGS und LinkedIn Coach, ist Host des Podcasts 'New Work Now' und eine bekannte New Work Stimme.",
-    "image": "uploads/nwn.png"
-  },
-  {
-    "id": "2025-05-10-youtube-glowcast-work-smarter",
-    "title": "WORK SMARTER, NOT HARDER - mit Kira Marie Cremer | GLOWCAST",
-    "publication": "YouTube (GLOWCAST)",
-    "url": "https://www.youtube.com/watch?v=abcdef12345",
-    "excerpt": "Kira Marie Cremer teilt im GLOWCAST ihre besten Tipps für effizienteres Arbeiten und eine bessere Work-Life-Balance.",
-    "image": "uploads/neu.png"
-  },
-  {
-    "id": "2025-05-11-personalwirtschaft-ins-tun-kommen",
-    "title": "Kira Marie Cremer: „Das Wichtigste ist, mehr ins Tun zu kommen“",
-    "publication": "Personalwirtschaft",
-    "url": "https://www.personalwirtschaft.de/news/allgemein/kira-marie-cremer-das-wichtigste-ist-mehr-ins-tun-zu-kommen-183473/",
-    "excerpt": "Jobwechsel oder bleiben? Kira Marie Cremer, Autorin von 'Quit Your Job', im Personalwirtschaft-Interview über Entscheidungsfindung und den Neustart nach der Kündigung.",
-    "image": "/uploads/20241108_kiramariecremer-696x522.jpg"
-  },
-  {
-    "id": "2025-05-12-iba-online-generationenmanagement",
-    "title": "Generationenmanagement: So gelingt die Zusammenarbeit im Team",
-    "publication": "IBA Online",
-    "url": "https://www.iba-online.com/blog/generationenmanagement/",
-    "excerpt": "Expertin Kira Marie Cremer gibt Einblicke, wie Unternehmen eine erfolgreiche Zusammenarbeit über Generationengrenzen hinweg fördern können.",
     "image": "uploads/generation.webp"
   },
   {
@@ -48,12 +24,12 @@
     "image": "uploads/businessinsider.webp"
   },
   {
-    "id": "2025-05-13-linkedin-jobstart-guide",
-    "title": "Jobstart-Guide 2025 Deutschland: Hier haben Berufsanfänger:innen die größten Chancen",
-    "publication": "LinkedIn News DACH",
-    "url": "https://www.linkedin.com/pulse/jobstart-guide-2025-deutschland-hier-haben-berufsanf%C3%A4ngerinnen-cauje/?trackingId=V9T414A6R%2BGDsWgn7URrGg%3D%3D",
-    "excerpt": "LinkedIn's Jobstart-Guide 2025: Chancen für Berufsanfänger in wachsenden Branchen, Tätigkeitsbereichen und bei gefragten Jobtiteln.",
-    "image": "uploads/jobstart.png"
+    "id": "2025-05-15-horizont-corporate-influencing",
+    "title": "Corporate Influencing: Wie Unternehmen ihre Mitarbeiter zu Markenbotschaftern machen",
+    "publication": "Horizont",
+    "url": "https://www.horizont.net/marketing/kommentare/corporate-influencing-wie-unternehmen-ihre-mitarbeiter-zu-markenbotschaftern-machen-20230515.html",
+    "excerpt": "Kira Marie Cremer über die Chancen und Herausforderungen von Corporate Influencing Programmen.",
+    "image": "uploads/horizint.jpeg"
   },
   {
     "id": "2025-05-14-businessinsider-generation-orientierungslos",
@@ -64,19 +40,43 @@
     "image": "uploads/businessinsider.webp"
   },
   {
-    "id": "2025-05-15-horizont-corporate-influencing",
-    "title": "Corporate Influencing: Wie Unternehmen ihre Mitarbeiter zu Markenbotschaftern machen",
-    "publication": "Horizont",
-    "url": "https://www.horizont.net/marketing/kommentare/corporate-influencing-wie-unternehmen-ihre-mitarbeiter-zu-markenbotschaftern-machen-20230515.html",
-    "excerpt": "Kira Marie Cremer über die Chancen und Herausforderungen von Corporate Influencing Programmen.",
-    "image": "uploads/horizint.jpeg"
+    "id": "2025-05-12-iba-online-generationenmanagement",
+    "title": "Generationenmanagement: So gelingt die Zusammenarbeit im Team",
+    "publication": "IBA Online",
+    "url": "https://www.iba-online.com/blog/generationenmanagement/",
+    "excerpt": "Expertin Kira Marie Cremer gibt Einblicke, wie Unternehmen eine erfolgreiche Zusammenarbeit über Generationengrenzen hinweg fördern können.",
+    "image": "uploads/generation.webp"
   },
   {
-    "id": "2025-05-16-ntv-work-life-blending",
-    "title": "Expertin zu Work-Life-Blending: Welche Vorteile hat Verschmelzung von Beruf und Hobby?",
-    "publication": "n-tv.de",
-    "url": "https://www.n-tv.de/mediathek/videos/wirtschaft/Welche-Vorteile-hat-Verschmelzung-von-Beruf-und-Hobby-article24029406.html",
-    "excerpt": "Work-Life-Balance ist out, Work-Life-Blending ist in. New-Work-Expertin Kira Marie Cremer erklärt die Vorteile des neuen Konzepts im ntv-Interview.",
-    "image": "/uploads/ntvbild.png"
+    "id": "2025-05-13-linkedin-jobstart-guide",
+    "title": "Jobstart-Guide 2025 Deutschland: Hier haben Berufsanfänger:innen die größten Chancen",
+    "publication": "LinkedIn News DACH",
+    "url": "https://www.linkedin.com/pulse/jobstart-guide-2025-deutschland-hier-haben-berufsanf%C3%A4ngerinnen-cauje/?trackingId=V9T414A6R%2BGDsWgn7URrGg%3D%3D",
+    "excerpt": "LinkedIn's Jobstart-Guide 2025: Chancen für Berufsanfänger in wachsenden Branchen, Tätigkeitsbereichen und bei gefragten Jobtiteln.",
+    "image": "uploads/jobstart.png"
+  },
+  {
+    "id": "2025-05-09-nwx-speaker-kira-marie-cremer",
+    "title": "Kira Marie Cremer - New Work Experience",
+    "publication": "NWX (New Work Experience)",
+    "url": "https://nwx.new-work.se/events/nwx23/speaker/kira-marie-cremer",
+    "excerpt": "Kira Marie Cremer, Gründerin von QUINGS und LinkedIn Coach, ist Host des Podcasts 'New Work Now' und eine bekannte New Work Stimme.",
+    "image": "uploads/nwn.png"
+  },
+  {
+    "id": "2025-05-11-personalwirtschaft-ins-tun-kommen",
+    "title": "Kira Marie Cremer: „Das Wichtigste ist, mehr ins Tun zu kommen“",
+    "publication": "Personalwirtschaft",
+    "url": "https://www.personalwirtschaft.de/news/allgemein/kira-marie-cremer-das-wichtigste-ist-mehr-ins-tun-zu-kommen-183473/",
+    "excerpt": "Jobwechsel oder bleiben? Kira Marie Cremer, Autorin von 'Quit Your Job', im Personalwirtschaft-Interview über Entscheidungsfindung und den Neustart nach der Kündigung.",
+    "image": "/uploads/20241108_kiramariecremer-696x522.jpg"
+  },
+  {
+    "id": "2025-05-10-youtube-glowcast-work-smarter",
+    "title": "WORK SMARTER, NOT HARDER - mit Kira Marie Cremer | GLOWCAST",
+    "publication": "YouTube (GLOWCAST)",
+    "url": "https://www.youtube.com/watch?v=abcdef12345",
+    "excerpt": "Kira Marie Cremer teilt im GLOWCAST ihre besten Tipps für effizienteres Arbeiten und eine bessere Work-Life-Balance.",
+    "image": "uploads/neu.png"
   }
 ]

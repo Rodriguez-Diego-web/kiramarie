@@ -90,6 +90,21 @@ async function generatePressData() {
       console.log('');
     }
 
+    // Sort articles: NTV first, then alphabetically by title
+    articles.sort((a, b) => {
+      const isANtv = a.publication === 'n-tv.de';
+      const isBNtv = b.publication === 'n-tv.de';
+
+      if (isANtv && !isBNtv) {
+        return -1; // a comes first
+      }
+      if (!isANtv && isBNtv) {
+        return 1; // b comes first
+      }
+      // If both are NTV or neither are NTV, sort by title
+      return a.title.localeCompare(b.title);
+    });
+
     await fs.writeJson(outputFile, articles, { spaces: 2 });
     console.log(`✅ Successfully generated ${articles.length} press articles to ${outputFile}`);
 
