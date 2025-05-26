@@ -258,8 +258,11 @@ const LoadMoreButton = styled.button`
 `;
 
 const FunkeFeedPage: React.FC = () => {
-  const [episodes, setEpisodes] = useState<Episode[]>([]);
+  const [allEpisodes, setAllEpisodes] = useState<Episode[]>([]);
+  const [visibleEpisodes, setVisibleEpisodes] = useState<Episode[]>([]);
+  const [visibleCount, setVisibleCount] = useState(4); // Anfangs 4 Episoden anzeigen
 
+  // Lade alle Episoden
   useEffect(() => {
     fetch('/data/podcastEpisodes.json')
       .then(response => {
@@ -269,12 +272,21 @@ const FunkeFeedPage: React.FC = () => {
         return response.json();
       })
       .then((data: { all_episodes: Episode[] }) => {
-        setEpisodes(data.all_episodes);
+        setAllEpisodes(data.all_episodes);
+        // Setze initial die ersten 4 Episoden als sichtbar
+        setVisibleEpisodes(data.all_episodes.slice(0, visibleCount));
       })
       .catch(error => {
         console.error("Could not fetch podcast episodes:", error);
       });
-  }, []);
+  }, [visibleCount]); // visibleCount als Abhängigkeit hinzufügen
+  
+  // Mehr Episoden laden, wenn der Button geklickt wird
+  const loadMoreEpisodes = () => {
+    const newVisibleCount = visibleCount + 4;
+    setVisibleCount(newVisibleCount);
+    setVisibleEpisodes(allEpisodes.slice(0, newVisibleCount));
+  };
 
   return (
     <>
@@ -298,7 +310,7 @@ const FunkeFeedPage: React.FC = () => {
       <LatestEpisodesSection>
         <SectionTitle>Neueste Folgen</SectionTitle>
         <ContentWrapper>
-          {episodes.map(episode => (
+          {visibleEpisodes.map((episode: Episode) => (
             <React.Fragment key={episode.id}>
               <EpisodeCardWrapper>
                 <EpisodeImage src={episode.imageUrl} alt={episode.altText} />
@@ -322,8 +334,8 @@ const FunkeFeedPage: React.FC = () => {
               <StyledDivider />
             </React.Fragment>
           ))}
-          {episodes.length > 0 && (
-            <LoadMoreButton>MEHR LADEN</LoadMoreButton>
+          {visibleEpisodes.length < allEpisodes.length && (
+            <LoadMoreButton onClick={loadMoreEpisodes}>MEHR LADEN</LoadMoreButton>
           )}
         </ContentWrapper>
       </LatestEpisodesSection>
