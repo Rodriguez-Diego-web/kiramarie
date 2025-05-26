@@ -36,10 +36,8 @@ async function generateSocialDisplayData() {
       return;
     }
 
-    // Filter to only keep LinkedIn and Instagram
-    const filteredPlatforms = sourceData.platforms.filter(platform => 
-      platform.name === 'LinkedIn' || platform.name === 'Instagram'
-    );
+    // Behalte alle Plattformen (LinkedIn, Instagram und Spotify)
+    const filteredPlatforms = sourceData.platforms;
     
     // Create the display data with both formatted strings and raw counts
     const displayData = filteredPlatforms.map(platform => ({
