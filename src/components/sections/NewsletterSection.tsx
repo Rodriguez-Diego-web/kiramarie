@@ -58,27 +58,32 @@ const ContentContainer = styled.div`
 `;
 
 const KingdomTitle = styled.h3`
-  font-family: 'Kingdom', serif;
-  font-size: 3.5rem;
-  font-weight: bold;
+  font-family: 'Kingdom', sans-serif;
+  font-size: 4rem;
+  font-weight: normal;
   color: #000000;
   position: absolute;
-  top: -20px;
-  right: 150px; /* Weiter nach links positioniert (right mit höherem Wert) */
+  top: -30px;
+  right: 80px;
   z-index: 5;
   margin: 0;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Leichter Schatten für mehr Tiefe */
+  padding: 0 15px;
+  display: inline-block;
+  background-color: #ffe83c; /* Gelber Hintergrund wie bei 'PODCAST: NEW WORK NOW' Button */
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.1); /* Leichter Schatten für den Kasten */
+  transform: rotate(-2deg); /* Leicht gedreht für einen dynamischen Look */
   
   @media (max-width: 991px) {
-    font-size: 3rem;
-    top: -15px;
-    right: 100px;
+    font-size: 3.5rem;
+    top: -25px;
+    right: 60px;
   }
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
-    top: -10px;
-    right: 50px;
+    top: -20px;
+    right: 40px;
+    padding: 0 10px;
   }
 `;
 
