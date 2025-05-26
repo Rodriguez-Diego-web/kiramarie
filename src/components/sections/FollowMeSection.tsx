@@ -158,8 +158,8 @@ const baseSocialPlatforms: SocialPlatform[] = [
     name: 'Spotify', 
     icon: <FaSpotify />, 
     url: '#', 
-    followers: '2.500', 
-    followersNumber: 2500, 
+    followers: '2.600', 
+    followersNumber: 2600, 
     buttonText: 'ZUM PODCAST'
   }
 ];
