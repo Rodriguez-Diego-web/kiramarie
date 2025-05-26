@@ -75,9 +75,9 @@ const KingdomTitle = styled.h3`
     content: '';
     position: absolute;
     left: 0;
-    bottom: 25%; /* Startet bei 25% von unten */
-    width: 100%;
-    height: 50%; /* Nimmt nur 50% der Höhe ein */
+    bottom: 15%; /* Startet bei 25% von unten */
+    width: 110%;
+    height: 35%; /* Nimmt nur 50% der Höhe ein */
     background-color: #86a4fd; /* Blaue Farbe wie beim SPEAKINGS Button */
     z-index: -1;
   }
