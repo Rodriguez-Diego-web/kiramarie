@@ -68,28 +68,21 @@ async function generatePressData() {
         .map(word => word.charAt(0).toUpperCase() + word.slice(1)) 
         .join(' ');                            
 
-      const fileStats = await fs.stat(filePath);
-      const defaultDate = fileStats.birthtime.toISOString().split('T')[0];
-
       const article = {
         id: mdFile.replace(/\.md$/, ''),             
         title: data.title || defaultTitle,           
         publication: data.publication || 'Unbekannte Quelle',  
-        date: data.date || defaultDate,              
         url: data.url || '#',                        
         excerpt: data.excerpt || (content.trim() ? content.substring(0, 150) + (content.length > 150 ? '...' : '') : 'Kein Auszug verfügbar'), 
         image: data.image || null
       };
 
-      console.log(`➕ Adding article: ${article.title} (${article.date})`);
+      console.log(`➕ Adding article: ${article.title}`);
       
       if (!data.title) warnings.push(`Used filename-based title for ${mdFile} because no title field found in frontmatter`);
-      if (!data.date) warnings.push(`Used file creation date for ${mdFile} because no date field found in frontmatter`);
 
       articles.push(article);
     }
-
-    articles.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     if (warnings.length > 0) {
       console.log('\n⚠️ Warnings:');

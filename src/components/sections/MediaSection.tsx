@@ -96,7 +96,6 @@ interface PressArticle {
   id: string;
   title: string;
   publication: string;
-  date: string; 
   url: string;
   excerpt: string;
   image?: string | null; 
@@ -113,7 +112,6 @@ const MediaSection: React.FC = () => {
     const transformedArticles: MediaItem[] = (pressArticlesData as PressArticle[]).map(article => ({
       id: article.id,
       tag: article.tag || 'Presse', 
-      date: new Date(article.date).toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' }), 
       source: article.publication, 
       image: article.image || placeholderImage, 
       title: article.title,

@@ -1,8 +1,7 @@
 ---
-title: "Generationenmanagement im Büro: 5 Fragen an Kira Marie Cremer"
+title: "Generationenmanagement: So gelingt die Zusammenarbeit im Team"
 publication: "IBA Online"
-date: "2025-05-12"
-url: "https://iba.online/newsroom/perspektiven/generationenmanagement-im-buero-5-fragen-an-kira-marie-cremer/"
-excerpt: "Generationenmanagement im Büro: Kira Marie Cremer im IBA Online Interview über die Bedürfnisse verschiedener Arbeitnehmergenerationen und erfolgreiches Management."
+url: "https://www.iba-online.com/blog/generationenmanagement/"
+excerpt: "Expertin Kira Marie Cremer gibt Einblicke, wie Unternehmen eine erfolgreiche Zusammenarbeit über Generationengrenzen hinweg fördern können."
 image: uploads/generation.webp
 ---

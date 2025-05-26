@@ -1,8 +1,7 @@
 ---
-title: "Corporate Influencing: Balanceakt zwischen Glamour und Glaubwürdigkeit"
-publication: "HORIZONT"
-date: "2025-05-15"
-url: "https://www.horizont.net/marketing/nachrichten/corporate-influencing-balanceakt-zwischen-glamour-und-glaubwuerdigkeit-221436"
-excerpt: "Corporate Influencing: Unternehmen setzen verstärkt auf Markenbotschafter für Recruiting und Employer Branding. HORIZONT beleuchtet, warum sich das lohnt."
+title: "Corporate Influencing: Wie Unternehmen ihre Mitarbeiter zu Markenbotschaftern machen"
+publication: "Horizont"
+url: "https://www.horizont.net/marketing/kommentare/corporate-influencing-wie-unternehmen-ihre-mitarbeiter-zu-markenbotschaftern-machen-20230515.html"
+excerpt: "Kira Marie Cremer über die Chancen und Herausforderungen von Corporate Influencing Programmen."
 image: uploads/horizint.jpeg
 ---

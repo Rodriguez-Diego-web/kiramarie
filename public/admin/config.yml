@@ -52,7 +52,6 @@ collections:
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Publikation", name: "publication", widget: "string" }
-      - { label: "Veröffentlichungsdatum", name: "date", widget: "date" }
       - { label: "Link zum Artikel", name: "url", widget: "string" }
       - { label: "Auszug/Zitat", name: "excerpt", widget: "markdown" }
       - { label: "Bild (optional)", name: "image", widget: "image", optional: true }

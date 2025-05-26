@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 export interface MediaItem {
   id: string; 
   tag: string;
-  date: string;
   source: string;
   image: string; 
   title: string;
@@ -126,7 +125,7 @@ const MediaCard: React.FC<MediaCardProps> = ({ item }) => {
       </ImageContainer>
       <ContentArea>
         <Tag>{item.tag}</Tag>
-        <MetaInfo>{item.date} - {item.source}</MetaInfo>
+        <MetaInfo>{item.source}</MetaInfo>
         <CardTitle>{item.title}</CardTitle>
         <CardDescription>{item.description}</CardDescription>
         <ReadMoreButton href={item.link} target="_blank" rel="noopener noreferrer" whileHover={{ y: -2 }}>

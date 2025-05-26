@@ -1,7 +1,6 @@
 ---
-title: "„So hab' ich meine Depression besiegt“: New Work-Expertin Kira Marie Cremer | AUF & UP #043"
-publication: "AUF & UP (YouTube)"
-date: "2025-05-08"
-url: "https://www.youtube.com/watch?v=UXNL0Sl78js"
-excerpt: "New Work-Expertin Kira Marie Cremer spricht im AUF & UP Podcast darüber, wie sie ihre Depression überwunden hat und teilt ihre Erfahrungen."
+title: "AUF UND UP - Depression besiegt, Leben gemeistert | Kira Marie Cremer"
+publication: "YouTube (René Träder)"
+url: "https://www.youtube.com/watch?v=6_04u_q_XyI"
+excerpt: "Kira Marie Cremer spricht mit René Träder über ihren Weg aus der Depression und wie sie ihr Leben gemeistert hat."
 image: uploads/generation.webp
