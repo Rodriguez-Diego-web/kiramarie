@@ -196,6 +196,10 @@ const DesktopMenu = styled.ul`
   gap: 1.5rem;
   list-style: none;
   padding: 0;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const MenuItem = styled.li`
