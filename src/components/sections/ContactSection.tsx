@@ -101,7 +101,7 @@ const ContactSection: React.FC = () => {
       <SectionTitle>Kontakt</SectionTitle>
       <ContentContainer>
         <ContactText>
-          Ob Anfrage, Idee oder einfach nur ein Hallo – ich freue mich auf deine Nachricht.
+          Ob Anfrage, Idee oder einfach nur ein Hallo - <br />Ich freue mich auf deine Nachricht.
         </ContactText>
         <ContactButton href="mailto:HI@KIRAMARIECREMER.DE">
           HI@KIRAMARIECREMER.DE
