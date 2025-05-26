@@ -37,10 +37,10 @@ collections:
             name: "platforms"
             widget: "list"
             summary: "{{fields.name}}: {{fields.count}}"
-            min: 2
-            max: 2
+            min: 3
+            max: 3
             fields:
-              - { label: "Name", name: "name", widget: "select", options: ["LinkedIn", "Instagram"], default: "LinkedIn" }
+              - { label: "Name", name: "name", widget: "select", options: ["LinkedIn", "Instagram", "Spotify"], default: "LinkedIn" }
               - { label: "Follower Anzahl", name: "count", widget: "number" }
               - { label: "Profil URL", name: "url", widget: "string" }
 

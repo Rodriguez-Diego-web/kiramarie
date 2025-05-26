@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, useInView } from 'framer-motion';
-import { FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaLinkedin, FaInstagram, FaSpotify } from 'react-icons/fa';
 import CountUp from 'react-countup';
 
 const FollowMeSectionWrapper = styled.section`
@@ -45,16 +45,16 @@ const ContentWrapper = styled.div`
 
 const SocialLinksGrid = styled(motion.div)`
   display: grid;
-  grid-template-columns: 1fr 1px 1fr; 
+  grid-template-columns: 1fr 1px 1fr 1px 1fr; 
   gap: 0;
   justify-items: center;
   align-items: center;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1px auto;
+    grid-template-rows: auto 1px auto 1px auto; 
     gap: 30px;
   }
 `;
@@ -142,17 +142,25 @@ const baseSocialPlatforms: SocialPlatform[] = [
     name: 'LinkedIn', 
     icon: <FaLinkedin />, 
     url: 'https://de.linkedin.com/in/kiramariecremer', 
-    followers: '11.500', 
-    followersNumber: 11500, 
+    followers: '52.000', 
+    followersNumber: 52000, 
     buttonText: 'ZUM PROFIL'
   },
   { 
     name: 'Instagram', 
     icon: <FaInstagram />, 
     url: 'https://www.instagram.com/kiramariecremer/', 
-    followers: '52.000', 
-    followersNumber: 52000, 
+    followers: '11.500', 
+    followersNumber: 11500, 
     buttonText: 'ZUM PROFIL'
+  },
+  { 
+    name: 'Spotify', 
+    icon: <FaSpotify />, 
+    url: '#', 
+    followers: '2.500', 
+    followersNumber: 2500, 
+    buttonText: 'ZUM PODCAST'
   }
 ];
 
@@ -200,6 +208,7 @@ const FollowMeSection: React.FC = () => {
               ...platform,
               followers: foundData.followersDisplayString || platform.followers,
               followersNumber: foundData.rawCount || extractNumber(foundData.followersDisplayString) || platform.followersNumber,
+              url: foundData.url || platform.url,
             };
           }
           return platform;
@@ -228,32 +237,24 @@ const FollowMeSection: React.FC = () => {
               <React.Fragment key={platform.name}>
                 <PlatformContainer
                   initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                  animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: index * 0.2 + 0.5 }}
                 >
                   <PlatformIcon>{platform.icon}</PlatformIcon>
-                  {platform.followersNumber !== undefined && (
-                    <FollowerCount>
-                       + {isInView ? (
-                         <CountUp 
-                           start={0} 
-                           end={platform.followersNumber} 
-                           duration={2.5} 
-                           separator="." 
-                           decimal=","
-                           useEasing={true}
-                           delay={0.3}
-                         />
-                       ) : (
-                         "0"
-                       )}
-                    </FollowerCount>
-                  )}
+                  <FollowerCount>
+                    {hasAnimated && platform.followersNumber ? (
+                      <CountUp end={platform.followersNumber} duration={2.5} separator="." decimal="," />
+                    ) : (
+                      platform.followersNumber ? platform.followersNumber.toLocaleString('de-DE') : 'N/A'
+                    )}
+                  </FollowerCount>
                   <ProfileButton href={platform.url} target="_blank" rel="noopener noreferrer">
                     {platform.buttonText}
                   </ProfileButton>
                 </PlatformContainer>
-                {index < socialPlatformData.length - 1 && <VerticalDivider />}
+                {index < socialPlatformData.length - 1 && (
+                  <VerticalDivider />
+                )}
               </React.Fragment>
             ))}
           </SocialLinksGrid>
