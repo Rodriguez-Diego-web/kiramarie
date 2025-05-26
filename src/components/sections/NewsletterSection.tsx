@@ -59,24 +59,26 @@ const ContentContainer = styled.div`
 
 const KingdomTitle = styled.h3`
   font-family: 'Kingdom', serif;
-  font-size: 3rem;
-  font-weight: normal;
+  font-size: 3.5rem;
+  font-weight: bold;
   color: #000000;
   position: absolute;
   top: -20px;
-  right: 40px;
+  right: 150px; /* Weiter nach links positioniert (right mit höherem Wert) */
   z-index: 5;
   margin: 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Leichter Schatten für mehr Tiefe */
   
   @media (max-width: 991px) {
-    font-size: 2.5rem;
+    font-size: 3rem;
     top: -15px;
-    right: 20px;
+    right: 100px;
   }
   
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 2.5rem;
     top: -10px;
+    right: 50px;
   }
 `;
 
