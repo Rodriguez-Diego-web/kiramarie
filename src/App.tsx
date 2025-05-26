@@ -19,9 +19,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/kooperationen/funke-feed" element={<FunkeFeedPage />} /> */}
-          <Route path="/funke-rss" element={<FunkeFeedPage />} /> {/* Changed element to FunkeFeedPage */}
-          {/* Add more routes as needed */}
+          <Route path="/funke-rss" element={<FunkeFeedPage />} />
         </Routes>
         <ScrollToTopButton />
         <Footer />

@@ -19,21 +19,21 @@ const SectionsWithDiagonalWrapper = styled.div`
 const SharedDiagonalLine = styled.div`
   position: absolute;
   background-color: transparent;
-  height: 200px; /* Reduziert von 400px für einen dünneren Balken */
+  height: 200px;
   width: 250%;
   transform: rotate(-20deg);
   left: -75%;
-  top: 30%; /* Angepasst, damit der dünnere Balken besser positioniert ist */
+  top: 30%;
   z-index: 1;
   pointer-events: none;
 
   @media (max-width: 991px) {
-    height: 180px; /* Reduziert von 350px */
+    height: 180px;
     top: 32%;
     transform: rotate(-22deg);
   }
   @media (max-width: 767px) {
-    height: 150px; /* Reduziert von 300px */
+    height: 150px;
     top: 35%;
     transform: rotate(-24deg);
   }
@@ -59,18 +59,16 @@ const Home: React.FC = () => {
         return response.json();
       })
       .then(data => setSeoData(data))
-      .catch(error => console.error('Error loading SEO data:', error));
+      .catch(error => {});
   }, []);
   
   return (
     <HomeContainer>
       <Helmet>
-        {/* Dynamisch aus dem CMS-generierten SEO-Daten */}
         <title>{seoData.title}</title>
         <meta name="description" content={seoData.description} />
         
-        {/* Open Graph Tags */}
-        <meta property="og:title" content={seoData.title.split(' | ')[0]} /> {/* Nur den ersten Teil des Titels für OG */}
+        <meta property="og:title" content={seoData.title.split(' | ')[0]} />
         <meta property="og:description" content={seoData.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.kiramarie.app/" />
@@ -78,16 +76,11 @@ const Home: React.FC = () => {
         <meta property="og:image" content={`https://www.kiramarie.app${seoData.og_image}`} />
         <meta property="og:site_name" content="Kira Marie" />
 
-        {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoData.title.split(' | ')[0]} />
         <meta name="twitter:description" content={seoData.description} />
         <meta name="twitter:image" content={`https://www.kiramarie.app${seoData.og_image}`} />
-        {/* <meta name="twitter:site" content="@DeinTwitterHandle" /> Falls vorhanden */}
-        {/* <meta name="twitter:creator" content="@DeinTwitterHandle" /> Falls vorhanden */}
         
-        {/* Strukturierte Daten (JSON-LD) */}
-        {/* Strukturierte Daten für Person Schema - später ergänzen mit image und description */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

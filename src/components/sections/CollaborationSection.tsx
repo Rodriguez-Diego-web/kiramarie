@@ -2,12 +2,11 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
-// Vereinfachte Datenstruktur für die Karten
 interface CollaborationCardData {
   imageSrc: string;
   buttonText: string;
   link: string;
-  buttonColor: string; // Neue Eigenschaft für die Button-Farbe
+  buttonColor: string;
 }
 
 const SectionContainer = styled.section`
@@ -64,11 +63,11 @@ const SectionTitle = styled(motion.h2)`
   font-weight: normal; 
   margin-top: 0; 
   margin-bottom: 30px; 
-  color: rgb(0, 0, 0); /* Default (Desktop): BLACK */
+  color: rgb(0, 0, 0); 
   position: relative; 
   display: inline-block; 
   z-index: 0; 
-  padding-top: 30px; /* Desktop padding-top */
+  padding-top: 30px; 
   padding-left: 0; 
   padding-right: 0; 
   
@@ -77,27 +76,26 @@ const SectionTitle = styled(motion.h2)`
     padding-left: 0; 
     padding-right: 0; 
     padding-top: 0px; 
-    color:rgb(0, 0, 0); /* Mobile: WHITE for visibility */
+    color:rgb(0, 0, 0);
   }
 
   @media (max-width: 480px) {
     font-size: 2rem; 
     padding-top: 10px; 
-    transform: translateY(-130px); /* Shift title block upwards */
-    /* color is inherited */
+    transform: translateY(-130px); 
   }
 `;
 
 const NewTitleBackground = styled(motion.div)`
   position: absolute;
-  background-color: #e6dfd7; /* Komplett weiß */
+  background-color: #e6dfd7; 
   height: 45px; 
   width: 100%; 
-  z-index: 1; /* Extrem hoher z-index */
+  z-index: 1; 
   top: 0; 
   left: 50%; 
   transform: translateX(-50%); 
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Leichter Schatten für Tiefe */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
   
   @media (max-width: 767px) {
     height: 20px; 
@@ -202,7 +200,6 @@ const ActionButton = styled.a<{ buttonColor?: string }>`
   }
 `;
 
-// Verschiedene Animation-Varianten für ein natürlicheres Gesamtbild
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
@@ -229,12 +226,10 @@ const CollaborationSection: React.FC = () => {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   
-  // useInView für verschiedene Elemente mit viel späteren Triggerpunkten
-  const titleInView = useInView(titleRef, { once: true, amount: 0.6 }); // Erst bei 60% Sichtbarkeit
-  const subtitleInView = useInView(subtitleRef, { once: true, amount: 0.7 }); // Erst bei 70% Sichtbarkeit
-  const gridInView = useInView(gridRef, { once: true, amount: 0.4 }); // Erst bei 40% Sichtbarkeit
+  const titleInView = useInView(titleRef, { once: true, amount: 0.6 }); 
+  const subtitleInView = useInView(subtitleRef, { once: true, amount: 0.7 }); 
+  const gridInView = useInView(gridRef, { once: true, amount: 0.4 }); 
   
-  // Scroll-basierte Parallax-Animation
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start']
@@ -265,7 +260,7 @@ const CollaborationSection: React.FC = () => {
     {
       imageSrc: '/images/mediakit.JPG', 
       buttonText: 'MEDIAKIT-DOWNLOAD', 
-      link: '#', 
+      link: '/mediakit/mediakit.pdf', 
       buttonColor: '#cdafff' 
     }
   ];
@@ -291,7 +286,7 @@ const CollaborationSection: React.FC = () => {
         >
           <NewTitleBackground 
             style={{ 
-              opacity: titleInView ? 1 : 0, /* Keine Transparenz */
+              opacity: titleInView ? 1 : 0, 
               width: titleInView ? '100%' : '0%', 
               transition: 'opacity 0.7s ease-out, width 0.7s ease-out'
             }} 
@@ -309,7 +304,6 @@ const CollaborationSection: React.FC = () => {
       <GridBackground>
         <BoxesGrid ref={gridRef}>
           {boxesData.map((box, index) => {
-            // Wähle eine Animation basierend auf dem Index
             let animation;
             switch (index % 4) {
               case 0:
@@ -328,7 +322,6 @@ const CollaborationSection: React.FC = () => {
                 animation = fadeInUp;
             }
             
-            // Zufällige kleine Verzögerungen für natürlicheres Erscheinungsbild
             const randomDelay = 0.2 + (Math.random() * 0.3) + (index * 0.1);
             
             return (
@@ -341,7 +334,13 @@ const CollaborationSection: React.FC = () => {
               <CardImageWrapper>
                 <CardImage src={box.imageSrc} alt={box.buttonText} />
               </CardImageWrapper>
-              <ActionButton href={box.link} target="_blank" rel="noopener noreferrer" buttonColor={box.buttonColor}>
+              <ActionButton
+                href={box.link}
+                buttonColor={box.buttonColor}
+                target="_blank"
+                rel="noopener noreferrer"
+                {...(box.link === '/mediakit/mediakit.pdf' && { download: 'Mediakit_KiraMarieCremer.pdf' })}
+              >
                 {box.buttonText}
               </ActionButton>
             </BoxItem>

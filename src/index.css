@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* Lokale Montserrat Variable Font */
 @font-face {
   font-family: 'Montserrat';
   src: url('./assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype-variations');
-  font-weight: 100 900; /* Variable Font unterstützt alle Gewichte von 100 bis 900 */
+  font-weight: 100 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Kingdom';
-  src: url('./assets/fonts/Kingdom.otf') format('opentype'), /* Path relative to src/index.css */
-       url('./assets/fonts/Kingdom.ttf') format('truetype');   /* Path relative to src/index.css */
+  src: url('./assets/fonts/Kingdom.otf') format('opentype'),
+       url('./assets/fonts/Kingdom.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

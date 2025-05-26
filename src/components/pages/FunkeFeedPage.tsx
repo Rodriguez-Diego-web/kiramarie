@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-// Define the Episode interface
 interface Episode {
   id: string;
   title: string;
@@ -16,8 +15,8 @@ const PageContainer = styled.div`
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  color: #333; // Assuming a dark text color on a light background
-  text-align: center; /* Center content within PageContainer by default */
+  color: #333;
+  text-align: center;
 `;
 
 const IntroSection = styled.section`
@@ -26,7 +25,7 @@ const IntroSection = styled.section`
   gap: 10rem;
   margin-bottom: 3rem;
   margin-top: -2rem;
-  text-align: left; /* Reset text-align for children of IntroSection */
+  text-align: left;
   max-width: 1000px;
 
   @media (max-width: 768px) {
@@ -37,12 +36,12 @@ const IntroSection = styled.section`
 
 const TextColumn = styled.div`
   flex: 1;
-  max-width: 600px; 
+  max-width: 600px;
 `;
 
 const ImageColumn = styled.div`
-  flex: 0 0 80%; // Adjust percentage as needed for image size
-  max-width: 450px; // Max width for the image container
+  flex: 0 0 80%;
+  max-width: 450px;
   img {
     width: 100%;
     height: auto;
@@ -58,24 +57,24 @@ const ImageColumn = styled.div`
 `;
 
 const MainTitle = styled.h1`
-  font-size: 4rem; // Adjust as needed
-  font-family: var(--heading-font); /* Added */
-  font-weight: normal; /* Kingdom font might have its own weight, adjust if needed */
-  margin-bottom: 1.5rem; /* Reduced margin-bottom as it's now a main section title */
+  font-size: 4rem;
+  font-family: var(--heading-font);
+  font-weight: normal;
+  margin-bottom: 1.5rem;
   position: relative;
-  display: inline-block; /* Keep inline-block for the highlight effect */
+  display: inline-block;
   z-index: 0;
-  margin-top: 6rem; /* Add some space above the title */
-  margin-bottom: .5rem; /* Add space below title, before columns */
+  margin-top: 6rem;
+  margin-bottom: .5rem;
 
   &::after {
     content: '';
     position: absolute;
-    bottom: 5px; // Adjust position of highlight
+    bottom: 5px;
     left: 0;
-    height: 40px; // Height of the highlight
-    width: 125%;
-    background-color: #FFD700; // Yellow color for highlight
+    height: 40px;
+    width: 100%;
+    background-color: #FFD700;
     z-index: -1;
     opacity: 0.8;
   }
@@ -89,21 +88,21 @@ const MainTitle = styled.h1`
 
 const Paragraph = styled.p`
   font-size: 1rem;
-  font-family: var(--body-font); /* Added */
+  font-family: var(--body-font);
   line-height: 1.6;
   margin-bottom: 1rem;
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 1000px; // Consistent with IntroSection max-width
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 2rem; // Standard horizontal padding
+  padding: 0 2rem;
 `;
 
 const LatestEpisodesSection = styled.section`
-  background-color: #f7f4f1; // Beige background
-  padding: 2rem 0 4rem 0; // Adjusted top padding from 4rem to 2rem
-  width: 100%; // Ensure it spans full width
+  background-color: #f7f4f1;
+  padding: 2rem 0 4rem 0;
+  width: 100%;
 `;
 
 const SectionTitle = styled.h2`
@@ -111,8 +110,8 @@ const SectionTitle = styled.h2`
   font-family: var(--heading-font);
   font-weight: normal;
   text-align: center;
-  margin-bottom: 2.5rem; // Space below title, before first episode card (ContentWrapper)
-  margin-top: -60px; // Title will be 2rem from top of beige due to LatestEpisodesSection padding-top
+  margin-bottom: 2.5rem;
+  margin-top: -60px;
   color: #333;
 
   @media (max-width: 768px) {
@@ -123,28 +122,27 @@ const SectionTitle = styled.h2`
 
 const EpisodeCardWrapper = styled.div`
   display: flex;
-  margin: 0 auto 2rem auto; 
-  max-width: 900px; 
+  margin: 0 auto 2rem auto;
+  max-width: 900px;
   text-align: left;
   gap: 2rem;
   flex-grow: 1;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
   }
 `;
 
 const EpisodeImage = styled.img`
-  width: 200px; 
+  width: 200px;
   height: 200px;
   object-fit: cover;
-  /* border-radius: 4px; */ // Removed for angular design
 
   @media (max-width: 768px) {
     width: 100%;
-    max-width: 250px;
+    max-width: 180px;
     height: auto;
     margin-bottom: 1rem;
   }
@@ -157,9 +155,9 @@ const EpisodeContent = styled.div`
 `;
 
 const EpisodeTitle = styled.h3`
-  font-family: var(--body-font); // Montserrat for episode titles
+  font-family: var(--body-font);
   font-size: 1.5rem;
-  font-weight: 700; // Bolder Montserrat, as in image
+  font-weight: 700;
   margin-bottom: 0.75rem;
   color: #333;
   line-height: 1.4;
@@ -179,18 +177,18 @@ const EpisodeDescription = styled.p`
   line-height: 1.5;
   color: #555;
   margin-bottom: 1.5rem;
-  flex-grow: 1; // Pushes button and icons to the bottom
+  flex-grow: 1;
 `;
 
 const ActionsContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 1.5rem; // Space between button and icon group
-  margin-top: auto; // Pushes this container to the bottom if EpisodeDescription doesn't fill space
+  gap: 1.5rem;
+  margin-top: auto;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
   }
 `;
@@ -198,23 +196,21 @@ const ActionsContainer = styled.div`
 const ListenButton = styled.button`
   font-family: var(--body-font);
   background-color: transparent;
-  color: #000; // Black text
-  border: 1px solid #000; // Thin black border
+  color: #000;
+  border: 1px solid #000;
   padding: 0.6rem 1.2rem;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: opacity 0.2s ease;
-  border-radius: 0; // Ensure angular
+  border-radius: 0;
 
   &:hover {
     opacity: 0.7;
-    /* background-color: #333; */ // Removed hover background change
-    /* color: #fff; */ // Removed hover text color change
   }
 
   @media (max-width: 768px) {
-    align-self: center;
+    align-self: flex-start;
   }
 `;
 
@@ -222,38 +218,39 @@ const PlatformIconsContainer = styled.div`
   display: flex;
   gap: 0.8rem;
   align-items: center;
-  img { // Style for the actual icon images
+  img {
     width: 30px;
     height: 30px;
     object-fit: contain;
   }
+
   @media (max-width: 768px) {
-    justify-content: center;
+    justify-content: flex-start;
   }
 `;
 
 const StyledDivider = styled.hr`
   border: 0;
   height: 2px;
-  background-color:rgb(98, 98, 98);
-  opacity: .5;
+  background-color: rgb(98, 98, 98);
+  opacity: 0.5;
   width: 75%;
   margin: 0 0 2rem 1rem;
 `;
 
 const LoadMoreButton = styled.button`
   font-family: var(--body-font);
-  background-color: #000; // Black background
-  color: #fff; // White text
-  border: 1px solid #000; // Black border (can be removed if redundant)
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
   padding: 0.8rem 3.5rem;
-  font-size: .5rem;
+  font-size: 0.5rem;
   font-weight: 500;
   cursor: pointer;
   transition: opacity 0.2s ease;
-  border-radius: 0; // Angular design
-  display: block; // To allow centering with margin auto
-  margin: 2rem auto; // Center the button, add space above
+  border-radius: 0;
+  display: block;
+  margin: 2rem auto;
 
   &:hover {
     opacity: 0.7;
@@ -264,7 +261,6 @@ const FunkeFeedPage: React.FC = () => {
   const [episodes, setEpisodes] = useState<Episode[]>([]);
 
   useEffect(() => {
-    // Fetch data from the public folder
     fetch('/data/podcastEpisodes.json')
       .then(response => {
         if (!response.ok) {
@@ -272,8 +268,8 @@ const FunkeFeedPage: React.FC = () => {
         }
         return response.json();
       })
-      .then((data: { all_episodes: Episode[] }) => { // Expect an object with all_episodes key
-        setEpisodes(data.all_episodes); // Access the array via data.all_episodes
+      .then((data: { all_episodes: Episode[] }) => {
+        setEpisodes(data.all_episodes);
       })
       .catch(error => {
         console.error("Could not fetch podcast episodes:", error);
@@ -282,56 +278,55 @@ const FunkeFeedPage: React.FC = () => {
 
   return (
     <>
-    <PageContainer>
-      <MainTitle>New Work Now</MainTitle>
-      <IntroSection>
-        <ImageColumn>
-          <img src="/images/Podcast_Cover.jpeg" alt="New Work Now Podcast Artwork" />
-        </ImageColumn>
-        <TextColumn>
-          <Paragraph>
-            Die Arbeitswelt verändert sich rasant – und mittendrin: wir. New Work Now gibt Orientierung, Inspiration und konkrete Impulse für alle, die Arbeit neu denken wollen. Was bedeutet „New Work“ wirklich? Wie gelingt der Wandel in Unternehmen? Und was können wir selbst dazu beitragen?
-          </Paragraph>
-          <Paragraph>
-            Jede Woche spricht Host Kira Marie Cremer mit UnternehmerInnen, Kreativen und VordenkerInnen – über Herausforderungen, Best Practices und persönliche Aha-Momente. Immer dienstags, im Wechsel Interviews und kompakte Solo-Folgen mit Tipps und Denkanstößen.
-          </Paragraph>
-        </TextColumn>
-      </IntroSection>
-    </PageContainer>
+      <PageContainer>
+        <MainTitle>New Work Now</MainTitle>
+        <IntroSection>
+          <ImageColumn>
+            <img src="/images/Podcast_Cover.jpeg" alt="New Work Now Podcast Artwork" />
+          </ImageColumn>
+          <TextColumn>
+            <Paragraph>
+              Die Arbeitswelt verändert sich rasant – und mittendrin: wir. New Work Now gibt Orientierung, Inspiration und konkrete Impulse für alle, die Arbeit neu denken wollen. Was bedeutet „New Work“ wirklich? Wie gelingt der Wandel in Unternehmen? Und was können wir selbst dazu beitragen?
+            </Paragraph>
+            <Paragraph>
+              Jede Woche spricht Host Kira Marie Cremer mit UnternehmerInnen, Kreativen und VordenkerInnen – über Herausforderungen, Best Practices und persönliche Aha-Momente. Immer dienstags, im Wechsel Interviews und kompakte Solo-Folgen mit Tipps und Denkanstößen.
+            </Paragraph>
+          </TextColumn>
+        </IntroSection>
+      </PageContainer>
 
-    <LatestEpisodesSection>
-      <SectionTitle>Neueste Folgen</SectionTitle>
-      <ContentWrapper>
-        {episodes.map(episode => (
-          <React.Fragment key={episode.id}>
-            <EpisodeCardWrapper>
-              <EpisodeImage src={episode.imageUrl} alt={episode.altText} />
-              <EpisodeContent>
-                <EpisodeTitle>{episode.title}</EpisodeTitle>
-                <EpisodeMeta>{episode.date} | {episode.duration}</EpisodeMeta>
-                <EpisodeDescription>
-                  {episode.description}
-                </EpisodeDescription>
-                <ActionsContainer>
-                  <ListenButton>JETZT HÖREN +</ListenButton>
-                  <PlatformIconsContainer>
-                    <img src="/images/icons8-youtube-48.png" alt="YouTube" />
-                    <img src="/images/icons8-spotify-50.png" alt="Spotify" />
-                    <img src="/images/icons8-apple-music-50.png" alt="Apple Music" />
-                    <img src="/images/icons8-google-podcasts-50.png" alt="Google Podcasts" />
-                  </PlatformIconsContainer>
-                </ActionsContainer>
-              </EpisodeContent>
-            </EpisodeCardWrapper>
-            <StyledDivider />
-          </React.Fragment>
-        ))}
-        
-        {episodes.length > 0 && (
-          <LoadMoreButton>MEHR LADEN</LoadMoreButton>
-        )}
-      </ContentWrapper>
-    </LatestEpisodesSection>
+      <LatestEpisodesSection>
+        <SectionTitle>Neueste Folgen</SectionTitle>
+        <ContentWrapper>
+          {episodes.map(episode => (
+            <React.Fragment key={episode.id}>
+              <EpisodeCardWrapper>
+                <EpisodeImage src={episode.imageUrl} alt={episode.altText} />
+                <EpisodeContent>
+                  <EpisodeTitle>{episode.title}</EpisodeTitle>
+                  <EpisodeMeta>{episode.date} | {episode.duration}</EpisodeMeta>
+                  <EpisodeDescription>
+                    {episode.description}
+                  </EpisodeDescription>
+                  <ActionsContainer>
+                    <ListenButton>JETZT HÖREN +</ListenButton>
+                    <PlatformIconsContainer>
+                      <img src="/images/icons8-youtube-48.png" alt="YouTube" />
+                      <img src="/images/icons8-spotify-50.png" alt="Spotify" />
+                      <img src="/images/icons8-apple-music-50.png" alt="Apple Music" />
+                      <img src="/images/icons8-google-podcasts-50.png" alt="Google Podcasts" />
+                    </PlatformIconsContainer>
+                  </ActionsContainer>
+                </EpisodeContent>
+              </EpisodeCardWrapper>
+              <StyledDivider />
+            </React.Fragment>
+          ))}
+          {episodes.length > 0 && (
+            <LoadMoreButton>MEHR LADEN</LoadMoreButton>
+          )}
+        </ContentWrapper>
+      </LatestEpisodesSection>
     </>
   );
 };

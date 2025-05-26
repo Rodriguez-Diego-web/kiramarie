@@ -2,6 +2,13 @@ import React, { useState, useRef, useEffect, memo, useMemo } from 'react';
 import styled from 'styled-components';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
+const DESKTOP_VIDEO_ID = 'hvcr7Tt-coE';
+const MOBILE_VIDEO_ID = '7336JPwjjJE';
+const MOBILE_BREAKPOINT = 768;
+
+const getYouTubeEmbedUrl = (videoId: string) =>
+  `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&vq=hd2160&hd=1`;
+
 interface PartnerLogo {
   name: string;
   image: string;
@@ -22,6 +29,28 @@ const HeroSection: React.FC = () => {
   const videoRef = useRef<HTMLIFrameElement>(null);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   const [partnerLogos, setPartnerLogos] = useState<PartnerLogo[]>([]);
+  const [currentVideoSrc, setCurrentVideoSrc] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < MOBILE_BREAKPOINT 
+        ? getYouTubeEmbedUrl(MOBILE_VIDEO_ID) 
+        : getYouTubeEmbedUrl(DESKTOP_VIDEO_ID);
+    }
+    return getYouTubeEmbedUrl(DESKTOP_VIDEO_ID); 
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newSrc = window.innerWidth < MOBILE_BREAKPOINT 
+        ? getYouTubeEmbedUrl(MOBILE_VIDEO_ID) 
+        : getYouTubeEmbedUrl(DESKTOP_VIDEO_ID);
+      setCurrentVideoSrc(prevSrc => prevSrc === newSrc ? prevSrc : newSrc);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     fetch('/data/partnerLogosData.json')
@@ -46,38 +75,16 @@ const HeroSection: React.FC = () => {
   useEffect(() => {
     const videoElement = videoRef.current;
     if (!videoElement) return;
-
-    // IntersectionObserver-Logik ist nicht direkt mit YouTube iframe kompatibel ohne API
-    // und wird vorerst auskommentiert, da Autoplay über URL-Parameter gesteuert wird.
-    /*
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // Für iframes kann man nicht einfach .play() aufrufen
-          // Man bräuchte die YouTube Iframe API, um das Video zu steuern
-          // videoElement.play().catch(() => {});
-        } else {
-          // videoElement.pause();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    
-    observer.observe(videoElement);
-    return () => {
-      if (videoElement) { // Sicherstellen, dass videoElement noch existiert
-        observer.unobserve(videoElement);
-      }
-    };
-    */
   }, []);
-  
+
   const floatingCircles = [
     { size: 180, top: '15%', left: '10%', color: '#cdaffd30', delay: 0.2 },
     { size: 250, top: '60%', left: '75%', color: '#cdaffd20', delay: 0.5 },
     { size: 120, top: '25%', left: '85%', color: '#cdaffd40', delay: 0.8 },
     { size: 100, top: '75%', left: '15%', color: '#cdaffd35', delay: 0.3 }
   ];
+  
+  const isShortVideo = currentVideoSrc.includes(MOBILE_VIDEO_ID);
   
   return (
     <HeroContainer>
@@ -88,8 +95,10 @@ const HeroSection: React.FC = () => {
         transition={{ duration: 1.5 }}
       >
         <StyledVideo
+          key={currentVideoSrc}
           ref={videoRef}
-          src={`https://www.youtube.com/embed/KiwTZquAzSw?autoplay=1&mute=1&loop=1&playlist=KiwTZquAzSw&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&vq=hd1080&hd=1&quality=highres`}
+          src={currentVideoSrc}
+          isShortVideo={isShortVideo}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -180,6 +189,11 @@ const HeroContainer = styled.section`
   justify-content: center;
   overflow: hidden;
   background-color: black;
+
+  @media (max-width: ${MOBILE_BREAKPOINT}px) {
+    height: 80vh; // Reduce height on mobile
+    min-height: 550px; // Reduce min-height on mobile
+  }
 `;
 
 const VideoContainer = styled(motion.div)`
@@ -192,32 +206,35 @@ const VideoContainer = styled(motion.div)`
   overflow: hidden;
 `;
 
-const StyledVideo = styled.iframe`
+const StyledVideo = styled.iframe<{ isShortVideo: boolean }>`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.01);
+  transform: ${({ isShortVideo }) =>
+    isShortVideo
+      ? 'translate(-50%, -50%) scale(1.1)' 
+      : 'translate(-50%, -50%) scale(1.1)'}; 
+  
+  min-height: ${({ isShortVideo }) => (isShortVideo ? 'auto' : '110%')};
+  
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: ${({ isShortVideo }) => (isShortVideo ? 'contain' : 'cover')};
   background-color: black;
-  /* Angepasste Größe für besseren Überblick */
   min-width: 110%;
   min-height: 110%;
   
   @media (max-width: 768px) {
-    transform: translate(-50%, -50%) scale(1.3); /* Minimaler Zoom für bessere Übersicht */
+    transform: translate(-50%, -50%) scale(1.1); 
     min-width: 120%;
     min-height: 120%;
   }
   
   @media (max-width: 480px) {
-    transform: translate(-50%, -50%) scale(1.5); /* Minimaler Zoom für bessere Übersicht */
-    min-width: 120%;
-    min-height: 120%;
+    transform: translate(-50%, -50%) scale(1.1); 
+    min-width: 100%;
+    min-height: 100%;
   }
-  object-fit: cover;
-  background-color: black;
   pointer-events: none;
 `;
 

@@ -26,13 +26,10 @@ const Header: React.FC = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const closeMenu = () => setIsOpen(false);
-  
-  // Handle navigation to section on homepage or navigate to homepage first
+
   const handleSectionNavigation = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
     closeMenu();
-    
-    // Use React Router's navigate function for proper routing
     navigate('/' + sectionId);
   };
 
@@ -70,7 +67,7 @@ const Header: React.FC = () => {
                 exit={{ opacity: 0, rotate: 90 }}
                 transition={{ duration: 0.3 }}
               >
-                <Icon icon={FiMenu} size={26} color="#333333" /> 
+                <Icon icon={FiMenu} size={26} color="#333333" />
               </motion.div>
             ) : (
               <motion.div
@@ -80,7 +77,7 @@ const Header: React.FC = () => {
                 exit={{ opacity: 0, rotate: -90 }}
                 transition={{ duration: 0.3 }}
               >
-                <Icon icon={FiX} size={26} color="#FFFFFF" /> {/* Changed to white for dark menu */}
+                <Icon icon={FiX} size={26} color="#FFFFFF" />
               </motion.div>
             )}
           </AnimatePresence>
@@ -93,14 +90,14 @@ const Header: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              onClick={closeMenu} 
+              onClick={closeMenu}
             >
               <MobileMenu
                 initial={{ x: '100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
-                transition={{ duration: 0.4, type: 'tween' }} 
-                onClick={(e) => e.stopPropagation()} 
+                transition={{ duration: 0.4, type: 'tween' }}
+                onClick={(e) => e.stopPropagation()}
               >
                 <NavLinksList>
                   <MobileMenuItem>
@@ -110,7 +107,7 @@ const Header: React.FC = () => {
                     <MobileMenuLinkPrimary to="/#collaboration" onClick={(e) => handleSectionNavigation(e, '#collaboration')}>ZUSAMMENARBEIT</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/funke-rss">PODCAST: NEW WORK NOW</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/funke-rss" onClick={closeMenu}>PODCAST: NEW WORK NOW</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
                     <MobileMenuLinkPrimary to="/#kontakt" onClick={(e) => handleSectionNavigation(e, '#kontakt')}>KONTAKT</MobileMenuLinkPrimary>
@@ -127,9 +124,7 @@ const Header: React.FC = () => {
                   <MobileMenuItemSecondary>
                     <MobileMenuLinkSecondary to="/agb" onClick={closeMenu}>AGB</MobileMenuLinkSecondary>
                   </MobileMenuItemSecondary>
-
                 </SecondaryLinksList>
-
               </MobileMenu>
             </MobileMenuOverlay>
           )}
@@ -146,15 +141,15 @@ const HeaderWrapper = styled.header<{ $scrolled: boolean }>`
   width: 100%;
   z-index: 1000;
   transition: all 0.3s ease;
-  background-color: #e6dfd7; // Always beige
-  box-shadow: ${({ $scrolled }) => $scrolled ? '0 1px 8px rgba(0, 0, 0, 0.2)' : 'none'}; // Shadow based on scroll
-  height: auto; // Let content determine height
-  padding: 0.5rem 0; // Default/Desktop vertical padding
+  background-color: #e6dfd7;
+  box-shadow: ${({ $scrolled }) => $scrolled ? '0 1px 8px rgba(0, 0, 0, 0.2)' : 'none'};
+  height: auto;
+  padding: 0.5rem 0;
   display: flex;
   align-items: center;
 
   @media (max-width: 768px) {
-    padding: 1rem 0; // Increased vertical padding for mobile
+    padding: 1rem 0;
   }
 `;
 
@@ -177,14 +172,14 @@ const LogoContainer = styled.div`
 `;
 
 const LogoLink = styled(Link)`
-  z-index: 1001; // Ensure logo is above mobile menu background
+  z-index: 1001;
   margin: 0;
   padding: 0;
-  line-height: 0; /* Removes extra space below image */
+  line-height: 0;
 `;
 
 const Logo = styled.img`
-  height: 55px; /* Increased */
+  height: 55px;
   transition: transform 0.3s ease;
 
   &:hover {
@@ -192,50 +187,36 @@ const Logo = styled.img`
   }
 
   @media (max-width: 768px) {
-    height: 36px; /* Increased */
+    height: 36px;
   }
 `;
 
 const DesktopMenu = styled.ul`
   display: flex;
-  gap: 1.5rem; /* Reduced gap between items */
-
-  @media (max-width: 768px) {
-    display: none;
-  }
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
 `;
 
 const MenuItem = styled.li`
-  list-style: none; /* Remove default list item marker */
-  position: relative; /* For potential ::before elements */
-
-  /* Attempt to remove any existing dot/separator from ::before */
-  &::before {
-    display: none !important; 
-    content: '' !important;
-  }
-
-  /* Remove styling for specific separator if it's done via first-child/last-child logic */
-  &:not(:first-child)::before {
-    display: none !important;
-    content: '' !important;
-  }
+  list-style: none;
+  position: relative;
 `;
 
 const MenuLink = styled(Link)`
   font-family: 'Montserrat', sans-serif;
   font-size: 0.8rem;
   letter-spacing: 0.1em;
-  font-weight: 400; /* Regular weight */
+  font-weight: 400;
   text-transform: uppercase;
   color: #333333;
   text-decoration: none;
-  padding: 0.05rem 0.6rem; /* Minimal vertical padding, reduced horizontal */
+  padding: 0.05rem 0.6rem;
   position: relative;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #8c7851; 
+    color: #8c7851;
   }
 `;
 
@@ -244,13 +225,12 @@ const MenuToggle = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1001; /* Ensure toggle is above overlay */
+  z-index: 1001;
   padding: 0.5rem;
-  margin-right: -0.5rem; /* Counteract padding for alignment */
+  margin-right: -0.5rem;
 
   @media (max-width: 768px) {
     display: block;
-    /* Adjust icon color if needed when menu is open, handled by FiX props for now */
   }
 `;
 
@@ -260,28 +240,28 @@ const MobileMenuOverlay = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay, can be removed if menu is solid */
-  z-index: 999; /* Below toggle, above page content */
-  display: flex; /* To help position MobileMenu if needed, though MobileMenu is also fixed */
-  justify-content: flex-end; /* If menu wasn't full width and sliding from right */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const MobileMenu = styled(motion.nav)`
   position: fixed;
   top: 0;
-  right: 0; /* Start from the right edge */
-  width: 100%; /* Full width */
-  height: 100vh; /* Full viewport height */
-  background-color: #0A0A0A; /* Dark background - same as footer */
-  color: #FFFFFF; /* White text for links */
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #0A0A0A;
+  color: #FFFFFF;
   padding: 2rem;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Above overlay, below toggle if toggle needs to be on top of it */
+  z-index: 1000;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center content horizontally */
-  justify-content: center; /* Center content vertically */
-  overflow-y: auto; /* Scroll if content exceeds height */
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
 `;
 
 const NavLinksList = styled.ul`
@@ -290,8 +270,8 @@ const NavLinksList = styled.ul`
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center links */
-  gap: 1.5rem; /* Increased gap */
+  align-items: center;
+  gap: 1.5rem;
   width: 100%;
 `;
 
@@ -300,7 +280,7 @@ const MobileMenuItem = styled.li`
   text-align: center;
 `;
 
-const MobileMenuLink = styled(Link)` // Generic link for reuse
+const MobileMenuLink = styled(Link)`
   font-family: 'Montserrat', sans-serif;
   color: #FFFFFF;
   text-decoration: none;
@@ -310,12 +290,12 @@ const MobileMenuLink = styled(Link)` // Generic link for reuse
 
   &:hover,
   &:focus {
-    color: #CDAFFD; /* Accent color on hover */
+    color: #CDAFFD;
   }
 `;
 
 const MobileMenuLinkPrimary = styled(MobileMenuLink)`
-  font-size: 1.8rem; /* Larger font size for primary links */
+  font-size: 1.8rem;
   font-weight: 500;
   padding: 0.8rem 0;
   text-transform: uppercase;
@@ -324,7 +304,7 @@ const MobileMenuLinkPrimary = styled(MobileMenuLink)`
 const SecondaryLinksList = styled.ul`
   list-style: none;
   padding: 0;
-  margin-top: 3rem; /* Space above secondary links */
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -338,9 +318,9 @@ const MobileMenuItemSecondary = styled.li`
 `;
 
 const MobileMenuLinkSecondary = styled(MobileMenuLink)`
-  font-size: 1rem; /* Standard font size for secondary */
+  font-size: 1rem;
   font-weight: 400;
-  color: #CCCCCC; /* Slightly dimmer color for secondary links */
+  color: #CCCCCC;
   padding: 0.5rem 0;
 
   &:hover,

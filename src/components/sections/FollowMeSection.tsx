@@ -33,7 +33,7 @@ const BeigeBarContainer = styled.div`
   padding: 40px 10px; 
   position: relative; 
   width: 100%; 
-  margin-top: -70px; /* Pulls the bar up into the title's bottom margin space */
+  margin-top: -70px; 
 `;
 
 const ContentWrapper = styled.div`
@@ -62,7 +62,6 @@ const SocialLinksGrid = styled(motion.div)`
 const VerticalDivider = styled.div`
   width: 1px;
   height: 100px; 
-  background-color: rgba(0, 0, 0, 0.2);
   
   @media (max-width: 767px) {
     width: 80%;
@@ -163,7 +162,6 @@ const FollowMeSection: React.FC = () => {
   const [socialPlatformData, setSocialPlatformData] = useState<SocialPlatform[]>(baseSocialPlatforms);
   const [hasAnimated, setHasAnimated] = useState(false);
 
-  // Track when the section comes into view
   useEffect(() => {
     if (isInView && !hasAnimated) {
       setHasAnimated(true);
