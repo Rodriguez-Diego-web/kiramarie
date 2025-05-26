@@ -5,6 +5,7 @@ const NewsletterSection: React.FC = () => {
   return (
     <NewsletterWrapper id="newsletter">
       <ContentContainer>
+        <KingdomTitle>Mein Newsletter</KingdomTitle>
         <NewsletterContent>
           <MockupImageContainer>
             <MockupImage 
@@ -54,6 +55,29 @@ const ContentContainer = styled.div`
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
+`;
+
+const KingdomTitle = styled.h3`
+  font-family: 'Kingdom', serif;
+  font-size: 3rem;
+  font-weight: normal;
+  color: #000000;
+  position: absolute;
+  top: -20px;
+  right: 40px;
+  z-index: 5;
+  margin: 0;
+  
+  @media (max-width: 991px) {
+    font-size: 2.5rem;
+    top: -15px;
+    right: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    top: -10px;
+  }
 `;
 
 const NewsletterContent = styled.div`
