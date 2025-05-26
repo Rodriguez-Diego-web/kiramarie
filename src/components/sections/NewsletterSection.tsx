@@ -63,25 +63,32 @@ const KingdomTitle = styled.h3`
   font-weight: normal;
   color: #000000;
   position: absolute;
-  top: -30px;
-  right: 80px;
+  top: -20px;
+  right: 100px; /* Auf der rechten Seite positioniert */
   z-index: 5;
   margin: 0;
   padding: 0 15px;
   display: inline-block;
-  background-color: #ffe83c; /* Gelber Hintergrund wie bei 'PODCAST: NEW WORK NOW' Button */
-  box-shadow: 3px 3px 10px rgba(0,0,0,0.1); /* Leichter Schatten für den Kasten */
-  transform: rotate(-2deg); /* Leicht gedreht für einen dynamischen Look */
+  
+  /* Blauer Hintergrund, der nur 50% der Höhe einnimmt */
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 25%; /* Startet bei 25% von unten */
+    width: 100%;
+    height: 50%; /* Nimmt nur 50% der Höhe ein */
+    background-color: #86a4fd; /* Blaue Farbe wie beim SPEAKINGS Button */
+    z-index: -1;
+  }
   
   @media (max-width: 991px) {
     font-size: 3.5rem;
-    top: -25px;
     right: 60px;
   }
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
-    top: -20px;
     right: 40px;
     padding: 0 10px;
   }
