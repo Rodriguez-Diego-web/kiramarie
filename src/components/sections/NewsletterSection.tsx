@@ -1,45 +1,92 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { motion, useInView } from 'framer-motion';
 
 const NewsletterSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const mockupContainerRef = useRef<HTMLDivElement>(null);
+  
+  // Höhere Schwelle für mobiles Gerät (50% des Elements muss sichtbar sein)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.5 });
+  const mockupsInView = useInView(mockupContainerRef, { once: true, amount: 0.7 });
+  
   return (
-    <NewsletterWrapper id="newsletter">
+    <NewsletterWrapper id="newsletter" ref={sectionRef}>
       <ContentContainer>
         <KingdomTitle>Mein Newsletter</KingdomTitle>
         <NewsletterContent>
-          <MockupImageContainer>
+          <MockupImageContainer ref={mockupContainerRef}>
             <MockupImagesWrapper>
-              <MockupImage 
-                src="/images/3.png" 
-                alt="What The Work?! Newsletter Mockup 1" 
-                className="mockup-1"
-              />
-              <MockupImage 
-                src="/images/2.png" 
-                alt="What The Work?! Newsletter Mockup 2" 
-                className="mockup-2"
-              />
+              <motion.div
+                initial={{ opacity: 0, y: -80 }}
+                animate={mockupsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -80 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.2,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+                className="mockup-container mockup-1"
+              >
+                <MockupImage 
+                  src="/images/3.png" 
+                  alt="What The Work?! Newsletter Mockup 1" 
+                />
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 80 }}
+                animate={mockupsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.5,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+                className="mockup-container mockup-2"
+              >
+                <MockupImage 
+                  src="/images/2.png" 
+                  alt="What The Work?! Newsletter Mockup 2" 
+                />
+              </motion.div>
             </MockupImagesWrapper>
           </MockupImageContainer>
           
           <TextContentContainer>
-            <NewsletterTitle>
-              In meinem wöchentlichen Newsletter „What The Work?!" schreibe ich jede Woche über Karriere-Hacks, die dich wirklich weiterbringen: klar, praxisnah und auf den Punkt.
-            </NewsletterTitle>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <NewsletterTitle>
+                In meinem wöchentlichen Newsletter „What The Work?!“ schreibe ich jede Woche über Karriere-Hacks, die dich wirklich weiterbringen: klar, praxisnah und auf den Punkt.
+              </NewsletterTitle>
+            </motion.div>
             
-            <NewsletterSubtext>
-              Ob Mindset, Selbstorganisation oder Future Skills: Ich teile, was funktioniert und was ich gern früher gewusst hätte.
-            </NewsletterSubtext>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <NewsletterSubtext>
+                Ob Mindset, Selbstorganisation oder Future Skills: Ich teile, was funktioniert und was ich gern früher gewusst hätte.
+              </NewsletterSubtext>
+            </motion.div>
             
-            <SubscribeForm>
-              <EmailInput 
-                type="email" 
-                placeholder="Enter your email" 
-              />
-              <SubscribeButton>
-                Subscribe
-              </SubscribeButton>
-            </SubscribeForm>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+            >
+              <SubscribeForm>
+                <EmailInput 
+                  type="email" 
+                  placeholder="Enter your email" 
+                />
+                <SubscribeButton>
+                  Subscribe
+                </SubscribeButton>
+              </SubscribeForm>
+            </motion.div>
           </TextContentContainer>
         </NewsletterContent>
       </ContentContainer>
@@ -124,27 +171,54 @@ const MockupImageContainer = styled.div`
   }
 `;
 
+// Keine spezifischen Interfaces mehr nötig, da wir Framer Motion direkt verwenden
+
 const MockupImagesWrapper = styled.div`
   display: flex;
   position: relative;
   width: 100%;
   justify-content: center;
   
+  /* Styling für die Container der Bilder */
+  .mockup-container {
+    position: relative;
+  }
+  
   /* Die Bilder überlappen sich stark */
   .mockup-1 {
-    position: relative;
-    z-index: 2;
-    margin-right: -90px; /* Stärkerer negativer Margin für mehr Überlappung */
+    z-index: 1;
+    margin-right: -560px; /* Stärkerer negativer Margin für mehr Überlappung */
   }
   
   .mockup-2 {
-    position: relative;
-    z-index: 1;
+    z-index: 2;
   }
   
+  /* Verbesserte mobile Anpassungen */
   @media (max-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
     .mockup-1 {
-      margin-right: -60px; /* Angepasste Überlappung auf mobilen Geräten */
+      margin-right: -300px; /* Mehr Überlappung auf mobilen Geräten */
+      max-width: 65%; /* Kleinere Bilder auf mobilen Geräten */
+    }
+    
+    .mockup-2 {
+      max-width: 65%; /* Kleinere Bilder auf mobilen Geräten */
+    }
+  }
+  
+  /* Noch mehr Überlappung für sehr kleine Geräte */
+  @media (max-width: 480px) {
+    .mockup-1 {
+      margin-right: -250px;
+      max-width: 75%;
+    }
+    
+    .mockup-2 {
+      max-width: 75%;
     }
   }
 `;
@@ -153,10 +227,10 @@ const MockupImage = styled.img`
   max-width: 100%;
   height: auto;
   display: block;
+  will-change: transform, opacity; /* Performance-Optimierung */
 
   @media (max-width: 768px) {
-    max-width: 85%;
-    margin-bottom: 25px;
+    max-width: 100%;
   }
 `;
 
