@@ -166,8 +166,6 @@ const baseSocialPlatforms: SocialPlatform[] = [
 
 const FollowMeSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  // Reduziere den amount-Wert von 1.0 auf 0.2, damit die Animationen früher starten
-  // 0.2 bedeutet, dass nur 20% des Elements sichtbar sein müssen, um die Animation auszulösen
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const [socialPlatformData, setSocialPlatformData] = useState<SocialPlatform[]>(baseSocialPlatforms);
   const [hasAnimated, setHasAnimated] = useState(false);
