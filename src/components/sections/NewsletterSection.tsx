@@ -10,12 +10,12 @@ const NewsletterSection: React.FC = () => {
           <MockupImageContainer>
             <MockupImagesWrapper>
               <MockupImage 
-                src="/images/Mockup1.png" 
+                src="/images/3.png" 
                 alt="What The Work?! Newsletter Mockup 1" 
                 className="mockup-1"
               />
               <MockupImage 
-                src="/images/Mockup2.png" 
+                src="/images/2.png" 
                 alt="What The Work?! Newsletter Mockup 2" 
                 className="mockup-2"
               />
@@ -130,11 +130,11 @@ const MockupImagesWrapper = styled.div`
   width: 100%;
   justify-content: center;
   
-  /* Die Bilder überlappen sich leicht */
+  /* Die Bilder überlappen sich stark */
   .mockup-1 {
     position: relative;
     z-index: 2;
-    margin-right: -30px; /* Negative margin für Überlappung */
+    margin-right: -90px; /* Stärkerer negativer Margin für mehr Überlappung */
   }
   
   .mockup-2 {
@@ -144,7 +144,7 @@ const MockupImagesWrapper = styled.div`
   
   @media (max-width: 768px) {
     .mockup-1 {
-      margin-right: -20px; /* Weniger Überlappung auf mobilen Geräten */
+      margin-right: -60px; /* Angepasste Überlappung auf mobilen Geräten */
     }
   }
 `;
