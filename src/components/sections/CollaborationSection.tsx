@@ -150,10 +150,29 @@ const BoxesGrid = styled.div`
 const BoxItem = styled(motion.div)`
   display: flex;
   flex-direction: column; 
-  transition: transform 0.3s ease; 
-
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+  position: relative;
+  transform-origin: center bottom;
+  
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    z-index: 2;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(255,255,255,0.1);
+    transition: height 0.3s ease;
+  }
+  
+  &:hover::after {
+    height: 100%;
   }
 `;
 
@@ -200,24 +219,36 @@ const ActionButton = styled.a<{ buttonColor?: string }>`
   }
 `;
 
+// Verbesserte, auffälligere Animationen für die Cards
 const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+  hidden: { opacity: 0, y: 80 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.2, 0.8, 0.2, 1.0] } }
 };
 
 const fadeInRight = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } }
+  hidden: { opacity: 0, x: -80, rotateY: -15 },
+  visible: { opacity: 1, x: 0, rotateY: 0, transition: { duration: 0.9, ease: [0.2, 0.8, 0.2, 1.0] } }
 };
 
 const fadeInLeft = {
-  hidden: { opacity: 0, x: 20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } }
+  hidden: { opacity: 0, x: 80, rotateY: 15 },
+  visible: { opacity: 1, x: 0, rotateY: 0, transition: { duration: 0.9, ease: [0.2, 0.8, 0.2, 1.0] } }
 };
 
 const popIn = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.175, 0.885, 0.32, 1.275] } }
+  hidden: { opacity: 0, scale: 0.6, y: 50 },
+  visible: { 
+    opacity: 1, 
+    scale: 1, 
+    y: 0, 
+    transition: { 
+      type: 'spring',
+      stiffness: 400,
+      damping: 15,
+      mass: 1,
+      duration: 0.8
+    } 
+  }
 };
 
 const CollaborationSection: React.FC = () => {
@@ -226,9 +257,17 @@ const CollaborationSection: React.FC = () => {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   
-  const titleInView = useInView(titleRef, { once: true, amount: 0.6 }); 
-  const subtitleInView = useInView(subtitleRef, { once: true, amount: 0.7 }); 
-  const gridInView = useInView(gridRef, { once: true, amount: 0.4 }); 
+  // Sehr niedrige Schwellenwerte für besonders frühe Animation
+  const titleInView = useInView(titleRef, { once: true, amount: 0.3 }); 
+  const subtitleInView = useInView(subtitleRef, { once: true, amount: 0.3 }); 
+  // Für die Cards:
+  // - amount: 0.05 bedeutet, dass nur 5% des Elements sichtbar sein müssen
+  // - margin: "200px 0px" löst die Animation aus, wenn der Benutzer noch 200px vom Element entfernt ist
+  const gridInView = useInView(gridRef, { 
+    once: true, 
+    amount: 0.05,
+    margin: "200px 0px" 
+  }); 
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
