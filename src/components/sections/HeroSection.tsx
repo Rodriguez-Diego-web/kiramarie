@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, memo, useMemo } from 'react';
 import styled from 'styled-components';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-const DESKTOP_VIDEO_ID = 'hvcr7Tt-coE';
+const DESKTOP_VIDEO_ID = 'PUP1iSIMbtA';
 const LOCAL_MOBILE_VIDEO_SRC = '/video/4-5.mp4';
 const MOBILE_BREAKPOINT = 768;
 
@@ -91,6 +91,37 @@ const HeroSection: React.FC = () => {
 
   return (
     <HeroContainer>
+      {/* Logo und Untertitel in der Mitte mit Animation */}
+      <LogoOverlay
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <LogoImage 
+          src="/images/KMC logo weiß_01.png" 
+          alt="Kira Marie Cremer Logo" 
+          initial={{ opacity: 0, y: -50, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ 
+            duration: 1.2, 
+            delay: 1,
+            type: "spring",
+            stiffness: 100 
+          }}
+        />
+        <SubTitle
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            duration: 1, 
+            delay: 1.8,
+            ease: "easeOut" 
+          }}
+        >
+          AUTORIN | DOZENTIN | PODCAST HOST
+        </SubTitle>
+      </LogoOverlay>
+      
       <VideoContainer
         style={{ scale: parallaxValues.videoScale }}
         initial={{ opacity: 0 }}
@@ -200,17 +231,62 @@ const FloatingCircle = memo(({ size, top, left, color, delay }: FloatingCirclePr
 const HeroContainer = styled.section`
   position: relative;
   height: 100vh;
-  min-height: 700px;
+  max-height: 1080px;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
-  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0e0e0e;
+  z-index: 1;
 
-  @media (max-width: ${MOBILE_BREAKPOINT}px) {
-    height: 80vh; 
-    min-height: 550px; 
+  @media (max-width: 768px) {
+    max-height: none;
+    height: calc(100vh - 80px); /* Adjust for mobile */
+  }
+`;
+
+const LogoOverlay = styled(motion.div)`
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  text-align: center;
+`;
+
+const LogoImage = styled(motion.img)`
+  max-width: 550px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 34px;
+  
+  @media (max-width: 768px) {
+    max-width: 380px;
+  }
+  
+  @media (max-width: 480px) {
+    max-width: 240px;
+  }
+`;
+
+const SubTitle = styled(motion.div)`
+  color: white;
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 18px;
   }
 `;
 
