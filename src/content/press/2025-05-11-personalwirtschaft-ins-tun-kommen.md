@@ -5,5 +5,5 @@ url: https://www.personalwirtschaft.de/news/allgemein/kira-marie-cremer-das-wich
 excerpt: Jobwechsel oder bleiben? Kira Marie Cremer, Autorin von 'Quit Your
   Job', im Personalwirtschaft-Interview über Entscheidungsfindung und den
   Neustart nach der Kündigung.
-image: /uploads/20241108_kiramariecremer-696x522.jpg
+image: /uploads/20241108_kiramariecremer-696x522-small.webp
 ---
