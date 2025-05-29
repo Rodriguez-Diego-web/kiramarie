@@ -121,7 +121,17 @@ const MediaCard: React.FC<MediaCardProps> = ({ item }) => {
       whileHover={{ y: -5, boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)' }}
     >
       <ImageContainer>
-        <img src={item.image} alt={`Vorschaubild für ${item.title}`} />
+        <img 
+          src={`${process.env.PUBLIC_URL}${item.image}`} 
+          alt={`Vorschaubild für ${item.title}`} 
+          loading="lazy"
+          onError={(e) => {
+            // Fallback wenn das Bild nicht geladen werden kann
+            const target = e.target as HTMLImageElement;
+            target.src = `${process.env.PUBLIC_URL}/uploads/default-press-image.webp`;
+            console.error(`Bild konnte nicht geladen werden: ${item.image}`);
+          }}
+        />
       </ImageContainer>
       <ContentArea>
         <Tag>{item.tag}</Tag>
