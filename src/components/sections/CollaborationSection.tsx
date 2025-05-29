@@ -257,12 +257,9 @@ const CollaborationSection: React.FC = () => {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   
-  // Sehr niedrige Schwellenwerte für besonders frühe Animation
   const titleInView = useInView(titleRef, { once: true, amount: 0.3 }); 
   const subtitleInView = useInView(subtitleRef, { once: true, amount: 0.3 }); 
-  // Für die Cards:
-  // - amount: 0.05 bedeutet, dass nur 5% des Elements sichtbar sein müssen
-  // - margin: "200px 0px" löst die Animation aus, wenn der Benutzer noch 200px vom Element entfernt ist
+ 
   const gridInView = useInView(gridRef, { 
     once: true, 
     amount: 0.05,
