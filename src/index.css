@@ -1,11 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-@font-face {
-  font-family: 'Montserrat';
-  src: url('./assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype-variations');
-  font-weight: 100 900;
-  font-style: normal;
-}
+/* Montserrat wird über Google Fonts geladen - siehe index.html */
 
 @font-face {
   font-family: 'Kingdom';
@@ -13,6 +8,7 @@
        url('./assets/fonts/Kingdom.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 body {

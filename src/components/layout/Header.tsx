@@ -38,7 +38,7 @@ const Header: React.FC = () => {
       <Nav>
         <LogoContainer>
           <LogoLink to="/">
-            <Logo src="/images/KMC logo schwarz_02.png" alt="Kira Marie Cremer Logo" />
+            <Logo src="/images/KMClogoschwarz.webp" alt="Kira Marie Cremer Logo" fetchPriority="high" />
           </LogoLink>
         </LogoContainer>
 

@@ -12,6 +12,6 @@ headline_main_text: >
   Haltung zu verstehen – und konkret umzusetzen. Über 50.000 Menschen folgen mir
   auf LinkedIn, weil ich versuche, komplexe Entwicklungen greifbar zu machen –
   für alle, die Lust auf gute Arbeit haben.
-profile_image: /uploads/kira.jpg
+profile_image: /uploads/kira-small.webp
 ---
 Ich glaube: Arbeit kann besser sein. Menschlicher, flexibler, sinnvoller. Aber dafür müssen wir aufhören, nur über Buzzwords zu reden – und anfangen, wirklich etwas zu verändern.

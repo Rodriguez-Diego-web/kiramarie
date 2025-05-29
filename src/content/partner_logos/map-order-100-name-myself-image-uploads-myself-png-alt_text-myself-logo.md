@@ -1,6 +1,6 @@
 ---
 name: myself
-image: /uploads/myself.png
+image: /uploads/myself-small.webp
 alt_text: Myself Logo
 order: 100
 ---

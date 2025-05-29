@@ -28,7 +28,7 @@ const NewsletterSection: React.FC = () => {
                 className="mockup-container mockup-1"
               >
                 <MockupImage 
-                  src="/images/3.png" 
+                  src="/images/3.webp" 
                   alt="What The Work?! Newsletter Mockup 1" 
                 />
               </motion.div>
@@ -44,7 +44,7 @@ const NewsletterSection: React.FC = () => {
                 className="mockup-container mockup-2"
               >
                 <MockupImage 
-                  src="/images/2.png" 
+                  src="/images/2-small.webp" 
                   alt="What The Work?! Newsletter Mockup 2" 
                 />
               </motion.div>

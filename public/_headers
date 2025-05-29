@@ -1,0 +1,24 @@
+# Cache-Einstellungen für statische Assets
+/js/*
+  Cache-Control: public, max-age=31536000
+
+/images/*
+  Cache-Control: public, max-age=31536000
+
+/uploads/*
+  Cache-Control: public, max-age=31536000
+
+/*.webp
+  Cache-Control: public, max-age=31536000
+
+/*.png
+  Cache-Control: public, max-age=31536000
+
+/*.jpg
+  Cache-Control: public, max-age=31536000
+
+/*.jpeg
+  Cache-Control: public, max-age=31536000
+
+/*.css
+  Cache-Control: public, max-age=31536000

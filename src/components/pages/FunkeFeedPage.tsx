@@ -294,7 +294,7 @@ const FunkeFeedPage: React.FC = () => {
         <MainTitle>New Work Now</MainTitle>
         <IntroSection>
           <ImageColumn>
-            <img src="/images/Podcast_Cover.jpeg" alt="New Work Now Podcast Artwork" />
+            <img src="/images/podcast-small.webp" alt="New Work Now Podcast Artwork" />
           </ImageColumn>
           <TextColumn>
             <Paragraph>
@@ -323,10 +323,10 @@ const FunkeFeedPage: React.FC = () => {
                   <ActionsContainer>
                     <ListenButton>JETZT HÖREN +</ListenButton>
                     <PlatformIconsContainer>
-                      <img src="/images/icons8-youtube-48.png" alt="YouTube" />
-                      <img src="/images/icons8-spotify-50.png" alt="Spotify" />
-                      <img src="/images/icons8-apple-music-50.png" alt="Apple Music" />
-                      <img src="/images/icons8-google-podcasts-50.png" alt="Google Podcasts" />
+                      <img src="/images/icons8-youtube-48-small.webp" alt="YouTube" />
+                      <img src="/images/icons8-spotify-50-small.webp" alt="Spotify" />
+                      <img src="/images/icons8-apple-music-50-small.webp" alt="Apple Music" />
+                      <img src="/images/icons8-google-podcasts-50-small.webp" alt="Google Podcasts" />
                     </PlatformIconsContainer>
                   </ActionsContainer>
                 </EpisodeContent>

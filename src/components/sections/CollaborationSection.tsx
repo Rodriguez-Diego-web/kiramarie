@@ -4,6 +4,7 @@ import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
 interface CollaborationCardData {
   imageSrc: string;
+  imageSrcSmall: string;
   buttonText: string;
   link: string;
   buttonColor: string;
@@ -276,25 +277,29 @@ const CollaborationSection: React.FC = () => {
 
   const boxesData: CollaborationCardData[] = [
     {
-      imageSrc: '/images/Buch.JPG', 
+      imageSrc: '/images/Buch.webp', 
+      imageSrcSmall: '/images/Buch-small.webp',
       buttonText: 'BUCH',
       link: 'https://amzn.to/43vzG7R', 
       buttonColor: '#e53811' 
     },
     {
-      imageSrc: '/images/speaker.JPG', 
+      imageSrc: '/images/speaker-small.webp', 
+      imageSrcSmall: '/images/speaker-small.webp',
       buttonText: 'SPEAKINGS',
       link: '#kontakt', 
       buttonColor: '#86a4fd' 
     },
     {
-      imageSrc: '/images/Podcast_Cover.jpeg', 
+      imageSrc: '/images/podcast.webp', 
+      imageSrcSmall: '/images/podcast-small.webp',
       buttonText: 'PODCAST: NEW WORK NOW',
       link: '/funke-rss', 
       buttonColor: '#ffe83c' 
     },
     {
-      imageSrc: '/images/mediakit.JPG', 
+      imageSrc: '/images/mediakit-small.webp', 
+      imageSrcSmall: '/images/mediakit-small.webp',
       buttonText: 'MEDIAKIT-DOWNLOAD', 
       link: '/mediakit/mediakit.pdf', 
       buttonColor: '#cdafff' 
@@ -368,7 +373,13 @@ const CollaborationSection: React.FC = () => {
                 variants={{...animation, visible: {...animation.visible, transition: {...animation.visible.transition, delay: randomDelay}}}}
               >
               <CardImageWrapper>
-                <CardImage src={box.imageSrc} alt={box.buttonText} />
+                <CardImage 
+                  src={box.imageSrc} 
+                  srcSet={`${box.imageSrcSmall} 465w, ${box.imageSrc} 930w`}
+                  sizes="(max-width: 768px) 320px, 465px"
+                  alt={box.buttonText} 
+                  loading="lazy"
+                />
               </CardImageWrapper>
               <ActionButton
                 href={box.link}

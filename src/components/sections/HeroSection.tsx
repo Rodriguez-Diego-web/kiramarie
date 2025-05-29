@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, memo, useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
@@ -8,6 +9,9 @@ const MOBILE_BREAKPOINT = 768;
 
 const getYouTubeEmbedUrl = (videoId: string) =>
   `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&vq=hd2160&hd=1`;
+
+const getYouTubeThumbnailUrl = (videoId: string, quality: string = 'maxresdefault') =>
+  `https://img.youtube.com/vi/${videoId}/${quality}.jpg`;
 
 interface PartnerLogo {
   name: string;
@@ -35,6 +39,8 @@ const HeroSection: React.FC = () => {
     }
     return false;
   });
+  const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
+  const [thumbnailSrc, setThumbnailSrc] = useState<string>('');
   
   const [currentVideoSrc, setCurrentVideoSrc] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -61,6 +67,22 @@ const HeroSection: React.FC = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    const newThumbnailSrc = isMobile 
+      ? getYouTubeThumbnailUrl(MOBILE_VIDEO_ID, 'hqdefault') 
+      : getYouTubeThumbnailUrl(DESKTOP_VIDEO_ID, 'maxresdefault');
+    setThumbnailSrc(newThumbnailSrc);
+  }, [isMobile]);
+
+  useEffect(() => {
+    // Automatically switch to video player after a delay
+    const timer = setTimeout(() => {
+      setShowVideoPlayer(true);
+    }, 1600); // 1.6 seconds delay
+
+    return () => clearTimeout(timer); // Cleanup timer on component unmount
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   useEffect(() => {
     fetch('/data/partnerLogosData.json')
@@ -97,7 +119,17 @@ const HeroSection: React.FC = () => {
  
 
   return (
-    <HeroContainer>
+    <>
+      <Helmet>
+        <link
+          rel="preload"
+          href="/images/KMClogo.webp"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
+        />
+      </Helmet>
+      <HeroContainer>
       {/* Logo und Untertitel in der Mitte mit Animation */}
       <LogoOverlay
         initial={{ opacity: 0 }}
@@ -106,8 +138,9 @@ const HeroSection: React.FC = () => {
         className={isMobile ? 'mobile-view' : ''}
       >
         <LogoImage 
-          src="/images/KMC logo weiß_01.png" 
+          src="/images/KMClogoweiss.webp" 
           alt="Kira Marie Cremer Logo" 
+          fetchPriority="high" // TypeScript erwartet fetchPriority, obwohl HTML fetchpriority verwendet
           initial={{ opacity: 0, y: -50, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ 
@@ -133,24 +166,35 @@ const HeroSection: React.FC = () => {
       <VideoContainer
         style={{ scale: parallaxValues.videoScale }}
         initial={{ opacity: 0 }}
-        animate={{ opacity: videoLoaded ? 0.8 : 0 }}
+        animate={{ opacity: 0.8 }} // Animate to 0.8 on mount to show facade/video
         transition={{ duration: 1.5 }}
       >
-        <StyledVideo
-          key={currentVideoSrc}
-          ref={videoRef as React.RefObject<HTMLIFrameElement>}
-          src={currentVideoSrc}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          onLoad={() => {
-            console.log('YouTube iframe onLoad event triggered');
-            setVideoLoaded(true);
-          }}
-        >
-        </StyledVideo>
-        <VideoOverlay $loaded={videoLoaded} />
+        {!showVideoPlayer ? (
+          <VideoFacadeContainer 
+            onClick={() => setShowVideoPlayer(true)}
+            key={thumbnailSrc} // Re-key to ensure styles/hovers reset if thumbnail changes
+          >
+            {thumbnailSrc && <PreviewImage src={thumbnailSrc} alt="Video Vorschau" />}
+            <PlayButtonIcon aria-label="Video abspielen" />
+          </VideoFacadeContainer>
+        ) : (
+          <>
+            <StyledVideo
+              key={currentVideoSrc} 
+              ref={videoRef as React.RefObject<HTMLIFrameElement>}
+              src={currentVideoSrc} // src includes autoplay=1
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              onLoad={() => {
+                console.log('YouTube iframe onLoad event triggered');
+                setVideoLoaded(true);
+              }}
+            />
+            <VideoOverlay $loaded={videoLoaded} /> 
+          </>
+        )}
       </VideoContainer>
     
       <ParallaxBackground 
@@ -192,6 +236,7 @@ const HeroSection: React.FC = () => {
         </MarqueeWrapper>
       </TrustBanner>
     </HeroContainer>
+    </>
   );
 };
 
@@ -469,6 +514,62 @@ const MediaLogo = styled.img`
   object-fit: contain;
   filter: brightness(0) invert(1);
   opacity: 0.9;
+`;
+
+const VideoFacadeContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #000; // Fallback background if image fails
+  overflow: hidden; // Ensures preview image doesn't spill if aspect ratio differs
+`;
+
+const PreviewImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  transition: transform 0.3s ease-out;
+
+  ${VideoFacadeContainer}:hover & {
+    transform: scale(1.05); // Slight zoom on hover
+  }
+`;
+
+const PlayButtonIcon = styled.div`
+  width: 80px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  position: relative;
+  z-index: 1; // Ensure play button is above the preview image
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+    border-left: 28px solid white;
+    margin-left: 7px; // Adjust to center the triangle play icon
+  }
+
+  ${VideoFacadeContainer}:hover & {
+    background-color: rgba(205, 175, 253, 0.5); // Use a theme color on hover
+  }
 `;
 
 export default memo(HeroSection);

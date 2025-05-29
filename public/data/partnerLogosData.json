@@ -1,49 +1,49 @@
 [
   {
     "name": "Signal Iduna",
-    "image": "/uploads/2560px-Signal-iduna-250x43.png",
+    "image": "/uploads/2560px-Signal-iduna-250x43-small.webp",
     "alt_text": "Signal Iduna Logo",
     "order": 10
   },
   {
     "name": "Digital X",
-    "image": "/uploads/digitalx_logo_disruptingminds-250x41.png",
+    "image": "/uploads/digitalx_logo_disruptingminds-250x41-small.webp",
     "alt_text": "Digital X Logo",
     "order": 20
   },
   {
     "name": "Sparkasse Köln Bonn",
-    "image": "/uploads/sparkasse_koelnbonn_logo_disruptingminds-250x110.png",
+    "image": "/uploads/sparkasse_koelnbonn_logo_disruptingminds-250x110-small.webp",
     "alt_text": "Sparkasse Köln Bonn Logo",
     "order": 30
   },
   {
     "name": "Funke",
-    "image": "/uploads/1.png",
+    "image": "/uploads/1-small.webp",
     "alt_text": "Funke Logo",
     "order": 40
   },
   {
     "name": "N-tv",
-    "image": "/uploads/2.png",
+    "image": "/uploads/2-small.webp",
     "alt_text": "Ntv Logo",
     "order": 50
   },
   {
     "name": "Cosmopolitan",
-    "image": "/uploads/3.png",
+    "image": "/uploads/3-small.webp",
     "alt_text": "Cosmopolitan Logo",
     "order": 60
   },
   {
     "name": "Horizont",
-    "image": "/uploads/4.png",
+    "image": "/uploads/4-small.webp",
     "alt_text": "Horizonzt Logo",
     "order": 70
   },
   {
     "name": "myself",
-    "image": "/uploads/myself.png",
+    "image": "/uploads/myself-small.webp",
     "alt_text": "Myself Logo",
     "order": 100
   }

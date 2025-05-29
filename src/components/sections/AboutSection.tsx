@@ -390,10 +390,10 @@ const AboutSection: React.FC = () => {
   const { name, body, body_bottom, headlineMain } = aboutData;
 
   // Use actual image paths from CMS or constants if static
-  const mainImage = aboutData.profile_image || '/images/image.png';
-  const smallImage1 = aboutData.left_image_1 || '/images/RSE_6158.jpg';
-  const smallImage2 = aboutData.left_image_2 || '/images/IMG_5927.jpg';
-  const smallImage3 = aboutData.right_image || '/images/image.png';
+  const mainImage = aboutData.profile_image || '/images/image-small.webp';
+  const smallImage1 = aboutData.left_image_1 || '/images/RSE_6158-small.webp';
+  const smallImage2 = aboutData.left_image_2 || '/images/IMG_5927-small.webp';
+  const smallImage3 = aboutData.right_image || '/images/image-small.webp';
 
   return (
     <AboutSectionContainer id="about-section"> 
@@ -428,7 +428,15 @@ const AboutSection: React.FC = () => {
               {smallImage1 && (
                 <SmallImage1Wrapper>
                   <ImageWrapper>
-                    <img src={smallImage1} alt="Kira im Gespräch" />
+                    <img 
+                      src={smallImage1} 
+                      srcSet={`${smallImage1} 450w, ${smallImage1.replace('.webp', '-small.webp') || smallImage1} 225w`} 
+                      sizes="(max-width: 768px) 300px, 450px"
+                      alt="Kira im Gespräch" 
+                      loading="lazy" 
+                      width="450" 
+                      height="300" 
+                    />
                   </ImageWrapper>
                 </SmallImage1Wrapper>
               )}
@@ -436,7 +444,15 @@ const AboutSection: React.FC = () => {
               {smallImage2 && (
                 <SmallImage2Wrapper>
                   <ImageWrapper>
-                    <img src={smallImage2} alt="Kira Marie Portrait" />
+                    <img 
+                      src={smallImage2} 
+                      srcSet={`${smallImage2} 450w, ${smallImage2.replace('.webp', '-small.webp') || smallImage2} 225w`} 
+                      sizes="(max-width: 768px) 300px, 450px"
+                      alt="Kira Marie Portrait" 
+                      loading="lazy" 
+                      width="450" 
+                      height="300" 
+                    />
                   </ImageWrapper>
                 </SmallImage2Wrapper>
               )}
@@ -444,7 +460,15 @@ const AboutSection: React.FC = () => {
               {smallImage3 && (
                 <SmallImage3Wrapper>
                   <ImageWrapper>
-                    <img src={smallImage3} alt="Kira spricht auf der Bühne" />
+                    <img 
+                      src={smallImage3} 
+                      srcSet={`${smallImage3} 450w, ${smallImage3.replace('.webp', '-small.webp') || smallImage3} 225w`} 
+                      sizes="(max-width: 768px) 300px, 450px"
+                      alt="Kira spricht auf der Bühne" 
+                      loading="lazy" 
+                      width="450" 
+                      height="600" 
+                    />
                   </ImageWrapper>
                 </SmallImage3Wrapper>
               )}
@@ -456,7 +480,14 @@ const AboutSection: React.FC = () => {
               <MainImageContainer>
                 <BackgroundBox />
                 <ProfileImageWrapper> {/* Use new wrapper here */}
-                  <img src={mainImage} alt={name || 'Kira Marie Cremer'} />
+                  <img 
+                    src={mainImage} 
+                    srcSet={`${mainImage} 500w, ${mainImage.replace(/\.\w+$/, '-small$&') || mainImage} 250w`} 
+                    sizes="(max-width: 768px) 350px, 500px"
+                    alt={name || 'Kira Marie Cremer'} 
+                    width="500" 
+                    height="500" 
+                  />
                 </ProfileImageWrapper>
               </MainImageContainer>
             )}

@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
       <Container>
         <FooterContent>
           <BrandSection>
-            <LogoImage src="/images/KMC logo weiß_01.png" alt="Kira Marie Cremer Logo" />
+            <LogoImage src="/images/KMClogoweiss.webp" alt="Kira Marie Cremer Logo" />
             <SocialLinks>
               <SocialLink 
                 href="https://www.instagram.com/kiramariecremer/"
