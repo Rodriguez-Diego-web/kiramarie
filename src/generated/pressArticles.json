@@ -13,7 +13,7 @@
     "publication": "YouTube (René Träder)",
     "url": "https://www.youtube.com/watch?v=6_04u_q_XyI",
     "excerpt": "Kira Marie Cremer spricht mit René Träder über ihren Weg aus der Depression und wie sie ihr Leben gemeistert hat.",
-    "image": "/uploads/generation-small.webp"
+    "image": "/uploads/generation.webp"
   },
   {
     "id": "2025-05-13-businessinsider-chef-zieht-ab",
@@ -21,7 +21,7 @@
     "publication": "Business Insider",
     "url": "https://www.businessinsider.de/karriere/chef-zieht-50-euro-vom-gehalt-ab-weil-mitarbeiter-fehler-machte/",
     "excerpt": "Was macht gute Führung aus? New Work Expertin Kira Marie Cremer gibt Einblicke in einem Buchkapitel-Auszug bei Business Insider.",
-    "image": "/uploads/businessinsider-small.webp"
+    "image": "/uploads/businessinsider.webp"
   },
   {
     "id": "2025-05-15-horizont-corporate-influencing",
@@ -29,15 +29,15 @@
     "publication": "Horizont",
     "url": "https://www.horizont.net/marketing/kommentare/corporate-influencing-wie-unternehmen-ihre-mitarbeiter-zu-markenbotschaftern-machen-20230515.html",
     "excerpt": "Kira Marie Cremer über die Chancen und Herausforderungen von Corporate Influencing Programmen.",
-    "image": "/uploads/horizint-small.webp"
-  },  
+    "image": "/uploads/horizint.jpeg"
+  },
   {
     "id": "2025-05-14-businessinsider-generation-orientierungslos",
     "title": "Generation Orientierungslos? Warum viele junge Menschen nicht wissen, was sie wollen",
     "publication": "Business Insider",
     "url": "https://www.businessinsider.de/karriere/arbeitsleben/generation-orientierungslos-warum-viele-junge-menschen-nicht-wissen-was-sie-wollen-a/",
     "excerpt": "Kira Marie Cremer erörtert die Herausforderungen junger Generationen bei der beruflichen Orientierung.",
-    "image": "/uploads/businessinsider-small.webp"
+    "image": "/uploads/businessinsider.webp"
   },
   {
     "id": "2025-05-12-iba-online-generationenmanagement",
@@ -45,7 +45,7 @@
     "publication": "IBA Online",
     "url": "https://www.iba-online.com/blog/generationenmanagement/",
     "excerpt": "Expertin Kira Marie Cremer gibt Einblicke, wie Unternehmen eine erfolgreiche Zusammenarbeit über Generationengrenzen hinweg fördern können.",
-    "image": "/uploads/generation-small.webp"
+    "image": "/uploads/generation.webp"
   },
   {
     "id": "2025-05-13-linkedin-jobstart-guide",
@@ -53,7 +53,7 @@
     "publication": "LinkedIn News DACH",
     "url": "https://www.linkedin.com/pulse/jobstart-guide-2025-deutschland-hier-haben-berufsanf%C3%A4ngerinnen-cauje/?trackingId=V9T414A6R%2BGDsWgn7URrGg%3D%3D",
     "excerpt": "LinkedIn's Jobstart-Guide 2025: Chancen für Berufsanfänger in wachsenden Branchen, Tätigkeitsbereichen und bei gefragten Jobtiteln.",
-    "image": "/uploads/jobstart-small.webp"
+    "image": "/uploads/jobstart.png"
   },
   {
     "id": "2025-05-09-nwx-speaker-kira-marie-cremer",
@@ -61,7 +61,7 @@
     "publication": "NWX (New Work Experience)",
     "url": "https://nwx.new-work.se/events/nwx23/speaker/kira-marie-cremer",
     "excerpt": "Kira Marie Cremer, Gründerin von QUINGS und LinkedIn Coach, ist Host des Podcasts 'New Work Now' und eine bekannte New Work Stimme.",
-    "image": "/uploads/nwn-small.webp"
+    "image": "/uploads/nwn.png"
   },
   {
     "id": "2025-05-11-personalwirtschaft-ins-tun-kommen",
@@ -69,7 +69,7 @@
     "publication": "Personalwirtschaft",
     "url": "https://www.personalwirtschaft.de/news/allgemein/kira-marie-cremer-das-wichtigste-ist-mehr-ins-tun-zu-kommen-183473/",
     "excerpt": "Jobwechsel oder bleiben? Kira Marie Cremer, Autorin von 'Quit Your Job', im Personalwirtschaft-Interview über Entscheidungsfindung und den Neustart nach der Kündigung.",
-    "image": "/uploads/20241108_kiramariecremer-696x522-small.webp"
+    "image": "/uploads/20241108_kiramariecremer-696x522.jpg"
   },
   {
     "id": "2025-05-10-youtube-glowcast-work-smarter",
@@ -77,6 +77,6 @@
     "publication": "YouTube (GLOWCAST)",
     "url": "https://www.youtube.com/watch?v=abcdef12345",
     "excerpt": "Kira Marie Cremer teilt im GLOWCAST ihre besten Tipps für effizienteres Arbeiten und eine bessere Work-Life-Balance.",
-    "image": "/uploads/neu-small.webp"
+    "image": "/uploads/neu.png"
   }
 ]
