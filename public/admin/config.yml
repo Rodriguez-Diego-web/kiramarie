@@ -1,8 +1,7 @@
 backend:
   name: git-gateway
   branch: main
-  identity_url: "https://www.kiramariecremer.de/.netlify/identity"
-  gateway_url: "https://www.kiramariecremer.de/.netlify/git"
+  # Ohne spezifische URLs verwendet Netlify automatisch die aktuelle Domain
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
