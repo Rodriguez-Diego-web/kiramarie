@@ -29,6 +29,12 @@ addEventListener('fetch', (event) => {
   // URL-Objekt aus der Anfrage erstellen
   const requestURL = new URL(event.request.url);
   
+  // Admin-Bereich und Authentifizierung ausschließen
+  if (requestURL.pathname.includes('/admin/') || 
+      requestURL.hostname.includes('identity.netlify.com')) {
+    return;
+  }
+  
   // Prüfen, ob es sich um eine statische Asset-Anfrage handelt
   const isStaticAsset = STATIC_ASSETS.some(asset => 
     requestURL.pathname.startsWith(asset) || 
