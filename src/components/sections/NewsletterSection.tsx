@@ -230,27 +230,9 @@ const MockupImage = styled.img`
   height: auto;
   display: block;
   will-change: transform, opacity; /* Performance-Optimierung */
-  border-radius: 8px; /* Abgerundete Ecken */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Einheitlicher Schatten */
-  object-fit: contain; /* Behält Seitenverhältnis bei */
 
-  &.newsletter-image {
-    width: 340px; /* Feste Breite für beide Bilder */
-    aspect-ratio: 520 / 720; /* Festgelegtes Seitenverhältnis */
-  }
-  
   @media (max-width: 768px) {
     max-width: 100%;
-    
-    &.newsletter-image {
-      width: 280px; /* Kleinere Breite auf mobilen Geräten */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    &.newsletter-image {
-      width: 220px; /* Noch kleinere Breite auf sehr kleinen Geräten */
-    }
   }
 `;
 
