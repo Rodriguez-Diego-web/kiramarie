@@ -68,13 +68,36 @@ async function generatePressData() {
         .map(word => word.charAt(0).toUpperCase() + word.slice(1)) 
         .join(' ');                            
 
+      // Standardisiere den Bildpfad: Füge /uploads/ hinzu und prüfe auf -small.webp Suffix
+      let imagePath = data.image || null;
+      
+      if (imagePath) {
+        // Entferne führende Slashes oder public/ am Anfang
+        imagePath = imagePath.replace(/^\/+/, '').replace(/^public\//, '');
+        
+        // Füge /uploads/ hinzu, wenn nicht vorhanden
+        if (!imagePath.startsWith('uploads/')) {
+          imagePath = 'uploads/' + imagePath;
+        }
+        
+        // Füge führenden Slash hinzu
+        imagePath = '/' + imagePath;
+        
+        // Prüfe, ob es sich um eine optimierte Datei handelt
+        if (!imagePath.includes('-small.webp')) {
+          // Ersetze die Dateierweiterung durch -small.webp
+          const baseName = imagePath.replace(/\.[^/.]+$/, '');
+          imagePath = baseName + '-small.webp';
+        }
+      }
+
       const article = {
         id: mdFile.replace(/\.md$/, ''),             
         title: data.title || defaultTitle,           
         publication: data.publication || 'Unbekannte Quelle',  
         url: data.url || '#',                        
         excerpt: data.excerpt || (content.trim() ? content.substring(0, 150) + (content.length > 150 ? '...' : '') : 'Kein Auszug verfügbar'), 
-        image: data.image || null
+        image: imagePath
       };
 
       console.log(`➕ Adding article: ${article.title}`);
