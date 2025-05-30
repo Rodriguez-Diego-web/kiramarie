@@ -84,6 +84,37 @@ const SectionTitle = styled(motion.h2)`
     font-size: 2rem; 
     padding-top: 10px; 
     transform: translateY(-130px); 
+    
+  }
+`;
+
+const TitleContent = styled.span`
+  position: relative;
+  top: -60px;
+  display: inline-block;
+  z-index: 10;
+  
+  @media (max-width: 480px) {
+    &::before {
+      content: 'Projekte';
+    }
+    
+    &::after {
+      content: '& Kooperationen';
+      display: block;
+    }
+    
+    font-size: 1.8rem;
+    text-align: center;
+    color: #000000;
+    top: -70px;
+    margin-bottom: -40px;
+  }
+  
+  @media (min-width: 481px) {
+    &::before {
+      content: 'Projekte & Kooperationen';
+    }
   }
 `;
 
@@ -99,7 +130,7 @@ const NewTitleBackground = styled(motion.div)`
   box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
   
   @media (max-width: 767px) {
-    height: 20px; 
+    height: 40px; 
     top: -30px; 
   }
 `;
@@ -116,7 +147,7 @@ const SectionSubtitle = styled(motion.p)`
   @media (max-width: 767px) {
     font-size: 1rem;
     max-width: 95%; 
-    margin: 0 auto 30px auto; 
+    margin: -20px auto 20px auto; 
   }
 `;
 
@@ -128,7 +159,12 @@ const GridBackground = styled.div`
   max-width: 1200px; 
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid #000000; 
+  border: 1px solid #000000;
+  
+  @media (max-width: 767px) {
+    padding-top: 80px;
+    margin-top: 20px;
+  }
 `;
 
 const BoxesGrid = styled.div`
@@ -332,7 +368,7 @@ const CollaborationSection: React.FC = () => {
               transition: 'opacity 0.7s ease-out, width 0.7s ease-out'
             }} 
           />
-          <span style={{ position: 'relative', top: '-60px', display: 'inline-block', zIndex: 10 }}>Projekte & Kooperationen</span>
+          <TitleContent></TitleContent>
         </SectionTitle>
         <SectionSubtitle 
           ref={subtitleRef}

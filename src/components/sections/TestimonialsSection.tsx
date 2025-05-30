@@ -28,6 +28,10 @@ const SectionContainer = styled.section`
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+  
+  @media (max-width: 767px) {
+    padding: 20px 0 100px 0; /* Weniger Padding oben, mehr unten für das Anführungszeichen */
+  }
 `;
 
 // Icon is now a direct child of SectionContainer, so its position is relative to it.
@@ -42,6 +46,16 @@ const QuoteIcon = styled.div`
   z-index: 2; /* Ensures it's above Swiper if there's any overlap with swiper buttons etc. */
   opacity: 0.9; 
   transform: rotate(180deg); 
+  
+  @media (max-width: 767px) {
+    font-size: 16rem;
+    top: auto;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    text-align: center;
+    width: 100%;
+  }
 `;
 
 const StyledSwiperWrapper = styled.div`

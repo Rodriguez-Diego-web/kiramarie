@@ -151,15 +151,7 @@ const SmallImage1Wrapper = styled.div`
   transform-origin: top left;
 
   @media (max-width: 991px) {
-    grid-column: auto;
-    grid-row: auto;
-    transform: none;
-    width: 100%; /* Ensure images can be full width if desired */
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
+    display: none; /* Ausblenden auf Mobilgeräten */
   }
 `;
 
@@ -172,16 +164,7 @@ const SmallImage2Wrapper = styled.div`
   margin-bottom: 20px;
 
   @media (max-width: 991px) {
-    grid-column: auto;
-    grid-row: auto;
-    transform: none;
-    margin-bottom: 0;
-    width: 100%;
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
+    display: none; /* Ausblenden auf Mobilgeräten */
   }
 `;
 
@@ -193,15 +176,7 @@ const SmallImage3Wrapper = styled.div`
   transform-origin: top left;
 
   @media (max-width: 991px) {
-    grid-column: auto;
-    grid-row: auto;
-    transform: none;
-    width: 100%;
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
+    display: none; /* Ausblenden auf Mobilgeräten */
   }
 `;
 
@@ -228,7 +203,7 @@ const MainImageContainer = styled.div`
     order: 2; /* Mobile order: After Top Paragraph */
     transform: none; /* Reset desktop transform */
     max-width: 100%; /* Full width on mobile */
-    margin-top: 30px;
+    margin-top: 0px; /* Negativer Abstand, um das Bild deutlich nach oben zu schieben */
     margin-bottom: 0; /* Adjusted from auto to control spacing better */
     padding-right: 0; /* Reset desktop padding if any was implied */
   }
@@ -262,8 +237,9 @@ const AuthorBioTextWrapper = styled.div`
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    order: 5; /* Mobile order: Last */
-    margin-top: 30px; /* Reset desktop margin-top */
+    order: 3; /* Mobile order geändert: Direkt nach dem Bild */
+    margin-top: -10px; /* Stärker negativer Abstand, um den Text deutlich nach oben zu schieben */
+    margin-bottom: -140px;
     max-width: 100%; /* Full width on mobile */
     
     .headline-main {

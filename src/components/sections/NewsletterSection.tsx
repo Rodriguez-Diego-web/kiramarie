@@ -137,6 +137,13 @@ const KingdomTitle = styled.h3`
     height: 35%; /* Nimmt nur 50% der Höhe ein */
     background-color: #86a4fd; /* Blaue Farbe wie beim SPEAKINGS Button */
     z-index: -1;
+    
+    @media (max-width: 768px) {
+      width: 85%;
+      height: 30%;
+      bottom: 18%;
+      left: 10%;
+    }
   }
   
   @media (max-width: 991px) {
@@ -146,7 +153,12 @@ const KingdomTitle = styled.h3`
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
-    right: 40px;
+    position: relative;
+    top: 0;
+    right: auto;
+    text-align: center;
+    margin: 0 auto 30px;
+    display: block;
     padding: 0 10px;
   }
 `;

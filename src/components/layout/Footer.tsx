@@ -98,7 +98,8 @@ const FooterContent = styled.div`
   
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 1.5rem;
+    align-items: stretch;
   }
 `;
 
@@ -107,11 +108,23 @@ const BrandSection = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+  }
 `;
 
 const LogoImage = styled.img`
   height: 90px;
   width: auto;
+  
+  @media (max-width: 768px) {
+    height: 60px;
+  }
 `;
 
 const SocialLinks = styled.div`
@@ -166,6 +179,11 @@ const FooterLink = styled.a`
   
   &:hover {
     color: #cdaffd;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
   }
 `;
 

@@ -30,8 +30,8 @@ const SectionTitle = styled.h2`
   z-index: 3; /* Ensure title is above ContentContainer and previous section's end */
 
   @media (max-width: 767px) {
-    font-size: 2rem;
-    top: 80px; /* Adjust for mobile if needed */
+    font-size: 3.2rem;
+    top: 70px; /* Leicht nach oben angepasst für die größere Schrift */
   }
 `;
 

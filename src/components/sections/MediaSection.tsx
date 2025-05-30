@@ -29,8 +29,8 @@ const SectionTitle = styled(motion.h2)`
   z-index: 3; /* Title above content background and previous section */
 
   @media (max-width: 767px) {
-    font-size: 2rem;
-    top: 70px;
+    font-size: 3rem;
+    top: 60px;
   }
 `;
 
