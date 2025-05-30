@@ -114,11 +114,9 @@ const SlideContent = styled.div`
   /* overflow: visible; Icon is no longer a child, so this isn't for the icon */
   
   @media (max-width: 767px) {
-    padding: 25px 15px;
-    min-height: auto; /* Passt sich automatisch der Inhaltshöhe an */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 20px 15px;
+    min-height: auto;
+    height: auto !important;
   }
 `;
 
