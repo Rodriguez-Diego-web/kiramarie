@@ -112,6 +112,14 @@ const SlideContent = styled.div`
   box-shadow: none; 
   width: 100%; 
   /* overflow: visible; Icon is no longer a child, so this isn't for the icon */
+  
+  @media (max-width: 767px) {
+    padding: 25px 15px;
+    min-height: auto; /* Passt sich automatisch der Inhaltshöhe an */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const QuoteText = styled.blockquote`
@@ -126,10 +134,11 @@ const QuoteText = styled.blockquote`
   text-align: center;  
 
   @media (max-width: 767px) {
-    font-size: .8rem; /* Reduced font size for mobile */
-    line-height: 1.7; /* Optional: adjust line-height if needed for smaller font */
-    margin: 15px 0 10px 0; /* Optional: adjust margins for mobile */
-    max-width: 60%; /* Reduced max-width for mobile */
+    font-size: 1rem; /* Erhöhte Schriftgröße für bessere Lesbarkeit */
+    line-height: 1.5; /* Kompaktere Darstellung */
+    margin: 0 10px 15px 10px; /* Reduzierter vertikaler Abstand */
+    max-width: 95%; /* Breiterer Text für Mobile */
+    padding: 0;
   }
 `;
 
@@ -150,10 +159,10 @@ const AuthorDisplay = styled.div`
     font-style: italic;
   }
   @media (max-width: 767px) {
-    font-size: .8rem; /* Reduced font size for mobile */
-    line-height: 1.7; /* Optional: adjust line-height if needed for smaller font */
-    margin: 15px 0 10px 0; /* Optional: adjust margins for mobile */
-   
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 5px 0 5px 0; /* Reduzierter vertikaler Abstand */
+    font-weight: 500;
   }
 `;
 
