@@ -137,10 +137,10 @@ const QuoteText = styled.blockquote`
   text-align: center;  
 
   @media (max-width: 767px) {
-    font-size: 1rem; /* Erhöhte Schriftgröße für bessere Lesbarkeit */
-    line-height: 1.5; /* Kompaktere Darstellung */
-    margin: 0 10px 15px 10px; /* Reduzierter vertikaler Abstand */
-    max-width: 95%; /* Breiterer Text für Mobile */
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0 10px 15px 10px;
+    max-width: 75%; /* Schmalerer Text für bessere Lesbarkeit */
     padding: 0;
   }
 `;
@@ -164,8 +164,9 @@ const AuthorDisplay = styled.div`
   @media (max-width: 767px) {
     font-size: 0.9rem;
     line-height: 1.4;
-    margin: 5px 0 5px 0; /* Reduzierter vertikaler Abstand */
+    margin: 5px 0 5px 0;
     font-weight: 500;
+    max-width: 85%; /* Gleiche Breite wie QuoteText */
   }
 `;
 
