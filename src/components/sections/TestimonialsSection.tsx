@@ -64,6 +64,14 @@ const StyledSwiperWrapper = styled.div`
   position: relative; /* For swiper navigation buttons */
   overflow: visible; /* Still allow slides content if it ever needed to overflow, though icon is separate */
 
+  .swiper {
+    height: auto;
+  }
+
+  .swiper-slide {
+    height: auto;
+  }
+
   .swiper-button-prev, .swiper-button-next {
     color: #333333; 
     background-color: transparent; 
@@ -103,20 +111,17 @@ const SlideContent = styled.div`
   background-color: #E6DFD7; 
   padding: 20px 10px; 
   border-radius: 0;
-  min-height: 300px; 
   display: flex;
   flex-direction: column;
   align-items: center; 
-  justify-content: center;
-  position: relative; /* For QuoteText/AuthorDisplay z-index if ever needed */
+  justify-content: flex-start;
+  position: relative;
   box-shadow: none; 
   width: 100%; 
-  /* overflow: visible; Icon is no longer a child, so this isn't for the icon */
   
   @media (max-width: 767px) {
-    padding: 20px 15px;
-    min-height: auto;
-    height: auto !important;
+    padding: 15px 10px;
+    justify-content: flex-start;
   }
 `;
 
@@ -193,16 +198,13 @@ const TestimonialsSection: React.FC = () => {
       <QuoteIcon>“</QuoteIcon> {/* Icon is now a direct child here */}
       <StyledSwiperWrapper>
         <Swiper
-          slidesPerView={1}
-          spaceBetween={0} 
+          modules={[Navigation, Autoplay]}
+          navigation
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
           loop={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          navigation={true}
-          grabCursor={true} 
-          modules={[Navigation, Autoplay]} 
+          slidesPerView={1}
+          spaceBetween={50} // Spacing between slides (if ever visible during transition)
+          autoHeight={true} // Dynamische Höhenanpassung basierend auf Slide-Inhalt
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={testimonial.author + index}>
