@@ -1,16 +1,23 @@
 [
   {
-    "author": "Max Mustermann",
-    "position": "CEO, Beispiel GmbH",
-    "quote": "Kira hat uns mit ihrer Expertise im Bereich New Work die Augen geöffnet. Ihre Keynote war nicht nur inspirierend, sondern hat auch konkrete Veränderungsprozesse in unserem Unternehmen angestoßen. Absolut empfehlenswert!",
-    "image": "/uploads/placeholder-avatar.png",
+    "author": "John Strelecky",
+    "position": "Internationaler SPIEGEL-Bestseller Autor",
+    "quote": "Als ich in Kiras Podcast zu Gast war gefiel mir besonders die warme und persönliche Atmosphäre. Es fühlte sich an wie ein Gespräch mit einer langjährigen Freundin. Eines der schönsten Podcast-Erlebnisse, die ich bisher hatte.",
+    "image": null,
     "order": 10
   },
   {
-    "author": "Erika Musterfrau",
-    "position": "HR Managerin, Kreativ AG",
-    "quote": "Der Workshop mit Kira zum Thema 'Zukunft der Arbeit' war ein voller Erfolg. Unsere Mitarbeiter waren begeistert von den interaktiven Elementen und den praxisnahen Einblicken. Wir freuen uns auf weitere Zusammenarbeit!",
+    "author": "Hans Neubert",
+    "position": "Consulting Director Charles & Charlotte",
+    "quote": "Was ich am meisten liebe, ist, dass Kira mit den 'alten eingesessenen Vorurteilen' zu New Work aufräumt!",
     "image": null,
     "order": 20
+  },
+  {
+    "author": "Nils Behrens",
+    "position": "Chef Brand Officer Sunday Natural",
+    "quote": "Kiras Buch ist ein unverzichtbares Werk für Führungskräfte, HR-Verantwortliche, Mitarbeiter und Selbstständige, die die Zukunft der Arbeit aktiv mitgestalten wollen. Ihr Buch bietet nicht nur tiefe Einblicke, sondern auch praktische Lösungen, die in jedem Arbeitsumfeld Anwendung finden können. Ein brillanter Leitfaden für die Zukunft der Arbeit.",
+    "image": null,
+    "order": 30
   }
 ]
