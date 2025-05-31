@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { motion, useInView } from 'framer-motion';
+import WhatTheWorkTestimonialsSection from '../sections/WhatTheWorkTestimonialsSection';
 
 
 const PageWrapper = styled.div`
@@ -279,6 +280,7 @@ const Qtthework: React.FC = () => {
         </GridLayout>
       </MainContentSection>
       {/* RSS feed will be added here later */}
+      <WhatTheWorkTestimonialsSection />
     </PageWrapper>
   );
 };
