@@ -16,13 +16,13 @@ interface TestimonialItem {
 
 const SectionContainer = styled.section`
   background-color: #E6DFD7; 
-  padding: 50px 0 80px 0; /* Erhöhtes Padding, besonders unten */
+  padding: 50px 0 80px 0; 
   color: #333;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   overflow: visible; 
   position: relative; 
-  z-index: 1; /* Attempt to bring this section (and its overflowing icon) forward */
+  z-index: 1; 
   width: 100vw; 
   left: 50%;
   right: 50%;
@@ -30,7 +30,7 @@ const SectionContainer = styled.section`
   margin-right: -50vw;
   
   @media (max-width: 767px) {
-    padding: 20px 0 100px 0; /* Weniger Padding oben, mehr unten für das Anführungszeichen */
+    padding: 20px 0 100px 0; 
   }
 `;
 
@@ -40,10 +40,10 @@ const QuoteIcon = styled.div`
   font-size: 14rem; 
   color: #FFFFFF; 
   position: absolute;
-  top: -100px; /* Relative to SectionContainer's content box top edge */
-  left: 145px;  /* Relative to SectionContainer's content box left edge */
+  top: -100px; 
+  left: 145px; 
   line-height: 0.7; 
-  z-index: 2; /* Ensures it's above Swiper if there's any overlap with swiper buttons etc. */
+  z-index: 2; 
   opacity: 0.9; 
   transform: rotate(180deg); 
   
@@ -61,8 +61,8 @@ const QuoteIcon = styled.div`
 const StyledSwiperWrapper = styled.div`
   width: 100%; 
   margin: 0 auto;
-  position: relative; /* For swiper navigation buttons */
-  overflow: visible; /* Still allow slides content if it ever needed to overflow, though icon is separate */
+  position: relative; 
+  overflow: visible; 
 
   .swiper {
     height: auto;
@@ -77,9 +77,9 @@ const StyledSwiperWrapper = styled.div`
     background-color: transparent; 
     width: 50px; 
     height: 50px;
-    top: 60%; /* Deutlich tiefer positioniert für bessere Zentrierung */
+    top: 60%; 
     transform: translateY(-50%);
-    z-index: 10; /* Ensure nav buttons are clickable above slides */
+    z-index: 10; 
 
     &::after {
       font-size: 2rem; 
@@ -140,7 +140,7 @@ const QuoteText = styled.blockquote`
     font-size: 1rem;
     line-height: 1.5;
     margin: 0 10px 15px 10px;
-    max-width: 75%; /* Schmalerer Text für bessere Lesbarkeit */
+    max-width: 75%; 
     padding: 0;
   }
 `;
@@ -166,7 +166,7 @@ const AuthorDisplay = styled.div`
     line-height: 1.4;
     margin: 5px 0 5px 0;
     font-weight: 500;
-    max-width: 85%; /* Gleiche Breite wie QuoteText */
+    max-width: 85%; 
   }
 `;
 
@@ -204,8 +204,8 @@ const TestimonialsSection: React.FC = () => {
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           loop={true}
           slidesPerView={1}
-          spaceBetween={50} // Spacing between slides (if ever visible during transition)
-          autoHeight={true} // Dynamische Höhenanpassung basierend auf Slide-Inhalt
+          spaceBetween={50} 
+          autoHeight={true} 
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={testimonial.author + index}>

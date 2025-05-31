@@ -79,15 +79,24 @@ const NewsletterSection: React.FC = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              <SubscribeForm>
-                <EmailInput 
-                  type="email" 
-                  placeholder="Enter your email" 
+              <div style={{ marginTop: '20px', marginBottom: '20px', width: '100%', maxWidth: '500px' }}>
+                <iframe 
+                  src="https://embeds.beehiiv.com/81fc6fc1-ddd0-4079-81fb-899807142dfd?slim=true" 
+                  data-test-id="beehiiv-embed" 
+                  width="100%" 
+                  height="52" 
+                  frameBorder="0" 
+                  scrolling="no" 
+                  style={{ 
+                    borderRadius: '4px', 
+                    border: '2px solid #e5e7eb', 
+                    margin: 0, 
+                    backgroundColor: 'transparent',
+                    minHeight: 'auto' // Standardverhalten zulassen, da height="52" gesetzt ist
+                  }}
+                  title="Kira Marie Newsletter Subscription"
                 />
-                <SubscribeButton>
-                  Subscribe
-                </SubscribeButton>
-              </SubscribeForm>
+              </div>
             </motion.div>
           </TextContentContainer>
         </NewsletterContent>
@@ -282,66 +291,6 @@ const NewsletterSubtext = styled.p`
   margin: 0;
 `;
 
-const SubscribeForm = styled.div`
-  display: flex;
-  width: 100%;
-  margin-top: 5px;
-  
-  @media (max-width: 768px) {
-    flex-direction: row; /* Keep elements in a row */
-    gap: 0; /* No gap between input and button */
-    align-items: stretch; /* Make input and button same height */
-    background-color: #f0f0f0; /* Background for the combined unit */
-    border: 1px solid #e0e0e0; /* Border for the unit */
-    border-radius: 8px; /* Rounded corners for the unit */
-    padding: 4px; /* Internal padding for the unit */
-  }
-`;
 
-const EmailInput = styled.input`
-  flex: 1;
-  height: 44px;
-  padding: 0 15px;
-  border: 1px solid #ddd; /* Desktop default */
-  border-radius: 4px 0 0 4px; /* Desktop default */
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  background-color: #fff; /* Desktop default */
-  
-  @media (max-width: 768px) {
-    border-radius: 6px 0 0 6px; /* Mobile: rounded corners on left */
-    width: auto; /* Override previous 100% width if any */
-    border: none; /* Mobile: no individual border */
-    background-color: #fff; /* Mobile: white background inside the form unit */
-    height: 38px; /* Mobile: fixed height */
-    padding: 0 12px; /* Mobile: adjusted padding */
-    /* flex: 1; is already defined for desktop and applies here */
-  }
-`;
-
-const SubscribeButton = styled.button`
-  height: 44px;
-  padding: 0 20px;
-  background-color: #8facfd;
-  color: white;
-  border: none;
-  border-radius: 0 4px 4px 0; /* Desktop default */
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  
-  &:hover {
-    background-color: #7b9af9;
-  }
-  
-  @media (max-width: 768px) {
-    border-radius: 0 6px 6px 0; /* Mobile: rounded corners on right */
-    width: auto; /* Override previous 100% width if any */
-    height: 38px; /* Mobile: fixed height, matching input */
-    padding: 0 18px; /* Mobile: adjusted padding */
-  }
-`;
 
 export default NewsletterSection;

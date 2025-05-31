@@ -9,6 +9,7 @@ import ScrollToTopButton from './components/common/ScrollToTopButton';
 import ScrollToHash from './components/utility/ScrollToHash';
 import Home from './pages/Home';
 import FunkeFeedPage from './components/pages/FunkeFeedPage';
+import Qtthework from './components/pages/whatthework'; // Import der neuen Seite
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/funke-rss" element={<FunkeFeedPage />} />
+          <Route path="/whatthework" element={<Qtthework />} /> {/* Neue Route für whatthework */}
         </Routes>
         <ScrollToTopButton />
         <Footer />
