@@ -14,14 +14,19 @@ function generateAboutData() {
     }
 
     const fileContents = fs.readFileSync(contentDirectory, 'utf8');
-    const { data } = matter(fileContents);
+    const { data: frontmatter, content: markdownContent } = matter(fileContents);
+
+    const jsonData = {
+      ...frontmatter,
+      text: markdownContent.trim() // Add the markdown body as 'text'
+    };
 
     // Ensure the output directory exists
     if (!fs.existsSync(outputDirectory)) {
       fs.mkdirSync(outputDirectory, { recursive: true });
     }
 
-    fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
+    fs.writeFileSync(outputFile, JSON.stringify(jsonData, null, 2));
     console.log(`Successfully generated ${outputFile}`);
 
   } catch (error) {
