@@ -120,3 +120,40 @@ collections:
               - { label: "Beschreibung", name: "description", widget: "text" }
               - { label: "Bild", name: "imageUrl", widget: "image", hint: "Podcast Episodenbild. Wird in /public/uploads gespeichert." }
               - { label: "Alternativtext für Bild", name: "altText", widget: "string", hint: "Kurze Beschreibung des Bildes für Barrierefreiheit." }
+
+  - name: "whatthework_about"
+    label: "WHAT THE WORK?! - Über Mich"
+    files:
+      - label: "Inhalte der 'Über Mich' Sektion auf WHAT THE WORK?!"
+        name: "whatthework_about_content"
+        file: "src/content/whatthework-about.md"
+        fields:
+          - { label: "Headline", name: "headline", widget: "string", default: "Das ist WHAT THE WORK?!" }
+          - { label: "Sub-Headline", name: "subHeadline", widget: "string", required: false }
+          - { label: "Text", name: "text", widget: "markdown" }
+          - { label: "Bild", name: "image", widget: "image", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link (URL)", name: "buttonLink", widget: "string", required: false }
+
+  - name: "whatthework_testimonials"
+    label: "WHAT THE WORK?! - Testimonials"
+    description: "Verwaltung der Testimonials für die WHAT THE WORK?! Seite."
+    files:
+      - name: "all_whatthework_testimonials_file"
+        label: "Alle WHAT THE WORK?! Testimonials"
+        file: "public/data/whattheworkTestimonialsData.json"
+        editor:
+          preview: false
+        fields:
+          - name: "testimonials" 
+            label: "Testimonial Liste"
+            widget: "list"
+            add_to_top: false
+            label_singular: "Neues Testimonial hinzufügen"
+            summary: "{{fields.author}}: {{fields.quote | truncate(50, \"...\")}}"
+            fields:
+              - { label: "Zitat Geber (Name)", name: "author", widget: "string" }
+              - { label: "Position / Firma (optional)", name: "position", widget: "string", required: false }
+              - { label: "Zitat", name: "quote", widget: "markdown" }
+              - { label: "Bild (optional)", name: "image", widget: "image", required: false }
+              - { label: "Reihenfolge (optional, niedrigere Zahlen zuerst)", name: "order", widget: "number", required: false, default: 100 }

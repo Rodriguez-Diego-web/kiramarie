@@ -182,7 +182,8 @@ const WhatTheWorkTestimonialsSection: React.FC = () => {
         return response.json();
       })
       .then(data => {
-        const sortedData = data.sort((a: TestimonialItem, b: TestimonialItem) => (a.order ?? Infinity) - (b.order ?? Infinity));
+        const testimonialList = data && Array.isArray(data.testimonials) ? data.testimonials : [];
+        const sortedData = testimonialList.sort((a: TestimonialItem, b: TestimonialItem) => (a.order ?? Infinity) - (b.order ?? Infinity));
         setTestimonials(sortedData);
       })
       .catch(error => console.error('Error fetching whatthework testimonials data:', error));
