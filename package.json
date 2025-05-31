@@ -32,7 +32,7 @@
     "xml2js": "^0.6.2"
   },
   "scripts": {
-    "prestart": "node scripts/generate-press-data.js && node scripts/generate-about-data.js && node scripts/generate-social-display-data.js && node scripts/generate-testimonials-data.js && node scripts/generate-partner-logos-data.js && node scripts/generate-seo-data.js && node scripts/generate-podcast-data.js",
+    "prestart": "node scripts/generate-beehiiv-feed-data.js && node scripts/generate-press-data.js && node scripts/generate-about-data.js && node scripts/generate-social-display-data.js && node scripts/generate-testimonials-data.js && node scripts/generate-partner-logos-data.js && node scripts/generate-seo-data.js && node scripts/generate-podcast-data.js",
     "start": "npm run prestart && react-scripts start",
     "build": "npm run prestart && react-scripts build",
     "test": "react-scripts test",
