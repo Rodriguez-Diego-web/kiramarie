@@ -124,12 +124,12 @@ const ProfileImageStyled = styled.img`
 
 const BlueBackgroundSquare = styled.div`
   position: absolute;
-  width: 90%;
-  height: 90%;
-  background-color: #d3e0ff; // Light blue from image
+  width: 100%;
+  height: 100%;
+  background-color: #8facff; // Light blue from image
   border-radius: 0;
-  top: -15px;
-  left: -15px;
+  top: -25px;
+  left: -25px;
   z-index: 1;
 
   @media (max-width: 991px) {
