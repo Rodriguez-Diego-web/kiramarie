@@ -1,0 +1,8 @@
+---
+headline: "Hi, ich bin Kira."
+text_block_1: "Ich glaube: Arbeit darf sich gut anfühlen – und trotzdem erfolgreich sein. Als Autorin, Podcasthost und Dozentin teile ich hier jede Woche Tools und Gedanken, die dir helfen, deinen Job selbstbestimmt zu gestalten."
+text_block_2: "Über 50.000 Menschen folgen mir bereits auf LinkedIn, da ich dort bereits einige Jahre über diese Themen schreibe. Ich freue mich, wenn wir uns vernetzen!"
+button_text: "KIRA MARIE CREMER BEI LINKEDIN"
+button_link: "https://www.linkedin.com/in/kiramariecremer/"
+profile_image: "/uploads/kira-small.webp"
+---

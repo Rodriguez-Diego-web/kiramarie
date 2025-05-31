@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { motion, useInView } from 'framer-motion';
 import WhatTheWorkTestimonialsSection from '../sections/WhatTheWorkTestimonialsSection';
+import WhatTheWorkAboutSection from '../sections/WhatTheWorkAboutSection';
+import BeehiivFeedSection from '../sections/BeehiivFeedSection';
 
 
 const PageWrapper = styled.div`
@@ -78,13 +80,14 @@ const TextContainer = styled.div`
 `;
 
 const Headline = styled.h2`
-  font-family: 'Arial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
   font-weight: bold;
   color: #000000;
   margin-bottom: 25px;
   line-height: 1.3;
   max-width: 1200px;
+  min-width: 800px;
   width: 100%;
   @media (max-width: 768px) {
     font-size: 1.8rem;
@@ -101,11 +104,12 @@ const Headline = styled.h2`
 // Formular-Styling jetzt direkt per Inline-Styles
 
 const DescriptionText = styled.p`
-  font-family: 'Arial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   color: #333333;
-  max-width: 550px;
+  max-width: 450px;
+  min-width: 30px;
   
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -211,6 +215,7 @@ const Qtthework: React.FC = () => {
       <BlueHeaderSection>
         <LogoImage src="/uploads/NLLogo.png" alt="What The Work Logo" />
       </BlueHeaderSection>
+
       <MainContentSection>
         <GridLayout>
           <TextContainer>
@@ -222,12 +227,12 @@ const Qtthework: React.FC = () => {
                 src="https://embeds.beehiiv.com/81fc6fc1-ddd0-4079-81fb-899807142dfd?slim=true" 
                 data-test-id="beehiiv-embed" 
                 width="100%" 
-                height="52" 
+                height="53" 
                 frameBorder="0" 
                 scrolling="no" 
                 style={{ 
                   borderRadius: '4px', 
-                  border: '2px solid #e5e7eb', 
+                  border: '2px solidrgb(9, 74, 203)', 
                   margin: 0, 
                   backgroundColor: 'transparent',
                   minHeight: 'auto' // Standardverhalten zulassen, da height="80" gesetzt ist
@@ -279,8 +284,11 @@ const Qtthework: React.FC = () => {
           </MockupContainer>
         </GridLayout>
       </MainContentSection>
-      {/* RSS feed will be added here later */}
+
       <WhatTheWorkTestimonialsSection />
+
+      <WhatTheWorkAboutSection />
+      <BeehiivFeedSection />
     </PageWrapper>
   );
 };

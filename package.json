@@ -23,6 +23,7 @@
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "react-slick": "^0.30.3",
+    "rss-parser": "^3.13.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.8",
     "swiper": "^11.2.7",
