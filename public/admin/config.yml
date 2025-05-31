@@ -130,7 +130,7 @@ collections:
         fields:
           - { label: "Headline", name: "headline", widget: "string", default: "Das ist WHAT THE WORK?!" }
           - { label: "Sub-Headline", name: "subHeadline", widget: "string", required: false }
-          - { label: "Text", name: "text", widget: "markdown" }
+          - { label: "Text", name: "body", widget: "markdown" }
           - { label: "Bild", name: "image", widget: "image", required: false }
           - { label: "Button Text", name: "buttonText", widget: "string", required: false }
           - { label: "Button Link (URL)", name: "buttonLink", widget: "string", required: false }
