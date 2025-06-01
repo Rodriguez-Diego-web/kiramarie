@@ -200,16 +200,20 @@ const BoxItem = styled(motion.div)`
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    top: -20px; /* Changed from bottom to top */
     left: 0;
     width: 100%;
-    height: 0;
+    height: 87%; /* Changed from 0 to 100% */
+
     background: rgba(255,255,255,0.1);
-    transition: height 0.3s ease;
+    opacity: 0; /* Added opacity for transition */
+    transition: opacity 0.3s ease; /* Changed transition to opacity */
+    pointer-events: none; /* Allow clicks to pass through */
+    z-index: 1; /* Ensure it's behind the button (button has z-index 3) */
   }
   
   &:hover::after {
-    height: 100%;
+    opacity: 1; /* Change to affect opacity */
   }
 `;
 
@@ -323,7 +327,7 @@ const CollaborationSection: React.FC = () => {
       imageSrc: '/images/speaker-small.webp', 
       imageSrcSmall: '/images/speaker-small.webp',
       buttonText: 'SPEAKINGS',
-      link: '#kontakt', 
+      link: 'https://disruptingminds.com/speaker/kira-marie-cremer', 
       buttonColor: '#86a4fd' 
     },
     {
