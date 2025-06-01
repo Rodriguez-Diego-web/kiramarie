@@ -157,3 +157,16 @@ collections:
               - { label: "Zitat", name: "quote", widget: "markdown" }
               - { label: "Bild (optional)", name: "image", widget: "image", required: false }
               - { label: "Reihenfolge (optional, niedrigere Zahlen zuerst)", name: "order", widget: "number", required: false, default: 100 }
+
+  - name: "funke_feed_page_content"
+    label: "Podcast Seite Intro (Funke Feed)"
+    files:
+      - label: "Inhalte Podcast Seite Intro"
+        name: "funke_feed_intro_content"
+        file: "public/data/funkeFeedPageData.json"
+        fields:
+          - { label: "Hauptüberschrift", name: "mainTitle", widget: "string", default: "New Work Now" }
+          - { label: "Intro Bild", name: "introImage", widget: "image", hint: "Das Hauptbild oben auf der Podcast-Seite" }
+          - { label: "Alternativtext für Intro Bild", name: "introImageAlt", widget: "string", default: "New Work Now Podcast Artwork" }
+          - { label: "Erster Textabschnitt", name: "paragraph1", widget: "text" }
+          - { label: "Zweiter Textabschnitt", name: "paragraph2", widget: "text" }

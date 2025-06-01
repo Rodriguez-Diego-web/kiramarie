@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+interface IntroContentData {
+  mainTitle: string;
+  introImage: string;
+  introImageAlt: string;
+  paragraph1: string;
+  paragraph2: string;
+}
+
 interface Episode {
   id: string;
   title: string;
@@ -259,9 +267,27 @@ const LoadMoreButton = styled.button`
 `;
 
 const FunkeFeedPage: React.FC = () => {
+  const [introContent, setIntroContent] = useState<IntroContentData | null>(null);
   const [allEpisodes, setAllEpisodes] = useState<Episode[]>([]);
   const [visibleEpisodes, setVisibleEpisodes] = useState<Episode[]>([]);
   const [visibleCount, setVisibleCount] = useState(4); // Anfangs 4 Episoden anzeigen
+
+  // Lade Intro-Inhalte
+  useEffect(() => {
+    fetch('/data/funkeFeedPageData.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data: IntroContentData) => {
+        setIntroContent(data);
+      })
+      .catch(error => {
+        console.error("Could not fetch Funke Feed page intro data:", error);
+      });
+  }, []);
 
   // Lade alle Episoden
   useEffect(() => {
@@ -292,17 +318,17 @@ const FunkeFeedPage: React.FC = () => {
   return (
     <>
       <PageContainer>
-        <MainTitle>New Work Now</MainTitle>
+        <MainTitle>{introContent ? introContent.mainTitle : 'Lade Titel...'}</MainTitle>
         <IntroSection>
           <ImageColumn>
-            <img src="/images/podcast.png" alt="New Work Now Podcast Artwork" />
+            <img src={introContent ? introContent.introImage : ''} alt={introContent ? introContent.introImageAlt : 'Lade Bild...'} />
           </ImageColumn>
           <TextColumn>
             <Paragraph>
-              Die Arbeitswelt verändert sich rasant – und mittendrin: wir. New Work Now gibt Orientierung, Inspiration und konkrete Impulse für alle, die Arbeit neu denken wollen. Was bedeutet „New Work“ wirklich? Wie gelingt der Wandel in Unternehmen? Und was können wir selbst dazu beitragen?
+              {introContent ? introContent.paragraph1 : 'Lade Text...'}
             </Paragraph>
             <Paragraph>
-              Jede Woche spricht Host Kira Marie Cremer mit UnternehmerInnen, Kreativen und VordenkerInnen – über Herausforderungen, Best Practices und persönliche Aha-Momente. Immer dienstags, im Wechsel Interviews und kompakte Solo-Folgen mit Tipps und Denkanstößen.
+              {introContent ? introContent.paragraph2 : 'Lade Text...'}
             </Paragraph>
           </TextColumn>
         </IntroSection>
