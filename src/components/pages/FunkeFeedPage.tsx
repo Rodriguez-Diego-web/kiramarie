@@ -193,7 +193,7 @@ const ActionsContainer = styled.div`
   }
 `;
 
-const ListenButton = styled.button`
+const ListenButton = styled.a`
   font-family: var(--body-font);
   background-color: transparent;
   color: #000;
@@ -202,6 +202,7 @@ const ListenButton = styled.button`
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
+  text-decoration: none; /* Remove default link underline */
   transition: opacity 0.2s ease;
   border-radius: 0;
 
@@ -294,7 +295,7 @@ const FunkeFeedPage: React.FC = () => {
         <MainTitle>New Work Now</MainTitle>
         <IntroSection>
           <ImageColumn>
-            <img src="/images/podcast-small.webp" alt="New Work Now Podcast Artwork" />
+            <img src="/images/podcast.png" alt="New Work Now Podcast Artwork" />
           </ImageColumn>
           <TextColumn>
             <Paragraph>
@@ -321,7 +322,7 @@ const FunkeFeedPage: React.FC = () => {
                     {episode.description}
                   </EpisodeDescription>
                   <ActionsContainer>
-                    <ListenButton>JETZT HÖREN +</ListenButton>
+                    <ListenButton href="https://linktr.ee/newworknow" target="_blank" rel="noopener noreferrer">JETZT HÖREN +</ListenButton>
                     <PlatformIconsContainer>
                       <img src="/images/icons8-youtube-48-small.webp" alt="YouTube" />
                       <img src="/images/icons8-spotify-50-small.webp" alt="Spotify" />
