@@ -84,12 +84,12 @@ const NewsletterSection: React.FC = () => {
                   src="https://embeds.beehiiv.com/81fc6fc1-ddd0-4079-81fb-899807142dfd?slim=true" 
                   data-test-id="beehiiv-embed" 
                   width="100%" 
-                  height="52" 
+                  height="53" 
                   frameBorder="0" 
                   scrolling="no" 
                   style={{ 
-                    borderRadius: '4px', 
-                    border: '2px solid #e5e7eb', 
+                    borderRadius: '15px', 
+                    border: '1px solid #8facff', 
                     margin: 0, 
                     backgroundColor: 'transparent',
                     minHeight: 'auto' // Standardverhalten zulassen, da height="52" gesetzt ist
