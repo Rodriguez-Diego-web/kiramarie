@@ -120,8 +120,8 @@ const Headline = styled.h2`
 
 const SubscriptionBarWrapper = styled.div`
   grid-area: subscription;
-  display: flex; /* To center the iframe div */
-  justify-content: center; /* Center the iframe div */
+  display: flex;
+  justify-content: flex-start; /* Align content to the left for desktop */
   width: 100%; /* Take full width of its grid area */
 
   @media (max-width: 991px) {
@@ -170,7 +170,7 @@ const StyledMockupImagesWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -120px;
+  margin-top: -150px;
   min-height: 500px; /* Increased height for larger mockups */
 
   .mockup-container {
@@ -266,8 +266,8 @@ const Qtthework: React.FC = () => {
                 frameBorder="0" 
                 scrolling="no" 
                 style={{
-                  borderRadius: '4px', 
-                  border: '2px solidrgb(9, 74, 203)', 
+                  borderRadius: '15px', 
+                  border: '1px solid #8facff', 
                   margin: 0, 
                   backgroundColor: 'transparent',
                   minHeight: 'auto'

@@ -139,7 +139,7 @@ const BlueBackgroundSquare = styled.div`
   height: 100%;
   background-color: #8facff; // Light blue from image
   border-radius: 0;
-  top: -5px;
+  top: -25px;
   left: -25px;
   z-index: 1;
 
