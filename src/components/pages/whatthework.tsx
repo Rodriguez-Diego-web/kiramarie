@@ -53,11 +53,20 @@ const MainContentSection = styled.div`
 const GridLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "headline mockups"
+    "subscription mockups"
+    "text mockups";
   gap: 50px;
-  align-items: center;
+  align-items: center; /* Or align-items: start; if preferred */
 
   @media (max-width: 991px) {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "headline"
+      "subscription"
+      "mockups"
+      "text";
     gap: 20px;
     overflow: visible; /* Sicherstellen, dass kein Inhalt abgeschnitten wird */
   }
@@ -69,9 +78,10 @@ const GridLayout = styled.div`
 `;
 
 const TextContainer = styled.div`
+  grid-area: text;
   @media (max-width: 991px) {
-    order: 2;
-    margin-top: 40px; /* Mehr Abstand nach dem Mockup */
+    order: 4;
+    margin-top: 40px; /* Mehr Abstand nach dem Mockup - may need adjustment later */
   }
   
   @media (max-width: 480px) {
@@ -80,6 +90,7 @@ const TextContainer = styled.div`
 `;
 
 const Headline = styled.h2`
+  grid-area: headline;
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
   font-weight: bold;
@@ -89,6 +100,10 @@ const Headline = styled.h2`
   max-width: 1200px;
   min-width: 800px;
   width: 100%;
+  @media (max-width: 991px) { /* Apply order at the 991px breakpoint */
+    order: 1;
+  }
+
   @media (max-width: 768px) {
     font-size: 1.8rem;
     min-width: unset;
@@ -102,6 +117,19 @@ const Headline = styled.h2`
 `;
 
 // Formular-Styling jetzt direkt per Inline-Styles
+
+const SubscriptionBarWrapper = styled.div`
+  grid-area: subscription;
+  display: flex; /* To center the iframe div */
+  justify-content: center; /* Center the iframe div */
+  width: 100%; /* Take full width of its grid area */
+
+  @media (max-width: 991px) {
+    order: 2; /* New mobile order */
+    margin-top: 15px; 
+    margin-bottom: 20px; 
+  }
+`;
 
 const DescriptionText = styled.p`
   font-family: 'Montserrat', sans-serif;
@@ -118,12 +146,13 @@ const DescriptionText = styled.p`
 `;
 
 const MockupContainer = styled.div`
+  grid-area: mockups;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative; /* Immer relative positioniert */
   @media (max-width: 991px) {
-    order: 1;
+    order: 3; /* Adjusted for new mobile layout */
     margin-bottom: 15px;
     width: 100%;
     overflow: visible; /* Ändere von hidden zu visible */
@@ -170,27 +199,34 @@ const StyledMockupImagesWrapper = styled.div`
   }
   
   @media (max-width: 768px) {
-    min-height: 300px;
+    min-height: auto; /* Adjusted from 500px */
+    margin-top: 20px; /* Position mockups lower */
+    flex-direction: row; 
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
     .mockup-main img {
-      max-width: 200px;
+      max-width: 250px;
     }
     .mockup-secondary img {
-      max-width: 200px;
+      max-width: 250px;
     }
   }
   
   @media (max-width: 480px) {
-    min-height: 400px; /* Noch höhere Mindesthöhe */
-    margin-top: -220px; /* Noch stärkerer negativer Margin für mehr Platz oben */
-    margin-left: 150px;
+    min-height: auto; /* Adjusted from 400px */
+    margin-top: 20px; /* Position mockups lower */
+    /* margin-left: 150px; Removed for centering */
     z-index: 3;
+    flex-direction: row; /* Ensure horizontal layout if desired, or column for stacking */
+    align-items: center;
+    justify-content: center;
     .mockup-main img {
-      max-width: 200px;
+      max-width: 250px; /* Slightly reduced for very small screens */
       position: relative;
     
     }
     .mockup-secondary img {
-      max-width: 200px;
+      max-width: 250px; /* Slightly reduced for very small screens */
       position: relative;
     }
   }
@@ -218,9 +254,8 @@ const Qtthework: React.FC = () => {
 
       <MainContentSection>
         <GridLayout>
-          <TextContainer>
-            <Headline>Jede Woche praktische Hacks für mehr Erfolg in deiner Karriere!</Headline>
-            
+          <Headline>Jede Woche praktische Hacks für mehr Erfolg in deiner Karriere!</Headline>
+          <SubscriptionBarWrapper>
             {/* Beehiiv iframe embed anstelle des benutzerdefinierten Formulars */}
             <div style={{ marginTop: '20px', marginBottom: '20px', width: '100%', maxWidth: '500px' }}>
               <iframe 
@@ -230,17 +265,18 @@ const Qtthework: React.FC = () => {
                 height="53" 
                 frameBorder="0" 
                 scrolling="no" 
-                style={{ 
+                style={{
                   borderRadius: '4px', 
                   border: '2px solidrgb(9, 74, 203)', 
                   margin: 0, 
                   backgroundColor: 'transparent',
-                  minHeight: 'auto' // Standardverhalten zulassen, da height="80" gesetzt ist
+                  minHeight: 'auto'
                 }}
                 title="Kira Marie Newsletter Subscription"
               />
             </div>
-            
+          </SubscriptionBarWrapper>
+          <TextContainer>
             {/* Die ursprüngliche Beschreibung bleibt erhalten */}
 <div ref={textContainerRef}>
   <motion.div

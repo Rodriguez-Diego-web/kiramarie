@@ -87,6 +87,11 @@ const ButtonStyled = styled.a`
     background-color: #f5bf2e; // Darker yellow on hover
     transform: translateY(-2px);
   }
+
+  @media (max-width: 480px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 `;
 
 const ImageColumn = styled(motion.div)`
@@ -100,6 +105,12 @@ const ImageColumn = styled(motion.div)`
   @media (max-width: 991px) {
     order: 1;
     width: 80%;
+    max-width: 350px;
+  }
+
+  @media (max-width: 480px) {
+    order: 1;
+    width: 100%;
     max-width: 350px;
   }
 `;
@@ -128,13 +139,18 @@ const BlueBackgroundSquare = styled.div`
   height: 100%;
   background-color: #8facff; // Light blue from image
   border-radius: 0;
-  top: -25px;
+  top: -5px;
   left: -25px;
   z-index: 1;
 
   @media (max-width: 991px) {
     top: -10px;
     left: -10px;
+  }
+
+  @media (max-width: 480px) {
+    top: -25px;
+    left: -25px;
   }
 `;
 

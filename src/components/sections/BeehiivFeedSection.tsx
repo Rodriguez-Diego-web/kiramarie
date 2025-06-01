@@ -55,6 +55,10 @@ const SectionTitle = styled.h2`
     font-size: 2rem;
     /* The ::after pseudo-element will adjust its height relative to the new font size and padding */
   }
+
+  @media (max-width: 480px) {
+    margin-top: -129px;
+  }
 `;
 
 const FeedGrid = styled.div`
