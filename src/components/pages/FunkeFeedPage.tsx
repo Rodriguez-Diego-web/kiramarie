@@ -350,10 +350,10 @@ const FunkeFeedPage: React.FC = () => {
                   <ActionsContainer>
                     <ListenButton href="https://linktr.ee/newworknow" target="_blank" rel="noopener noreferrer">JETZT HÖREN +</ListenButton>
                     <PlatformIconsContainer>
-                      <img src="/images/icons8-youtube-48-small.webp" alt="YouTube" />
-                      <img src="/images/icons8-spotify-50-small.webp" alt="Spotify" />
-                      <img src="/images/icons8-apple-music-50-small.webp" alt="Apple Music" />
-                      <img src="/images/icons8-google-podcasts-50-small.webp" alt="Google Podcasts" />
+                      <img src="/images/icons8-youtube-50.png" alt="YouTube" />
+                      <img src="/images/icons8-spotify-50.png" alt="Spotify" />
+                      <img src="/images/icons8-apple-music-50.png" alt="Apple Music" />
+                      <img src="/images/icons8-google-podcasts-50.png" alt="Google Podcasts" />
                     </PlatformIconsContainer>
                   </ActionsContainer>
                 </EpisodeContent>
