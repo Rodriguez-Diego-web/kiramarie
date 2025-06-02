@@ -3,12 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-const DESKTOP_VIDEO_ID = 'PUP1iSIMbtA';
-const MOBILE_VIDEO_ID = 'nkXDDwQtOKE';
 const MOBILE_BREAKPOINT = 768;
 
-const getYouTubeEmbedUrl = (videoId: string) =>
-  `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&vq=hd1080&highres=1&enablejsapi=1&playsinline=1&start=0&origin=${window.location.origin}`;
+// MP4-Video-Pfad
+const VIDEO_PATH = '/videos/KIRA MARIE CREMER.mp4';
 
 interface PartnerLogo {
   name: string;
@@ -27,7 +25,7 @@ type FloatingCircleProps = {
 
 const HeroSection: React.FC = () => {
   const { scrollY } = useScroll();
-  const videoRef = useRef<HTMLIFrameElement | HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   const [partnerLogos, setPartnerLogos] = useState<PartnerLogo[]>([]);
   const [isMobile, setIsMobile] = useState(() => {
@@ -37,24 +35,10 @@ const HeroSection: React.FC = () => {
     return false;
   });
   
-  const [currentVideoSrc, setCurrentVideoSrc] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth < MOBILE_BREAKPOINT 
-        ? getYouTubeEmbedUrl(MOBILE_VIDEO_ID) 
-        : getYouTubeEmbedUrl(DESKTOP_VIDEO_ID);
-    }
-    return getYouTubeEmbedUrl(DESKTOP_VIDEO_ID); 
-  });
-
   useEffect(() => {
     const handleResize = () => {
       const newIsMobile = window.innerWidth < MOBILE_BREAKPOINT;
       setIsMobile(newIsMobile);
-      
-      const newSrc = newIsMobile 
-        ? getYouTubeEmbedUrl(MOBILE_VIDEO_ID) 
-        : getYouTubeEmbedUrl(DESKTOP_VIDEO_ID);
-      setCurrentVideoSrc(prevSrc => prevSrc === newSrc ? prevSrc : newSrc);
     };
 
     handleResize();
@@ -62,10 +46,24 @@ const HeroSection: React.FC = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  // Thumbnail-Logik entfernt, da das Video sofort geladen wird
-
-  // Video wird jetzt direkt gerendert, kein useEffect für showVideoPlayer mehr nötig
+  
+  useEffect(() => {
+    // Video automatisch abspielen, wenn es geladen ist
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      const handleVideoLoaded = () => {
+        setVideoLoaded(true);
+        videoElement.play().catch(error => {
+          console.error('Error auto-playing video:', error);
+        });
+      };
+      
+      videoElement.addEventListener('loadeddata', handleVideoLoaded);
+      return () => {
+        videoElement.removeEventListener('loadeddata', handleVideoLoaded);
+      };
+    }
+  }, []);
 
   useEffect(() => {
     fetch('/data/partnerLogosData.json')
@@ -86,10 +84,21 @@ const HeroSection: React.FC = () => {
     backgroundY
   }), [backgroundY]);
   
+  // Video-Steuerung für Loop
   useEffect(() => {
     const videoElement = videoRef.current;
     if (!videoElement) return;
-  }, [currentVideoSrc]);
+    
+    const handleEnded = () => {
+      videoElement.currentTime = 0;
+      videoElement.play().catch(err => console.error('Error restarting video:', err));
+    };
+    
+    videoElement.addEventListener('ended', handleEnded);
+    return () => {
+      videoElement.removeEventListener('ended', handleEnded);
+    };
+  }, []);
 
   const floatingCircles = [
     { size: 180, top: '15%', left: '10%', color: '#cdaffd30', delay: 0.2 },
@@ -119,24 +128,13 @@ const HeroSection: React.FC = () => {
         className={isMobile ? 'mobile-view' : ''}
       >
         {/* Entferne jegliche Animation vom LCP-Element für schnellste Anzeige */}
-        <img 
+          <img 
           src="/images/KMClogoweiss.webp" 
           alt="Kira Marie Cremer Logo" 
           width="300"
           height="150"
           style={{ opacity: 1 }}
         />
-        <SubTitle
-          initial={{ opacity: 0.6, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.6, 
-            delay: 0.3,
-            ease: "easeOut" 
-          }}
-        >
-          AUTORIN | DOZENTIN | PODCAST HOST
-        </SubTitle>
       </LogoOverlay>
       
       <VideoContainer
@@ -145,15 +143,14 @@ const HeroSection: React.FC = () => {
         transition={{ duration: 0.5 }}
       >
         <StyledVideo
-          key={currentVideoSrc} 
-          ref={videoRef as React.RefObject<HTMLIFrameElement>}
-          src={currentVideoSrc}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          onLoad={() => {
-            console.log('YouTube iframe loaded');
+          ref={videoRef}
+          src={VIDEO_PATH}
+          muted
+          playsInline
+          loop
+          preload="auto"
+          onLoadedData={() => {
+            console.log('MP4 video loaded');
             setVideoLoaded(true);
           }}
         />
@@ -264,23 +261,6 @@ const LogoOverlay = styled(motion.div)`
 `;
 
 
-const SubTitle = styled(motion.div)`
-  color: white;
-  font-size: 32px;
-  font-weight: 300;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  
-  @media (max-width: 768px) {
-    font-size: 20px;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 20px;
-  }
-`;
-
 const VideoContainer = styled(motion.div)`
   position: absolute;
   top: 0;
@@ -292,7 +272,7 @@ const VideoContainer = styled(motion.div)`
 
 
 
-const StyledVideo = styled.iframe`
+const StyledVideo = styled.video`
   position: absolute;
   top: 50%;
   left: 50%;
