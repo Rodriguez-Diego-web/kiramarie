@@ -50,7 +50,10 @@ const Header: React.FC = () => {
             <MenuLink to="/#collaboration" onClick={(e) => handleSectionNavigation(e, '#collaboration')}>ZUSAMMENARBEIT</MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/funke-rss">PODCAST: NEW WORK NOW</MenuLink>
+            <MenuLink to="/funke-rss">PODCAST</MenuLink>
+          </MenuItem>
+          <MenuItem>
+            <MenuLink to="/whatthework">NEWSLETTER</MenuLink>
           </MenuItem>
           <MenuItem>
             <MenuLink to="/#kontakt" onClick={(e) => handleSectionNavigation(e, '#kontakt')}>KONTAKT</MenuLink>
@@ -107,7 +110,10 @@ const Header: React.FC = () => {
                     <MobileMenuLinkPrimary to="/#collaboration" onClick={(e) => handleSectionNavigation(e, '#collaboration')}>ZUSAMMENARBEIT</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <MobileMenuLinkPrimary to="/funke-rss" onClick={closeMenu}>PODCAST: NEW WORK NOW</MobileMenuLinkPrimary>
+                    <MobileMenuLinkPrimary to="/funke-rss" onClick={closeMenu}>PODCAST</MobileMenuLinkPrimary>
+                  </MobileMenuItem>
+                  <MobileMenuItem>
+                    <MobileMenuLinkPrimary to="/whatthework" onClick={closeMenu}>NEWSLETTER</MobileMenuLinkPrimary>
                   </MobileMenuItem>
                   <MobileMenuItem>
                     <MobileMenuLinkPrimary to="/#kontakt" onClick={(e) => handleSectionNavigation(e, '#kontakt')}>KONTAKT</MobileMenuLinkPrimary>

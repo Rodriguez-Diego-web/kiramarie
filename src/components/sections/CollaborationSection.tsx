@@ -293,6 +293,14 @@ const popIn = {
 };
 
 const CollaborationSection: React.FC = () => {
+  // Funktion für sanftes Scrollen zu einem Anker-Element
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    e.preventDefault();
+    const element = document.querySelector(target);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -309,7 +317,7 @@ const CollaborationSection: React.FC = () => {
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['start end', 'end start']
+    offset: ['start 0.9', 'end 0.1'] // Begrenzt die Animation auf den Bereich, in dem die Sektion tatsächlich sichtbar ist
   });
   
   const gradientX = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
@@ -327,7 +335,7 @@ const CollaborationSection: React.FC = () => {
       imageSrc: '/images/speaker-small.webp', 
       imageSrcSmall: '/images/speaker-small.webp',
       buttonText: 'SPEAKINGS',
-      link: 'https://disruptingminds.com/speaker/kira-marie-cremer', 
+      link: '#kontakt', 
       buttonColor: '#86a4fd' 
     },
     {
@@ -421,15 +429,27 @@ const CollaborationSection: React.FC = () => {
                   loading="lazy"
                 />
               </CardImageWrapper>
-              <ActionButton
-                href={box.link}
-                buttonColor={box.buttonColor}
-                target="_blank"
-                rel="noopener noreferrer"
-                {...(box.link === '/mediakit/mediakit.pdf' && { download: 'Mediakit_KiraMarieCremer.pdf' })}
-              >
-                {box.buttonText}
-              </ActionButton>
+              {box.link.startsWith('#') ? (
+                // Interner Anker-Link mit smooth scroll
+                <ActionButton
+                  href={box.link}
+                  buttonColor={box.buttonColor}
+                  onClick={(e) => handleSmoothScroll(e, box.link)}
+                >
+                  {box.buttonText}
+                </ActionButton>
+              ) : (
+                // Externer Link mit target="_blank"
+                <ActionButton
+                  href={box.link}
+                  buttonColor={box.buttonColor}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  {...(box.link === '/mediakit/mediakit.pdf' && { download: 'Mediakit_KiraMarieCremer.pdf' })}
+                >
+                  {box.buttonText}
+                </ActionButton>
+              )}
             </BoxItem>
             );
           })}
