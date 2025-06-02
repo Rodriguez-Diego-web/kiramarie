@@ -28,24 +28,7 @@ const HeroSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   const [partnerLogos, setPartnerLogos] = useState<PartnerLogo[]>([]);
-  const [isMobile, setIsMobile] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth < MOBILE_BREAKPOINT;
-    }
-    return false;
-  });
-  
-  useEffect(() => {
-    const handleResize = () => {
-      const newIsMobile = window.innerWidth < MOBILE_BREAKPOINT;
-      setIsMobile(newIsMobile);
-    };
-
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // isMobile wurde entfernt, da nicht mehr benötigt
   
   useEffect(() => {
     // Video automatisch abspielen, wenn es geladen ist
@@ -121,21 +104,7 @@ const HeroSection: React.FC = () => {
         />
       </Helmet>
       <HeroContainer>
-      {/* Logo und Untertitel in der Mitte mit Animation */}
-      <LogoOverlay
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 1 }}
-        className={isMobile ? 'mobile-view' : ''}
-      >
-        {/* Entferne jegliche Animation vom LCP-Element für schnellste Anzeige */}
-          <img 
-          src="/images/KMClogoweiss.webp" 
-          alt="Kira Marie Cremer Logo" 
-          width="300"
-          height="150"
-          style={{ opacity: 1 }}
-        />
-      </LogoOverlay>
+      {/* Logo und Untertitel entfernt - nur noch Video wird angezeigt */}
       
       <VideoContainer
         initial={{ opacity: 0 }}
@@ -243,24 +212,6 @@ const HeroContainer = styled.section`
   }
 `;
 
-const LogoOverlay = styled(motion.div)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10;
-  text-align: center;
-  
-  @media (max-width: ${MOBILE_BREAKPOINT}px) {
-    top: 45%; 
-    width: 80%;
-  }
-`;
-
-
 const VideoContainer = styled(motion.div)`
   position: absolute;
   top: 0;
@@ -269,8 +220,6 @@ const VideoContainer = styled(motion.div)`
   height: 100%;
   z-index: 0;
 `;
-
-
 
 const StyledVideo = styled.video`
   position: absolute;
