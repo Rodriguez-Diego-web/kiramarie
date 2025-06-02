@@ -8,7 +8,7 @@ const MOBILE_VIDEO_ID = 'nkXDDwQtOKE';
 const MOBILE_BREAKPOINT = 768;
 
 const getYouTubeEmbedUrl = (videoId: string) =>
-  `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&vq=hd2160&hd=1&enablejsapi=1&playsinline=1&start=0&origin=${window.location.origin}`;
+  `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&vq=hd1080&highres=1&enablejsapi=1&playsinline=1&start=0&origin=${window.location.origin}`;
 
 interface PartnerLogo {
   name: string;
@@ -300,10 +300,10 @@ const StyledVideo = styled.iframe`
   
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: contain; 
   background-color: black;
-  min-width: 110%; 
-  min-height: 110%; 
+  min-width: 100%; 
+  min-height: 100%; 
   pointer-events: none; 
 
   @media (max-width: ${MOBILE_BREAKPOINT}px) { 
