@@ -80,12 +80,11 @@ const HeroSection: React.FC = () => {
   }, []);
 
   const backgroundY = useTransform(scrollY, [0, 500], [0, 150]);
-  const videoScale = useTransform(scrollY, [0, 300], [1, 1.1]);
+  // Scale-Effekt entfernt, um Videoqualität zu verbessern
   
   const parallaxValues = useMemo(() => ({
-    backgroundY,
-    videoScale
-  }), [backgroundY, videoScale]);
+    backgroundY
+  }), [backgroundY]);
   
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -141,7 +140,6 @@ const HeroSection: React.FC = () => {
       </LogoOverlay>
       
       <VideoContainer
-        style={{ scale: parallaxValues.videoScale }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.8 }}
         transition={{ duration: 0.5 }}
@@ -298,7 +296,7 @@ const StyledVideo = styled.iframe`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.1); 
+  transform: translate(-50%, -50%); 
   
   width: 100%;
   height: 100%;
@@ -309,14 +307,14 @@ const StyledVideo = styled.iframe`
   pointer-events: none; 
 
   @media (max-width: ${MOBILE_BREAKPOINT}px) { 
-    transform: translate(-50%, -50%) scale(1.0); 
+    transform: translate(-50%, -50%); 
     object-fit: contain; 
     min-width: 100%; 
     min-height: 100%; 
   }
   
   @media (max-width: 480px) { 
-    transform: translate(-50%, -50%) scale(1.2); 
+    transform: translate(-50%, -50%); 
     object-fit: contain; 
     min-width: 100%;
     min-height: 100%;
