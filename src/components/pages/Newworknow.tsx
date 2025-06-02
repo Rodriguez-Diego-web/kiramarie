@@ -240,7 +240,7 @@ const StyledMockupImage = styled.img`
 
 
 
-const Qtthework: React.FC = () => {
+const Newworknow: React.FC = () => {
   const textContainerRef = useRef<HTMLDivElement>(null);
   const mockupContainerRef = useRef<HTMLDivElement>(null);
   const textInView = useInView(textContainerRef, { once: true, amount: 0.3 });
@@ -329,4 +329,4 @@ const Qtthework: React.FC = () => {
   );
 };
 
-export default Qtthework;
+export default Newworknow;
