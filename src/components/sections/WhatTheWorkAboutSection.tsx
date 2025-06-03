@@ -48,11 +48,13 @@ const TextColumn = styled(motion.div)`
 `;
 
 const HeadlineStyled = styled.h2`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  margin: 0;
+  font-family: 'Kingdom', 'Montserrat', sans-serif;
+  font-size: 2.8rem;
+  color: #000000;
+  margin: 0 0 20px 0; 
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
 
   @media (max-width: 767px) {
     font-size: 2rem;
