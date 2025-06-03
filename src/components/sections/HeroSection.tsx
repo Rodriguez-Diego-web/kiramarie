@@ -5,9 +5,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const MOBILE_BREAKPOINT = 768;
 
-// MP4-Video-Pfad
-const VIDEO_PATH = '/videos/KIRA MARIE CREMER.mp4';
-
 interface PartnerLogo {
   name: string;
   image: string;
@@ -28,24 +25,49 @@ const HeroSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   const [partnerLogos, setPartnerLogos] = useState<PartnerLogo[]>([]);
-  // isMobile wurde entfernt, da nicht mehr benötigt
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < MOBILE_BREAKPOINT;
+    }
+    return false;
+  });
   
   useEffect(() => {
     // Video automatisch abspielen, wenn es geladen ist
     const videoElement = videoRef.current;
     if (videoElement) {
-      const handleVideoLoaded = () => {
-        setVideoLoaded(true);
-        videoElement.play().catch(error => {
-          console.error('Error auto-playing video:', error);
-        });
-      };
+      // Video abspielen und auf Fehler überwachen
+      const playPromise = videoElement.play();
       
-      videoElement.addEventListener('loadeddata', handleVideoLoaded);
-      return () => {
-        videoElement.removeEventListener('loadeddata', handleVideoLoaded);
-      };
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setVideoLoaded(true);
+            console.log('Video playback started successfully');
+          })
+          .catch(error => {
+            console.error('Error attempting to play video:', error);
+          });
+      }
+      
+      // Loop implementieren, indem das Video zurückgesetzt wird, wenn es zu Ende ist
+      videoElement.addEventListener('ended', () => {
+        videoElement.currentTime = 0;
+        videoElement.play();
+      });
     }
+  }, []);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      const newIsMobile = window.innerWidth < MOBILE_BREAKPOINT;
+      setIsMobile(newIsMobile);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -61,7 +83,6 @@ const HeroSection: React.FC = () => {
   }, []);
 
   const backgroundY = useTransform(scrollY, [0, 500], [0, 150]);
-  // Scale-Effekt entfernt, um Videoqualität zu verbessern
   
   const parallaxValues = useMemo(() => ({
     backgroundY
@@ -106,22 +127,43 @@ const HeroSection: React.FC = () => {
       <HeroContainer>
       {/* Logo und Untertitel entfernt - nur noch Video wird angezeigt */}
       
+      {/* Logo und Untertitel in der Mitte mit Animation */}
+      <LogoOverlay
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+        className={isMobile ? 'mobile-view' : ''}
+      >
+        {/* Entferne jegliche Animation vom LCP-Element für schnellste Anzeige */}
+        <img 
+          src="/images/KMClogoweiss.webp" 
+          alt="Kira Marie Cremer Logo" 
+          width="500"
+          height="250"
+          style={{ opacity: 1 }}
+        />
+        <SubTitle
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          AUTORIN | DOZENTIN | PODCAST HOST
+        </SubTitle>
+      </LogoOverlay>
+      
       <VideoContainer
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
-        transition={{ duration: 0.5 }}
+        animate={{ opacity: videoLoaded ? 1 : 0 }}
+        transition={{ duration: 1 }}
       >
         <StyledVideo
           ref={videoRef}
-          src={VIDEO_PATH}
+          autoPlay
           muted
-          playsInline
           loop
+          playsInline
           preload="auto"
-          onLoadedData={() => {
-            console.log('MP4 video loaded');
-            setVideoLoaded(true);
-          }}
+          src="/videos/Hero.MP4"
+          onLoadedData={() => setVideoLoaded(true)}
         />
         <VideoOverlay $loaded={videoLoaded} />
       </VideoContainer>
@@ -256,10 +298,52 @@ const VideoOverlay = styled.div<{ $loaded: boolean }>`
   left: 0;
   width: 100%;
   height: 100%;
-  background: black;
-  opacity: ${({ $loaded }) => ($loaded ? 0 : 1)};
-  transition: opacity 0.5s ease-in-out;
-  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+`;
+
+const LogoOverlay = styled(motion.div)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  text-align: center;
+transform: translate(-50%, -50%);
+display: flex;
+flex-direction: column;
+align-items: center;
+z-index: 10;
+text-align: center;
+  
+@media (max-width: ${MOBILE_BREAKPOINT}px) {
+  top: 45%; 
+  width: 80%;
+}
+`;
+
+const SubTitle = styled(motion.div)`
+  color: white;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin-top: 10px;
+  
+  @media (max-width: 768px) {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+  }
 `;
 
 const ParallaxBackground = styled(motion.div)`
@@ -270,6 +354,7 @@ const ParallaxBackground = styled(motion.div)`
   height: 120%;
   z-index: -1;
   background: black;
+  overflow: hidden;
 `;
 
 const GradientOverlay = styled.div`
