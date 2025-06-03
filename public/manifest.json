@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Kira Marie",
+  "name": "Kira Marie Cremer",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,14 +8,16 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "images/logo.webp",
+      "type": "image/webp",
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "images/logo.webp",
+      "type": "image/webp",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
