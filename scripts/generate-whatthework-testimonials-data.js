@@ -36,7 +36,11 @@ async function generateWhatTheWorkTestimonialsData() {
 
     testimonials.sort((a, b) => a.order - b.order);
 
-    await fs.writeFile(outputFilePath, JSON.stringify(testimonials, null, 2));
+    const testimonialsObject = {
+      testimonials: testimonials
+    };
+
+    await fs.writeFile(outputFilePath, JSON.stringify(testimonialsObject, null, 2));
     console.log('Successfully generated whattheworkTestimonialsData.json');
 
   } catch (error) {
