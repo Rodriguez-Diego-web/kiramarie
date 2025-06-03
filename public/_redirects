@@ -1,0 +1,6 @@
+# Für newworknow.de: Alle Pfade zur Hauptseite (Root) umleiten, damit die SPA richtig funktioniert
+https://newworknow.de/* https://newworknow.de/ 200!
+https://www.newworknow.de/* https://www.newworknow.de/ 200!
+
+# Stelle sicher, dass alle bestehenden Routen auf kiramariecremer.de normal funktionieren
+/* /index.html 200
