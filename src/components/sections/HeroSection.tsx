@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, memo, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
 const MOBILE_BREAKPOINT = 768;
 
@@ -91,6 +91,31 @@ const HeroSection: React.FC = () => {
       <HeroContainer>
       {/* Logo und Untertitel entfernt - nur noch Video wird angezeigt */}
       
+      {/* Ladeanimation, die angezeigt wird, während das Video lädt */}
+      <AnimatePresence>
+        {!videoLoaded && (
+          <LoadingOverlay
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <LoadingLogo
+              src="/images/KMClogo.webp"
+              alt="Kira Marie Cremer Logo"
+              animate={{ 
+                scale: [1, 1.05, 1],
+                opacity: [0.9, 1, 0.9]
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </LoadingOverlay>
+        )}
+      </AnimatePresence>
+
       {/* Logo und Untertitel in der Mitte mit Animation */}
       <LogoOverlay
         initial={{ opacity: 1 }}
@@ -442,6 +467,25 @@ const MediaLogo = styled.img`
   object-fit: contain;
   filter: brightness(0) invert(1);
   opacity: 0.9;
+`;
+
+// Neue Styled Components für die Ladeanimation
+const LoadingOverlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e6d5ba; /* Beiger Hintergrund */
+  z-index: 999;
+`;
+
+const LoadingLogo = styled(motion.img)`
+  width: 200px;
+  height: auto;
 `;
 
 export default memo(HeroSection);
