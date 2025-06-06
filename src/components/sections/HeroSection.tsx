@@ -31,6 +31,13 @@ const HeroSection: React.FC = () => {
     }
     return false;
   });
+  const [videoSrc, setVideoSrc] = useState('/videos/Hero.MP4');
+  
+  useEffect(() => {
+    // Dynamisch den richtigen Video-Pfad basierend auf der Bildschirmgröße setzen
+    const newVideoSrc = isMobile ? '/videos/Hero_mobile.MOV' : '/videos/Hero.MP4';
+    setVideoSrc(newVideoSrc);
+  }, [isMobile]);
   
   useEffect(() => {
     // Video automatisch abspielen, wenn es geladen ist
@@ -56,7 +63,7 @@ const HeroSection: React.FC = () => {
         videoElement.play();
       });
     }
-  }, []);
+  }, [videoSrc]);
   
   useEffect(() => {
     const handleResize = () => {
@@ -123,6 +130,9 @@ const HeroSection: React.FC = () => {
           type="image/webp"
           fetchPriority="high"
         />
+        {/* Preload für Videos */}
+        <link rel="preload" href="/videos/Hero.MP4" as="video" type="video/mp4" media="(min-width: 769px)" />
+        <link rel="preload" href="/videos/Hero_mobile.MOV" as="video" type="video/mov" media="(max-width: 768px)" />
       </Helmet>
       <HeroContainer>
       {/* Logo und Untertitel entfernt - nur noch Video wird angezeigt */}
@@ -162,7 +172,7 @@ const HeroSection: React.FC = () => {
           loop
           playsInline
           preload="auto"
-          src="/videos/Hero.MP4"
+          src={videoSrc}
           onLoadedData={() => setVideoLoaded(true)}
         />
         <VideoOverlay $loaded={videoLoaded} />
@@ -341,7 +351,7 @@ const SubTitle = styled(motion.div)`
   }
   
   @media (max-width: 480px) {
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 1.5px;
   }
 `;

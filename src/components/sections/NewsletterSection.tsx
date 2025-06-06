@@ -28,7 +28,7 @@ const NewsletterSection: React.FC = () => {
                 className="mockup-container mockup-1"
               >
                 <MockupImage 
-                  src="/images/3-small.webp" 
+                  src="/images/3.webp" 
                   alt="What The Work?! Newsletter Mockup 1" 
                   className="newsletter-image"
                 />
@@ -210,6 +210,7 @@ const MockupImagesWrapper = styled.div`
   /* Die Bilder überlappen sich stark */
   .mockup-1 {
     z-index: 1;
+    max-width: 100%;
     margin-right: -560px; /* Stärkerer negativer Margin für mehr Überlappung */
   }
   
