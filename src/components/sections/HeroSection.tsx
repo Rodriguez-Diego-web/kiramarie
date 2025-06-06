@@ -31,47 +31,17 @@ const HeroSection: React.FC = () => {
     }
     return false;
   });
-  const [videoSrc, setVideoSrc] = useState('/videos/Hero.MP4');
+  const videoSrc = isMobile ? '/videos/Hero_mobile.MOV' : '/videos/Hero.MP4';
   
   useEffect(() => {
-    // Dynamisch den richtigen Video-Pfad basierend auf der Bildschirmgröße setzen
-    const newVideoSrc = isMobile ? '/videos/Hero_mobile.MOV' : '/videos/Hero.MP4';
-    setVideoSrc(newVideoSrc);
-  }, [isMobile]);
-  
-  useEffect(() => {
-    // Video automatisch abspielen, wenn es geladen ist
-    const videoElement = videoRef.current;
-    if (videoElement) {
-      // Video abspielen und auf Fehler überwachen
-      const playPromise = videoElement.play();
-      
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            setVideoLoaded(true);
-            console.log('Video playback started successfully');
-          })
-          .catch(error => {
-            console.error('Error attempting to play video:', error);
-          });
-      }
-      
-      // Loop implementieren, indem das Video zurückgesetzt wird, wenn es zu Ende ist
-      videoElement.addEventListener('ended', () => {
-        videoElement.currentTime = 0;
-        videoElement.play();
-      });
-    }
+    // Setzt den Ladezustand zurück, damit die Einblendanimation bei einem Videowechsel erneut ausgelöst wird.
+    setVideoLoaded(false);
   }, [videoSrc]);
   
   useEffect(() => {
     const handleResize = () => {
-      const newIsMobile = window.innerWidth < MOBILE_BREAKPOINT;
-      setIsMobile(newIsMobile);
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     };
-
-    handleResize();
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -95,22 +65,6 @@ const HeroSection: React.FC = () => {
     backgroundY
   }), [backgroundY]);
   
-  // Video-Steuerung für Loop
-  useEffect(() => {
-    const videoElement = videoRef.current;
-    if (!videoElement) return;
-    
-    const handleEnded = () => {
-      videoElement.currentTime = 0;
-      videoElement.play().catch(err => console.error('Error restarting video:', err));
-    };
-    
-    videoElement.addEventListener('ended', handleEnded);
-    return () => {
-      videoElement.removeEventListener('ended', handleEnded);
-    };
-  }, []);
-
   const floatingCircles = [
     { size: 180, top: '15%', left: '10%', color: '#cdaffd30', delay: 0.2 },
     { size: 250, top: '60%', left: '75%', color: '#cdaffd20', delay: 0.5 },
@@ -166,6 +120,7 @@ const HeroSection: React.FC = () => {
         transition={{ duration: 1 }}
       >
         <StyledVideo
+          key={videoSrc}
           ref={videoRef}
           autoPlay
           muted
