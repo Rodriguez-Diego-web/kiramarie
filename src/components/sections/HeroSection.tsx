@@ -279,22 +279,27 @@ const StyledVideo = styled.video`
   
   width: 100%;
   height: 100%;
-  object-fit: contain; 
+  object-fit: cover;
+  object-position: center;
   background-color: black;
   min-width: 100%; 
   min-height: 100%; 
   pointer-events: none; 
+  z-index: 1;
 
   @media (max-width: ${MOBILE_BREAKPOINT}px) { 
-    transform: translate(-50%, -50%); 
-    object-fit: contain; 
+    /* Kombinierte Transformation: zentrieren UND zoomen */
+    transform: translate(-50%, -50%) scale(1.1);
+    object-fit: cover;
+    object-position: center;
     min-width: 100%; 
     min-height: 100%; 
   }
   
   @media (max-width: 480px) { 
-    transform: translate(-50%, -50%); 
-    object-fit: contain; 
+    /* Für sehr kleine Displays */
+    transform: translate(-50%, -50%) scale(1.1);
+    object-fit: cover; 
     min-width: 100%;
     min-height: 100%;
   }
