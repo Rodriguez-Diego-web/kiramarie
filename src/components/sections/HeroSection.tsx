@@ -99,19 +99,37 @@ const HeroSection: React.FC = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <LoadingLogo
-              src="/images/KMClogo.webp"
-              alt="Kira Marie Cremer Logo"
+            <LoadingLogoContainer
               animate={{ 
                 scale: [1, 1.05, 1],
-                opacity: [0.9, 1, 0.9]
               }}
               transition={{ 
-                duration: 2,
+                duration: 3,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-            />
+            >
+              <LoadingLogo
+                src="/images/KMClogoweiss.webp"
+                alt="Kira Marie Cremer Logo"
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ 
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <LoadingLogoAlt
+                src="/images/KMClogo.webp"
+                alt="Kira Marie Cremer Logo"
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ 
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </LoadingLogoContainer>
           </LoadingOverlay>
         )}
       </AnimatePresence>
@@ -479,12 +497,28 @@ const LoadingOverlay = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e6d5ba; /* Beiger Hintergrund */
+  background-color: #E6DFD7; /* Neues Beige nach Kundenwunsch */
   z-index: 999;
 `;
 
+const LoadingLogoContainer = styled(motion.div)`
+  position: relative;
+  width: 300px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const LoadingLogo = styled(motion.img)`
-  width: 200px;
+  position: absolute;
+  width: 100%;
+  height: auto;
+`;
+
+const LoadingLogoAlt = styled(motion.img)`
+  position: absolute;
+  width: 100%;
   height: auto;
 `;
 
