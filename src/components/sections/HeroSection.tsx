@@ -31,7 +31,7 @@ const HeroSection: React.FC = () => {
     }
     return false;
   });
-  const videoSrc = isMobile ? '/videos/Hero_mobile.mp4' : '/videos/Hero.MP4';
+  const videoSrc = isMobile ? '/videos/Hero_mobile.MOV' : '/videos/Hero.MP4';
   
   useEffect(() => {
     // Setzt den Ladezustand zurück, damit die Einblendanimation bei einem Videowechsel erneut ausgelöst wird.
@@ -86,7 +86,7 @@ const HeroSection: React.FC = () => {
         />
         {/* Preload für Videos */}
         <link rel="preload" href="/videos/Hero.MP4" as="video" type="video/mp4" media="(min-width: 769px)" />
-        <link rel="preload" href="/videos/Hero_mobile.mp4" as="video" type="video/mp4" media="(max-width: 768px)" />
+        <link rel="preload" href="/videos/Hero_mobile.MOV" as="video" type="video/mov" media="(max-width: 768px)" />
       </Helmet>
       <HeroContainer>
       {/* Logo und Untertitel entfernt - nur noch Video wird angezeigt */}
